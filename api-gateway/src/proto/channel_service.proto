@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package channel_service;
+
+service ChannelService {
+    rpc CreateChannel(CreateChannelRequest) returns (Channel);
+    rpc UpdateChannel(UpdateChannelRequest) returns (Channel);
+    rpc FindChannelById(FindChannelByIdRequest) returns (Channel);
+    rpc Subscribe(SubscribeRequest) returns (Subscription);
+    rpc SubscribeWithNotif(SubscribeRequest) returns (Subscription);
+    rpc UnSubscribe(SubscribeRequest) returns (Boolean);
+}
+
+message Boolean {
+    bool bool = 1;
+}
+
+message FindChannelByIdRequest {
+    string id = 1;
+}
+
+message SubscribeRequest {
+    string userId = 1;
+    string channelId = 2;
+}
+
+message Subscription {
+    string id = 1;
+    string channelId = 2;
+    string userId = 3;
+    string subscribeType = 4;
+}
+
+message CreateChannelRequest {
+    string userId = 1;
+    string name = 2;
+    string handle = 3;
+    string bio = 4;
+    string picture = 5;
+}
+
+message UpdateChannelRequest {
+    string channelId = 1;
+    string name = 2;
+    string bio = 3;
+}
+
+message Channel {
+    string id = 1;
+    string userId = 2;
+    string name = 3;
+    string handle = 4;
+    string bio = 5;
+    string picture = 6;
+}
