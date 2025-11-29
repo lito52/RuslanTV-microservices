@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { ChannelService } from './channel.service';
 import { GrpcMethod, GrpcService } from '@nestjs/microservices';
-import { Boolean, Channel, ChannelServiceController, CreateChannelRequest, FindChannelByIdRequest, SubscribeRequest, Subscription, UpdateChannelRequest, } from 'src/interfaces/channel_service';
+import { Boolean, Channel, ChannelServiceController, CreateChannelRequest, FindChannelByIdRequest, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest, } from 'src/interfaces/channel_service';
 import { Observable } from 'rxjs';
 
 @GrpcService()
@@ -15,7 +15,12 @@ export class ChannelController implements ChannelServiceController {
 
   @GrpcMethod('ChannelService', 'UpdateChannel')
   updateChannel(request: UpdateChannelRequest): Promise<Channel> | Observable<Channel> | Channel {
-    return this.channelService.updateChannel(request.channelId, { name: request.name, bio: request.bio })
+    return this.channelService.updateChannel(request.userId, { name: request.name, handle: request.handle, bio: request.bio, })
+  }
+
+  @GrpcMethod('ChannelService', 'UpdateChannelPicture')
+  updateChannelPictures(request: UpdateChannelPicturesRequest): Promise<Channel> | Observable<Channel> | Channel {
+    return this.channelService.updateChannelPicture(request.userId, request.profilePicture, request.backgroundPicture)
   }
 
   @GrpcMethod('ChannelService', 'FindChannelById')
@@ -32,7 +37,6 @@ export class ChannelController implements ChannelServiceController {
   subscribeWithNotif(request: SubscribeRequest): Promise<Subscription> | Observable<Subscription> | Subscription {
     return this.channelService.subsrcribeWithNotif(request.channelId, request.userId)
   }
-
 
   @GrpcMethod('ChannelService', 'UnSubscribe')
   unSubscribe(request: SubscribeRequest): Promise<Boolean> | Observable<Boolean> | Boolean {

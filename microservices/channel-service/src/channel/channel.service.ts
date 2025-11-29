@@ -19,7 +19,7 @@ export class ChannelService {
         const existingUser = await lastValueFrom(this.authService.findUserById({ id: dto.userId }))
         const existingChannel = await this.findChannelByUserId(dto.userId)
         if (existingChannel) {
-            throw new RpcException(`Channel already exists`)
+            throw new RpcException('Chanel already exists')
         }
 
         const newChannel = await this.prismaService.channel.create({
@@ -36,23 +36,28 @@ export class ChannelService {
         return newChannel
     }
 
-    public async updateChannel(channelId: string, dto: UpdateChannelDto) {
-        const existingChannel = await this.findChannelById(channelId)
+    public async updateChannel(userId: string, dto: UpdateChannelDto) {
+        const existingChannel = await this.findChannelByUserId(userId)
+
+        if (!existingChannel) {
+            throw new RpcException('Chanel not exist')
+        }
 
         const updatedChannel = await this.prismaService.channel.update({
             where: {
-                id: channelId
+                userId: existingChannel.userId
             },
             data: {
                 name: dto.name,
-                bio: dto.bio
+                bio: dto.bio,
+                handle: dto.handle
             }
         })
 
         return updatedChannel
     }
 
-    public async updateChannelPicture(channelId: string, dto: UpdateChannelDto) {
+    public async updateChannelPicture(channelId: string, profilePicture: string, backgroundPicture: string) {
         const existingChannel = await this.findChannelById(channelId)
 
         const updatedChannel = await this.prismaService.channel.update({
@@ -60,8 +65,8 @@ export class ChannelService {
                 id: channelId
             },
             data: {
-                name: dto.name,
-                bio: dto.bio
+                profilePicture,
+                backgroundPicture
             }
         })
 
@@ -91,10 +96,6 @@ export class ChannelService {
                 subcriptions: true
             }
         })
-
-        // if (!channel) {
-        //     throw new RpcException(`Channel by userid not found`)
-        // }
 
         return channel
     }

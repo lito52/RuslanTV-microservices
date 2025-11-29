@@ -5,6 +5,7 @@ package channel_service;
 service ChannelService {
     rpc CreateChannel(CreateChannelRequest) returns (Channel);
     rpc UpdateChannel(UpdateChannelRequest) returns (Channel);
+    rpc UpdateChannelPictures(UpdateChannelPicturesRequest) returns (Channel);
     rpc FindChannelById(FindChannelByIdRequest) returns (Channel);
     rpc Subscribe(SubscribeRequest) returns (Subscription);
     rpc SubscribeWithNotif(SubscribeRequest) returns (Subscription);
@@ -36,13 +37,21 @@ message CreateChannelRequest {
     string name = 2;
     string handle = 3;
     string bio = 4;
-    string picture = 5;
+    string profilePicture = 5;
+    string backgroundPicture = 6;
 }
 
 message UpdateChannelRequest {
-    string channelId = 1;
+    string userId = 1;
     string name = 2;
-    string bio = 3;
+    string handle = 3;
+    string bio = 4;
+}
+
+message UpdateChannelPicturesRequest {
+    string userId = 1;
+    string profilePicture = 2;
+    string backgroundPicture = 3;
 }
 
 message Channel {
@@ -51,5 +60,6 @@ message Channel {
     string name = 3;
     string handle = 4;
     string bio = 5;
-    string picture = 6;
+    string profilePicture = 6;
+    string backgroundPicture = 7;
 }

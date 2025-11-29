@@ -1,16 +1,22 @@
-import { Body, Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Post, Put, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { ChannelService } from './channel.service';
 import { CreateChannelDto } from './dto/create-channel.dto';
 import { Authorized } from 'src/auth/decorators/authorized.decorator';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FileFieldsInterceptor } from '@nestjs/platform-express';
+import { UpdateChannelDto } from './dto/update-channel.dto';
 
 @Controller('channel')
 export class ChannelController {
   constructor(private readonly channelService: ChannelService) { }
 
   @Post('createChannel')
-  @UseInterceptors(FileInterceptor('file'))
-  public async createChannel(@UploadedFile() file: Express.Multer.File, @Authorized('id') userId: string, @Body() dto: CreateChannelDto) {
-    return await this.channelService.createChannel(file, userId, dto)
+  @UseInterceptors(FileFieldsInterceptor([{ name: 'profilePicture', maxCount: 1 }, { name: 'backgroundPicture', maxCount: 1 }]))
+  public async createChannel(@UploadedFiles() files: { profilePicture?: Express.Multer.File[], backgroundPicture?: Express.Multer.File[] }, @Authorized('id') userId: string, @Body() dto: CreateChannelDto) {
+    return await this.channelService.createChannel(files, userId, dto)
+  }
+
+  @Put('updateChannel')
+  public async updateChannel(@Authorized('id') userId, @Body() dto: UpdateChannelDto) {
+    return await this.channelService.updateChannel(userId, dto)
   }
 }
