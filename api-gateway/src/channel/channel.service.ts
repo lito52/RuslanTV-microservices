@@ -120,5 +120,36 @@ export class ChannelService {
         }
     }
 
+    public async subscribe(userId: string, id: string) {
+        try {
+            const channel = await lastValueFrom(this.channelService.findChannelByUserId({ userId: id }))
+            const channelId = channel.id
+
+            const subscription = await lastValueFrom(this.channelService.subscribe({ userId: userId, channelId: channelId }))
+            return subscription
+        } catch (error) {
+            return {
+                message: [error.details],
+                error: 'BadRequest',
+                statusCode: 400
+            }
+        }
+    }
+
+    public async unsubscribe(userId: string, id: string) {
+        try {
+            const channel = await lastValueFrom(this.channelService.findChannelByUserId({ userId: id }))
+            const channelId = channel.id
+
+            const unsubscription = await lastValueFrom(this.channelService.unSubscribe({ userId: userId, channelId: channelId }))
+            return unsubscription
+        } catch (error) {
+            return {
+                message: [error.details],
+                error: 'BadRequest',
+                statusCode: 400
+            }
+        }
+    }
 
 }

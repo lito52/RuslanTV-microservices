@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post, Put, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { ChannelService } from './channel.service';
 import { CreateChannelDto } from './dto/create-channel.dto';
 import { Authorized } from 'src/auth/decorators/authorized.decorator';
@@ -40,5 +40,16 @@ export class ChannelController {
     return await this.channelService.findChannel(userId)
   }
 
+  @Post('subscribe/:id')
+  @Authorization()
+  public async subscribe(@Authorized('id') userId: string, @Param('id') id: string) {
+    return await this.channelService.subscribe(userId, id)
+  }
+
+  @Delete('unsubscribe/:id')
+  @Authorization()
+  public async unsubscribe(@Authorized('id') userId: string, @Param('id') id: string) {
+    return await this.channelService.unsubscribe(userId, id)
+  }
 
 }
