@@ -1,9 +1,11 @@
-import { Body, Controller, Patch, Post, Put, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Put, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { ChannelService } from './channel.service';
 import { CreateChannelDto } from './dto/create-channel.dto';
 import { Authorized } from 'src/auth/decorators/authorized.decorator';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { UpdateChannelDto } from './dto/update-channel.dto';
+import { Authorization } from 'src/auth/decorators/auth.decorator';
+import { UserRole } from 'src/auth/types/types';
 
 @Controller('channel')
 export class ChannelController {
@@ -25,4 +27,18 @@ export class ChannelController {
   public async updateChannelPictures(@UploadedFiles() files: { profilePicture?: Express.Multer.File[], backgroundPicture?: Express.Multer.File[] }, @Authorized('id') userId: string) {
     return await this.channelService.updateChannelPictures(files, userId)
   }
+
+  @Get('findChannelByUserId/:id')
+  @Authorization(UserRole.ADMIN)
+  public async findChannelByUserId(@Param('userId') userId: string) {
+    return await this.channelService.findChannelByUserId(userId)
+  }
+
+  @Get('findChannel')
+  @Authorization()
+  public async findChannel(@Authorized('id') userId: string) {
+    return await this.channelService.findChannel(userId)
+  }
+
+
 }

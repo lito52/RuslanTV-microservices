@@ -101,6 +101,10 @@ export class ChannelService {
             }
         })
 
+        if (!channel) {
+            throw new RpcException(`Channel by id not found`)
+        }
+
         return channel
     }
 

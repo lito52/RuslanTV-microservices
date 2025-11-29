@@ -93,4 +93,32 @@ export class ChannelService {
             }
         }
     }
+
+    public async findChannelByUserId(userId: string) {
+        try {
+            const channel = await lastValueFrom(this.channelService.findChannelByUserId({ userId: userId }))
+            return channel
+        } catch (error) {
+            return {
+                message: [error.details],
+                error: 'BadRequest',
+                statusCode: 400
+            }
+        }
+    }
+
+    public async findChannel(userId: string) {
+        try {
+            const channel = await lastValueFrom(this.channelService.findChannelByUserId({ userId: userId }))
+            return channel
+        } catch (error) {
+            return {
+                message: [error.details],
+                error: 'BadRequest',
+                statusCode: 400
+            }
+        }
+    }
+
+
 }

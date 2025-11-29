@@ -6,7 +6,7 @@ service ChannelService {
     rpc CreateChannel(CreateChannelRequest) returns (Channel);
     rpc UpdateChannel(UpdateChannelRequest) returns (Channel);
     rpc UpdateChannelPictures(UpdateChannelPicturesRequest) returns (Channel);
-    rpc FindChannelById(FindChannelByIdRequest) returns (Channel);
+    rpc FindChannelByUserId(FindChannelByUserIdRequest) returns (Channel);
     rpc Subscribe(SubscribeRequest) returns (Subscription);
     rpc SubscribeWithNotif(SubscribeRequest) returns (Subscription);
     rpc UnSubscribe(SubscribeRequest) returns (Boolean);
@@ -16,8 +16,8 @@ message Boolean {
     bool bool = 1;
 }
 
-message FindChannelByIdRequest {
-    string id = 1;
+message FindChannelByUserIdRequest {
+    string userId = 1;
 }
 
 message SubscribeRequest {
