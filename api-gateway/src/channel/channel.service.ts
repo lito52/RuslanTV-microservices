@@ -152,4 +152,20 @@ export class ChannelService {
         }
     }
 
+    public async subscribeWithNotif(userId: string, id: string) {
+        try {
+            const channel = await lastValueFrom(this.channelService.findChannelByUserId({ userId: id }))
+            const channelId = channel.id
+
+            const subscription = await lastValueFrom(this.channelService.subscribeWithNotif({ userId: userId, channelId: channelId }))
+            return subscription
+        } catch (error) {
+            return {
+                message: [error.details],
+                error: 'BadRequest',
+                statusCode: 400
+            }
+        }
+    }
+
 }

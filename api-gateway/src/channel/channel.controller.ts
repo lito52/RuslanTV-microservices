@@ -52,4 +52,10 @@ export class ChannelController {
     return await this.channelService.unsubscribe(userId, id)
   }
 
+  @Post('subscribeWithNotif/:id')
+  @Authorization()
+  public async subscribeWithNotif(@Authorized('id') userId: string, @Param('id') id: string) {
+    return await this.channelService.subscribeWithNotif(userId, id)
+  }
+
 }

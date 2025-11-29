@@ -162,14 +162,10 @@ export class ChannelService {
             })
         }
 
-        const subWithNotif = await this.prismaService.subscriptions.update({
-            where: {
-                userId_channelId: {
-                    userId,
-                    channelId
-                }
-            },
+        const subWithNotif = await this.prismaService.subscriptions.create({
             data: {
+                channelId,
+                userId,
                 subscribeType: SubscribeType.NOTIFICATIONS
             }
         })
