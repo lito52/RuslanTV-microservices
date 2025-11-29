@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { lastValueFrom } from 'rxjs';
+import { last, lastValueFrom } from 'rxjs';
 import { ChannelServiceGrpcClient } from 'src/grpc-services/channel-service-client.service';
 import { CreateChannelDto } from './dto/create-channel.dto';
 import { FilesService } from 'src/libs/common/services/files.service';
@@ -78,15 +78,19 @@ export class ChannelService {
     }
 
 
-    // public async updateChannelPictures(files: { profilePicture?: Express.Multer.File[], backgroundPicture?: Express.Multer.File[] }, userId: string) {
-    //     try {
+    public async updateChannelPictures(files: { profilePicture?: Express.Multer.File[], backgroundPicture?: Express.Multer.File[] }, userId: string) {
+        try {
+            const profilePictureKey = await this.uploadFileIfExists(files.profilePicture);
+            const backgroundPictureKey = await this.uploadFileIfExists(files.backgroundPicture);
 
-    //     } catch (error) {
-    //         return {
-    //             message: [error.details],
-    //             error: 'BadRequest',
-    //             statusCode: 400
-    //         }
-    //     }
-    // }
+            const updatedChannelPictures = await lastValueFrom(this.channelService.updateChannelPictures({ userId: userId, profilePicture: profilePictureKey, backgroundPicture: backgroundPictureKey }))
+            return updatedChannelPictures
+        } catch (error) {
+            return {
+                message: [error.details],
+                error: 'BadRequest',
+                statusCode: 400
+            }
+        }
+    }
 }

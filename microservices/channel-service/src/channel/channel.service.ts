@@ -57,16 +57,20 @@ export class ChannelService {
         return updatedChannel
     }
 
-    public async updateChannelPicture(channelId: string, profilePicture: string, backgroundPicture: string) {
-        const existingChannel = await this.findChannelById(channelId)
+    public async updateChannelPicture(userId: string, profilePicture: string, backgroundPicture: string) {
+        const existingChannel = await this.findChannelByUserId(userId)
+
+        if (!existingChannel) {
+            throw new RpcException('Chanel not exist')
+        }
 
         const updatedChannel = await this.prismaService.channel.update({
             where: {
-                id: channelId
+                userId: existingChannel.userId
             },
             data: {
-                profilePicture,
-                backgroundPicture
+                profilePicture: profilePicture,
+                backgroundPicture: backgroundPicture
             }
         })
 

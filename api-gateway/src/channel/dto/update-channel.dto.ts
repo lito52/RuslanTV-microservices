@@ -13,6 +13,6 @@ export class UpdateChannelDto {
 
     @IsString()
     @IsNotEmpty()
-    @Length(2, 30, { message: 'Имя должно быть от 2 до 50 символов' })
+    @Length(2, 30, { message: 'Описание должно быть от 2 до 50 символов' })
     bio: string
 }

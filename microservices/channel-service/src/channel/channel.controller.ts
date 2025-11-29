@@ -18,7 +18,7 @@ export class ChannelController implements ChannelServiceController {
     return this.channelService.updateChannel(request.userId, { name: request.name, handle: request.handle, bio: request.bio, })
   }
 
-  @GrpcMethod('ChannelService', 'UpdateChannelPicture')
+  @GrpcMethod('ChannelService', 'UpdateChannelPictures')
   updateChannelPictures(request: UpdateChannelPicturesRequest): Promise<Channel> | Observable<Channel> | Channel {
     return this.channelService.updateChannelPicture(request.userId, request.profilePicture, request.backgroundPicture)
   }
