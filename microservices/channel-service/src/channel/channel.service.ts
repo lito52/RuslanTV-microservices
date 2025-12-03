@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { CreateChannelDto } from './dto/create-channel.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
 import { lastValueFrom } from 'rxjs';
 import { RpcException } from '@nestjs/microservices';
 import { AuthServiceGrpcClientService } from 'src/grpc/grpc-services/auth-service-grpc-client.service';
 import { UpdateChannelDto } from './dto/update-channel.dto';
-import { Channel, SubscribeType } from 'prisma/__generated__';
+import { SubscribeType } from '@prisma/client';
+import { DatabaseService } from 'src/prisma/database.service';
 
 @Injectable()
 export class ChannelService {
     public constructor(
-        private readonly prismaService: PrismaService,
+        private readonly prismaService: DatabaseService,
         private readonly authService: AuthServiceGrpcClientService
 
     ) { }
@@ -97,7 +97,7 @@ export class ChannelService {
                 userId: userId
             },
             include: {
-                subcriptions: true
+                subcriptions: true,
             }
         })
 
