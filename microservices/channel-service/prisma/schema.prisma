@@ -16,11 +16,9 @@ model Channel {
   profilePicture    String
   backgroundPicture String
 
-  posts                Post[]
-  subcriptions         Subscriptions[]
-  playlist             Playlist[]
-  postComments         PostComments[]
-  postCommentReactions PostCommentReactions[]
+  posts        Post[]
+  subcriptions Subscriptions[]
+  playlist     Playlist[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -75,14 +73,14 @@ model PostLikes {
   postId String
   post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
 
-  channelId String
+  parentId String
 
   reaction ReactionValue
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([postId, channelId])
+  @@unique([postId, parentId])
   @@map("post_likes")
 }
 
@@ -92,17 +90,15 @@ model PostComments {
   postId String
   post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
 
-  channelId String
-  channel   Channel @relation(fields: [channelId], references: [id])
-
-  postCommentReactions PostCommentReactions[]
+  parentId String
 
   text String
+
+  postCommentReactions PostCommentReactions[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([postId, channelId])
   @@map("post_comments")
 }
 
@@ -112,15 +108,14 @@ model PostCommentReactions {
   commentId    String
   postComments PostComments @relation(fields: [commentId], references: [id], onDelete: Cascade)
 
-  channelId String
-  channel   Channel @relation(fields: [channelId], references: [id])
+  parentId String
 
   reaction ReactionValue
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([commentId, channelId])
+  @@unique([commentId, parentId])
   @@map("post_comment_reactions")
 }
 

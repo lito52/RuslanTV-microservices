@@ -36,6 +36,16 @@ export class ChannelService {
         return newChannel
     }
 
+    public async deleteChannel(userId: string) {
+        const existingChannel = await this.findChannelByUserId(userId)
+
+        return await this.prismaService.channel.delete({
+            where: {
+                userId
+            }
+        })
+    }
+
     public async updateChannel(userId: string, dto: UpdateChannelDto) {
         const existingChannel = await this.findChannelByUserId(userId)
 
@@ -108,15 +118,19 @@ export class ChannelService {
         return channel
     }
 
-    public async findChannelByHandle(handle: string) {
+    public async findChannelByChannelId(channelId: string) {
         const channel = await this.prismaService.channel.findUnique({
             where: {
-                handle
+                id: channelId
             },
             include: {
-                subcriptions: true
+                subcriptions: true,
             }
         })
+
+        if (!channel) {
+            throw new RpcException(`Channel by id not found`)
+        }
 
         return channel
     }
