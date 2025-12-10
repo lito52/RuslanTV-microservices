@@ -115,9 +115,7 @@ export class PostService {
         return { rates }
     }
 
-    public async commentPost(postId: string, channelId: string, parentId: string, text: string) {
-        const channel = await this.channelService.findChannelByChannelId(channelId)
-
+    public async commentPost(postId: string, parentId: string, text: string) {
         const comment = await this.prismaService.postComments.create({
             data: {
                 text,

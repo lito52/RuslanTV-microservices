@@ -4,15 +4,14 @@ import { lastValueFrom } from 'rxjs';
 import { RpcException } from '@nestjs/microservices';
 import { AuthServiceGrpcClientService } from 'src/grpc/grpc-services/auth-service-grpc-client.service';
 import { UpdateChannelDto } from './dto/update-channel.dto';
-import { SubscribeType } from '@prisma/client';
 import { DatabaseService } from 'src/prisma/database.service';
+import { SubscribeType } from 'prisma/generated';
 
 @Injectable()
 export class ChannelService {
     public constructor(
         private readonly prismaService: DatabaseService,
         private readonly authService: AuthServiceGrpcClientService
-
     ) { }
 
     public async createChannel(dto: CreateChannelDto) {
@@ -111,7 +110,7 @@ export class ChannelService {
                 userId: userId
             },
             include: {
-                subcriptions: true,
+                subscriptions: true,
             }
         })
 
@@ -128,7 +127,7 @@ export class ChannelService {
                 id: channelId
             },
             include: {
-                subcriptions: true,
+                subscriptions: true,
             }
         })
 

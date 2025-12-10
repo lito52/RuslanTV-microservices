@@ -52,7 +52,6 @@ message Boolean {
 message CreatePostRequest {
     string title = 1;
     string description = 2;
-    string picture = 3;
     string channelId = 4;
 }
 
@@ -96,7 +95,6 @@ message RatePostRequest {
 
 message CommentPostRequest {
     string postId = 1;
-    string channelId = 2;
-    string parentId = 3;
-    string text = 4;
+    string parentId = 2;
+    string text = 3;
 }

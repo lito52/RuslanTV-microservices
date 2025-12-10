@@ -51,7 +51,6 @@ export interface Boolean {
 export interface CreatePostRequest {
   title: string;
   description: string;
-  picture: string;
   channelId: string;
 }
 

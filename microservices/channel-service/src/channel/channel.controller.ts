@@ -1,15 +1,16 @@
 import { Controller } from '@nestjs/common';
 import { ChannelService } from './channel.service';
 import { GrpcMethod, GrpcService } from '@nestjs/microservices';
-import { Boolean, Channel, ChannelServiceController, CreateChannelRequest, DeleteChannelRequest, FindChannelByUserIdRequest, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest, } from 'src/interfaces/channel_service';
+import { Boolean, Channel, ChannelServiceController, CreateChannelRequest, DeleteChannelRequest, FindChannelByUserIdRequest, FindChannelByUserIdResponse, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest, } from 'src/interfaces/channel_service';
 import { Observable } from 'rxjs';
 
 @GrpcService()
 export class ChannelController implements ChannelServiceController {
   constructor(private readonly channelService: ChannelService) { }
 
-  deleteChannel(request: DeleteChannelRequest): Promise<Boolean> | Observable<Boolean> | Boolean {
-    return this.channelService.deleteChannel(request.userId)
+  @GrpcMethod('ChannelService', 'FindChannelByUserId')
+  findChannelByUserId(request: FindChannelByUserIdRequest): Promise<FindChannelByUserIdResponse> | Observable<FindChannelByUserIdResponse> | FindChannelByUserIdResponse {
+    return this.channelService.findChannelByUserId(request.userId)
   }
 
   @GrpcMethod('ChannelService', 'CreateChannel')
@@ -27,10 +28,6 @@ export class ChannelController implements ChannelServiceController {
     return this.channelService.updateChannelPicture(request.userId, request.profilePicture, request.backgroundPicture)
   }
 
-  @GrpcMethod('ChannelService', 'FindChannelByUserId')
-  findChannelByUserId(request: FindChannelByUserIdRequest): Promise<Channel> | Observable<Channel> | Channel {
-    return this.channelService.findChannelByUserId(request.userId)
-  }
 
   @GrpcMethod('ChannelService', 'Subscribe')
   subscribe(request: SubscribeRequest): Promise<Subscription> | Observable<Subscription> | Subscription {

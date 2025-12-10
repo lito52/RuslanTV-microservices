@@ -19,8 +19,14 @@ export interface FindChannelByUserIdRequest {
 }
 
 export interface FindChannelByUserIdResponse {
-  channel: Channel | undefined;
-  subs: Subscription[];
+  id: string;
+  userId: string;
+  name: string;
+  handle: string;
+  bio: string;
+  profilePicture: string;
+  backgroundPicture: string;
+  subscriptions: Subscription[];
 }
 
 export interface SubscribeRequest {
@@ -76,13 +82,11 @@ export const CHANNEL_SERVICE_PACKAGE_NAME = "channel_service";
 export interface ChannelServiceClient {
   createChannel(request: CreateChannelRequest): Observable<Channel>;
 
-  deleteChannel(request: DeleteChannelRequest): Observable<Boolean>;
-
   updateChannel(request: UpdateChannelRequest): Observable<Channel>;
 
   updateChannelPictures(request: UpdateChannelPicturesRequest): Observable<Channel>;
 
-  findChannelByUserId(request: FindChannelByUserIdRequest): Observable<Channel>;
+  findChannelByUserId(request: FindChannelByUserIdRequest): Observable<FindChannelByUserIdResponse>;
 
   subscribe(request: SubscribeRequest): Observable<Subscription>;
 
@@ -94,13 +98,13 @@ export interface ChannelServiceClient {
 export interface ChannelServiceController {
   createChannel(request: CreateChannelRequest): Promise<Channel> | Observable<Channel> | Channel;
 
-  deleteChannel(request: DeleteChannelRequest): Promise<Boolean> | Observable<Boolean> | Boolean;
-
   updateChannel(request: UpdateChannelRequest): Promise<Channel> | Observable<Channel> | Channel;
 
   updateChannelPictures(request: UpdateChannelPicturesRequest): Promise<Channel> | Observable<Channel> | Channel;
 
-  findChannelByUserId(request: FindChannelByUserIdRequest): Promise<Channel> | Observable<Channel> | Channel;
+  findChannelByUserId(
+    request: FindChannelByUserIdRequest,
+  ): Promise<FindChannelByUserIdResponse> | Observable<FindChannelByUserIdResponse> | FindChannelByUserIdResponse;
 
   subscribe(request: SubscribeRequest): Promise<Subscription> | Observable<Subscription> | Subscription;
 
@@ -113,7 +117,6 @@ export function ChannelServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = [
       "createChannel",
-      "deleteChannel",
       "updateChannel",
       "updateChannelPictures",
       "findChannelByUserId",

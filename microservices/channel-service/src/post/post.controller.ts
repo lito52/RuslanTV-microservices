@@ -12,7 +12,6 @@ export class PostController implements PostServiceController {
     return this.postService.addPostMedia(request.url, request.postId)
   }
 
-
   @GrpcMethod('PostService', 'GetPostById')
   getPostById(request: GetPostByIdRequest): Promise<GetPostByIdResponse> | Observable<GetPostByIdResponse> | GetPostByIdResponse {
     return this.postService.getPostById(request.id)
@@ -20,12 +19,7 @@ export class PostController implements PostServiceController {
 
   @GrpcMethod('PostService', 'CreatePost')
   createPost(request: CreatePostRequest): Promise<Post> | Observable<Post> | Post {
-    return this.postService.createPost({ description: request.description, title: request.title }, request.channelId)
-  }
-
-  @GrpcMethod('PostService', 'DeletePost')
-  deletePost(request: DeletePostRequest): Promise<Boolean> | Observable<Boolean> | Boolean {
-    return this.postService.deletePost(request.id, request.channelId)
+    return this.postService.createPost({ title: request.title, description: request.description, }, request.channelId)
   }
 
   @GrpcMethod('PostService', 'GetAllPosts')
@@ -40,6 +34,6 @@ export class PostController implements PostServiceController {
 
   @GrpcMethod('PostService', 'CommentPost')
   commentPost(request: CommentPostRequest): Promise<Comment> | Observable<Comment> | Comment {
-    return this.postService.commentPost(request.postId, request.channelId, request.parentId, request.text)
+    return this.postService.commentPost(request.postId, request.parentId, request.text)
   }
 }
