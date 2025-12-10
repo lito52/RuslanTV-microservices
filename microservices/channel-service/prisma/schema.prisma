@@ -52,10 +52,9 @@ model Post {
 
   description String
 
-  picture String
-
   postLikes    PostLikes[]
   postComments PostComments[]
+  postMedias   PostMedia[]
 
   channelId String
   channel   Channel @relation(fields: [channelId], references: [id])
@@ -65,6 +64,21 @@ model Post {
 
   @@index([channelId])
   @@map("posts")
+}
+
+model PostMedia {
+  id String @id @default(uuid())
+
+  url String
+
+  postId String
+  post   Post   @relation(fields: [postId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([postId])
+  @@map("postMedias")
 }
 
 model PostLikes {

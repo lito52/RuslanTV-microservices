@@ -1,12 +1,16 @@
-import { Controller } from '@nestjs/common';
 import { PostService } from './post.service';
-import { Boolean, Comment, CommentPostRequest, CommentRate, CreatePostRequest, DeletePostRequest, GetAllPostsRequest, GetAllPostsResponse, GetPostByIdRequest, GetPostByIdResponse, Post, PostServiceController, Rate, RatePostRequest } from 'src/interfaces/post_service';
+import { AddPostMediaRequest, Boolean, Comment, CommentPostRequest, CreatePostRequest, DeletePostRequest, GetAllPostsRequest, GetAllPostsResponse, GetPostByIdRequest, GetPostByIdResponse, Media, Post, PostServiceController, Rate, RatePostRequest } from 'src/interfaces/post_service';
 import { GrpcMethod, GrpcService } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
 
 @GrpcService()
 export class PostController implements PostServiceController {
   constructor(private readonly postService: PostService) { }
+
+  @GrpcMethod('PostService', 'AddPostMedia')
+  addPostMedia(request: AddPostMediaRequest): Promise<Media> | Observable<Media> | Media {
+    return this.postService.addPostMedia(request.url, request.postId)
+  }
 
 
   @GrpcMethod('PostService', 'GetPostById')
@@ -16,7 +20,7 @@ export class PostController implements PostServiceController {
 
   @GrpcMethod('PostService', 'CreatePost')
   createPost(request: CreatePostRequest): Promise<Post> | Observable<Post> | Post {
-    return this.postService.createPost({ description: request.description, picture: request.picture, title: request.title }, request.channelId)
+    return this.postService.createPost({ description: request.description, title: request.title }, request.channelId)
   }
 
   @GrpcMethod('PostService', 'DeletePost')

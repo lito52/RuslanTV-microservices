@@ -20,12 +20,24 @@ export class PostService {
             data: {
                 title: dto.title,
                 description: dto.description,
-                picture: dto.picture,
                 channelId: channelId
             }
         })
 
         return post
+    }
+
+    public async addPostMedia(url: string, postId: string) {
+        const post = await this.getPostById(postId)
+
+        const media = await this.prismaService.postMedia.create({
+            data: {
+                url,
+                postId
+            }
+        })
+
+        return media
     }
 
     public async deletePost(id: string, channelId: string) {
@@ -54,7 +66,8 @@ export class PostService {
             },
             include: {
                 postComments: true,
-                postLikes: true
+                postLikes: true,
+                postMedias: true,
             }
         })
 
@@ -88,23 +101,6 @@ export class PostService {
         })
 
         return rating
-    }
-
-    public async deletePostReaction(postId: string, channelId: string) {
-        const post = await this.getPostById(postId)
-
-        await this.prismaService.postLikes.delete({
-            where: {
-                postId_parentId: {
-                    postId: postId,
-                    parentId: channelId
-                }
-            }
-        })
-
-        return {
-            bool: true
-        }
     }
 
     public async getAllPostReactions(postId: string) {
@@ -157,72 +153,5 @@ export class PostService {
 
         return comment
     }
-
-
-    public async deletePostComment(commentId: string, channelId: string) {
-        const comment = await this.getPostCommentById(commentId)
-        const post = await this.getPostById(comment.postId)
-
-        if (comment.parentId === channelId || post.channelId === channelId) {
-            await this.prismaService.postComments.delete({
-                where: {
-                    id: commentId
-                }
-            })
-            return {
-                bool: true
-            }
-        }
-
-        return {
-            bool: false
-        }
-    }
-
-
-    public async ratePostComment(commentId: string, parentId: string, rate: string) {
-        const post = await this.getPostCommentById(commentId)
-
-        const rating = await this.prismaService.postCommentReactions.create({
-            data: {
-                commentId,
-                parentId,
-                reaction: rate === 'like' ? ReactionValue.LIKE : ReactionValue.DISLIKE
-            }
-        })
-
-        return rating
-    }
-
-    public async deletePostCommentReaction(commentId: string, channelId: string) {
-        const post = await this.getPostCommentById(commentId)
-
-        await this.prismaService.postCommentReactions.delete({
-            where: {
-                commentId_parentId: {
-                    commentId: commentId,
-                    parentId: channelId
-                }
-            }
-        })
-
-        return {
-            bool: true
-        }
-    }
-
-    public async getAllPostCommentReactions(commentId: string) {
-        const post = await this.getPostCommentById(commentId)
-
-
-        const rates = await this.prismaService.postCommentReactions.findMany({
-            where: {
-                commentId
-            }
-        })
-
-        return { rates }
-    }
-
 
 }
