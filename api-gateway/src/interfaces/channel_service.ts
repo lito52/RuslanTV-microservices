@@ -39,6 +39,10 @@ export interface CreateChannelRequest {
   backgroundPicture: string;
 }
 
+export interface DeleteChannelRequest {
+  userId: string;
+}
+
 export interface UpdateChannelRequest {
   userId: string;
   name: string;
@@ -67,6 +71,8 @@ export const CHANNEL_SERVICE_PACKAGE_NAME = "channel_service";
 export interface ChannelServiceClient {
   createChannel(request: CreateChannelRequest): Observable<Channel>;
 
+  deleteChannel(request: DeleteChannelRequest): Observable<Boolean>;
+
   updateChannel(request: UpdateChannelRequest): Observable<Channel>;
 
   updateChannelPictures(request: UpdateChannelPicturesRequest): Observable<Channel>;
@@ -82,6 +88,8 @@ export interface ChannelServiceClient {
 
 export interface ChannelServiceController {
   createChannel(request: CreateChannelRequest): Promise<Channel> | Observable<Channel> | Channel;
+
+  deleteChannel(request: DeleteChannelRequest): Promise<Boolean> | Observable<Boolean> | Boolean;
 
   updateChannel(request: UpdateChannelRequest): Promise<Channel> | Observable<Channel> | Channel;
 
@@ -100,6 +108,7 @@ export function ChannelServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = [
       "createChannel",
+      "deleteChannel",
       "updateChannel",
       "updateChannelPictures",
       "findChannelByUserId",

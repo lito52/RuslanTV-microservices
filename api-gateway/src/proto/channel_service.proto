@@ -4,6 +4,7 @@ package channel_service;
 
 service ChannelService {
     rpc CreateChannel(CreateChannelRequest) returns (Channel);
+    rpc DeleteChannel(DeleteChannelRequest) returns (Boolean);
     rpc UpdateChannel(UpdateChannelRequest) returns (Channel);
     rpc UpdateChannelPictures(UpdateChannelPicturesRequest) returns (Channel);
     rpc FindChannelByUserId(FindChannelByUserIdRequest) returns (Channel);
@@ -39,6 +40,10 @@ message CreateChannelRequest {
     string bio = 4;
     string profilePicture = 5;
     string backgroundPicture = 6;
+}
+
+message DeleteChannelRequest {
+    string userId = 1;
 }
 
 message UpdateChannelRequest {

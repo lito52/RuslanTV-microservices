@@ -17,6 +17,11 @@ export class ChannelController {
     return await this.channelService.createChannel(files, userId, dto)
   }
 
+  @Delete('deleteChannel')
+  public async deleteChannel(@Authorized('id') userId: string) {
+    return await this.channelService.deleteChannel(userId)
+  }
+
   @Patch('updateChannel')
   public async updateChannel(@Authorized('id') userId: string, @Body() dto: UpdateChannelDto) {
     return await this.channelService.updateChannel(userId, dto)

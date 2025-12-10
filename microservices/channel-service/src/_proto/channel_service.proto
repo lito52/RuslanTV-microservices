@@ -21,6 +21,11 @@ message FindChannelByUserIdRequest {
     string userId = 1;
 }
 
+message FindChannelByUserIdResponse {
+    Channel channel = 1;
+    repeated Subscription subs = 2;
+}
+
 message SubscribeRequest {
     string userId = 1;
     string channelId = 2;

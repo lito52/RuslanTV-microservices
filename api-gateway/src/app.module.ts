@@ -6,6 +6,7 @@ import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggingInterceptor } from './libs/common/logging.interceptor';
 import { ChannelModule } from './channel/channel.module';
+import { PostModule } from './post/post.module';
 
 @Module({
 	imports: [
@@ -16,6 +17,7 @@ import { ChannelModule } from './channel/channel.module';
 		PrometheusModule.register(),
 		AuthModule,
 		ChannelModule,
+		PostModule,
 	],
 	controllers: [],
 	providers: [

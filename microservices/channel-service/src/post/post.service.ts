@@ -51,6 +51,10 @@ export class PostService {
         const post = await this.prismaService.post.findUnique({
             where: {
                 id
+            },
+            include: {
+                postComments: true,
+                postLikes: true
             }
         })
 

@@ -39,11 +39,15 @@ export class ChannelService {
     public async deleteChannel(userId: string) {
         const existingChannel = await this.findChannelByUserId(userId)
 
-        return await this.prismaService.channel.delete({
+        await this.prismaService.channel.delete({
             where: {
                 userId
             }
         })
+
+        return {
+            bool: true
+        }
     }
 
     public async updateChannel(userId: string, dto: UpdateChannelDto) {
