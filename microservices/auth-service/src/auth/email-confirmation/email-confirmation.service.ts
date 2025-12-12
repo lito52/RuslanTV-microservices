@@ -4,14 +4,14 @@ import { ConfirmationDto } from './dto/confirmation.dto';
 import { UserService } from '../../user/user.service';
 import { AuthService } from '../auth.service';
 import { RpcException } from '@nestjs/microservices';
-import { PrismaService } from '../../prisma/prisma.service';
 import { MailService } from '../../libs/mail/mail.service';
-import { TokenType } from '../../../prisma/__generated__';
+import { TokenType } from 'prisma/generated';
+import { DatabaseService } from 'src/prisma/database.service';
 
 @Injectable()
 export class EmailConfirmationService {
     public constructor(
-        private readonly prismaService: PrismaService,
+        private readonly prismaService: DatabaseService,
         private readonly mailService: MailService,
         private readonly userService: UserService,
         @Inject(forwardRef(() => AuthService))

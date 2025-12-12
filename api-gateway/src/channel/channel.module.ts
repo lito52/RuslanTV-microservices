@@ -10,6 +10,5 @@ import { FilesService } from 'src/libs/common/services/files.service';
   imports: [ClientsModule.register([channelServiceGrpcClientOptions])],
   controllers: [ChannelController],
   providers: [ChannelService, ChannelServiceGrpcClient, FilesService],
-  exports: [ChannelService]
 })
 export class ChannelModule { }

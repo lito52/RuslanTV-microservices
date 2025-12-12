@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { MailService } from '../../libs/mail/mail.service';
-import { PrismaService } from '../../prisma/prisma.service';
 import { v4 as uuidv4 } from 'uuid'
 import { UserService } from '../../user/user.service';
-import { TokenType } from '../../../prisma/__generated__';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { RpcException } from '@nestjs/microservices';
 import { NewPasswordDto } from './dto/new-password.dto';
 import { hash } from 'argon2';
+import { TokenType } from 'prisma/generated';
+import { DatabaseService } from 'src/prisma/database.service';
 
 @Injectable()
 export class PasswordRecoveryService {
     public constructor(
-        private readonly prismaService: PrismaService,
+        private readonly prismaService: DatabaseService,
         private readonly userService: UserService,
         private readonly mailService: MailService,
     ) { }

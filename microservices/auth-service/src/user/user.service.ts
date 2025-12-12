@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
 import { hash } from 'argon2';
 import { RpcException } from '@nestjs/microservices';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from 'prisma/__generated__';
+import { User } from 'prisma/generated';
+import { DatabaseService } from 'src/prisma/database.service';
 
 @Injectable()
 export class UserService {
-	public constructor(private readonly prismaService: PrismaService) { }
+	public constructor(private readonly prismaService: DatabaseService) { }
 
 	public async createUser(dto: CreateUserDto) {
 		const user = await this.prismaService.user.create({

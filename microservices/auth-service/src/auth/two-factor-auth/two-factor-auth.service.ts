@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { MailService } from '../../libs/mail/mail.service';
-import { PrismaService } from '../../prisma/prisma.service';
-import { TokenType } from '../../../prisma/__generated__';
 import { RpcException } from '@nestjs/microservices';
+import { TokenType } from 'prisma/generated';
+import { DatabaseService } from 'src/prisma/database.service';
 
 @Injectable()
 export class TwoFactorAuthService {
     public constructor(
-        private readonly prismaService: PrismaService,
+        private readonly prismaService: DatabaseService,
         private readonly mailService: MailService
     ) { }
 

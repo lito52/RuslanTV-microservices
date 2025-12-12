@@ -1,5 +1,5 @@
 import { IsBoolean, IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, IsUrl, Length } from "class-validator"
-import { AuthMethod } from "prisma/__generated__"
+import { AuthMethod } from "prisma/generated"
 
 export class CreateUserDto {
     @IsString()

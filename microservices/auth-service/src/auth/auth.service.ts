@@ -8,13 +8,14 @@ import { ProviderService } from './provider/provider.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { EmailConfirmationService } from './email-confirmation/email-confirmation.service';
 import { UpdateUserDto } from './dto/update-user-dto';
-import { AuthMethod } from '../../prisma/__generated__';
 import { TwoFactorAuthService } from './two-factor-auth/two-factor-auth.service';
+import { DatabaseService } from 'src/prisma/database.service';
+import { AuthMethod } from 'prisma/generated';
 
 @Injectable()
 export class AuthService {
     public constructor(
-        private readonly prismaService: PrismaService,
+        private readonly prismaService: DatabaseService,
         private readonly userService: UserService,
         private readonly providerService: ProviderService,
         private readonly emailConfirmationService: EmailConfirmationService,
