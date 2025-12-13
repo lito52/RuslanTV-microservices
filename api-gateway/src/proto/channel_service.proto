@@ -4,10 +4,9 @@ package channel_service;
 
 service ChannelService {
     rpc CreateChannel(CreateChannelRequest) returns (Channel);
-    rpc DeleteChannel(DeleteChannelRequest) returns (Boolean);
     rpc UpdateChannel(UpdateChannelRequest) returns (Channel);
     rpc UpdateChannelPictures(UpdateChannelPicturesRequest) returns (Channel);
-    rpc FindChannelByUserId(FindChannelByUserIdRequest) returns (Channel);
+    rpc FindChannelByUserId(FindChannelByUserIdRequest) returns (FindChannelByUserIdResponse);
     rpc Subscribe(SubscribeRequest) returns (Subscription);
     rpc SubscribeWithNotif(SubscribeRequest) returns (Subscription);
     rpc UnSubscribe(SubscribeRequest) returns (Boolean);
@@ -19,6 +18,17 @@ message Boolean {
 
 message FindChannelByUserIdRequest {
     string userId = 1;
+}
+
+message FindChannelByUserIdResponse {
+    string id = 1;
+    string userId = 2;
+    string name = 3;
+    string handle = 4;
+    string bio = 5;
+    string profilePicture = 6;
+    string backgroundPicture = 7;
+    repeated Subscription subscriptions = 8;
 }
 
 message SubscribeRequest {

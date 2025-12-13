@@ -9,8 +9,5 @@ export class CreatePostDto {
     description: string;
     @IsString()
     @IsNotEmpty()
-    picture: string;
-    @IsString()
-    @IsNotEmpty()
     channelId: string;
 }

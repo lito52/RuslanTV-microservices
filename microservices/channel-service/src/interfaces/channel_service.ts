@@ -14,6 +14,21 @@ export interface Boolean {
   bool: boolean;
 }
 
+export interface FindChannelByUserIdRequest {
+  userId: string;
+}
+
+export interface FindChannelByUserIdResponse {
+  id: string;
+  userId: string;
+  name: string;
+  handle: string;
+  bio: string;
+  profilePicture: string;
+  backgroundPicture: string;
+  subscriptions: Subscription[];
+}
+
 export interface SubscribeRequest {
   userId: string;
   channelId: string;
@@ -71,6 +86,8 @@ export interface ChannelServiceClient {
 
   updateChannelPictures(request: UpdateChannelPicturesRequest): Observable<Channel>;
 
+  findChannelByUserId(request: FindChannelByUserIdRequest): Observable<FindChannelByUserIdResponse>;
+
   subscribe(request: SubscribeRequest): Observable<Subscription>;
 
   subscribeWithNotif(request: SubscribeRequest): Observable<Subscription>;
@@ -85,6 +102,10 @@ export interface ChannelServiceController {
 
   updateChannelPictures(request: UpdateChannelPicturesRequest): Promise<Channel> | Observable<Channel> | Channel;
 
+  findChannelByUserId(
+    request: FindChannelByUserIdRequest,
+  ): Promise<FindChannelByUserIdResponse> | Observable<FindChannelByUserIdResponse> | FindChannelByUserIdResponse;
+
   subscribe(request: SubscribeRequest): Promise<Subscription> | Observable<Subscription> | Subscription;
 
   subscribeWithNotif(request: SubscribeRequest): Promise<Subscription> | Observable<Subscription> | Subscription;
@@ -98,6 +119,7 @@ export function ChannelServiceControllerMethods() {
       "createChannel",
       "updateChannel",
       "updateChannelPictures",
+      "findChannelByUserId",
       "subscribe",
       "subscribeWithNotif",
       "unSubscribe",

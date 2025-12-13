@@ -44,19 +44,6 @@ export class ChannelService {
         }
     }
 
-    public async deleteChannel(userId: string) {
-        try {
-            const deletedChannel = await lastValueFrom(this.channelService.deleteChannel({ userId: userId }))
-            return deletedChannel
-        } catch (error) {
-            return {
-                message: [error.details],
-                error: 'BadRequest',
-                statusCode: 400
-            }
-        }
-    }
-
     public async updateChannel(userId: string, dto: UpdateChannelDto) {
         try {
             const updatedChannel = await lastValueFrom(this.channelService.updateChannel({ userId: userId, bio: dto.bio, handle: dto.handle, name: dto.name }))

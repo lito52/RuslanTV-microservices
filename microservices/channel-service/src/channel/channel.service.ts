@@ -16,9 +16,18 @@ export class ChannelService {
 
     public async createChannel(dto: CreateChannelDto) {
         const existingUser = await lastValueFrom(this.authService.findUserById({ id: dto.userId }))
-        const existingChannel = await this.findChannelByUserId(dto.userId)
-        if (existingChannel) {
-            throw new RpcException('Chanel already exists')
+
+        const channel = await this.prismaService.channel.findUnique({
+            where: {
+                userId: dto.userId
+            },
+            include: {
+                subscriptions: true,
+            }
+        })
+
+        if (channel) {
+            throw new RpcException('Channel already exists')
         }
 
         const newChannel = await this.prismaService.channel.create({
@@ -113,6 +122,10 @@ export class ChannelService {
                 subscriptions: true,
             }
         })
+
+        if (!channel) {
+            throw new RpcException('Channel not found')
+        }
 
         return channel
     }

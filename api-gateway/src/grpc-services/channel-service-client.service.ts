@@ -1,7 +1,7 @@
 import { Inject, Injectable, OnModuleInit } from "@nestjs/common";
 import { ClientGrpc } from "@nestjs/microservices";
 import { Observable } from "rxjs";
-import { Boolean, Channel, CHANNEL_SERVICE_NAME, ChannelServiceClient, CreateChannelRequest, DeleteChannelRequest, FindChannelByUserIdRequest, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest } from "src/interfaces/channel_service";
+import { Boolean, Channel, CHANNEL_SERVICE_NAME, ChannelServiceClient, CreateChannelRequest, FindChannelByUserIdRequest, FindChannelByUserIdResponse, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest } from "src/interfaces/channel_service";
 
 @Injectable()
 export class ChannelServiceGrpcClient implements ChannelServiceClient, OnModuleInit {
@@ -13,12 +13,12 @@ export class ChannelServiceGrpcClient implements ChannelServiceClient, OnModuleI
         this.channelServiceClient = this.client.getService<ChannelServiceClient>(CHANNEL_SERVICE_NAME)
     }
 
-    createChannel(request: CreateChannelRequest): Observable<Channel> {
-        return this.channelServiceClient.createChannel(request)
+    findChannelByUserId(request: FindChannelByUserIdRequest): Observable<FindChannelByUserIdResponse> {
+        return this.channelServiceClient.findChannelByUserId(request)
     }
 
-    deleteChannel(request: DeleteChannelRequest): Observable<Boolean> {
-        return this.channelServiceClient.deleteChannel(request)
+    createChannel(request: CreateChannelRequest): Observable<Channel> {
+        return this.channelServiceClient.createChannel(request)
     }
 
     updateChannel(request: UpdateChannelRequest): Observable<Channel> {
@@ -27,10 +27,6 @@ export class ChannelServiceGrpcClient implements ChannelServiceClient, OnModuleI
 
     updateChannelPictures(request: UpdateChannelPicturesRequest): Observable<Channel> {
         return this.channelServiceClient.updateChannelPictures(request)
-    }
-
-    findChannelByUserId(request: FindChannelByUserIdRequest): Observable<Channel> {
-        return this.channelServiceClient.findChannelByUserId(request)
     }
 
     subscribe(request: SubscribeRequest): Observable<Subscription> {
@@ -44,5 +40,7 @@ export class ChannelServiceGrpcClient implements ChannelServiceClient, OnModuleI
     unSubscribe(request: SubscribeRequest): Observable<Boolean> {
         return this.channelServiceClient.unSubscribe(request)
     }
+
+
 
 }
