@@ -19,7 +19,6 @@ model Channel {
 
   posts         Post[]
   subscriptions Subscriptions[]
-  playlist      Playlist[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -49,9 +48,7 @@ model Subscriptions {
 model Post {
   id String @id @default(uuid())
 
-  title String
-
-  description String
+  text String
 
   postLikes    PostLikes[]
   postComments PostComments[]
@@ -86,7 +83,7 @@ model PostLikes {
   id String @id @default(uuid())
 
   postId String
-  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  post   Post   @relation(fields: [postId], references: [id])
 
   parentId String
 
@@ -103,66 +100,16 @@ model PostComments {
   id String @id @default(uuid())
 
   postId String
-  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  post   Post   @relation(fields: [postId], references: [id])
 
   parentId String
 
   text String
 
-  postCommentReactions PostCommentReactions[]
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("post_comments")
-}
-
-model PostCommentReactions {
-  id String @id @default(uuid())
-
-  commentId    String
-  postComments PostComments @relation(fields: [commentId], references: [id], onDelete: Cascade)
-
-  parentId String
-
-  reaction ReactionValue
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@unique([commentId, parentId])
-  @@map("post_comment_reactions")
-}
-
-model Playlist {
-  id String @id @default(uuid())
-
-  title       String
-  description String
-
-  channelId String
-  channel   Channel @relation(fields: [channelId], references: [id])
-
-  playlistVideo PlaylistVideo[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("playlists")
-}
-
-model PlaylistVideo {
-  id String @id @default(uuid())
-
-  playlistId String
-  playlist   Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
-
-  videoId String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("playlist_videos")
 }
 
 enum ReactionValue {

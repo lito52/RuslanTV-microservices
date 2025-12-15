@@ -43,21 +43,6 @@ export type PostLikes = $Result.DefaultSelection<Prisma.$PostLikesPayload>
  * 
  */
 export type PostComments = $Result.DefaultSelection<Prisma.$PostCommentsPayload>
-/**
- * Model PostCommentReactions
- * 
- */
-export type PostCommentReactions = $Result.DefaultSelection<Prisma.$PostCommentReactionsPayload>
-/**
- * Model Playlist
- * 
- */
-export type Playlist = $Result.DefaultSelection<Prisma.$PlaylistPayload>
-/**
- * Model PlaylistVideo
- * 
- */
-export type PlaylistVideo = $Result.DefaultSelection<Prisma.$PlaylistVideoPayload>
 
 /**
  * Enums
@@ -264,36 +249,6 @@ export class PrismaClient<
     * ```
     */
   get postComments(): Prisma.PostCommentsDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.postCommentReactions`: Exposes CRUD operations for the **PostCommentReactions** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more PostCommentReactions
-    * const postCommentReactions = await prisma.postCommentReactions.findMany()
-    * ```
-    */
-  get postCommentReactions(): Prisma.PostCommentReactionsDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.playlist`: Exposes CRUD operations for the **Playlist** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Playlists
-    * const playlists = await prisma.playlist.findMany()
-    * ```
-    */
-  get playlist(): Prisma.PlaylistDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.playlistVideo`: Exposes CRUD operations for the **PlaylistVideo** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more PlaylistVideos
-    * const playlistVideos = await prisma.playlistVideo.findMany()
-    * ```
-    */
-  get playlistVideo(): Prisma.PlaylistVideoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -733,10 +688,7 @@ export namespace Prisma {
     Post: 'Post',
     PostMedia: 'PostMedia',
     PostLikes: 'PostLikes',
-    PostComments: 'PostComments',
-    PostCommentReactions: 'PostCommentReactions',
-    Playlist: 'Playlist',
-    PlaylistVideo: 'PlaylistVideo'
+    PostComments: 'PostComments'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -752,7 +704,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "channel" | "subscriptions" | "post" | "postMedia" | "postLikes" | "postComments" | "postCommentReactions" | "playlist" | "playlistVideo"
+      modelProps: "channel" | "subscriptions" | "post" | "postMedia" | "postLikes" | "postComments"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1200,228 +1152,6 @@ export namespace Prisma {
           }
         }
       }
-      PostCommentReactions: {
-        payload: Prisma.$PostCommentReactionsPayload<ExtArgs>
-        fields: Prisma.PostCommentReactionsFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.PostCommentReactionsFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostCommentReactionsPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.PostCommentReactionsFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostCommentReactionsPayload>
-          }
-          findFirst: {
-            args: Prisma.PostCommentReactionsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostCommentReactionsPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.PostCommentReactionsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostCommentReactionsPayload>
-          }
-          findMany: {
-            args: Prisma.PostCommentReactionsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostCommentReactionsPayload>[]
-          }
-          create: {
-            args: Prisma.PostCommentReactionsCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostCommentReactionsPayload>
-          }
-          createMany: {
-            args: Prisma.PostCommentReactionsCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.PostCommentReactionsCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostCommentReactionsPayload>[]
-          }
-          delete: {
-            args: Prisma.PostCommentReactionsDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostCommentReactionsPayload>
-          }
-          update: {
-            args: Prisma.PostCommentReactionsUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostCommentReactionsPayload>
-          }
-          deleteMany: {
-            args: Prisma.PostCommentReactionsDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.PostCommentReactionsUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.PostCommentReactionsUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostCommentReactionsPayload>[]
-          }
-          upsert: {
-            args: Prisma.PostCommentReactionsUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostCommentReactionsPayload>
-          }
-          aggregate: {
-            args: Prisma.PostCommentReactionsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePostCommentReactions>
-          }
-          groupBy: {
-            args: Prisma.PostCommentReactionsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PostCommentReactionsGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.PostCommentReactionsCountArgs<ExtArgs>
-            result: $Utils.Optional<PostCommentReactionsCountAggregateOutputType> | number
-          }
-        }
-      }
-      Playlist: {
-        payload: Prisma.$PlaylistPayload<ExtArgs>
-        fields: Prisma.PlaylistFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.PlaylistFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.PlaylistFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistPayload>
-          }
-          findFirst: {
-            args: Prisma.PlaylistFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.PlaylistFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistPayload>
-          }
-          findMany: {
-            args: Prisma.PlaylistFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistPayload>[]
-          }
-          create: {
-            args: Prisma.PlaylistCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistPayload>
-          }
-          createMany: {
-            args: Prisma.PlaylistCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.PlaylistCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistPayload>[]
-          }
-          delete: {
-            args: Prisma.PlaylistDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistPayload>
-          }
-          update: {
-            args: Prisma.PlaylistUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistPayload>
-          }
-          deleteMany: {
-            args: Prisma.PlaylistDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.PlaylistUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.PlaylistUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistPayload>[]
-          }
-          upsert: {
-            args: Prisma.PlaylistUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistPayload>
-          }
-          aggregate: {
-            args: Prisma.PlaylistAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePlaylist>
-          }
-          groupBy: {
-            args: Prisma.PlaylistGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PlaylistGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.PlaylistCountArgs<ExtArgs>
-            result: $Utils.Optional<PlaylistCountAggregateOutputType> | number
-          }
-        }
-      }
-      PlaylistVideo: {
-        payload: Prisma.$PlaylistVideoPayload<ExtArgs>
-        fields: Prisma.PlaylistVideoFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.PlaylistVideoFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistVideoPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.PlaylistVideoFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistVideoPayload>
-          }
-          findFirst: {
-            args: Prisma.PlaylistVideoFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistVideoPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.PlaylistVideoFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistVideoPayload>
-          }
-          findMany: {
-            args: Prisma.PlaylistVideoFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistVideoPayload>[]
-          }
-          create: {
-            args: Prisma.PlaylistVideoCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistVideoPayload>
-          }
-          createMany: {
-            args: Prisma.PlaylistVideoCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.PlaylistVideoCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistVideoPayload>[]
-          }
-          delete: {
-            args: Prisma.PlaylistVideoDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistVideoPayload>
-          }
-          update: {
-            args: Prisma.PlaylistVideoUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistVideoPayload>
-          }
-          deleteMany: {
-            args: Prisma.PlaylistVideoDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.PlaylistVideoUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.PlaylistVideoUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistVideoPayload>[]
-          }
-          upsert: {
-            args: Prisma.PlaylistVideoUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PlaylistVideoPayload>
-          }
-          aggregate: {
-            args: Prisma.PlaylistVideoAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePlaylistVideo>
-          }
-          groupBy: {
-            args: Prisma.PlaylistVideoGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PlaylistVideoGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.PlaylistVideoCountArgs<ExtArgs>
-            result: $Utils.Optional<PlaylistVideoCountAggregateOutputType> | number
-          }
-        }
-      }
     }
   } & {
     other: {
@@ -1520,9 +1250,6 @@ export namespace Prisma {
     postMedia?: PostMediaOmit
     postLikes?: PostLikesOmit
     postComments?: PostCommentsOmit
-    postCommentReactions?: PostCommentReactionsOmit
-    playlist?: PlaylistOmit
-    playlistVideo?: PlaylistVideoOmit
   }
 
   /* Types for Logging */
@@ -1605,13 +1332,11 @@ export namespace Prisma {
   export type ChannelCountOutputType = {
     posts: number
     subscriptions: number
-    playlist: number
   }
 
   export type ChannelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posts?: boolean | ChannelCountOutputTypeCountPostsArgs
     subscriptions?: boolean | ChannelCountOutputTypeCountSubscriptionsArgs
-    playlist?: boolean | ChannelCountOutputTypeCountPlaylistArgs
   }
 
   // Custom InputTypes
@@ -1637,13 +1362,6 @@ export namespace Prisma {
    */
   export type ChannelCountOutputTypeCountSubscriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SubscriptionsWhereInput
-  }
-
-  /**
-   * ChannelCountOutputType without action
-   */
-  export type ChannelCountOutputTypeCountPlaylistArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PlaylistWhereInput
   }
 
 
@@ -1693,68 +1411,6 @@ export namespace Prisma {
    */
   export type PostCountOutputTypeCountPostMediasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PostMediaWhereInput
-  }
-
-
-  /**
-   * Count Type PostCommentsCountOutputType
-   */
-
-  export type PostCommentsCountOutputType = {
-    postCommentReactions: number
-  }
-
-  export type PostCommentsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    postCommentReactions?: boolean | PostCommentsCountOutputTypeCountPostCommentReactionsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * PostCommentsCountOutputType without action
-   */
-  export type PostCommentsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentsCountOutputType
-     */
-    select?: PostCommentsCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * PostCommentsCountOutputType without action
-   */
-  export type PostCommentsCountOutputTypeCountPostCommentReactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostCommentReactionsWhereInput
-  }
-
-
-  /**
-   * Count Type PlaylistCountOutputType
-   */
-
-  export type PlaylistCountOutputType = {
-    playlistVideo: number
-  }
-
-  export type PlaylistCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    playlistVideo?: boolean | PlaylistCountOutputTypeCountPlaylistVideoArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * PlaylistCountOutputType without action
-   */
-  export type PlaylistCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistCountOutputType
-     */
-    select?: PlaylistCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * PlaylistCountOutputType without action
-   */
-  export type PlaylistCountOutputTypeCountPlaylistVideoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PlaylistVideoWhereInput
   }
 
 
@@ -1960,7 +1616,6 @@ export namespace Prisma {
     updatedAt?: boolean
     posts?: boolean | Channel$postsArgs<ExtArgs>
     subscriptions?: boolean | Channel$subscriptionsArgs<ExtArgs>
-    playlist?: boolean | Channel$playlistArgs<ExtArgs>
     _count?: boolean | ChannelCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["channel"]>
 
@@ -2004,7 +1659,6 @@ export namespace Prisma {
   export type ChannelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posts?: boolean | Channel$postsArgs<ExtArgs>
     subscriptions?: boolean | Channel$subscriptionsArgs<ExtArgs>
-    playlist?: boolean | Channel$playlistArgs<ExtArgs>
     _count?: boolean | ChannelCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ChannelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2015,7 +1669,6 @@ export namespace Prisma {
     objects: {
       posts: Prisma.$PostPayload<ExtArgs>[]
       subscriptions: Prisma.$SubscriptionsPayload<ExtArgs>[]
-      playlist: Prisma.$PlaylistPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2423,7 +2076,6 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     posts<T extends Channel$postsArgs<ExtArgs> = {}>(args?: Subset<T, Channel$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     subscriptions<T extends Channel$subscriptionsArgs<ExtArgs> = {}>(args?: Subset<T, Channel$subscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    playlist<T extends Channel$playlistArgs<ExtArgs> = {}>(args?: Subset<T, Channel$playlistArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2895,30 +2547,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SubscriptionsScalarFieldEnum | SubscriptionsScalarFieldEnum[]
-  }
-
-  /**
-   * Channel.playlist
-   */
-  export type Channel$playlistArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistInclude<ExtArgs> | null
-    where?: PlaylistWhereInput
-    orderBy?: PlaylistOrderByWithRelationInput | PlaylistOrderByWithRelationInput[]
-    cursor?: PlaylistWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PlaylistScalarFieldEnum | PlaylistScalarFieldEnum[]
   }
 
   /**
@@ -4023,8 +3651,7 @@ export namespace Prisma {
 
   export type PostMinAggregateOutputType = {
     id: string | null
-    title: string | null
-    description: string | null
+    text: string | null
     channelId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4032,8 +3659,7 @@ export namespace Prisma {
 
   export type PostMaxAggregateOutputType = {
     id: string | null
-    title: string | null
-    description: string | null
+    text: string | null
     channelId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4041,8 +3667,7 @@ export namespace Prisma {
 
   export type PostCountAggregateOutputType = {
     id: number
-    title: number
-    description: number
+    text: number
     channelId: number
     createdAt: number
     updatedAt: number
@@ -4052,8 +3677,7 @@ export namespace Prisma {
 
   export type PostMinAggregateInputType = {
     id?: true
-    title?: true
-    description?: true
+    text?: true
     channelId?: true
     createdAt?: true
     updatedAt?: true
@@ -4061,8 +3685,7 @@ export namespace Prisma {
 
   export type PostMaxAggregateInputType = {
     id?: true
-    title?: true
-    description?: true
+    text?: true
     channelId?: true
     createdAt?: true
     updatedAt?: true
@@ -4070,8 +3693,7 @@ export namespace Prisma {
 
   export type PostCountAggregateInputType = {
     id?: true
-    title?: true
-    description?: true
+    text?: true
     channelId?: true
     createdAt?: true
     updatedAt?: true
@@ -4152,8 +3774,7 @@ export namespace Prisma {
 
   export type PostGroupByOutputType = {
     id: string
-    title: string
-    description: string
+    text: string
     channelId: string
     createdAt: Date
     updatedAt: Date
@@ -4178,8 +3799,7 @@ export namespace Prisma {
 
   export type PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    description?: boolean
+    text?: boolean
     channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4192,8 +3812,7 @@ export namespace Prisma {
 
   export type PostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    description?: boolean
+    text?: boolean
     channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4202,8 +3821,7 @@ export namespace Prisma {
 
   export type PostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    description?: boolean
+    text?: boolean
     channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4212,14 +3830,13 @@ export namespace Prisma {
 
   export type PostSelectScalar = {
     id?: boolean
-    title?: boolean
-    description?: boolean
+    text?: boolean
     channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "channelId" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
+  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "text" | "channelId" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
   export type PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     postLikes?: boolean | Post$postLikesArgs<ExtArgs>
     postComments?: boolean | Post$postCommentsArgs<ExtArgs>
@@ -4244,8 +3861,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      title: string
-      description: string
+      text: string
       channelId: string
       createdAt: Date
       updatedAt: Date
@@ -4677,8 +4293,7 @@ export namespace Prisma {
    */
   interface PostFieldRefs {
     readonly id: FieldRef<"Post", 'String'>
-    readonly title: FieldRef<"Post", 'String'>
-    readonly description: FieldRef<"Post", 'String'>
+    readonly text: FieldRef<"Post", 'String'>
     readonly channelId: FieldRef<"Post", 'String'>
     readonly createdAt: FieldRef<"Post", 'DateTime'>
     readonly updatedAt: FieldRef<"Post", 'DateTime'>
@@ -7470,8 +7085,6 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     post?: boolean | PostDefaultArgs<ExtArgs>
-    postCommentReactions?: boolean | PostComments$postCommentReactionsArgs<ExtArgs>
-    _count?: boolean | PostCommentsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["postComments"]>
 
   export type PostCommentsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7506,8 +7119,6 @@ export namespace Prisma {
   export type PostCommentsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "postId" | "parentId" | "text" | "createdAt" | "updatedAt", ExtArgs["result"]["postComments"]>
   export type PostCommentsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     post?: boolean | PostDefaultArgs<ExtArgs>
-    postCommentReactions?: boolean | PostComments$postCommentReactionsArgs<ExtArgs>
-    _count?: boolean | PostCommentsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PostCommentsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     post?: boolean | PostDefaultArgs<ExtArgs>
@@ -7520,7 +7131,6 @@ export namespace Prisma {
     name: "PostComments"
     objects: {
       post: Prisma.$PostPayload<ExtArgs>
-      postCommentReactions: Prisma.$PostCommentReactionsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7924,7 +7534,6 @@ export namespace Prisma {
   export interface Prisma__PostCommentsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     post<T extends PostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostDefaultArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    postCommentReactions<T extends PostComments$postCommentReactionsArgs<ExtArgs> = {}>(args?: Subset<T, PostComments$postCommentReactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostCommentReactionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8356,30 +7965,6 @@ export namespace Prisma {
   }
 
   /**
-   * PostComments.postCommentReactions
-   */
-  export type PostComments$postCommentReactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsInclude<ExtArgs> | null
-    where?: PostCommentReactionsWhereInput
-    orderBy?: PostCommentReactionsOrderByWithRelationInput | PostCommentReactionsOrderByWithRelationInput[]
-    cursor?: PostCommentReactionsWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PostCommentReactionsScalarFieldEnum | PostCommentReactionsScalarFieldEnum[]
-  }
-
-  /**
    * PostComments without action
    */
   export type PostCommentsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8395,3236 +7980,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: PostCommentsInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model PostCommentReactions
-   */
-
-  export type AggregatePostCommentReactions = {
-    _count: PostCommentReactionsCountAggregateOutputType | null
-    _min: PostCommentReactionsMinAggregateOutputType | null
-    _max: PostCommentReactionsMaxAggregateOutputType | null
-  }
-
-  export type PostCommentReactionsMinAggregateOutputType = {
-    id: string | null
-    commentId: string | null
-    parentId: string | null
-    reaction: $Enums.ReactionValue | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type PostCommentReactionsMaxAggregateOutputType = {
-    id: string | null
-    commentId: string | null
-    parentId: string | null
-    reaction: $Enums.ReactionValue | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type PostCommentReactionsCountAggregateOutputType = {
-    id: number
-    commentId: number
-    parentId: number
-    reaction: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type PostCommentReactionsMinAggregateInputType = {
-    id?: true
-    commentId?: true
-    parentId?: true
-    reaction?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type PostCommentReactionsMaxAggregateInputType = {
-    id?: true
-    commentId?: true
-    parentId?: true
-    reaction?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type PostCommentReactionsCountAggregateInputType = {
-    id?: true
-    commentId?: true
-    parentId?: true
-    reaction?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type PostCommentReactionsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which PostCommentReactions to aggregate.
-     */
-    where?: PostCommentReactionsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of PostCommentReactions to fetch.
-     */
-    orderBy?: PostCommentReactionsOrderByWithRelationInput | PostCommentReactionsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: PostCommentReactionsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` PostCommentReactions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` PostCommentReactions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned PostCommentReactions
-    **/
-    _count?: true | PostCommentReactionsCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: PostCommentReactionsMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: PostCommentReactionsMaxAggregateInputType
-  }
-
-  export type GetPostCommentReactionsAggregateType<T extends PostCommentReactionsAggregateArgs> = {
-        [P in keyof T & keyof AggregatePostCommentReactions]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePostCommentReactions[P]>
-      : GetScalarType<T[P], AggregatePostCommentReactions[P]>
-  }
-
-
-
-
-  export type PostCommentReactionsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostCommentReactionsWhereInput
-    orderBy?: PostCommentReactionsOrderByWithAggregationInput | PostCommentReactionsOrderByWithAggregationInput[]
-    by: PostCommentReactionsScalarFieldEnum[] | PostCommentReactionsScalarFieldEnum
-    having?: PostCommentReactionsScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: PostCommentReactionsCountAggregateInputType | true
-    _min?: PostCommentReactionsMinAggregateInputType
-    _max?: PostCommentReactionsMaxAggregateInputType
-  }
-
-  export type PostCommentReactionsGroupByOutputType = {
-    id: string
-    commentId: string
-    parentId: string
-    reaction: $Enums.ReactionValue
-    createdAt: Date
-    updatedAt: Date
-    _count: PostCommentReactionsCountAggregateOutputType | null
-    _min: PostCommentReactionsMinAggregateOutputType | null
-    _max: PostCommentReactionsMaxAggregateOutputType | null
-  }
-
-  type GetPostCommentReactionsGroupByPayload<T extends PostCommentReactionsGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<PostCommentReactionsGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof PostCommentReactionsGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], PostCommentReactionsGroupByOutputType[P]>
-            : GetScalarType<T[P], PostCommentReactionsGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type PostCommentReactionsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    commentId?: boolean
-    parentId?: boolean
-    reaction?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    postComments?: boolean | PostCommentsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["postCommentReactions"]>
-
-  export type PostCommentReactionsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    commentId?: boolean
-    parentId?: boolean
-    reaction?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    postComments?: boolean | PostCommentsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["postCommentReactions"]>
-
-  export type PostCommentReactionsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    commentId?: boolean
-    parentId?: boolean
-    reaction?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    postComments?: boolean | PostCommentsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["postCommentReactions"]>
-
-  export type PostCommentReactionsSelectScalar = {
-    id?: boolean
-    commentId?: boolean
-    parentId?: boolean
-    reaction?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type PostCommentReactionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "commentId" | "parentId" | "reaction" | "createdAt" | "updatedAt", ExtArgs["result"]["postCommentReactions"]>
-  export type PostCommentReactionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    postComments?: boolean | PostCommentsDefaultArgs<ExtArgs>
-  }
-  export type PostCommentReactionsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    postComments?: boolean | PostCommentsDefaultArgs<ExtArgs>
-  }
-  export type PostCommentReactionsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    postComments?: boolean | PostCommentsDefaultArgs<ExtArgs>
-  }
-
-  export type $PostCommentReactionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "PostCommentReactions"
-    objects: {
-      postComments: Prisma.$PostCommentsPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      commentId: string
-      parentId: string
-      reaction: $Enums.ReactionValue
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["postCommentReactions"]>
-    composites: {}
-  }
-
-  type PostCommentReactionsGetPayload<S extends boolean | null | undefined | PostCommentReactionsDefaultArgs> = $Result.GetResult<Prisma.$PostCommentReactionsPayload, S>
-
-  type PostCommentReactionsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PostCommentReactionsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PostCommentReactionsCountAggregateInputType | true
-    }
-
-  export interface PostCommentReactionsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PostCommentReactions'], meta: { name: 'PostCommentReactions' } }
-    /**
-     * Find zero or one PostCommentReactions that matches the filter.
-     * @param {PostCommentReactionsFindUniqueArgs} args - Arguments to find a PostCommentReactions
-     * @example
-     * // Get one PostCommentReactions
-     * const postCommentReactions = await prisma.postCommentReactions.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends PostCommentReactionsFindUniqueArgs>(args: SelectSubset<T, PostCommentReactionsFindUniqueArgs<ExtArgs>>): Prisma__PostCommentReactionsClient<$Result.GetResult<Prisma.$PostCommentReactionsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one PostCommentReactions that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {PostCommentReactionsFindUniqueOrThrowArgs} args - Arguments to find a PostCommentReactions
-     * @example
-     * // Get one PostCommentReactions
-     * const postCommentReactions = await prisma.postCommentReactions.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends PostCommentReactionsFindUniqueOrThrowArgs>(args: SelectSubset<T, PostCommentReactionsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PostCommentReactionsClient<$Result.GetResult<Prisma.$PostCommentReactionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first PostCommentReactions that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostCommentReactionsFindFirstArgs} args - Arguments to find a PostCommentReactions
-     * @example
-     * // Get one PostCommentReactions
-     * const postCommentReactions = await prisma.postCommentReactions.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends PostCommentReactionsFindFirstArgs>(args?: SelectSubset<T, PostCommentReactionsFindFirstArgs<ExtArgs>>): Prisma__PostCommentReactionsClient<$Result.GetResult<Prisma.$PostCommentReactionsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first PostCommentReactions that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostCommentReactionsFindFirstOrThrowArgs} args - Arguments to find a PostCommentReactions
-     * @example
-     * // Get one PostCommentReactions
-     * const postCommentReactions = await prisma.postCommentReactions.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends PostCommentReactionsFindFirstOrThrowArgs>(args?: SelectSubset<T, PostCommentReactionsFindFirstOrThrowArgs<ExtArgs>>): Prisma__PostCommentReactionsClient<$Result.GetResult<Prisma.$PostCommentReactionsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more PostCommentReactions that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostCommentReactionsFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all PostCommentReactions
-     * const postCommentReactions = await prisma.postCommentReactions.findMany()
-     * 
-     * // Get first 10 PostCommentReactions
-     * const postCommentReactions = await prisma.postCommentReactions.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const postCommentReactionsWithIdOnly = await prisma.postCommentReactions.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends PostCommentReactionsFindManyArgs>(args?: SelectSubset<T, PostCommentReactionsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostCommentReactionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a PostCommentReactions.
-     * @param {PostCommentReactionsCreateArgs} args - Arguments to create a PostCommentReactions.
-     * @example
-     * // Create one PostCommentReactions
-     * const PostCommentReactions = await prisma.postCommentReactions.create({
-     *   data: {
-     *     // ... data to create a PostCommentReactions
-     *   }
-     * })
-     * 
-     */
-    create<T extends PostCommentReactionsCreateArgs>(args: SelectSubset<T, PostCommentReactionsCreateArgs<ExtArgs>>): Prisma__PostCommentReactionsClient<$Result.GetResult<Prisma.$PostCommentReactionsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many PostCommentReactions.
-     * @param {PostCommentReactionsCreateManyArgs} args - Arguments to create many PostCommentReactions.
-     * @example
-     * // Create many PostCommentReactions
-     * const postCommentReactions = await prisma.postCommentReactions.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends PostCommentReactionsCreateManyArgs>(args?: SelectSubset<T, PostCommentReactionsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many PostCommentReactions and returns the data saved in the database.
-     * @param {PostCommentReactionsCreateManyAndReturnArgs} args - Arguments to create many PostCommentReactions.
-     * @example
-     * // Create many PostCommentReactions
-     * const postCommentReactions = await prisma.postCommentReactions.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many PostCommentReactions and only return the `id`
-     * const postCommentReactionsWithIdOnly = await prisma.postCommentReactions.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends PostCommentReactionsCreateManyAndReturnArgs>(args?: SelectSubset<T, PostCommentReactionsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostCommentReactionsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a PostCommentReactions.
-     * @param {PostCommentReactionsDeleteArgs} args - Arguments to delete one PostCommentReactions.
-     * @example
-     * // Delete one PostCommentReactions
-     * const PostCommentReactions = await prisma.postCommentReactions.delete({
-     *   where: {
-     *     // ... filter to delete one PostCommentReactions
-     *   }
-     * })
-     * 
-     */
-    delete<T extends PostCommentReactionsDeleteArgs>(args: SelectSubset<T, PostCommentReactionsDeleteArgs<ExtArgs>>): Prisma__PostCommentReactionsClient<$Result.GetResult<Prisma.$PostCommentReactionsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one PostCommentReactions.
-     * @param {PostCommentReactionsUpdateArgs} args - Arguments to update one PostCommentReactions.
-     * @example
-     * // Update one PostCommentReactions
-     * const postCommentReactions = await prisma.postCommentReactions.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends PostCommentReactionsUpdateArgs>(args: SelectSubset<T, PostCommentReactionsUpdateArgs<ExtArgs>>): Prisma__PostCommentReactionsClient<$Result.GetResult<Prisma.$PostCommentReactionsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more PostCommentReactions.
-     * @param {PostCommentReactionsDeleteManyArgs} args - Arguments to filter PostCommentReactions to delete.
-     * @example
-     * // Delete a few PostCommentReactions
-     * const { count } = await prisma.postCommentReactions.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends PostCommentReactionsDeleteManyArgs>(args?: SelectSubset<T, PostCommentReactionsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more PostCommentReactions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostCommentReactionsUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many PostCommentReactions
-     * const postCommentReactions = await prisma.postCommentReactions.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends PostCommentReactionsUpdateManyArgs>(args: SelectSubset<T, PostCommentReactionsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more PostCommentReactions and returns the data updated in the database.
-     * @param {PostCommentReactionsUpdateManyAndReturnArgs} args - Arguments to update many PostCommentReactions.
-     * @example
-     * // Update many PostCommentReactions
-     * const postCommentReactions = await prisma.postCommentReactions.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more PostCommentReactions and only return the `id`
-     * const postCommentReactionsWithIdOnly = await prisma.postCommentReactions.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends PostCommentReactionsUpdateManyAndReturnArgs>(args: SelectSubset<T, PostCommentReactionsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostCommentReactionsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one PostCommentReactions.
-     * @param {PostCommentReactionsUpsertArgs} args - Arguments to update or create a PostCommentReactions.
-     * @example
-     * // Update or create a PostCommentReactions
-     * const postCommentReactions = await prisma.postCommentReactions.upsert({
-     *   create: {
-     *     // ... data to create a PostCommentReactions
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the PostCommentReactions we want to update
-     *   }
-     * })
-     */
-    upsert<T extends PostCommentReactionsUpsertArgs>(args: SelectSubset<T, PostCommentReactionsUpsertArgs<ExtArgs>>): Prisma__PostCommentReactionsClient<$Result.GetResult<Prisma.$PostCommentReactionsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of PostCommentReactions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostCommentReactionsCountArgs} args - Arguments to filter PostCommentReactions to count.
-     * @example
-     * // Count the number of PostCommentReactions
-     * const count = await prisma.postCommentReactions.count({
-     *   where: {
-     *     // ... the filter for the PostCommentReactions we want to count
-     *   }
-     * })
-    **/
-    count<T extends PostCommentReactionsCountArgs>(
-      args?: Subset<T, PostCommentReactionsCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], PostCommentReactionsCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a PostCommentReactions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostCommentReactionsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends PostCommentReactionsAggregateArgs>(args: Subset<T, PostCommentReactionsAggregateArgs>): Prisma.PrismaPromise<GetPostCommentReactionsAggregateType<T>>
-
-    /**
-     * Group by PostCommentReactions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostCommentReactionsGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends PostCommentReactionsGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PostCommentReactionsGroupByArgs['orderBy'] }
-        : { orderBy?: PostCommentReactionsGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, PostCommentReactionsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostCommentReactionsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the PostCommentReactions model
-   */
-  readonly fields: PostCommentReactionsFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for PostCommentReactions.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__PostCommentReactionsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    postComments<T extends PostCommentsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostCommentsDefaultArgs<ExtArgs>>): Prisma__PostCommentsClient<$Result.GetResult<Prisma.$PostCommentsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the PostCommentReactions model
-   */
-  interface PostCommentReactionsFieldRefs {
-    readonly id: FieldRef<"PostCommentReactions", 'String'>
-    readonly commentId: FieldRef<"PostCommentReactions", 'String'>
-    readonly parentId: FieldRef<"PostCommentReactions", 'String'>
-    readonly reaction: FieldRef<"PostCommentReactions", 'ReactionValue'>
-    readonly createdAt: FieldRef<"PostCommentReactions", 'DateTime'>
-    readonly updatedAt: FieldRef<"PostCommentReactions", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * PostCommentReactions findUnique
-   */
-  export type PostCommentReactionsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsInclude<ExtArgs> | null
-    /**
-     * Filter, which PostCommentReactions to fetch.
-     */
-    where: PostCommentReactionsWhereUniqueInput
-  }
-
-  /**
-   * PostCommentReactions findUniqueOrThrow
-   */
-  export type PostCommentReactionsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsInclude<ExtArgs> | null
-    /**
-     * Filter, which PostCommentReactions to fetch.
-     */
-    where: PostCommentReactionsWhereUniqueInput
-  }
-
-  /**
-   * PostCommentReactions findFirst
-   */
-  export type PostCommentReactionsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsInclude<ExtArgs> | null
-    /**
-     * Filter, which PostCommentReactions to fetch.
-     */
-    where?: PostCommentReactionsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of PostCommentReactions to fetch.
-     */
-    orderBy?: PostCommentReactionsOrderByWithRelationInput | PostCommentReactionsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for PostCommentReactions.
-     */
-    cursor?: PostCommentReactionsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` PostCommentReactions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` PostCommentReactions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of PostCommentReactions.
-     */
-    distinct?: PostCommentReactionsScalarFieldEnum | PostCommentReactionsScalarFieldEnum[]
-  }
-
-  /**
-   * PostCommentReactions findFirstOrThrow
-   */
-  export type PostCommentReactionsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsInclude<ExtArgs> | null
-    /**
-     * Filter, which PostCommentReactions to fetch.
-     */
-    where?: PostCommentReactionsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of PostCommentReactions to fetch.
-     */
-    orderBy?: PostCommentReactionsOrderByWithRelationInput | PostCommentReactionsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for PostCommentReactions.
-     */
-    cursor?: PostCommentReactionsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` PostCommentReactions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` PostCommentReactions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of PostCommentReactions.
-     */
-    distinct?: PostCommentReactionsScalarFieldEnum | PostCommentReactionsScalarFieldEnum[]
-  }
-
-  /**
-   * PostCommentReactions findMany
-   */
-  export type PostCommentReactionsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsInclude<ExtArgs> | null
-    /**
-     * Filter, which PostCommentReactions to fetch.
-     */
-    where?: PostCommentReactionsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of PostCommentReactions to fetch.
-     */
-    orderBy?: PostCommentReactionsOrderByWithRelationInput | PostCommentReactionsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing PostCommentReactions.
-     */
-    cursor?: PostCommentReactionsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` PostCommentReactions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` PostCommentReactions.
-     */
-    skip?: number
-    distinct?: PostCommentReactionsScalarFieldEnum | PostCommentReactionsScalarFieldEnum[]
-  }
-
-  /**
-   * PostCommentReactions create
-   */
-  export type PostCommentReactionsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsInclude<ExtArgs> | null
-    /**
-     * The data needed to create a PostCommentReactions.
-     */
-    data: XOR<PostCommentReactionsCreateInput, PostCommentReactionsUncheckedCreateInput>
-  }
-
-  /**
-   * PostCommentReactions createMany
-   */
-  export type PostCommentReactionsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many PostCommentReactions.
-     */
-    data: PostCommentReactionsCreateManyInput | PostCommentReactionsCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * PostCommentReactions createManyAndReturn
-   */
-  export type PostCommentReactionsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * The data used to create many PostCommentReactions.
-     */
-    data: PostCommentReactionsCreateManyInput | PostCommentReactionsCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * PostCommentReactions update
-   */
-  export type PostCommentReactionsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsInclude<ExtArgs> | null
-    /**
-     * The data needed to update a PostCommentReactions.
-     */
-    data: XOR<PostCommentReactionsUpdateInput, PostCommentReactionsUncheckedUpdateInput>
-    /**
-     * Choose, which PostCommentReactions to update.
-     */
-    where: PostCommentReactionsWhereUniqueInput
-  }
-
-  /**
-   * PostCommentReactions updateMany
-   */
-  export type PostCommentReactionsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update PostCommentReactions.
-     */
-    data: XOR<PostCommentReactionsUpdateManyMutationInput, PostCommentReactionsUncheckedUpdateManyInput>
-    /**
-     * Filter which PostCommentReactions to update
-     */
-    where?: PostCommentReactionsWhereInput
-    /**
-     * Limit how many PostCommentReactions to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * PostCommentReactions updateManyAndReturn
-   */
-  export type PostCommentReactionsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * The data used to update PostCommentReactions.
-     */
-    data: XOR<PostCommentReactionsUpdateManyMutationInput, PostCommentReactionsUncheckedUpdateManyInput>
-    /**
-     * Filter which PostCommentReactions to update
-     */
-    where?: PostCommentReactionsWhereInput
-    /**
-     * Limit how many PostCommentReactions to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * PostCommentReactions upsert
-   */
-  export type PostCommentReactionsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsInclude<ExtArgs> | null
-    /**
-     * The filter to search for the PostCommentReactions to update in case it exists.
-     */
-    where: PostCommentReactionsWhereUniqueInput
-    /**
-     * In case the PostCommentReactions found by the `where` argument doesn't exist, create a new PostCommentReactions with this data.
-     */
-    create: XOR<PostCommentReactionsCreateInput, PostCommentReactionsUncheckedCreateInput>
-    /**
-     * In case the PostCommentReactions was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<PostCommentReactionsUpdateInput, PostCommentReactionsUncheckedUpdateInput>
-  }
-
-  /**
-   * PostCommentReactions delete
-   */
-  export type PostCommentReactionsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsInclude<ExtArgs> | null
-    /**
-     * Filter which PostCommentReactions to delete.
-     */
-    where: PostCommentReactionsWhereUniqueInput
-  }
-
-  /**
-   * PostCommentReactions deleteMany
-   */
-  export type PostCommentReactionsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which PostCommentReactions to delete
-     */
-    where?: PostCommentReactionsWhereInput
-    /**
-     * Limit how many PostCommentReactions to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * PostCommentReactions without action
-   */
-  export type PostCommentReactionsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostCommentReactions
-     */
-    select?: PostCommentReactionsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostCommentReactions
-     */
-    omit?: PostCommentReactionsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostCommentReactionsInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Playlist
-   */
-
-  export type AggregatePlaylist = {
-    _count: PlaylistCountAggregateOutputType | null
-    _min: PlaylistMinAggregateOutputType | null
-    _max: PlaylistMaxAggregateOutputType | null
-  }
-
-  export type PlaylistMinAggregateOutputType = {
-    id: string | null
-    title: string | null
-    description: string | null
-    channelId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type PlaylistMaxAggregateOutputType = {
-    id: string | null
-    title: string | null
-    description: string | null
-    channelId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type PlaylistCountAggregateOutputType = {
-    id: number
-    title: number
-    description: number
-    channelId: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type PlaylistMinAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    channelId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type PlaylistMaxAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    channelId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type PlaylistCountAggregateInputType = {
-    id?: true
-    title?: true
-    description?: true
-    channelId?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type PlaylistAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Playlist to aggregate.
-     */
-    where?: PlaylistWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Playlists to fetch.
-     */
-    orderBy?: PlaylistOrderByWithRelationInput | PlaylistOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: PlaylistWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Playlists from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Playlists.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Playlists
-    **/
-    _count?: true | PlaylistCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: PlaylistMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: PlaylistMaxAggregateInputType
-  }
-
-  export type GetPlaylistAggregateType<T extends PlaylistAggregateArgs> = {
-        [P in keyof T & keyof AggregatePlaylist]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePlaylist[P]>
-      : GetScalarType<T[P], AggregatePlaylist[P]>
-  }
-
-
-
-
-  export type PlaylistGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PlaylistWhereInput
-    orderBy?: PlaylistOrderByWithAggregationInput | PlaylistOrderByWithAggregationInput[]
-    by: PlaylistScalarFieldEnum[] | PlaylistScalarFieldEnum
-    having?: PlaylistScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: PlaylistCountAggregateInputType | true
-    _min?: PlaylistMinAggregateInputType
-    _max?: PlaylistMaxAggregateInputType
-  }
-
-  export type PlaylistGroupByOutputType = {
-    id: string
-    title: string
-    description: string
-    channelId: string
-    createdAt: Date
-    updatedAt: Date
-    _count: PlaylistCountAggregateOutputType | null
-    _min: PlaylistMinAggregateOutputType | null
-    _max: PlaylistMaxAggregateOutputType | null
-  }
-
-  type GetPlaylistGroupByPayload<T extends PlaylistGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<PlaylistGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof PlaylistGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], PlaylistGroupByOutputType[P]>
-            : GetScalarType<T[P], PlaylistGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type PlaylistSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    channelId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    channel?: boolean | ChannelDefaultArgs<ExtArgs>
-    playlistVideo?: boolean | Playlist$playlistVideoArgs<ExtArgs>
-    _count?: boolean | PlaylistCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["playlist"]>
-
-  export type PlaylistSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    channelId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    channel?: boolean | ChannelDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["playlist"]>
-
-  export type PlaylistSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    channelId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    channel?: boolean | ChannelDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["playlist"]>
-
-  export type PlaylistSelectScalar = {
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    channelId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type PlaylistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "channelId" | "createdAt" | "updatedAt", ExtArgs["result"]["playlist"]>
-  export type PlaylistInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    channel?: boolean | ChannelDefaultArgs<ExtArgs>
-    playlistVideo?: boolean | Playlist$playlistVideoArgs<ExtArgs>
-    _count?: boolean | PlaylistCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type PlaylistIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    channel?: boolean | ChannelDefaultArgs<ExtArgs>
-  }
-  export type PlaylistIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    channel?: boolean | ChannelDefaultArgs<ExtArgs>
-  }
-
-  export type $PlaylistPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Playlist"
-    objects: {
-      channel: Prisma.$ChannelPayload<ExtArgs>
-      playlistVideo: Prisma.$PlaylistVideoPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      title: string
-      description: string
-      channelId: string
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["playlist"]>
-    composites: {}
-  }
-
-  type PlaylistGetPayload<S extends boolean | null | undefined | PlaylistDefaultArgs> = $Result.GetResult<Prisma.$PlaylistPayload, S>
-
-  type PlaylistCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PlaylistFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PlaylistCountAggregateInputType | true
-    }
-
-  export interface PlaylistDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Playlist'], meta: { name: 'Playlist' } }
-    /**
-     * Find zero or one Playlist that matches the filter.
-     * @param {PlaylistFindUniqueArgs} args - Arguments to find a Playlist
-     * @example
-     * // Get one Playlist
-     * const playlist = await prisma.playlist.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends PlaylistFindUniqueArgs>(args: SelectSubset<T, PlaylistFindUniqueArgs<ExtArgs>>): Prisma__PlaylistClient<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Playlist that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {PlaylistFindUniqueOrThrowArgs} args - Arguments to find a Playlist
-     * @example
-     * // Get one Playlist
-     * const playlist = await prisma.playlist.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends PlaylistFindUniqueOrThrowArgs>(args: SelectSubset<T, PlaylistFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PlaylistClient<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Playlist that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistFindFirstArgs} args - Arguments to find a Playlist
-     * @example
-     * // Get one Playlist
-     * const playlist = await prisma.playlist.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends PlaylistFindFirstArgs>(args?: SelectSubset<T, PlaylistFindFirstArgs<ExtArgs>>): Prisma__PlaylistClient<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Playlist that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistFindFirstOrThrowArgs} args - Arguments to find a Playlist
-     * @example
-     * // Get one Playlist
-     * const playlist = await prisma.playlist.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends PlaylistFindFirstOrThrowArgs>(args?: SelectSubset<T, PlaylistFindFirstOrThrowArgs<ExtArgs>>): Prisma__PlaylistClient<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Playlists that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Playlists
-     * const playlists = await prisma.playlist.findMany()
-     * 
-     * // Get first 10 Playlists
-     * const playlists = await prisma.playlist.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const playlistWithIdOnly = await prisma.playlist.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends PlaylistFindManyArgs>(args?: SelectSubset<T, PlaylistFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Playlist.
-     * @param {PlaylistCreateArgs} args - Arguments to create a Playlist.
-     * @example
-     * // Create one Playlist
-     * const Playlist = await prisma.playlist.create({
-     *   data: {
-     *     // ... data to create a Playlist
-     *   }
-     * })
-     * 
-     */
-    create<T extends PlaylistCreateArgs>(args: SelectSubset<T, PlaylistCreateArgs<ExtArgs>>): Prisma__PlaylistClient<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Playlists.
-     * @param {PlaylistCreateManyArgs} args - Arguments to create many Playlists.
-     * @example
-     * // Create many Playlists
-     * const playlist = await prisma.playlist.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends PlaylistCreateManyArgs>(args?: SelectSubset<T, PlaylistCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Playlists and returns the data saved in the database.
-     * @param {PlaylistCreateManyAndReturnArgs} args - Arguments to create many Playlists.
-     * @example
-     * // Create many Playlists
-     * const playlist = await prisma.playlist.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Playlists and only return the `id`
-     * const playlistWithIdOnly = await prisma.playlist.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends PlaylistCreateManyAndReturnArgs>(args?: SelectSubset<T, PlaylistCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Playlist.
-     * @param {PlaylistDeleteArgs} args - Arguments to delete one Playlist.
-     * @example
-     * // Delete one Playlist
-     * const Playlist = await prisma.playlist.delete({
-     *   where: {
-     *     // ... filter to delete one Playlist
-     *   }
-     * })
-     * 
-     */
-    delete<T extends PlaylistDeleteArgs>(args: SelectSubset<T, PlaylistDeleteArgs<ExtArgs>>): Prisma__PlaylistClient<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Playlist.
-     * @param {PlaylistUpdateArgs} args - Arguments to update one Playlist.
-     * @example
-     * // Update one Playlist
-     * const playlist = await prisma.playlist.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends PlaylistUpdateArgs>(args: SelectSubset<T, PlaylistUpdateArgs<ExtArgs>>): Prisma__PlaylistClient<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Playlists.
-     * @param {PlaylistDeleteManyArgs} args - Arguments to filter Playlists to delete.
-     * @example
-     * // Delete a few Playlists
-     * const { count } = await prisma.playlist.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends PlaylistDeleteManyArgs>(args?: SelectSubset<T, PlaylistDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Playlists.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Playlists
-     * const playlist = await prisma.playlist.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends PlaylistUpdateManyArgs>(args: SelectSubset<T, PlaylistUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Playlists and returns the data updated in the database.
-     * @param {PlaylistUpdateManyAndReturnArgs} args - Arguments to update many Playlists.
-     * @example
-     * // Update many Playlists
-     * const playlist = await prisma.playlist.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Playlists and only return the `id`
-     * const playlistWithIdOnly = await prisma.playlist.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends PlaylistUpdateManyAndReturnArgs>(args: SelectSubset<T, PlaylistUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Playlist.
-     * @param {PlaylistUpsertArgs} args - Arguments to update or create a Playlist.
-     * @example
-     * // Update or create a Playlist
-     * const playlist = await prisma.playlist.upsert({
-     *   create: {
-     *     // ... data to create a Playlist
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Playlist we want to update
-     *   }
-     * })
-     */
-    upsert<T extends PlaylistUpsertArgs>(args: SelectSubset<T, PlaylistUpsertArgs<ExtArgs>>): Prisma__PlaylistClient<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Playlists.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistCountArgs} args - Arguments to filter Playlists to count.
-     * @example
-     * // Count the number of Playlists
-     * const count = await prisma.playlist.count({
-     *   where: {
-     *     // ... the filter for the Playlists we want to count
-     *   }
-     * })
-    **/
-    count<T extends PlaylistCountArgs>(
-      args?: Subset<T, PlaylistCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], PlaylistCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Playlist.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends PlaylistAggregateArgs>(args: Subset<T, PlaylistAggregateArgs>): Prisma.PrismaPromise<GetPlaylistAggregateType<T>>
-
-    /**
-     * Group by Playlist.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends PlaylistGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PlaylistGroupByArgs['orderBy'] }
-        : { orderBy?: PlaylistGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, PlaylistGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPlaylistGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Playlist model
-   */
-  readonly fields: PlaylistFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Playlist.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__PlaylistClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    channel<T extends ChannelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChannelDefaultArgs<ExtArgs>>): Prisma__ChannelClient<$Result.GetResult<Prisma.$ChannelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    playlistVideo<T extends Playlist$playlistVideoArgs<ExtArgs> = {}>(args?: Subset<T, Playlist$playlistVideoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Playlist model
-   */
-  interface PlaylistFieldRefs {
-    readonly id: FieldRef<"Playlist", 'String'>
-    readonly title: FieldRef<"Playlist", 'String'>
-    readonly description: FieldRef<"Playlist", 'String'>
-    readonly channelId: FieldRef<"Playlist", 'String'>
-    readonly createdAt: FieldRef<"Playlist", 'DateTime'>
-    readonly updatedAt: FieldRef<"Playlist", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Playlist findUnique
-   */
-  export type PlaylistFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistInclude<ExtArgs> | null
-    /**
-     * Filter, which Playlist to fetch.
-     */
-    where: PlaylistWhereUniqueInput
-  }
-
-  /**
-   * Playlist findUniqueOrThrow
-   */
-  export type PlaylistFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistInclude<ExtArgs> | null
-    /**
-     * Filter, which Playlist to fetch.
-     */
-    where: PlaylistWhereUniqueInput
-  }
-
-  /**
-   * Playlist findFirst
-   */
-  export type PlaylistFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistInclude<ExtArgs> | null
-    /**
-     * Filter, which Playlist to fetch.
-     */
-    where?: PlaylistWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Playlists to fetch.
-     */
-    orderBy?: PlaylistOrderByWithRelationInput | PlaylistOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Playlists.
-     */
-    cursor?: PlaylistWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Playlists from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Playlists.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Playlists.
-     */
-    distinct?: PlaylistScalarFieldEnum | PlaylistScalarFieldEnum[]
-  }
-
-  /**
-   * Playlist findFirstOrThrow
-   */
-  export type PlaylistFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistInclude<ExtArgs> | null
-    /**
-     * Filter, which Playlist to fetch.
-     */
-    where?: PlaylistWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Playlists to fetch.
-     */
-    orderBy?: PlaylistOrderByWithRelationInput | PlaylistOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Playlists.
-     */
-    cursor?: PlaylistWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Playlists from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Playlists.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Playlists.
-     */
-    distinct?: PlaylistScalarFieldEnum | PlaylistScalarFieldEnum[]
-  }
-
-  /**
-   * Playlist findMany
-   */
-  export type PlaylistFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistInclude<ExtArgs> | null
-    /**
-     * Filter, which Playlists to fetch.
-     */
-    where?: PlaylistWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Playlists to fetch.
-     */
-    orderBy?: PlaylistOrderByWithRelationInput | PlaylistOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Playlists.
-     */
-    cursor?: PlaylistWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Playlists from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Playlists.
-     */
-    skip?: number
-    distinct?: PlaylistScalarFieldEnum | PlaylistScalarFieldEnum[]
-  }
-
-  /**
-   * Playlist create
-   */
-  export type PlaylistCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Playlist.
-     */
-    data: XOR<PlaylistCreateInput, PlaylistUncheckedCreateInput>
-  }
-
-  /**
-   * Playlist createMany
-   */
-  export type PlaylistCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Playlists.
-     */
-    data: PlaylistCreateManyInput | PlaylistCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Playlist createManyAndReturn
-   */
-  export type PlaylistCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * The data used to create many Playlists.
-     */
-    data: PlaylistCreateManyInput | PlaylistCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Playlist update
-   */
-  export type PlaylistUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Playlist.
-     */
-    data: XOR<PlaylistUpdateInput, PlaylistUncheckedUpdateInput>
-    /**
-     * Choose, which Playlist to update.
-     */
-    where: PlaylistWhereUniqueInput
-  }
-
-  /**
-   * Playlist updateMany
-   */
-  export type PlaylistUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Playlists.
-     */
-    data: XOR<PlaylistUpdateManyMutationInput, PlaylistUncheckedUpdateManyInput>
-    /**
-     * Filter which Playlists to update
-     */
-    where?: PlaylistWhereInput
-    /**
-     * Limit how many Playlists to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Playlist updateManyAndReturn
-   */
-  export type PlaylistUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * The data used to update Playlists.
-     */
-    data: XOR<PlaylistUpdateManyMutationInput, PlaylistUncheckedUpdateManyInput>
-    /**
-     * Filter which Playlists to update
-     */
-    where?: PlaylistWhereInput
-    /**
-     * Limit how many Playlists to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Playlist upsert
-   */
-  export type PlaylistUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Playlist to update in case it exists.
-     */
-    where: PlaylistWhereUniqueInput
-    /**
-     * In case the Playlist found by the `where` argument doesn't exist, create a new Playlist with this data.
-     */
-    create: XOR<PlaylistCreateInput, PlaylistUncheckedCreateInput>
-    /**
-     * In case the Playlist was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<PlaylistUpdateInput, PlaylistUncheckedUpdateInput>
-  }
-
-  /**
-   * Playlist delete
-   */
-  export type PlaylistDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistInclude<ExtArgs> | null
-    /**
-     * Filter which Playlist to delete.
-     */
-    where: PlaylistWhereUniqueInput
-  }
-
-  /**
-   * Playlist deleteMany
-   */
-  export type PlaylistDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Playlists to delete
-     */
-    where?: PlaylistWhereInput
-    /**
-     * Limit how many Playlists to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Playlist.playlistVideo
-   */
-  export type Playlist$playlistVideoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoInclude<ExtArgs> | null
-    where?: PlaylistVideoWhereInput
-    orderBy?: PlaylistVideoOrderByWithRelationInput | PlaylistVideoOrderByWithRelationInput[]
-    cursor?: PlaylistVideoWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PlaylistVideoScalarFieldEnum | PlaylistVideoScalarFieldEnum[]
-  }
-
-  /**
-   * Playlist without action
-   */
-  export type PlaylistDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Playlist
-     */
-    select?: PlaylistSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Playlist
-     */
-    omit?: PlaylistOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model PlaylistVideo
-   */
-
-  export type AggregatePlaylistVideo = {
-    _count: PlaylistVideoCountAggregateOutputType | null
-    _min: PlaylistVideoMinAggregateOutputType | null
-    _max: PlaylistVideoMaxAggregateOutputType | null
-  }
-
-  export type PlaylistVideoMinAggregateOutputType = {
-    id: string | null
-    playlistId: string | null
-    videoId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type PlaylistVideoMaxAggregateOutputType = {
-    id: string | null
-    playlistId: string | null
-    videoId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type PlaylistVideoCountAggregateOutputType = {
-    id: number
-    playlistId: number
-    videoId: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type PlaylistVideoMinAggregateInputType = {
-    id?: true
-    playlistId?: true
-    videoId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type PlaylistVideoMaxAggregateInputType = {
-    id?: true
-    playlistId?: true
-    videoId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type PlaylistVideoCountAggregateInputType = {
-    id?: true
-    playlistId?: true
-    videoId?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type PlaylistVideoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which PlaylistVideo to aggregate.
-     */
-    where?: PlaylistVideoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of PlaylistVideos to fetch.
-     */
-    orderBy?: PlaylistVideoOrderByWithRelationInput | PlaylistVideoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: PlaylistVideoWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` PlaylistVideos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` PlaylistVideos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned PlaylistVideos
-    **/
-    _count?: true | PlaylistVideoCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: PlaylistVideoMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: PlaylistVideoMaxAggregateInputType
-  }
-
-  export type GetPlaylistVideoAggregateType<T extends PlaylistVideoAggregateArgs> = {
-        [P in keyof T & keyof AggregatePlaylistVideo]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePlaylistVideo[P]>
-      : GetScalarType<T[P], AggregatePlaylistVideo[P]>
-  }
-
-
-
-
-  export type PlaylistVideoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PlaylistVideoWhereInput
-    orderBy?: PlaylistVideoOrderByWithAggregationInput | PlaylistVideoOrderByWithAggregationInput[]
-    by: PlaylistVideoScalarFieldEnum[] | PlaylistVideoScalarFieldEnum
-    having?: PlaylistVideoScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: PlaylistVideoCountAggregateInputType | true
-    _min?: PlaylistVideoMinAggregateInputType
-    _max?: PlaylistVideoMaxAggregateInputType
-  }
-
-  export type PlaylistVideoGroupByOutputType = {
-    id: string
-    playlistId: string
-    videoId: string
-    createdAt: Date
-    updatedAt: Date
-    _count: PlaylistVideoCountAggregateOutputType | null
-    _min: PlaylistVideoMinAggregateOutputType | null
-    _max: PlaylistVideoMaxAggregateOutputType | null
-  }
-
-  type GetPlaylistVideoGroupByPayload<T extends PlaylistVideoGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<PlaylistVideoGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof PlaylistVideoGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], PlaylistVideoGroupByOutputType[P]>
-            : GetScalarType<T[P], PlaylistVideoGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type PlaylistVideoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    playlistId?: boolean
-    videoId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["playlistVideo"]>
-
-  export type PlaylistVideoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    playlistId?: boolean
-    videoId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["playlistVideo"]>
-
-  export type PlaylistVideoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    playlistId?: boolean
-    videoId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["playlistVideo"]>
-
-  export type PlaylistVideoSelectScalar = {
-    id?: boolean
-    playlistId?: boolean
-    videoId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type PlaylistVideoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "playlistId" | "videoId" | "createdAt" | "updatedAt", ExtArgs["result"]["playlistVideo"]>
-  export type PlaylistVideoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
-  }
-  export type PlaylistVideoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
-  }
-  export type PlaylistVideoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
-  }
-
-  export type $PlaylistVideoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "PlaylistVideo"
-    objects: {
-      playlist: Prisma.$PlaylistPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      playlistId: string
-      videoId: string
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["playlistVideo"]>
-    composites: {}
-  }
-
-  type PlaylistVideoGetPayload<S extends boolean | null | undefined | PlaylistVideoDefaultArgs> = $Result.GetResult<Prisma.$PlaylistVideoPayload, S>
-
-  type PlaylistVideoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PlaylistVideoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PlaylistVideoCountAggregateInputType | true
-    }
-
-  export interface PlaylistVideoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PlaylistVideo'], meta: { name: 'PlaylistVideo' } }
-    /**
-     * Find zero or one PlaylistVideo that matches the filter.
-     * @param {PlaylistVideoFindUniqueArgs} args - Arguments to find a PlaylistVideo
-     * @example
-     * // Get one PlaylistVideo
-     * const playlistVideo = await prisma.playlistVideo.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends PlaylistVideoFindUniqueArgs>(args: SelectSubset<T, PlaylistVideoFindUniqueArgs<ExtArgs>>): Prisma__PlaylistVideoClient<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one PlaylistVideo that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {PlaylistVideoFindUniqueOrThrowArgs} args - Arguments to find a PlaylistVideo
-     * @example
-     * // Get one PlaylistVideo
-     * const playlistVideo = await prisma.playlistVideo.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends PlaylistVideoFindUniqueOrThrowArgs>(args: SelectSubset<T, PlaylistVideoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PlaylistVideoClient<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first PlaylistVideo that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistVideoFindFirstArgs} args - Arguments to find a PlaylistVideo
-     * @example
-     * // Get one PlaylistVideo
-     * const playlistVideo = await prisma.playlistVideo.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends PlaylistVideoFindFirstArgs>(args?: SelectSubset<T, PlaylistVideoFindFirstArgs<ExtArgs>>): Prisma__PlaylistVideoClient<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first PlaylistVideo that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistVideoFindFirstOrThrowArgs} args - Arguments to find a PlaylistVideo
-     * @example
-     * // Get one PlaylistVideo
-     * const playlistVideo = await prisma.playlistVideo.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends PlaylistVideoFindFirstOrThrowArgs>(args?: SelectSubset<T, PlaylistVideoFindFirstOrThrowArgs<ExtArgs>>): Prisma__PlaylistVideoClient<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more PlaylistVideos that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistVideoFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all PlaylistVideos
-     * const playlistVideos = await prisma.playlistVideo.findMany()
-     * 
-     * // Get first 10 PlaylistVideos
-     * const playlistVideos = await prisma.playlistVideo.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const playlistVideoWithIdOnly = await prisma.playlistVideo.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends PlaylistVideoFindManyArgs>(args?: SelectSubset<T, PlaylistVideoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a PlaylistVideo.
-     * @param {PlaylistVideoCreateArgs} args - Arguments to create a PlaylistVideo.
-     * @example
-     * // Create one PlaylistVideo
-     * const PlaylistVideo = await prisma.playlistVideo.create({
-     *   data: {
-     *     // ... data to create a PlaylistVideo
-     *   }
-     * })
-     * 
-     */
-    create<T extends PlaylistVideoCreateArgs>(args: SelectSubset<T, PlaylistVideoCreateArgs<ExtArgs>>): Prisma__PlaylistVideoClient<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many PlaylistVideos.
-     * @param {PlaylistVideoCreateManyArgs} args - Arguments to create many PlaylistVideos.
-     * @example
-     * // Create many PlaylistVideos
-     * const playlistVideo = await prisma.playlistVideo.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends PlaylistVideoCreateManyArgs>(args?: SelectSubset<T, PlaylistVideoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many PlaylistVideos and returns the data saved in the database.
-     * @param {PlaylistVideoCreateManyAndReturnArgs} args - Arguments to create many PlaylistVideos.
-     * @example
-     * // Create many PlaylistVideos
-     * const playlistVideo = await prisma.playlistVideo.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many PlaylistVideos and only return the `id`
-     * const playlistVideoWithIdOnly = await prisma.playlistVideo.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends PlaylistVideoCreateManyAndReturnArgs>(args?: SelectSubset<T, PlaylistVideoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a PlaylistVideo.
-     * @param {PlaylistVideoDeleteArgs} args - Arguments to delete one PlaylistVideo.
-     * @example
-     * // Delete one PlaylistVideo
-     * const PlaylistVideo = await prisma.playlistVideo.delete({
-     *   where: {
-     *     // ... filter to delete one PlaylistVideo
-     *   }
-     * })
-     * 
-     */
-    delete<T extends PlaylistVideoDeleteArgs>(args: SelectSubset<T, PlaylistVideoDeleteArgs<ExtArgs>>): Prisma__PlaylistVideoClient<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one PlaylistVideo.
-     * @param {PlaylistVideoUpdateArgs} args - Arguments to update one PlaylistVideo.
-     * @example
-     * // Update one PlaylistVideo
-     * const playlistVideo = await prisma.playlistVideo.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends PlaylistVideoUpdateArgs>(args: SelectSubset<T, PlaylistVideoUpdateArgs<ExtArgs>>): Prisma__PlaylistVideoClient<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more PlaylistVideos.
-     * @param {PlaylistVideoDeleteManyArgs} args - Arguments to filter PlaylistVideos to delete.
-     * @example
-     * // Delete a few PlaylistVideos
-     * const { count } = await prisma.playlistVideo.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends PlaylistVideoDeleteManyArgs>(args?: SelectSubset<T, PlaylistVideoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more PlaylistVideos.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistVideoUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many PlaylistVideos
-     * const playlistVideo = await prisma.playlistVideo.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends PlaylistVideoUpdateManyArgs>(args: SelectSubset<T, PlaylistVideoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more PlaylistVideos and returns the data updated in the database.
-     * @param {PlaylistVideoUpdateManyAndReturnArgs} args - Arguments to update many PlaylistVideos.
-     * @example
-     * // Update many PlaylistVideos
-     * const playlistVideo = await prisma.playlistVideo.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more PlaylistVideos and only return the `id`
-     * const playlistVideoWithIdOnly = await prisma.playlistVideo.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends PlaylistVideoUpdateManyAndReturnArgs>(args: SelectSubset<T, PlaylistVideoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one PlaylistVideo.
-     * @param {PlaylistVideoUpsertArgs} args - Arguments to update or create a PlaylistVideo.
-     * @example
-     * // Update or create a PlaylistVideo
-     * const playlistVideo = await prisma.playlistVideo.upsert({
-     *   create: {
-     *     // ... data to create a PlaylistVideo
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the PlaylistVideo we want to update
-     *   }
-     * })
-     */
-    upsert<T extends PlaylistVideoUpsertArgs>(args: SelectSubset<T, PlaylistVideoUpsertArgs<ExtArgs>>): Prisma__PlaylistVideoClient<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of PlaylistVideos.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistVideoCountArgs} args - Arguments to filter PlaylistVideos to count.
-     * @example
-     * // Count the number of PlaylistVideos
-     * const count = await prisma.playlistVideo.count({
-     *   where: {
-     *     // ... the filter for the PlaylistVideos we want to count
-     *   }
-     * })
-    **/
-    count<T extends PlaylistVideoCountArgs>(
-      args?: Subset<T, PlaylistVideoCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], PlaylistVideoCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a PlaylistVideo.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistVideoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends PlaylistVideoAggregateArgs>(args: Subset<T, PlaylistVideoAggregateArgs>): Prisma.PrismaPromise<GetPlaylistVideoAggregateType<T>>
-
-    /**
-     * Group by PlaylistVideo.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PlaylistVideoGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends PlaylistVideoGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PlaylistVideoGroupByArgs['orderBy'] }
-        : { orderBy?: PlaylistVideoGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, PlaylistVideoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPlaylistVideoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the PlaylistVideo model
-   */
-  readonly fields: PlaylistVideoFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for PlaylistVideo.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__PlaylistVideoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    playlist<T extends PlaylistDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PlaylistDefaultArgs<ExtArgs>>): Prisma__PlaylistClient<$Result.GetResult<Prisma.$PlaylistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the PlaylistVideo model
-   */
-  interface PlaylistVideoFieldRefs {
-    readonly id: FieldRef<"PlaylistVideo", 'String'>
-    readonly playlistId: FieldRef<"PlaylistVideo", 'String'>
-    readonly videoId: FieldRef<"PlaylistVideo", 'String'>
-    readonly createdAt: FieldRef<"PlaylistVideo", 'DateTime'>
-    readonly updatedAt: FieldRef<"PlaylistVideo", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * PlaylistVideo findUnique
-   */
-  export type PlaylistVideoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoInclude<ExtArgs> | null
-    /**
-     * Filter, which PlaylistVideo to fetch.
-     */
-    where: PlaylistVideoWhereUniqueInput
-  }
-
-  /**
-   * PlaylistVideo findUniqueOrThrow
-   */
-  export type PlaylistVideoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoInclude<ExtArgs> | null
-    /**
-     * Filter, which PlaylistVideo to fetch.
-     */
-    where: PlaylistVideoWhereUniqueInput
-  }
-
-  /**
-   * PlaylistVideo findFirst
-   */
-  export type PlaylistVideoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoInclude<ExtArgs> | null
-    /**
-     * Filter, which PlaylistVideo to fetch.
-     */
-    where?: PlaylistVideoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of PlaylistVideos to fetch.
-     */
-    orderBy?: PlaylistVideoOrderByWithRelationInput | PlaylistVideoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for PlaylistVideos.
-     */
-    cursor?: PlaylistVideoWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` PlaylistVideos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` PlaylistVideos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of PlaylistVideos.
-     */
-    distinct?: PlaylistVideoScalarFieldEnum | PlaylistVideoScalarFieldEnum[]
-  }
-
-  /**
-   * PlaylistVideo findFirstOrThrow
-   */
-  export type PlaylistVideoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoInclude<ExtArgs> | null
-    /**
-     * Filter, which PlaylistVideo to fetch.
-     */
-    where?: PlaylistVideoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of PlaylistVideos to fetch.
-     */
-    orderBy?: PlaylistVideoOrderByWithRelationInput | PlaylistVideoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for PlaylistVideos.
-     */
-    cursor?: PlaylistVideoWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` PlaylistVideos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` PlaylistVideos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of PlaylistVideos.
-     */
-    distinct?: PlaylistVideoScalarFieldEnum | PlaylistVideoScalarFieldEnum[]
-  }
-
-  /**
-   * PlaylistVideo findMany
-   */
-  export type PlaylistVideoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoInclude<ExtArgs> | null
-    /**
-     * Filter, which PlaylistVideos to fetch.
-     */
-    where?: PlaylistVideoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of PlaylistVideos to fetch.
-     */
-    orderBy?: PlaylistVideoOrderByWithRelationInput | PlaylistVideoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing PlaylistVideos.
-     */
-    cursor?: PlaylistVideoWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` PlaylistVideos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` PlaylistVideos.
-     */
-    skip?: number
-    distinct?: PlaylistVideoScalarFieldEnum | PlaylistVideoScalarFieldEnum[]
-  }
-
-  /**
-   * PlaylistVideo create
-   */
-  export type PlaylistVideoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoInclude<ExtArgs> | null
-    /**
-     * The data needed to create a PlaylistVideo.
-     */
-    data: XOR<PlaylistVideoCreateInput, PlaylistVideoUncheckedCreateInput>
-  }
-
-  /**
-   * PlaylistVideo createMany
-   */
-  export type PlaylistVideoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many PlaylistVideos.
-     */
-    data: PlaylistVideoCreateManyInput | PlaylistVideoCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * PlaylistVideo createManyAndReturn
-   */
-  export type PlaylistVideoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * The data used to create many PlaylistVideos.
-     */
-    data: PlaylistVideoCreateManyInput | PlaylistVideoCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * PlaylistVideo update
-   */
-  export type PlaylistVideoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoInclude<ExtArgs> | null
-    /**
-     * The data needed to update a PlaylistVideo.
-     */
-    data: XOR<PlaylistVideoUpdateInput, PlaylistVideoUncheckedUpdateInput>
-    /**
-     * Choose, which PlaylistVideo to update.
-     */
-    where: PlaylistVideoWhereUniqueInput
-  }
-
-  /**
-   * PlaylistVideo updateMany
-   */
-  export type PlaylistVideoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update PlaylistVideos.
-     */
-    data: XOR<PlaylistVideoUpdateManyMutationInput, PlaylistVideoUncheckedUpdateManyInput>
-    /**
-     * Filter which PlaylistVideos to update
-     */
-    where?: PlaylistVideoWhereInput
-    /**
-     * Limit how many PlaylistVideos to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * PlaylistVideo updateManyAndReturn
-   */
-  export type PlaylistVideoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * The data used to update PlaylistVideos.
-     */
-    data: XOR<PlaylistVideoUpdateManyMutationInput, PlaylistVideoUncheckedUpdateManyInput>
-    /**
-     * Filter which PlaylistVideos to update
-     */
-    where?: PlaylistVideoWhereInput
-    /**
-     * Limit how many PlaylistVideos to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * PlaylistVideo upsert
-   */
-  export type PlaylistVideoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoInclude<ExtArgs> | null
-    /**
-     * The filter to search for the PlaylistVideo to update in case it exists.
-     */
-    where: PlaylistVideoWhereUniqueInput
-    /**
-     * In case the PlaylistVideo found by the `where` argument doesn't exist, create a new PlaylistVideo with this data.
-     */
-    create: XOR<PlaylistVideoCreateInput, PlaylistVideoUncheckedCreateInput>
-    /**
-     * In case the PlaylistVideo was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<PlaylistVideoUpdateInput, PlaylistVideoUncheckedUpdateInput>
-  }
-
-  /**
-   * PlaylistVideo delete
-   */
-  export type PlaylistVideoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoInclude<ExtArgs> | null
-    /**
-     * Filter which PlaylistVideo to delete.
-     */
-    where: PlaylistVideoWhereUniqueInput
-  }
-
-  /**
-   * PlaylistVideo deleteMany
-   */
-  export type PlaylistVideoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which PlaylistVideos to delete
-     */
-    where?: PlaylistVideoWhereInput
-    /**
-     * Limit how many PlaylistVideos to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * PlaylistVideo without action
-   */
-  export type PlaylistVideoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PlaylistVideo
-     */
-    select?: PlaylistVideoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PlaylistVideo
-     */
-    omit?: PlaylistVideoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PlaylistVideoInclude<ExtArgs> | null
   }
 
 
@@ -11671,8 +8026,7 @@ export namespace Prisma {
 
   export const PostScalarFieldEnum: {
     id: 'id',
-    title: 'title',
-    description: 'description',
+    text: 'text',
     channelId: 'channelId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -11714,41 +8068,6 @@ export namespace Prisma {
   };
 
   export type PostCommentsScalarFieldEnum = (typeof PostCommentsScalarFieldEnum)[keyof typeof PostCommentsScalarFieldEnum]
-
-
-  export const PostCommentReactionsScalarFieldEnum: {
-    id: 'id',
-    commentId: 'commentId',
-    parentId: 'parentId',
-    reaction: 'reaction',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type PostCommentReactionsScalarFieldEnum = (typeof PostCommentReactionsScalarFieldEnum)[keyof typeof PostCommentReactionsScalarFieldEnum]
-
-
-  export const PlaylistScalarFieldEnum: {
-    id: 'id',
-    title: 'title',
-    description: 'description',
-    channelId: 'channelId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type PlaylistScalarFieldEnum = (typeof PlaylistScalarFieldEnum)[keyof typeof PlaylistScalarFieldEnum]
-
-
-  export const PlaylistVideoScalarFieldEnum: {
-    id: 'id',
-    playlistId: 'playlistId',
-    videoId: 'videoId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type PlaylistVideoScalarFieldEnum = (typeof PlaylistVideoScalarFieldEnum)[keyof typeof PlaylistVideoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -11860,7 +8179,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Channel"> | Date | string
     posts?: PostListRelationFilter
     subscriptions?: SubscriptionsListRelationFilter
-    playlist?: PlaylistListRelationFilter
   }
 
   export type ChannelOrderByWithRelationInput = {
@@ -11875,7 +8193,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     posts?: PostOrderByRelationAggregateInput
     subscriptions?: SubscriptionsOrderByRelationAggregateInput
-    playlist?: PlaylistOrderByRelationAggregateInput
   }
 
   export type ChannelWhereUniqueInput = Prisma.AtLeast<{
@@ -11893,7 +8210,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Channel"> | Date | string
     posts?: PostListRelationFilter
     subscriptions?: SubscriptionsListRelationFilter
-    playlist?: PlaylistListRelationFilter
   }, "id" | "userId" | "handle">
 
   export type ChannelOrderByWithAggregationInput = {
@@ -11992,8 +8308,7 @@ export namespace Prisma {
     OR?: PostWhereInput[]
     NOT?: PostWhereInput | PostWhereInput[]
     id?: StringFilter<"Post"> | string
-    title?: StringFilter<"Post"> | string
-    description?: StringFilter<"Post"> | string
+    text?: StringFilter<"Post"> | string
     channelId?: StringFilter<"Post"> | string
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
@@ -12005,8 +8320,7 @@ export namespace Prisma {
 
   export type PostOrderByWithRelationInput = {
     id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
+    text?: SortOrder
     channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12021,8 +8335,7 @@ export namespace Prisma {
     AND?: PostWhereInput | PostWhereInput[]
     OR?: PostWhereInput[]
     NOT?: PostWhereInput | PostWhereInput[]
-    title?: StringFilter<"Post"> | string
-    description?: StringFilter<"Post"> | string
+    text?: StringFilter<"Post"> | string
     channelId?: StringFilter<"Post"> | string
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
@@ -12034,8 +8347,7 @@ export namespace Prisma {
 
   export type PostOrderByWithAggregationInput = {
     id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
+    text?: SortOrder
     channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12049,8 +8361,7 @@ export namespace Prisma {
     OR?: PostScalarWhereWithAggregatesInput[]
     NOT?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Post"> | string
-    title?: StringWithAggregatesFilter<"Post"> | string
-    description?: StringWithAggregatesFilter<"Post"> | string
+    text?: StringWithAggregatesFilter<"Post"> | string
     channelId?: StringWithAggregatesFilter<"Post"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
@@ -12183,7 +8494,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"PostComments"> | Date | string
     updatedAt?: DateTimeFilter<"PostComments"> | Date | string
     post?: XOR<PostScalarRelationFilter, PostWhereInput>
-    postCommentReactions?: PostCommentReactionsListRelationFilter
   }
 
   export type PostCommentsOrderByWithRelationInput = {
@@ -12194,7 +8504,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     post?: PostOrderByWithRelationInput
-    postCommentReactions?: PostCommentReactionsOrderByRelationAggregateInput
   }
 
   export type PostCommentsWhereUniqueInput = Prisma.AtLeast<{
@@ -12208,7 +8517,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"PostComments"> | Date | string
     updatedAt?: DateTimeFilter<"PostComments"> | Date | string
     post?: XOR<PostScalarRelationFilter, PostWhereInput>
-    postCommentReactions?: PostCommentReactionsListRelationFilter
   }, "id">
 
   export type PostCommentsOrderByWithAggregationInput = {
@@ -12235,185 +8543,6 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"PostComments"> | Date | string
   }
 
-  export type PostCommentReactionsWhereInput = {
-    AND?: PostCommentReactionsWhereInput | PostCommentReactionsWhereInput[]
-    OR?: PostCommentReactionsWhereInput[]
-    NOT?: PostCommentReactionsWhereInput | PostCommentReactionsWhereInput[]
-    id?: StringFilter<"PostCommentReactions"> | string
-    commentId?: StringFilter<"PostCommentReactions"> | string
-    parentId?: StringFilter<"PostCommentReactions"> | string
-    reaction?: EnumReactionValueFilter<"PostCommentReactions"> | $Enums.ReactionValue
-    createdAt?: DateTimeFilter<"PostCommentReactions"> | Date | string
-    updatedAt?: DateTimeFilter<"PostCommentReactions"> | Date | string
-    postComments?: XOR<PostCommentsScalarRelationFilter, PostCommentsWhereInput>
-  }
-
-  export type PostCommentReactionsOrderByWithRelationInput = {
-    id?: SortOrder
-    commentId?: SortOrder
-    parentId?: SortOrder
-    reaction?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    postComments?: PostCommentsOrderByWithRelationInput
-  }
-
-  export type PostCommentReactionsWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    commentId_parentId?: PostCommentReactionsCommentIdParentIdCompoundUniqueInput
-    AND?: PostCommentReactionsWhereInput | PostCommentReactionsWhereInput[]
-    OR?: PostCommentReactionsWhereInput[]
-    NOT?: PostCommentReactionsWhereInput | PostCommentReactionsWhereInput[]
-    commentId?: StringFilter<"PostCommentReactions"> | string
-    parentId?: StringFilter<"PostCommentReactions"> | string
-    reaction?: EnumReactionValueFilter<"PostCommentReactions"> | $Enums.ReactionValue
-    createdAt?: DateTimeFilter<"PostCommentReactions"> | Date | string
-    updatedAt?: DateTimeFilter<"PostCommentReactions"> | Date | string
-    postComments?: XOR<PostCommentsScalarRelationFilter, PostCommentsWhereInput>
-  }, "id" | "commentId_parentId">
-
-  export type PostCommentReactionsOrderByWithAggregationInput = {
-    id?: SortOrder
-    commentId?: SortOrder
-    parentId?: SortOrder
-    reaction?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: PostCommentReactionsCountOrderByAggregateInput
-    _max?: PostCommentReactionsMaxOrderByAggregateInput
-    _min?: PostCommentReactionsMinOrderByAggregateInput
-  }
-
-  export type PostCommentReactionsScalarWhereWithAggregatesInput = {
-    AND?: PostCommentReactionsScalarWhereWithAggregatesInput | PostCommentReactionsScalarWhereWithAggregatesInput[]
-    OR?: PostCommentReactionsScalarWhereWithAggregatesInput[]
-    NOT?: PostCommentReactionsScalarWhereWithAggregatesInput | PostCommentReactionsScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"PostCommentReactions"> | string
-    commentId?: StringWithAggregatesFilter<"PostCommentReactions"> | string
-    parentId?: StringWithAggregatesFilter<"PostCommentReactions"> | string
-    reaction?: EnumReactionValueWithAggregatesFilter<"PostCommentReactions"> | $Enums.ReactionValue
-    createdAt?: DateTimeWithAggregatesFilter<"PostCommentReactions"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"PostCommentReactions"> | Date | string
-  }
-
-  export type PlaylistWhereInput = {
-    AND?: PlaylistWhereInput | PlaylistWhereInput[]
-    OR?: PlaylistWhereInput[]
-    NOT?: PlaylistWhereInput | PlaylistWhereInput[]
-    id?: StringFilter<"Playlist"> | string
-    title?: StringFilter<"Playlist"> | string
-    description?: StringFilter<"Playlist"> | string
-    channelId?: StringFilter<"Playlist"> | string
-    createdAt?: DateTimeFilter<"Playlist"> | Date | string
-    updatedAt?: DateTimeFilter<"Playlist"> | Date | string
-    channel?: XOR<ChannelScalarRelationFilter, ChannelWhereInput>
-    playlistVideo?: PlaylistVideoListRelationFilter
-  }
-
-  export type PlaylistOrderByWithRelationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    channelId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    channel?: ChannelOrderByWithRelationInput
-    playlistVideo?: PlaylistVideoOrderByRelationAggregateInput
-  }
-
-  export type PlaylistWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: PlaylistWhereInput | PlaylistWhereInput[]
-    OR?: PlaylistWhereInput[]
-    NOT?: PlaylistWhereInput | PlaylistWhereInput[]
-    title?: StringFilter<"Playlist"> | string
-    description?: StringFilter<"Playlist"> | string
-    channelId?: StringFilter<"Playlist"> | string
-    createdAt?: DateTimeFilter<"Playlist"> | Date | string
-    updatedAt?: DateTimeFilter<"Playlist"> | Date | string
-    channel?: XOR<ChannelScalarRelationFilter, ChannelWhereInput>
-    playlistVideo?: PlaylistVideoListRelationFilter
-  }, "id">
-
-  export type PlaylistOrderByWithAggregationInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    channelId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: PlaylistCountOrderByAggregateInput
-    _max?: PlaylistMaxOrderByAggregateInput
-    _min?: PlaylistMinOrderByAggregateInput
-  }
-
-  export type PlaylistScalarWhereWithAggregatesInput = {
-    AND?: PlaylistScalarWhereWithAggregatesInput | PlaylistScalarWhereWithAggregatesInput[]
-    OR?: PlaylistScalarWhereWithAggregatesInput[]
-    NOT?: PlaylistScalarWhereWithAggregatesInput | PlaylistScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Playlist"> | string
-    title?: StringWithAggregatesFilter<"Playlist"> | string
-    description?: StringWithAggregatesFilter<"Playlist"> | string
-    channelId?: StringWithAggregatesFilter<"Playlist"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Playlist"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Playlist"> | Date | string
-  }
-
-  export type PlaylistVideoWhereInput = {
-    AND?: PlaylistVideoWhereInput | PlaylistVideoWhereInput[]
-    OR?: PlaylistVideoWhereInput[]
-    NOT?: PlaylistVideoWhereInput | PlaylistVideoWhereInput[]
-    id?: StringFilter<"PlaylistVideo"> | string
-    playlistId?: StringFilter<"PlaylistVideo"> | string
-    videoId?: StringFilter<"PlaylistVideo"> | string
-    createdAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
-    updatedAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
-    playlist?: XOR<PlaylistScalarRelationFilter, PlaylistWhereInput>
-  }
-
-  export type PlaylistVideoOrderByWithRelationInput = {
-    id?: SortOrder
-    playlistId?: SortOrder
-    videoId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    playlist?: PlaylistOrderByWithRelationInput
-  }
-
-  export type PlaylistVideoWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: PlaylistVideoWhereInput | PlaylistVideoWhereInput[]
-    OR?: PlaylistVideoWhereInput[]
-    NOT?: PlaylistVideoWhereInput | PlaylistVideoWhereInput[]
-    playlistId?: StringFilter<"PlaylistVideo"> | string
-    videoId?: StringFilter<"PlaylistVideo"> | string
-    createdAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
-    updatedAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
-    playlist?: XOR<PlaylistScalarRelationFilter, PlaylistWhereInput>
-  }, "id">
-
-  export type PlaylistVideoOrderByWithAggregationInput = {
-    id?: SortOrder
-    playlistId?: SortOrder
-    videoId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: PlaylistVideoCountOrderByAggregateInput
-    _max?: PlaylistVideoMaxOrderByAggregateInput
-    _min?: PlaylistVideoMinOrderByAggregateInput
-  }
-
-  export type PlaylistVideoScalarWhereWithAggregatesInput = {
-    AND?: PlaylistVideoScalarWhereWithAggregatesInput | PlaylistVideoScalarWhereWithAggregatesInput[]
-    OR?: PlaylistVideoScalarWhereWithAggregatesInput[]
-    NOT?: PlaylistVideoScalarWhereWithAggregatesInput | PlaylistVideoScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"PlaylistVideo"> | string
-    playlistId?: StringWithAggregatesFilter<"PlaylistVideo"> | string
-    videoId?: StringWithAggregatesFilter<"PlaylistVideo"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"PlaylistVideo"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"PlaylistVideo"> | Date | string
-  }
-
   export type ChannelCreateInput = {
     id?: string
     userId: string
@@ -12426,7 +8555,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     posts?: PostCreateNestedManyWithoutChannelInput
     subscriptions?: SubscriptionsCreateNestedManyWithoutChannelInput
-    playlist?: PlaylistCreateNestedManyWithoutChannelInput
   }
 
   export type ChannelUncheckedCreateInput = {
@@ -12441,7 +8569,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     posts?: PostUncheckedCreateNestedManyWithoutChannelInput
     subscriptions?: SubscriptionsUncheckedCreateNestedManyWithoutChannelInput
-    playlist?: PlaylistUncheckedCreateNestedManyWithoutChannelInput
   }
 
   export type ChannelUpdateInput = {
@@ -12456,7 +8583,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUpdateManyWithoutChannelNestedInput
     subscriptions?: SubscriptionsUpdateManyWithoutChannelNestedInput
-    playlist?: PlaylistUpdateManyWithoutChannelNestedInput
   }
 
   export type ChannelUncheckedUpdateInput = {
@@ -12471,7 +8597,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUncheckedUpdateManyWithoutChannelNestedInput
     subscriptions?: SubscriptionsUncheckedUpdateManyWithoutChannelNestedInput
-    playlist?: PlaylistUncheckedUpdateManyWithoutChannelNestedInput
   }
 
   export type ChannelCreateManyInput = {
@@ -12574,8 +8699,7 @@ export namespace Prisma {
 
   export type PostCreateInput = {
     id?: string
-    title: string
-    description: string
+    text: string
     createdAt?: Date | string
     updatedAt?: Date | string
     postLikes?: PostLikesCreateNestedManyWithoutPostInput
@@ -12586,8 +8710,7 @@ export namespace Prisma {
 
   export type PostUncheckedCreateInput = {
     id?: string
-    title: string
-    description: string
+    text: string
     channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -12598,8 +8721,7 @@ export namespace Prisma {
 
   export type PostUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     postLikes?: PostLikesUpdateManyWithoutPostNestedInput
@@ -12610,8 +8732,7 @@ export namespace Prisma {
 
   export type PostUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12622,8 +8743,7 @@ export namespace Prisma {
 
   export type PostCreateManyInput = {
     id?: string
-    title: string
-    description: string
+    text: string
     channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -12631,16 +8751,14 @@ export namespace Prisma {
 
   export type PostUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PostUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12770,7 +8888,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     post: PostCreateNestedOneWithoutPostCommentsInput
-    postCommentReactions?: PostCommentReactionsCreateNestedManyWithoutPostCommentsInput
   }
 
   export type PostCommentsUncheckedCreateInput = {
@@ -12780,7 +8897,6 @@ export namespace Prisma {
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    postCommentReactions?: PostCommentReactionsUncheckedCreateNestedManyWithoutPostCommentsInput
   }
 
   export type PostCommentsUpdateInput = {
@@ -12790,7 +8906,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     post?: PostUpdateOneRequiredWithoutPostCommentsNestedInput
-    postCommentReactions?: PostCommentReactionsUpdateManyWithoutPostCommentsNestedInput
   }
 
   export type PostCommentsUncheckedUpdateInput = {
@@ -12800,7 +8915,6 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    postCommentReactions?: PostCommentReactionsUncheckedUpdateManyWithoutPostCommentsNestedInput
   }
 
   export type PostCommentsCreateManyInput = {
@@ -12825,189 +8939,6 @@ export namespace Prisma {
     postId?: StringFieldUpdateOperationsInput | string
     parentId?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostCommentReactionsCreateInput = {
-    id?: string
-    parentId: string
-    reaction: $Enums.ReactionValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    postComments: PostCommentsCreateNestedOneWithoutPostCommentReactionsInput
-  }
-
-  export type PostCommentReactionsUncheckedCreateInput = {
-    id?: string
-    commentId: string
-    parentId: string
-    reaction: $Enums.ReactionValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PostCommentReactionsUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    parentId?: StringFieldUpdateOperationsInput | string
-    reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    postComments?: PostCommentsUpdateOneRequiredWithoutPostCommentReactionsNestedInput
-  }
-
-  export type PostCommentReactionsUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    commentId?: StringFieldUpdateOperationsInput | string
-    parentId?: StringFieldUpdateOperationsInput | string
-    reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostCommentReactionsCreateManyInput = {
-    id?: string
-    commentId: string
-    parentId: string
-    reaction: $Enums.ReactionValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PostCommentReactionsUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    parentId?: StringFieldUpdateOperationsInput | string
-    reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostCommentReactionsUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    commentId?: StringFieldUpdateOperationsInput | string
-    parentId?: StringFieldUpdateOperationsInput | string
-    reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PlaylistCreateInput = {
-    id?: string
-    title: string
-    description: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    channel: ChannelCreateNestedOneWithoutPlaylistInput
-    playlistVideo?: PlaylistVideoCreateNestedManyWithoutPlaylistInput
-  }
-
-  export type PlaylistUncheckedCreateInput = {
-    id?: string
-    title: string
-    description: string
-    channelId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    playlistVideo?: PlaylistVideoUncheckedCreateNestedManyWithoutPlaylistInput
-  }
-
-  export type PlaylistUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    channel?: ChannelUpdateOneRequiredWithoutPlaylistNestedInput
-    playlistVideo?: PlaylistVideoUpdateManyWithoutPlaylistNestedInput
-  }
-
-  export type PlaylistUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    channelId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    playlistVideo?: PlaylistVideoUncheckedUpdateManyWithoutPlaylistNestedInput
-  }
-
-  export type PlaylistCreateManyInput = {
-    id?: string
-    title: string
-    description: string
-    channelId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PlaylistUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PlaylistUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    channelId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PlaylistVideoCreateInput = {
-    id?: string
-    videoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    playlist: PlaylistCreateNestedOneWithoutPlaylistVideoInput
-  }
-
-  export type PlaylistVideoUncheckedCreateInput = {
-    id?: string
-    playlistId: string
-    videoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PlaylistVideoUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    videoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    playlist?: PlaylistUpdateOneRequiredWithoutPlaylistVideoNestedInput
-  }
-
-  export type PlaylistVideoUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    playlistId?: StringFieldUpdateOperationsInput | string
-    videoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PlaylistVideoCreateManyInput = {
-    id?: string
-    playlistId: string
-    videoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PlaylistVideoUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    videoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PlaylistVideoUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    playlistId?: StringFieldUpdateOperationsInput | string
-    videoId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13050,21 +8981,11 @@ export namespace Prisma {
     none?: SubscriptionsWhereInput
   }
 
-  export type PlaylistListRelationFilter = {
-    every?: PlaylistWhereInput
-    some?: PlaylistWhereInput
-    none?: PlaylistWhereInput
-  }
-
   export type PostOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type SubscriptionsOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type PlaylistOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -13222,8 +9143,7 @@ export namespace Prisma {
 
   export type PostCountOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
+    text?: SortOrder
     channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13231,8 +9151,7 @@ export namespace Prisma {
 
   export type PostMaxOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
+    text?: SortOrder
     channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13240,8 +9159,7 @@ export namespace Prisma {
 
   export type PostMinOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
+    text?: SortOrder
     channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13325,16 +9243,6 @@ export namespace Prisma {
     _max?: NestedEnumReactionValueFilter<$PrismaModel>
   }
 
-  export type PostCommentReactionsListRelationFilter = {
-    every?: PostCommentReactionsWhereInput
-    some?: PostCommentReactionsWhereInput
-    none?: PostCommentReactionsWhereInput
-  }
-
-  export type PostCommentReactionsOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type PostCommentsCountOrderByAggregateInput = {
     id?: SortOrder
     postId?: SortOrder
@@ -13362,109 +9270,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PostCommentsScalarRelationFilter = {
-    is?: PostCommentsWhereInput
-    isNot?: PostCommentsWhereInput
-  }
-
-  export type PostCommentReactionsCommentIdParentIdCompoundUniqueInput = {
-    commentId: string
-    parentId: string
-  }
-
-  export type PostCommentReactionsCountOrderByAggregateInput = {
-    id?: SortOrder
-    commentId?: SortOrder
-    parentId?: SortOrder
-    reaction?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type PostCommentReactionsMaxOrderByAggregateInput = {
-    id?: SortOrder
-    commentId?: SortOrder
-    parentId?: SortOrder
-    reaction?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type PostCommentReactionsMinOrderByAggregateInput = {
-    id?: SortOrder
-    commentId?: SortOrder
-    parentId?: SortOrder
-    reaction?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type PlaylistVideoListRelationFilter = {
-    every?: PlaylistVideoWhereInput
-    some?: PlaylistVideoWhereInput
-    none?: PlaylistVideoWhereInput
-  }
-
-  export type PlaylistVideoOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type PlaylistCountOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    channelId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type PlaylistMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    channelId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type PlaylistMinOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    description?: SortOrder
-    channelId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type PlaylistScalarRelationFilter = {
-    is?: PlaylistWhereInput
-    isNot?: PlaylistWhereInput
-  }
-
-  export type PlaylistVideoCountOrderByAggregateInput = {
-    id?: SortOrder
-    playlistId?: SortOrder
-    videoId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type PlaylistVideoMaxOrderByAggregateInput = {
-    id?: SortOrder
-    playlistId?: SortOrder
-    videoId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type PlaylistVideoMinOrderByAggregateInput = {
-    id?: SortOrder
-    playlistId?: SortOrder
-    videoId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
   export type PostCreateNestedManyWithoutChannelInput = {
     create?: XOR<PostCreateWithoutChannelInput, PostUncheckedCreateWithoutChannelInput> | PostCreateWithoutChannelInput[] | PostUncheckedCreateWithoutChannelInput[]
     connectOrCreate?: PostCreateOrConnectWithoutChannelInput | PostCreateOrConnectWithoutChannelInput[]
@@ -13479,13 +9284,6 @@ export namespace Prisma {
     connect?: SubscriptionsWhereUniqueInput | SubscriptionsWhereUniqueInput[]
   }
 
-  export type PlaylistCreateNestedManyWithoutChannelInput = {
-    create?: XOR<PlaylistCreateWithoutChannelInput, PlaylistUncheckedCreateWithoutChannelInput> | PlaylistCreateWithoutChannelInput[] | PlaylistUncheckedCreateWithoutChannelInput[]
-    connectOrCreate?: PlaylistCreateOrConnectWithoutChannelInput | PlaylistCreateOrConnectWithoutChannelInput[]
-    createMany?: PlaylistCreateManyChannelInputEnvelope
-    connect?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
-  }
-
   export type PostUncheckedCreateNestedManyWithoutChannelInput = {
     create?: XOR<PostCreateWithoutChannelInput, PostUncheckedCreateWithoutChannelInput> | PostCreateWithoutChannelInput[] | PostUncheckedCreateWithoutChannelInput[]
     connectOrCreate?: PostCreateOrConnectWithoutChannelInput | PostCreateOrConnectWithoutChannelInput[]
@@ -13498,13 +9296,6 @@ export namespace Prisma {
     connectOrCreate?: SubscriptionsCreateOrConnectWithoutChannelInput | SubscriptionsCreateOrConnectWithoutChannelInput[]
     createMany?: SubscriptionsCreateManyChannelInputEnvelope
     connect?: SubscriptionsWhereUniqueInput | SubscriptionsWhereUniqueInput[]
-  }
-
-  export type PlaylistUncheckedCreateNestedManyWithoutChannelInput = {
-    create?: XOR<PlaylistCreateWithoutChannelInput, PlaylistUncheckedCreateWithoutChannelInput> | PlaylistCreateWithoutChannelInput[] | PlaylistUncheckedCreateWithoutChannelInput[]
-    connectOrCreate?: PlaylistCreateOrConnectWithoutChannelInput | PlaylistCreateOrConnectWithoutChannelInput[]
-    createMany?: PlaylistCreateManyChannelInputEnvelope
-    connect?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -13543,20 +9334,6 @@ export namespace Prisma {
     deleteMany?: SubscriptionsScalarWhereInput | SubscriptionsScalarWhereInput[]
   }
 
-  export type PlaylistUpdateManyWithoutChannelNestedInput = {
-    create?: XOR<PlaylistCreateWithoutChannelInput, PlaylistUncheckedCreateWithoutChannelInput> | PlaylistCreateWithoutChannelInput[] | PlaylistUncheckedCreateWithoutChannelInput[]
-    connectOrCreate?: PlaylistCreateOrConnectWithoutChannelInput | PlaylistCreateOrConnectWithoutChannelInput[]
-    upsert?: PlaylistUpsertWithWhereUniqueWithoutChannelInput | PlaylistUpsertWithWhereUniqueWithoutChannelInput[]
-    createMany?: PlaylistCreateManyChannelInputEnvelope
-    set?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
-    disconnect?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
-    delete?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
-    connect?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
-    update?: PlaylistUpdateWithWhereUniqueWithoutChannelInput | PlaylistUpdateWithWhereUniqueWithoutChannelInput[]
-    updateMany?: PlaylistUpdateManyWithWhereWithoutChannelInput | PlaylistUpdateManyWithWhereWithoutChannelInput[]
-    deleteMany?: PlaylistScalarWhereInput | PlaylistScalarWhereInput[]
-  }
-
   export type PostUncheckedUpdateManyWithoutChannelNestedInput = {
     create?: XOR<PostCreateWithoutChannelInput, PostUncheckedCreateWithoutChannelInput> | PostCreateWithoutChannelInput[] | PostUncheckedCreateWithoutChannelInput[]
     connectOrCreate?: PostCreateOrConnectWithoutChannelInput | PostCreateOrConnectWithoutChannelInput[]
@@ -13583,20 +9360,6 @@ export namespace Prisma {
     update?: SubscriptionsUpdateWithWhereUniqueWithoutChannelInput | SubscriptionsUpdateWithWhereUniqueWithoutChannelInput[]
     updateMany?: SubscriptionsUpdateManyWithWhereWithoutChannelInput | SubscriptionsUpdateManyWithWhereWithoutChannelInput[]
     deleteMany?: SubscriptionsScalarWhereInput | SubscriptionsScalarWhereInput[]
-  }
-
-  export type PlaylistUncheckedUpdateManyWithoutChannelNestedInput = {
-    create?: XOR<PlaylistCreateWithoutChannelInput, PlaylistUncheckedCreateWithoutChannelInput> | PlaylistCreateWithoutChannelInput[] | PlaylistUncheckedCreateWithoutChannelInput[]
-    connectOrCreate?: PlaylistCreateOrConnectWithoutChannelInput | PlaylistCreateOrConnectWithoutChannelInput[]
-    upsert?: PlaylistUpsertWithWhereUniqueWithoutChannelInput | PlaylistUpsertWithWhereUniqueWithoutChannelInput[]
-    createMany?: PlaylistCreateManyChannelInputEnvelope
-    set?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
-    disconnect?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
-    delete?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
-    connect?: PlaylistWhereUniqueInput | PlaylistWhereUniqueInput[]
-    update?: PlaylistUpdateWithWhereUniqueWithoutChannelInput | PlaylistUpdateWithWhereUniqueWithoutChannelInput[]
-    updateMany?: PlaylistUpdateManyWithWhereWithoutChannelInput | PlaylistUpdateManyWithWhereWithoutChannelInput[]
-    deleteMany?: PlaylistScalarWhereInput | PlaylistScalarWhereInput[]
   }
 
   export type ChannelCreateNestedOneWithoutSubscriptionsInput = {
@@ -13795,138 +9558,12 @@ export namespace Prisma {
     connect?: PostWhereUniqueInput
   }
 
-  export type PostCommentReactionsCreateNestedManyWithoutPostCommentsInput = {
-    create?: XOR<PostCommentReactionsCreateWithoutPostCommentsInput, PostCommentReactionsUncheckedCreateWithoutPostCommentsInput> | PostCommentReactionsCreateWithoutPostCommentsInput[] | PostCommentReactionsUncheckedCreateWithoutPostCommentsInput[]
-    connectOrCreate?: PostCommentReactionsCreateOrConnectWithoutPostCommentsInput | PostCommentReactionsCreateOrConnectWithoutPostCommentsInput[]
-    createMany?: PostCommentReactionsCreateManyPostCommentsInputEnvelope
-    connect?: PostCommentReactionsWhereUniqueInput | PostCommentReactionsWhereUniqueInput[]
-  }
-
-  export type PostCommentReactionsUncheckedCreateNestedManyWithoutPostCommentsInput = {
-    create?: XOR<PostCommentReactionsCreateWithoutPostCommentsInput, PostCommentReactionsUncheckedCreateWithoutPostCommentsInput> | PostCommentReactionsCreateWithoutPostCommentsInput[] | PostCommentReactionsUncheckedCreateWithoutPostCommentsInput[]
-    connectOrCreate?: PostCommentReactionsCreateOrConnectWithoutPostCommentsInput | PostCommentReactionsCreateOrConnectWithoutPostCommentsInput[]
-    createMany?: PostCommentReactionsCreateManyPostCommentsInputEnvelope
-    connect?: PostCommentReactionsWhereUniqueInput | PostCommentReactionsWhereUniqueInput[]
-  }
-
   export type PostUpdateOneRequiredWithoutPostCommentsNestedInput = {
     create?: XOR<PostCreateWithoutPostCommentsInput, PostUncheckedCreateWithoutPostCommentsInput>
     connectOrCreate?: PostCreateOrConnectWithoutPostCommentsInput
     upsert?: PostUpsertWithoutPostCommentsInput
     connect?: PostWhereUniqueInput
     update?: XOR<XOR<PostUpdateToOneWithWhereWithoutPostCommentsInput, PostUpdateWithoutPostCommentsInput>, PostUncheckedUpdateWithoutPostCommentsInput>
-  }
-
-  export type PostCommentReactionsUpdateManyWithoutPostCommentsNestedInput = {
-    create?: XOR<PostCommentReactionsCreateWithoutPostCommentsInput, PostCommentReactionsUncheckedCreateWithoutPostCommentsInput> | PostCommentReactionsCreateWithoutPostCommentsInput[] | PostCommentReactionsUncheckedCreateWithoutPostCommentsInput[]
-    connectOrCreate?: PostCommentReactionsCreateOrConnectWithoutPostCommentsInput | PostCommentReactionsCreateOrConnectWithoutPostCommentsInput[]
-    upsert?: PostCommentReactionsUpsertWithWhereUniqueWithoutPostCommentsInput | PostCommentReactionsUpsertWithWhereUniqueWithoutPostCommentsInput[]
-    createMany?: PostCommentReactionsCreateManyPostCommentsInputEnvelope
-    set?: PostCommentReactionsWhereUniqueInput | PostCommentReactionsWhereUniqueInput[]
-    disconnect?: PostCommentReactionsWhereUniqueInput | PostCommentReactionsWhereUniqueInput[]
-    delete?: PostCommentReactionsWhereUniqueInput | PostCommentReactionsWhereUniqueInput[]
-    connect?: PostCommentReactionsWhereUniqueInput | PostCommentReactionsWhereUniqueInput[]
-    update?: PostCommentReactionsUpdateWithWhereUniqueWithoutPostCommentsInput | PostCommentReactionsUpdateWithWhereUniqueWithoutPostCommentsInput[]
-    updateMany?: PostCommentReactionsUpdateManyWithWhereWithoutPostCommentsInput | PostCommentReactionsUpdateManyWithWhereWithoutPostCommentsInput[]
-    deleteMany?: PostCommentReactionsScalarWhereInput | PostCommentReactionsScalarWhereInput[]
-  }
-
-  export type PostCommentReactionsUncheckedUpdateManyWithoutPostCommentsNestedInput = {
-    create?: XOR<PostCommentReactionsCreateWithoutPostCommentsInput, PostCommentReactionsUncheckedCreateWithoutPostCommentsInput> | PostCommentReactionsCreateWithoutPostCommentsInput[] | PostCommentReactionsUncheckedCreateWithoutPostCommentsInput[]
-    connectOrCreate?: PostCommentReactionsCreateOrConnectWithoutPostCommentsInput | PostCommentReactionsCreateOrConnectWithoutPostCommentsInput[]
-    upsert?: PostCommentReactionsUpsertWithWhereUniqueWithoutPostCommentsInput | PostCommentReactionsUpsertWithWhereUniqueWithoutPostCommentsInput[]
-    createMany?: PostCommentReactionsCreateManyPostCommentsInputEnvelope
-    set?: PostCommentReactionsWhereUniqueInput | PostCommentReactionsWhereUniqueInput[]
-    disconnect?: PostCommentReactionsWhereUniqueInput | PostCommentReactionsWhereUniqueInput[]
-    delete?: PostCommentReactionsWhereUniqueInput | PostCommentReactionsWhereUniqueInput[]
-    connect?: PostCommentReactionsWhereUniqueInput | PostCommentReactionsWhereUniqueInput[]
-    update?: PostCommentReactionsUpdateWithWhereUniqueWithoutPostCommentsInput | PostCommentReactionsUpdateWithWhereUniqueWithoutPostCommentsInput[]
-    updateMany?: PostCommentReactionsUpdateManyWithWhereWithoutPostCommentsInput | PostCommentReactionsUpdateManyWithWhereWithoutPostCommentsInput[]
-    deleteMany?: PostCommentReactionsScalarWhereInput | PostCommentReactionsScalarWhereInput[]
-  }
-
-  export type PostCommentsCreateNestedOneWithoutPostCommentReactionsInput = {
-    create?: XOR<PostCommentsCreateWithoutPostCommentReactionsInput, PostCommentsUncheckedCreateWithoutPostCommentReactionsInput>
-    connectOrCreate?: PostCommentsCreateOrConnectWithoutPostCommentReactionsInput
-    connect?: PostCommentsWhereUniqueInput
-  }
-
-  export type PostCommentsUpdateOneRequiredWithoutPostCommentReactionsNestedInput = {
-    create?: XOR<PostCommentsCreateWithoutPostCommentReactionsInput, PostCommentsUncheckedCreateWithoutPostCommentReactionsInput>
-    connectOrCreate?: PostCommentsCreateOrConnectWithoutPostCommentReactionsInput
-    upsert?: PostCommentsUpsertWithoutPostCommentReactionsInput
-    connect?: PostCommentsWhereUniqueInput
-    update?: XOR<XOR<PostCommentsUpdateToOneWithWhereWithoutPostCommentReactionsInput, PostCommentsUpdateWithoutPostCommentReactionsInput>, PostCommentsUncheckedUpdateWithoutPostCommentReactionsInput>
-  }
-
-  export type ChannelCreateNestedOneWithoutPlaylistInput = {
-    create?: XOR<ChannelCreateWithoutPlaylistInput, ChannelUncheckedCreateWithoutPlaylistInput>
-    connectOrCreate?: ChannelCreateOrConnectWithoutPlaylistInput
-    connect?: ChannelWhereUniqueInput
-  }
-
-  export type PlaylistVideoCreateNestedManyWithoutPlaylistInput = {
-    create?: XOR<PlaylistVideoCreateWithoutPlaylistInput, PlaylistVideoUncheckedCreateWithoutPlaylistInput> | PlaylistVideoCreateWithoutPlaylistInput[] | PlaylistVideoUncheckedCreateWithoutPlaylistInput[]
-    connectOrCreate?: PlaylistVideoCreateOrConnectWithoutPlaylistInput | PlaylistVideoCreateOrConnectWithoutPlaylistInput[]
-    createMany?: PlaylistVideoCreateManyPlaylistInputEnvelope
-    connect?: PlaylistVideoWhereUniqueInput | PlaylistVideoWhereUniqueInput[]
-  }
-
-  export type PlaylistVideoUncheckedCreateNestedManyWithoutPlaylistInput = {
-    create?: XOR<PlaylistVideoCreateWithoutPlaylistInput, PlaylistVideoUncheckedCreateWithoutPlaylistInput> | PlaylistVideoCreateWithoutPlaylistInput[] | PlaylistVideoUncheckedCreateWithoutPlaylistInput[]
-    connectOrCreate?: PlaylistVideoCreateOrConnectWithoutPlaylistInput | PlaylistVideoCreateOrConnectWithoutPlaylistInput[]
-    createMany?: PlaylistVideoCreateManyPlaylistInputEnvelope
-    connect?: PlaylistVideoWhereUniqueInput | PlaylistVideoWhereUniqueInput[]
-  }
-
-  export type ChannelUpdateOneRequiredWithoutPlaylistNestedInput = {
-    create?: XOR<ChannelCreateWithoutPlaylistInput, ChannelUncheckedCreateWithoutPlaylistInput>
-    connectOrCreate?: ChannelCreateOrConnectWithoutPlaylistInput
-    upsert?: ChannelUpsertWithoutPlaylistInput
-    connect?: ChannelWhereUniqueInput
-    update?: XOR<XOR<ChannelUpdateToOneWithWhereWithoutPlaylistInput, ChannelUpdateWithoutPlaylistInput>, ChannelUncheckedUpdateWithoutPlaylistInput>
-  }
-
-  export type PlaylistVideoUpdateManyWithoutPlaylistNestedInput = {
-    create?: XOR<PlaylistVideoCreateWithoutPlaylistInput, PlaylistVideoUncheckedCreateWithoutPlaylistInput> | PlaylistVideoCreateWithoutPlaylistInput[] | PlaylistVideoUncheckedCreateWithoutPlaylistInput[]
-    connectOrCreate?: PlaylistVideoCreateOrConnectWithoutPlaylistInput | PlaylistVideoCreateOrConnectWithoutPlaylistInput[]
-    upsert?: PlaylistVideoUpsertWithWhereUniqueWithoutPlaylistInput | PlaylistVideoUpsertWithWhereUniqueWithoutPlaylistInput[]
-    createMany?: PlaylistVideoCreateManyPlaylistInputEnvelope
-    set?: PlaylistVideoWhereUniqueInput | PlaylistVideoWhereUniqueInput[]
-    disconnect?: PlaylistVideoWhereUniqueInput | PlaylistVideoWhereUniqueInput[]
-    delete?: PlaylistVideoWhereUniqueInput | PlaylistVideoWhereUniqueInput[]
-    connect?: PlaylistVideoWhereUniqueInput | PlaylistVideoWhereUniqueInput[]
-    update?: PlaylistVideoUpdateWithWhereUniqueWithoutPlaylistInput | PlaylistVideoUpdateWithWhereUniqueWithoutPlaylistInput[]
-    updateMany?: PlaylistVideoUpdateManyWithWhereWithoutPlaylistInput | PlaylistVideoUpdateManyWithWhereWithoutPlaylistInput[]
-    deleteMany?: PlaylistVideoScalarWhereInput | PlaylistVideoScalarWhereInput[]
-  }
-
-  export type PlaylistVideoUncheckedUpdateManyWithoutPlaylistNestedInput = {
-    create?: XOR<PlaylistVideoCreateWithoutPlaylistInput, PlaylistVideoUncheckedCreateWithoutPlaylistInput> | PlaylistVideoCreateWithoutPlaylistInput[] | PlaylistVideoUncheckedCreateWithoutPlaylistInput[]
-    connectOrCreate?: PlaylistVideoCreateOrConnectWithoutPlaylistInput | PlaylistVideoCreateOrConnectWithoutPlaylistInput[]
-    upsert?: PlaylistVideoUpsertWithWhereUniqueWithoutPlaylistInput | PlaylistVideoUpsertWithWhereUniqueWithoutPlaylistInput[]
-    createMany?: PlaylistVideoCreateManyPlaylistInputEnvelope
-    set?: PlaylistVideoWhereUniqueInput | PlaylistVideoWhereUniqueInput[]
-    disconnect?: PlaylistVideoWhereUniqueInput | PlaylistVideoWhereUniqueInput[]
-    delete?: PlaylistVideoWhereUniqueInput | PlaylistVideoWhereUniqueInput[]
-    connect?: PlaylistVideoWhereUniqueInput | PlaylistVideoWhereUniqueInput[]
-    update?: PlaylistVideoUpdateWithWhereUniqueWithoutPlaylistInput | PlaylistVideoUpdateWithWhereUniqueWithoutPlaylistInput[]
-    updateMany?: PlaylistVideoUpdateManyWithWhereWithoutPlaylistInput | PlaylistVideoUpdateManyWithWhereWithoutPlaylistInput[]
-    deleteMany?: PlaylistVideoScalarWhereInput | PlaylistVideoScalarWhereInput[]
-  }
-
-  export type PlaylistCreateNestedOneWithoutPlaylistVideoInput = {
-    create?: XOR<PlaylistCreateWithoutPlaylistVideoInput, PlaylistUncheckedCreateWithoutPlaylistVideoInput>
-    connectOrCreate?: PlaylistCreateOrConnectWithoutPlaylistVideoInput
-    connect?: PlaylistWhereUniqueInput
-  }
-
-  export type PlaylistUpdateOneRequiredWithoutPlaylistVideoNestedInput = {
-    create?: XOR<PlaylistCreateWithoutPlaylistVideoInput, PlaylistUncheckedCreateWithoutPlaylistVideoInput>
-    connectOrCreate?: PlaylistCreateOrConnectWithoutPlaylistVideoInput
-    upsert?: PlaylistUpsertWithoutPlaylistVideoInput
-    connect?: PlaylistWhereUniqueInput
-    update?: XOR<XOR<PlaylistUpdateToOneWithWhereWithoutPlaylistVideoInput, PlaylistUpdateWithoutPlaylistVideoInput>, PlaylistUncheckedUpdateWithoutPlaylistVideoInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -14032,8 +9669,7 @@ export namespace Prisma {
 
   export type PostCreateWithoutChannelInput = {
     id?: string
-    title: string
-    description: string
+    text: string
     createdAt?: Date | string
     updatedAt?: Date | string
     postLikes?: PostLikesCreateNestedManyWithoutPostInput
@@ -14043,8 +9679,7 @@ export namespace Prisma {
 
   export type PostUncheckedCreateWithoutChannelInput = {
     id?: string
-    title: string
-    description: string
+    text: string
     createdAt?: Date | string
     updatedAt?: Date | string
     postLikes?: PostLikesUncheckedCreateNestedManyWithoutPostInput
@@ -14088,34 +9723,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type PlaylistCreateWithoutChannelInput = {
-    id?: string
-    title: string
-    description: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    playlistVideo?: PlaylistVideoCreateNestedManyWithoutPlaylistInput
-  }
-
-  export type PlaylistUncheckedCreateWithoutChannelInput = {
-    id?: string
-    title: string
-    description: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    playlistVideo?: PlaylistVideoUncheckedCreateNestedManyWithoutPlaylistInput
-  }
-
-  export type PlaylistCreateOrConnectWithoutChannelInput = {
-    where: PlaylistWhereUniqueInput
-    create: XOR<PlaylistCreateWithoutChannelInput, PlaylistUncheckedCreateWithoutChannelInput>
-  }
-
-  export type PlaylistCreateManyChannelInputEnvelope = {
-    data: PlaylistCreateManyChannelInput | PlaylistCreateManyChannelInput[]
-    skipDuplicates?: boolean
-  }
-
   export type PostUpsertWithWhereUniqueWithoutChannelInput = {
     where: PostWhereUniqueInput
     update: XOR<PostUpdateWithoutChannelInput, PostUncheckedUpdateWithoutChannelInput>
@@ -14137,8 +9744,7 @@ export namespace Prisma {
     OR?: PostScalarWhereInput[]
     NOT?: PostScalarWhereInput | PostScalarWhereInput[]
     id?: StringFilter<"Post"> | string
-    title?: StringFilter<"Post"> | string
-    description?: StringFilter<"Post"> | string
+    text?: StringFilter<"Post"> | string
     channelId?: StringFilter<"Post"> | string
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
@@ -14172,34 +9778,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Subscriptions"> | Date | string
   }
 
-  export type PlaylistUpsertWithWhereUniqueWithoutChannelInput = {
-    where: PlaylistWhereUniqueInput
-    update: XOR<PlaylistUpdateWithoutChannelInput, PlaylistUncheckedUpdateWithoutChannelInput>
-    create: XOR<PlaylistCreateWithoutChannelInput, PlaylistUncheckedCreateWithoutChannelInput>
-  }
-
-  export type PlaylistUpdateWithWhereUniqueWithoutChannelInput = {
-    where: PlaylistWhereUniqueInput
-    data: XOR<PlaylistUpdateWithoutChannelInput, PlaylistUncheckedUpdateWithoutChannelInput>
-  }
-
-  export type PlaylistUpdateManyWithWhereWithoutChannelInput = {
-    where: PlaylistScalarWhereInput
-    data: XOR<PlaylistUpdateManyMutationInput, PlaylistUncheckedUpdateManyWithoutChannelInput>
-  }
-
-  export type PlaylistScalarWhereInput = {
-    AND?: PlaylistScalarWhereInput | PlaylistScalarWhereInput[]
-    OR?: PlaylistScalarWhereInput[]
-    NOT?: PlaylistScalarWhereInput | PlaylistScalarWhereInput[]
-    id?: StringFilter<"Playlist"> | string
-    title?: StringFilter<"Playlist"> | string
-    description?: StringFilter<"Playlist"> | string
-    channelId?: StringFilter<"Playlist"> | string
-    createdAt?: DateTimeFilter<"Playlist"> | Date | string
-    updatedAt?: DateTimeFilter<"Playlist"> | Date | string
-  }
-
   export type ChannelCreateWithoutSubscriptionsInput = {
     id?: string
     userId: string
@@ -14211,7 +9789,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     posts?: PostCreateNestedManyWithoutChannelInput
-    playlist?: PlaylistCreateNestedManyWithoutChannelInput
   }
 
   export type ChannelUncheckedCreateWithoutSubscriptionsInput = {
@@ -14225,7 +9802,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     posts?: PostUncheckedCreateNestedManyWithoutChannelInput
-    playlist?: PlaylistUncheckedCreateNestedManyWithoutChannelInput
   }
 
   export type ChannelCreateOrConnectWithoutSubscriptionsInput = {
@@ -14255,7 +9831,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUpdateManyWithoutChannelNestedInput
-    playlist?: PlaylistUpdateManyWithoutChannelNestedInput
   }
 
   export type ChannelUncheckedUpdateWithoutSubscriptionsInput = {
@@ -14269,7 +9844,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     posts?: PostUncheckedUpdateManyWithoutChannelNestedInput
-    playlist?: PlaylistUncheckedUpdateManyWithoutChannelNestedInput
   }
 
   export type PostLikesCreateWithoutPostInput = {
@@ -14304,7 +9878,6 @@ export namespace Prisma {
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    postCommentReactions?: PostCommentReactionsCreateNestedManyWithoutPostCommentsInput
   }
 
   export type PostCommentsUncheckedCreateWithoutPostInput = {
@@ -14313,7 +9886,6 @@ export namespace Prisma {
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    postCommentReactions?: PostCommentReactionsUncheckedCreateNestedManyWithoutPostCommentsInput
   }
 
   export type PostCommentsCreateOrConnectWithoutPostInput = {
@@ -14361,7 +9933,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     subscriptions?: SubscriptionsCreateNestedManyWithoutChannelInput
-    playlist?: PlaylistCreateNestedManyWithoutChannelInput
   }
 
   export type ChannelUncheckedCreateWithoutPostsInput = {
@@ -14375,7 +9946,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     subscriptions?: SubscriptionsUncheckedCreateNestedManyWithoutChannelInput
-    playlist?: PlaylistUncheckedCreateNestedManyWithoutChannelInput
   }
 
   export type ChannelCreateOrConnectWithoutPostsInput = {
@@ -14488,7 +10058,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptions?: SubscriptionsUpdateManyWithoutChannelNestedInput
-    playlist?: PlaylistUpdateManyWithoutChannelNestedInput
   }
 
   export type ChannelUncheckedUpdateWithoutPostsInput = {
@@ -14502,13 +10071,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptions?: SubscriptionsUncheckedUpdateManyWithoutChannelNestedInput
-    playlist?: PlaylistUncheckedUpdateManyWithoutChannelNestedInput
   }
 
   export type PostCreateWithoutPostMediasInput = {
     id?: string
-    title: string
-    description: string
+    text: string
     createdAt?: Date | string
     updatedAt?: Date | string
     postLikes?: PostLikesCreateNestedManyWithoutPostInput
@@ -14518,8 +10085,7 @@ export namespace Prisma {
 
   export type PostUncheckedCreateWithoutPostMediasInput = {
     id?: string
-    title: string
-    description: string
+    text: string
     channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14545,8 +10111,7 @@ export namespace Prisma {
 
   export type PostUpdateWithoutPostMediasInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     postLikes?: PostLikesUpdateManyWithoutPostNestedInput
@@ -14556,8 +10121,7 @@ export namespace Prisma {
 
   export type PostUncheckedUpdateWithoutPostMediasInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14567,8 +10131,7 @@ export namespace Prisma {
 
   export type PostCreateWithoutPostLikesInput = {
     id?: string
-    title: string
-    description: string
+    text: string
     createdAt?: Date | string
     updatedAt?: Date | string
     postComments?: PostCommentsCreateNestedManyWithoutPostInput
@@ -14578,8 +10141,7 @@ export namespace Prisma {
 
   export type PostUncheckedCreateWithoutPostLikesInput = {
     id?: string
-    title: string
-    description: string
+    text: string
     channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14605,8 +10167,7 @@ export namespace Prisma {
 
   export type PostUpdateWithoutPostLikesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     postComments?: PostCommentsUpdateManyWithoutPostNestedInput
@@ -14616,8 +10177,7 @@ export namespace Prisma {
 
   export type PostUncheckedUpdateWithoutPostLikesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14627,8 +10187,7 @@ export namespace Prisma {
 
   export type PostCreateWithoutPostCommentsInput = {
     id?: string
-    title: string
-    description: string
+    text: string
     createdAt?: Date | string
     updatedAt?: Date | string
     postLikes?: PostLikesCreateNestedManyWithoutPostInput
@@ -14638,8 +10197,7 @@ export namespace Prisma {
 
   export type PostUncheckedCreateWithoutPostCommentsInput = {
     id?: string
-    title: string
-    description: string
+    text: string
     channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14650,32 +10208,6 @@ export namespace Prisma {
   export type PostCreateOrConnectWithoutPostCommentsInput = {
     where: PostWhereUniqueInput
     create: XOR<PostCreateWithoutPostCommentsInput, PostUncheckedCreateWithoutPostCommentsInput>
-  }
-
-  export type PostCommentReactionsCreateWithoutPostCommentsInput = {
-    id?: string
-    parentId: string
-    reaction: $Enums.ReactionValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PostCommentReactionsUncheckedCreateWithoutPostCommentsInput = {
-    id?: string
-    parentId: string
-    reaction: $Enums.ReactionValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PostCommentReactionsCreateOrConnectWithoutPostCommentsInput = {
-    where: PostCommentReactionsWhereUniqueInput
-    create: XOR<PostCommentReactionsCreateWithoutPostCommentsInput, PostCommentReactionsUncheckedCreateWithoutPostCommentsInput>
-  }
-
-  export type PostCommentReactionsCreateManyPostCommentsInputEnvelope = {
-    data: PostCommentReactionsCreateManyPostCommentsInput | PostCommentReactionsCreateManyPostCommentsInput[]
-    skipDuplicates?: boolean
   }
 
   export type PostUpsertWithoutPostCommentsInput = {
@@ -14691,8 +10223,7 @@ export namespace Prisma {
 
   export type PostUpdateWithoutPostCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     postLikes?: PostLikesUpdateManyWithoutPostNestedInput
@@ -14702,8 +10233,7 @@ export namespace Prisma {
 
   export type PostUncheckedUpdateWithoutPostCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14711,265 +10241,9 @@ export namespace Prisma {
     postMedias?: PostMediaUncheckedUpdateManyWithoutPostNestedInput
   }
 
-  export type PostCommentReactionsUpsertWithWhereUniqueWithoutPostCommentsInput = {
-    where: PostCommentReactionsWhereUniqueInput
-    update: XOR<PostCommentReactionsUpdateWithoutPostCommentsInput, PostCommentReactionsUncheckedUpdateWithoutPostCommentsInput>
-    create: XOR<PostCommentReactionsCreateWithoutPostCommentsInput, PostCommentReactionsUncheckedCreateWithoutPostCommentsInput>
-  }
-
-  export type PostCommentReactionsUpdateWithWhereUniqueWithoutPostCommentsInput = {
-    where: PostCommentReactionsWhereUniqueInput
-    data: XOR<PostCommentReactionsUpdateWithoutPostCommentsInput, PostCommentReactionsUncheckedUpdateWithoutPostCommentsInput>
-  }
-
-  export type PostCommentReactionsUpdateManyWithWhereWithoutPostCommentsInput = {
-    where: PostCommentReactionsScalarWhereInput
-    data: XOR<PostCommentReactionsUpdateManyMutationInput, PostCommentReactionsUncheckedUpdateManyWithoutPostCommentsInput>
-  }
-
-  export type PostCommentReactionsScalarWhereInput = {
-    AND?: PostCommentReactionsScalarWhereInput | PostCommentReactionsScalarWhereInput[]
-    OR?: PostCommentReactionsScalarWhereInput[]
-    NOT?: PostCommentReactionsScalarWhereInput | PostCommentReactionsScalarWhereInput[]
-    id?: StringFilter<"PostCommentReactions"> | string
-    commentId?: StringFilter<"PostCommentReactions"> | string
-    parentId?: StringFilter<"PostCommentReactions"> | string
-    reaction?: EnumReactionValueFilter<"PostCommentReactions"> | $Enums.ReactionValue
-    createdAt?: DateTimeFilter<"PostCommentReactions"> | Date | string
-    updatedAt?: DateTimeFilter<"PostCommentReactions"> | Date | string
-  }
-
-  export type PostCommentsCreateWithoutPostCommentReactionsInput = {
-    id?: string
-    parentId: string
-    text: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    post: PostCreateNestedOneWithoutPostCommentsInput
-  }
-
-  export type PostCommentsUncheckedCreateWithoutPostCommentReactionsInput = {
-    id?: string
-    postId: string
-    parentId: string
-    text: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PostCommentsCreateOrConnectWithoutPostCommentReactionsInput = {
-    where: PostCommentsWhereUniqueInput
-    create: XOR<PostCommentsCreateWithoutPostCommentReactionsInput, PostCommentsUncheckedCreateWithoutPostCommentReactionsInput>
-  }
-
-  export type PostCommentsUpsertWithoutPostCommentReactionsInput = {
-    update: XOR<PostCommentsUpdateWithoutPostCommentReactionsInput, PostCommentsUncheckedUpdateWithoutPostCommentReactionsInput>
-    create: XOR<PostCommentsCreateWithoutPostCommentReactionsInput, PostCommentsUncheckedCreateWithoutPostCommentReactionsInput>
-    where?: PostCommentsWhereInput
-  }
-
-  export type PostCommentsUpdateToOneWithWhereWithoutPostCommentReactionsInput = {
-    where?: PostCommentsWhereInput
-    data: XOR<PostCommentsUpdateWithoutPostCommentReactionsInput, PostCommentsUncheckedUpdateWithoutPostCommentReactionsInput>
-  }
-
-  export type PostCommentsUpdateWithoutPostCommentReactionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    parentId?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    post?: PostUpdateOneRequiredWithoutPostCommentsNestedInput
-  }
-
-  export type PostCommentsUncheckedUpdateWithoutPostCommentReactionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    postId?: StringFieldUpdateOperationsInput | string
-    parentId?: StringFieldUpdateOperationsInput | string
-    text?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ChannelCreateWithoutPlaylistInput = {
-    id?: string
-    userId: string
-    name: string
-    handle: string
-    bio: string
-    profilePicture: string
-    backgroundPicture: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    posts?: PostCreateNestedManyWithoutChannelInput
-    subscriptions?: SubscriptionsCreateNestedManyWithoutChannelInput
-  }
-
-  export type ChannelUncheckedCreateWithoutPlaylistInput = {
-    id?: string
-    userId: string
-    name: string
-    handle: string
-    bio: string
-    profilePicture: string
-    backgroundPicture: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    posts?: PostUncheckedCreateNestedManyWithoutChannelInput
-    subscriptions?: SubscriptionsUncheckedCreateNestedManyWithoutChannelInput
-  }
-
-  export type ChannelCreateOrConnectWithoutPlaylistInput = {
-    where: ChannelWhereUniqueInput
-    create: XOR<ChannelCreateWithoutPlaylistInput, ChannelUncheckedCreateWithoutPlaylistInput>
-  }
-
-  export type PlaylistVideoCreateWithoutPlaylistInput = {
-    id?: string
-    videoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PlaylistVideoUncheckedCreateWithoutPlaylistInput = {
-    id?: string
-    videoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PlaylistVideoCreateOrConnectWithoutPlaylistInput = {
-    where: PlaylistVideoWhereUniqueInput
-    create: XOR<PlaylistVideoCreateWithoutPlaylistInput, PlaylistVideoUncheckedCreateWithoutPlaylistInput>
-  }
-
-  export type PlaylistVideoCreateManyPlaylistInputEnvelope = {
-    data: PlaylistVideoCreateManyPlaylistInput | PlaylistVideoCreateManyPlaylistInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ChannelUpsertWithoutPlaylistInput = {
-    update: XOR<ChannelUpdateWithoutPlaylistInput, ChannelUncheckedUpdateWithoutPlaylistInput>
-    create: XOR<ChannelCreateWithoutPlaylistInput, ChannelUncheckedCreateWithoutPlaylistInput>
-    where?: ChannelWhereInput
-  }
-
-  export type ChannelUpdateToOneWithWhereWithoutPlaylistInput = {
-    where?: ChannelWhereInput
-    data: XOR<ChannelUpdateWithoutPlaylistInput, ChannelUncheckedUpdateWithoutPlaylistInput>
-  }
-
-  export type ChannelUpdateWithoutPlaylistInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    handle?: StringFieldUpdateOperationsInput | string
-    bio?: StringFieldUpdateOperationsInput | string
-    profilePicture?: StringFieldUpdateOperationsInput | string
-    backgroundPicture?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    posts?: PostUpdateManyWithoutChannelNestedInput
-    subscriptions?: SubscriptionsUpdateManyWithoutChannelNestedInput
-  }
-
-  export type ChannelUncheckedUpdateWithoutPlaylistInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    handle?: StringFieldUpdateOperationsInput | string
-    bio?: StringFieldUpdateOperationsInput | string
-    profilePicture?: StringFieldUpdateOperationsInput | string
-    backgroundPicture?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    posts?: PostUncheckedUpdateManyWithoutChannelNestedInput
-    subscriptions?: SubscriptionsUncheckedUpdateManyWithoutChannelNestedInput
-  }
-
-  export type PlaylistVideoUpsertWithWhereUniqueWithoutPlaylistInput = {
-    where: PlaylistVideoWhereUniqueInput
-    update: XOR<PlaylistVideoUpdateWithoutPlaylistInput, PlaylistVideoUncheckedUpdateWithoutPlaylistInput>
-    create: XOR<PlaylistVideoCreateWithoutPlaylistInput, PlaylistVideoUncheckedCreateWithoutPlaylistInput>
-  }
-
-  export type PlaylistVideoUpdateWithWhereUniqueWithoutPlaylistInput = {
-    where: PlaylistVideoWhereUniqueInput
-    data: XOR<PlaylistVideoUpdateWithoutPlaylistInput, PlaylistVideoUncheckedUpdateWithoutPlaylistInput>
-  }
-
-  export type PlaylistVideoUpdateManyWithWhereWithoutPlaylistInput = {
-    where: PlaylistVideoScalarWhereInput
-    data: XOR<PlaylistVideoUpdateManyMutationInput, PlaylistVideoUncheckedUpdateManyWithoutPlaylistInput>
-  }
-
-  export type PlaylistVideoScalarWhereInput = {
-    AND?: PlaylistVideoScalarWhereInput | PlaylistVideoScalarWhereInput[]
-    OR?: PlaylistVideoScalarWhereInput[]
-    NOT?: PlaylistVideoScalarWhereInput | PlaylistVideoScalarWhereInput[]
-    id?: StringFilter<"PlaylistVideo"> | string
-    playlistId?: StringFilter<"PlaylistVideo"> | string
-    videoId?: StringFilter<"PlaylistVideo"> | string
-    createdAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
-    updatedAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
-  }
-
-  export type PlaylistCreateWithoutPlaylistVideoInput = {
-    id?: string
-    title: string
-    description: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    channel: ChannelCreateNestedOneWithoutPlaylistInput
-  }
-
-  export type PlaylistUncheckedCreateWithoutPlaylistVideoInput = {
-    id?: string
-    title: string
-    description: string
-    channelId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PlaylistCreateOrConnectWithoutPlaylistVideoInput = {
-    where: PlaylistWhereUniqueInput
-    create: XOR<PlaylistCreateWithoutPlaylistVideoInput, PlaylistUncheckedCreateWithoutPlaylistVideoInput>
-  }
-
-  export type PlaylistUpsertWithoutPlaylistVideoInput = {
-    update: XOR<PlaylistUpdateWithoutPlaylistVideoInput, PlaylistUncheckedUpdateWithoutPlaylistVideoInput>
-    create: XOR<PlaylistCreateWithoutPlaylistVideoInput, PlaylistUncheckedCreateWithoutPlaylistVideoInput>
-    where?: PlaylistWhereInput
-  }
-
-  export type PlaylistUpdateToOneWithWhereWithoutPlaylistVideoInput = {
-    where?: PlaylistWhereInput
-    data: XOR<PlaylistUpdateWithoutPlaylistVideoInput, PlaylistUncheckedUpdateWithoutPlaylistVideoInput>
-  }
-
-  export type PlaylistUpdateWithoutPlaylistVideoInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    channel?: ChannelUpdateOneRequiredWithoutPlaylistNestedInput
-  }
-
-  export type PlaylistUncheckedUpdateWithoutPlaylistVideoInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    channelId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type PostCreateManyChannelInput = {
     id?: string
-    title: string
-    description: string
+    text: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14982,18 +10256,9 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PlaylistCreateManyChannelInput = {
-    id?: string
-    title: string
-    description: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
   export type PostUpdateWithoutChannelInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     postLikes?: PostLikesUpdateManyWithoutPostNestedInput
@@ -15003,8 +10268,7 @@ export namespace Prisma {
 
   export type PostUncheckedUpdateWithoutChannelInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     postLikes?: PostLikesUncheckedUpdateManyWithoutPostNestedInput
@@ -15014,8 +10278,7 @@ export namespace Prisma {
 
   export type PostUncheckedUpdateManyWithoutChannelInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15040,32 +10303,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     subscribeType?: EnumSubscribeTypeFieldUpdateOperationsInput | $Enums.SubscribeType
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PlaylistUpdateWithoutChannelInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    playlistVideo?: PlaylistVideoUpdateManyWithoutPlaylistNestedInput
-  }
-
-  export type PlaylistUncheckedUpdateWithoutChannelInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    playlistVideo?: PlaylistVideoUncheckedUpdateManyWithoutPlaylistNestedInput
-  }
-
-  export type PlaylistUncheckedUpdateManyWithoutChannelInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15123,7 +10360,6 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    postCommentReactions?: PostCommentReactionsUpdateManyWithoutPostCommentsNestedInput
   }
 
   export type PostCommentsUncheckedUpdateWithoutPostInput = {
@@ -15132,7 +10368,6 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    postCommentReactions?: PostCommentReactionsUncheckedUpdateManyWithoutPostCommentsNestedInput
   }
 
   export type PostCommentsUncheckedUpdateManyWithoutPostInput = {
@@ -15160,66 +10395,6 @@ export namespace Prisma {
   export type PostMediaUncheckedUpdateManyWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostCommentReactionsCreateManyPostCommentsInput = {
-    id?: string
-    parentId: string
-    reaction: $Enums.ReactionValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PostCommentReactionsUpdateWithoutPostCommentsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    parentId?: StringFieldUpdateOperationsInput | string
-    reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostCommentReactionsUncheckedUpdateWithoutPostCommentsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    parentId?: StringFieldUpdateOperationsInput | string
-    reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostCommentReactionsUncheckedUpdateManyWithoutPostCommentsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    parentId?: StringFieldUpdateOperationsInput | string
-    reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PlaylistVideoCreateManyPlaylistInput = {
-    id?: string
-    videoId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PlaylistVideoUpdateWithoutPlaylistInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    videoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PlaylistVideoUncheckedUpdateWithoutPlaylistInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    videoId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PlaylistVideoUncheckedUpdateManyWithoutPlaylistInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    videoId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

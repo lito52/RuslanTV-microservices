@@ -1,11 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { CreateChannelDto } from './dto/create-channel.dto';
 import { lastValueFrom } from 'rxjs';
 import { RpcException } from '@nestjs/microservices';
 import { AuthServiceGrpcClientService } from 'src/grpc/grpc-services/auth-service-grpc-client.service';
-import { UpdateChannelDto } from './dto/update-channel.dto';
 import { DatabaseService } from 'src/prisma/database.service';
+import { CreateChannelDto } from './dto/create-channel.dto';
+import { Channel, Subscription } from 'src/interfaces/channel_service';
+import { UpdateChannelDto } from './dto/update-channel.dto';
 import { SubscribeType } from 'prisma/generated';
+import { mapChannel, mapSubscription } from 'src/libs/common/mapper/channel.mapper';
 
 @Injectable()
 export class ChannelService {
@@ -14,16 +16,13 @@ export class ChannelService {
         private readonly authService: AuthServiceGrpcClientService
     ) { }
 
-    public async createChannel(dto: CreateChannelDto) {
+    public async createChannel(dto: CreateChannelDto): Promise<Channel> {
         const existingUser = await lastValueFrom(this.authService.findUserById({ id: dto.userId }))
 
         const channel = await this.prismaService.channel.findUnique({
             where: {
                 userId: dto.userId
             },
-            include: {
-                subscriptions: true,
-            }
         })
 
         if (channel) {
@@ -41,7 +40,7 @@ export class ChannelService {
             }
         })
 
-        return newChannel
+        return mapChannel(newChannel)
     }
 
     public async deleteChannel(userId: string) {
@@ -58,7 +57,7 @@ export class ChannelService {
         }
     }
 
-    public async updateChannel(userId: string, dto: UpdateChannelDto) {
+    public async updateChannel(userId: string, dto: UpdateChannelDto): Promise<Channel> {
         const existingChannel = await this.findChannelByUserId(userId)
 
         if (!existingChannel) {
@@ -76,14 +75,14 @@ export class ChannelService {
             }
         })
 
-        return updatedChannel
+        return mapChannel(updatedChannel)
     }
 
-    public async updateChannelPicture(userId: string, profilePicture: string, backgroundPicture: string) {
+    public async updateChannelPicture(userId: string, profilePicture: string, backgroundPicture: string): Promise<Channel> {
         const existingChannel = await this.findChannelByUserId(userId)
 
         if (!existingChannel) {
-            throw new RpcException('Chanel not exist')
+            throw new RpcException('Channel not exist')
         }
 
         const updatedChannel = await this.prismaService.channel.update({
@@ -96,10 +95,10 @@ export class ChannelService {
             }
         })
 
-        return updatedChannel
+        return mapChannel(updatedChannel)
     }
 
-    public async findChannelById(id: string) {
+    public async findChannelById(id: string): Promise<Channel> {
         const channel = await this.prismaService.channel.findUnique({
             where: {
                 id
@@ -110,10 +109,11 @@ export class ChannelService {
             throw new RpcException(`Channel by id not found`)
         }
 
-        return channel
+        return mapChannel(channel)
     }
 
-    public async findChannelByUserId(userId: string) {
+    public async findChannelByUserId(userId: string): Promise<Channel> {
+
         const channel = await this.prismaService.channel.findUnique({
             where: {
                 userId: userId
@@ -127,10 +127,10 @@ export class ChannelService {
             throw new RpcException('Channel not found')
         }
 
-        return channel
+        return mapChannel(channel)
     }
 
-    public async findChannelByChannelId(channelId: string) {
+    public async findChannelByChannelId(channelId: string): Promise<Channel> {
         const channel = await this.prismaService.channel.findUnique({
             where: {
                 id: channelId
@@ -144,12 +144,25 @@ export class ChannelService {
             throw new RpcException(`Channel by id not found`)
         }
 
-        return channel
+        return mapChannel(channel)
     }
 
-    public async subscribe(channelId: string, userId: string) {
+    public async subscribe(channelId: string, userId: string): Promise<Subscription> {
         const existingChannel = await this.findChannelById(channelId)
         const existingUser = await lastValueFrom(this.authService.findUserById({ id: userId }))
+
+        const existingSubscribe = await this.prismaService.subscriptions.findUnique({
+            where: {
+                userId_channelId: {
+                    userId,
+                    channelId
+                }
+            }
+        })
+
+        if (existingSubscribe) {
+            throw new RpcException('User already subscribed')
+        }
 
         const newSubscribtion = await this.prismaService.subscriptions.create({
             data: {
@@ -158,10 +171,10 @@ export class ChannelService {
             }
         })
 
-        return newSubscribtion
+        return mapSubscription(newSubscribtion)
     }
 
-    public async subsrcribeWithNotif(channelId: string, userId: string) {
+    public async subsrcribeWithNotif(channelId: string, userId: string): Promise<Subscription> {
         const existingChannel = await this.findChannelById(channelId)
         const existingUser = await lastValueFrom(this.authService.findUserById({ id: userId }))
 
@@ -196,7 +209,7 @@ export class ChannelService {
             }
         })
 
-        return subWithNotif
+        return mapSubscription(subWithNotif)
     }
 
     public async unsubscribe(channelId: string, userId: string) {

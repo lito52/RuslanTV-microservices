@@ -7,35 +7,36 @@ service PostService {
     rpc AddPostMedia(AddPostMediaRequest) returns (Media);
     rpc GetPostById(GetPostByIdRequest) returns (GetPostByIdResponse);
     rpc GetAllPosts(GetAllPostsRequest) returns (GetAllPostsResponse);
-    rpc RatePost(RatePostRequest) returns (Rate);
+    rpc RatePost(LikePostRequest) returns (Like);
     rpc CommentPost(CommentPostRequest) returns (Comment);
 }
 
 message Post {
     string id = 1;
-    string title = 2;
-    string description = 3;
-    string channelId = 4;
+    string text = 2;
+    string channelId = 3;
+    string createdAt = 4;
+    string updatedAt = 5;
+    repeated Media postMedias = 6;
+    repeated Comment postComments = 7;
+    repeated Like postLikes = 8;
 }
 
 message Media {
     string id = 1;
     string url = 2;
     string postId = 3;
+    string createdAt = 4;
+    string updatedAt = 5;
 }
 
-message Rate {
+message Like {
     string id = 1;
     string postId = 2;
     string parentId = 3;
     string reaction = 4;
-}
-
-message CommentRate {
-    string id = 1;
-    string commentId = 2;
-    string parentId = 3;
-    string reaction = 4;
+    string createdAt = 5;
+    string updatedAt = 6;
 }
 
 message Comment {
@@ -43,6 +44,8 @@ message Comment {
     string postId = 2;
     string parentId = 3;
     string text = 4;
+    string createdAt = 5;
+    string updatedAt = 6;
 }
 
 message Boolean {
@@ -50,9 +53,8 @@ message Boolean {
 }
 
 message CreatePostRequest {
-    string title = 1;
-    string description = 2;
-    string channelId = 4;
+    string text = 1;
+    string channelId = 2;
 }
 
 message AddPostMediaRequest{
@@ -71,12 +73,11 @@ message GetPostByIdRequest {
 
 message GetPostByIdResponse {
     string id = 1;
-    string title = 2;
-    string description = 3;
-    string channelId = 4;
-    repeated Comment postComments = 5;
-    repeated Rate postLikes = 6;
-    repeated Media postMedias = 7;
+    string text = 2;
+    string channelId = 3;
+    repeated Comment postComments = 4;
+    repeated Like postLikes = 5;
+    repeated Media postMedias = 6;
 }
 
 message GetAllPostsRequest {
@@ -87,7 +88,7 @@ message GetAllPostsResponse {
     repeated Post posts = 1;
 }
 
-message RatePostRequest {
+message LikePostRequest {
     string postId = 1;
     string parentId = 2;
     string rate = 3;

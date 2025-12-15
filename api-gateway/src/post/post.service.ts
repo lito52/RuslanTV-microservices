@@ -15,7 +15,6 @@ export class PostService {
 
     public async createPost(dto: CreatePostDto) {
         try {
-
             const post = await lastValueFrom(this.postService.createPost({ title: dto.title, description: dto.description, channelId: dto.channelId }))
             return post
         } catch (error) {

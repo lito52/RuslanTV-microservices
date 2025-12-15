@@ -1,5 +1,5 @@
 import { PostService } from './post.service';
-import { AddPostMediaRequest, Boolean, Comment, CommentPostRequest, CreatePostRequest, DeletePostRequest, GetAllPostsRequest, GetAllPostsResponse, GetPostByIdRequest, GetPostByIdResponse, Media, Post, PostServiceController, Rate, RatePostRequest } from 'src/interfaces/post_service';
+import { AddPostMediaRequest, Comment, CommentPostRequest, CreatePostRequest, GetAllPostsRequest, GetAllPostsResponse, GetPostByIdRequest, GetPostByIdResponse, Like, LikePostRequest, Media, Post, PostServiceController, } from 'src/interfaces/post_service';
 import { GrpcMethod, GrpcService } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
 
@@ -19,7 +19,7 @@ export class PostController implements PostServiceController {
 
   @GrpcMethod('PostService', 'CreatePost')
   createPost(request: CreatePostRequest): Promise<Post> | Observable<Post> | Post {
-    return this.postService.createPost({ title: request.title, description: request.description, }, request.channelId)
+    return this.postService.createPost({ text: request.text, channelId: request.channelId })
   }
 
   @GrpcMethod('PostService', 'GetAllPosts')
@@ -28,7 +28,7 @@ export class PostController implements PostServiceController {
   }
 
   @GrpcMethod('PostService', 'RatePost')
-  ratePost(request: RatePostRequest): Promise<Rate> | Observable<Rate> | Rate {
+  ratePost(request: LikePostRequest): Promise<Like> | Observable<Like> | Like {
     return this.postService.ratePost(request.postId, request.parentId, request.rate)
   }
 

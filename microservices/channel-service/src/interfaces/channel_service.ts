@@ -75,6 +75,7 @@ export interface Channel {
   bio: string;
   profilePicture: string;
   backgroundPicture: string;
+  subscriptions: Subscription[];
 }
 
 export const CHANNEL_SERVICE_PACKAGE_NAME = "channel_service";

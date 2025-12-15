@@ -143,8 +143,7 @@ exports.Prisma.SubscriptionsScalarFieldEnum = {
 
 exports.Prisma.PostScalarFieldEnum = {
   id: 'id',
-  title: 'title',
-  description: 'description',
+  text: 'text',
   channelId: 'channelId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -176,32 +175,6 @@ exports.Prisma.PostCommentsScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.PostCommentReactionsScalarFieldEnum = {
-  id: 'id',
-  commentId: 'commentId',
-  parentId: 'parentId',
-  reaction: 'reaction',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.PlaylistScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  description: 'description',
-  channelId: 'channelId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.PlaylistVideoScalarFieldEnum = {
-  id: 'id',
-  playlistId: 'playlistId',
-  videoId: 'videoId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -227,10 +200,7 @@ exports.Prisma.ModelName = {
   Post: 'Post',
   PostMedia: 'PostMedia',
   PostLikes: 'PostLikes',
-  PostComments: 'PostComments',
-  PostCommentReactions: 'PostCommentReactions',
-  Playlist: 'Playlist',
-  PlaylistVideo: 'PlaylistVideo'
+  PostComments: 'PostComments'
 };
 
 /**

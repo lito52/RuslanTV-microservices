@@ -22,7 +22,7 @@ export class ChannelController implements ChannelServiceController {
   updateChannel(request: UpdateChannelRequest): Promise<Channel> | Observable<Channel> | Channel {
     return this.channelService.updateChannel(request.userId, { name: request.name, handle: request.handle, bio: request.bio, })
   }
-  w
+
   @GrpcMethod('ChannelService', 'UpdateChannelPictures')
   updateChannelPictures(request: UpdateChannelPicturesRequest): Promise<Channel> | Observable<Channel> | Channel {
     return this.channelService.updateChannelPicture(request.userId, request.profilePicture, request.backgroundPicture)
