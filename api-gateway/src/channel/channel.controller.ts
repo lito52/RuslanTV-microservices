@@ -30,7 +30,7 @@ export class ChannelController {
 
   @Get('findChannelByUserId/:id')
   @Authorization(UserRole.ADMIN)
-  public async findChannelByUserId(@Param('userId') userId: string) {
+  public async findChannelByUserId(@Param('id') userId: string) {
     return await this.channelService.findChannelByUserId(userId)
   }
 

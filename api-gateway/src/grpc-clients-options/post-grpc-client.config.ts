@@ -10,7 +10,7 @@ export const postServiceGrpcClientOptions: ClientProviderOptions = {
     transport: Transport.GRPC,
     options: {
         package: POST_SERVICE_PACKAGE_NAME,
-        url: process.env.CHANNEL_SERVICE_URL || '0.0.0.0:50052',
-        protoPath: join(__dirname, '../../src/proto/channel_service.proto'),
+        url: process.env.POST_SERVICE_URL || '0.0.0.0:50052',
+        protoPath: join(__dirname, '../../src/proto/post_service.proto'),
     }
 }

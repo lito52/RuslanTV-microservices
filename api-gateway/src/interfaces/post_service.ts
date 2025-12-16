@@ -12,29 +12,30 @@ export const protobufPackage = "post_service";
 
 export interface Post {
   id: string;
-  title: string;
-  description: string;
+  text: string;
   channelId: string;
+  createdAt: string;
+  updatedAt: string;
+  postMedias: Media[];
+  postComments: Comment[];
+  postLikes: Like[];
 }
 
 export interface Media {
   id: string;
   url: string;
   postId: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export interface Rate {
+export interface Like {
   id: string;
   postId: string;
   parentId: string;
   reaction: string;
-}
-
-export interface CommentRate {
-  id: string;
-  commentId: string;
-  parentId: string;
-  reaction: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Comment {
@@ -42,6 +43,8 @@ export interface Comment {
   postId: string;
   parentId: string;
   text: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Boolean {
@@ -49,8 +52,7 @@ export interface Boolean {
 }
 
 export interface CreatePostRequest {
-  title: string;
-  description: string;
+  text: string;
   channelId: string;
 }
 
@@ -70,23 +72,24 @@ export interface GetPostByIdRequest {
 
 export interface GetPostByIdResponse {
   id: string;
-  title: string;
-  description: string;
+  text: string;
   channelId: string;
   postComments: Comment[];
-  postLikes: Rate[];
+  postLikes: Like[];
   postMedias: Media[];
 }
 
 export interface GetAllPostsRequest {
   channelId: string;
+  take: number;
+  skip: number;
 }
 
 export interface GetAllPostsResponse {
   posts: Post[];
 }
 
-export interface RatePostRequest {
+export interface LikePostRequest {
   postId: string;
   parentId: string;
   rate: string;
@@ -109,7 +112,7 @@ export interface PostServiceClient {
 
   getAllPosts(request: GetAllPostsRequest): Observable<GetAllPostsResponse>;
 
-  ratePost(request: RatePostRequest): Observable<Rate>;
+  ratePost(request: LikePostRequest): Observable<Like>;
 
   commentPost(request: CommentPostRequest): Observable<Comment>;
 }
@@ -127,7 +130,7 @@ export interface PostServiceController {
     request: GetAllPostsRequest,
   ): Promise<GetAllPostsResponse> | Observable<GetAllPostsResponse> | GetAllPostsResponse;
 
-  ratePost(request: RatePostRequest): Promise<Rate> | Observable<Rate> | Rate;
+  ratePost(request: LikePostRequest): Promise<Like> | Observable<Like> | Like;
 
   commentPost(request: CommentPostRequest): Promise<Comment> | Observable<Comment> | Comment;
 }

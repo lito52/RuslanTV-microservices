@@ -15,7 +15,7 @@ export class PostService {
 
     public async createPost(dto: CreatePostDto) {
         try {
-            const post = await lastValueFrom(this.postService.createPost({ title: dto.title, description: dto.description, channelId: dto.channelId }))
+            const post = await lastValueFrom(this.postService.createPost({ text: dto.text, channelId: dto.channelId }))
             return post
         } catch (error) {
             return {
@@ -57,9 +57,9 @@ export class PostService {
     }
 
 
-    public async getAllPosts(channelId: string) {
+    public async getAllPosts(channelId: string, take: number = 10, skip: number = 0) {
         try {
-            const posts = await lastValueFrom(this.postService.getAllPosts({ channelId: channelId }))
+            const posts = await lastValueFrom(this.postService.getAllPosts({ channelId: channelId, take: take, skip: skip }))
             return posts
         } catch (error) {
             return {
@@ -74,6 +74,19 @@ export class PostService {
         try {
             const rate = await lastValueFrom(this.postService.ratePost({ postId: postId, parentId: parentId, rate: rating }))
             return rate
+        } catch (error) {
+            return {
+                message: [error.details],
+                error: 'BadRequest',
+                statusCode: 400
+            }
+        }
+    }
+
+    public async commentPost(postId: string, parentId: string, text: string) {
+        try {
+            const comment = await lastValueFrom(this.postService.commentPost({ parentId: parentId, postId: postId, text: text }))
+            return comment
         } catch (error) {
             return {
                 message: [error.details],

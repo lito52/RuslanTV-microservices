@@ -24,7 +24,7 @@ export class PostController implements PostServiceController {
 
   @GrpcMethod('PostService', 'GetAllPosts')
   getAllPosts(request: GetAllPostsRequest): Promise<GetAllPostsResponse> | Observable<GetAllPostsResponse> | GetAllPostsResponse {
-    return this.postService.getAllPosts(request.channelId)
+    return this.postService.getAllPosts(request.channelId, request.take, request.skip)
   }
 
   @GrpcMethod('PostService', 'RatePost')

@@ -81,6 +81,8 @@ export interface GetPostByIdResponse {
 
 export interface GetAllPostsRequest {
   channelId: string;
+  take: number;
+  skip: number;
 }
 
 export interface GetAllPostsResponse {

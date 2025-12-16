@@ -82,6 +82,8 @@ message GetPostByIdResponse {
 
 message GetAllPostsRequest {
     string channelId = 1;
+    int32 take = 2;
+    int32 skip = 3;
 }
 
 message GetAllPostsResponse {

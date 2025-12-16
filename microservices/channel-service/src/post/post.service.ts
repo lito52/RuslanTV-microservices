@@ -83,7 +83,7 @@ export class PostService {
         return mapPost(post)
     }
 
-    public async getAllPosts(channelId: string): Promise<GetAllPostsResponse> {
+    public async getAllPosts(channelId: string, take: number = 10, skip: number = 0): Promise<GetAllPostsResponse> {
         const posts = await this.prismaService.post.findMany({
             where: {
                 channelId: channelId
@@ -92,7 +92,9 @@ export class PostService {
                 postComments: true,
                 postLikes: true,
                 postMedias: true
-            }
+            },
+            take: take,
+            skip: skip
         })
         return { posts: mapManyPosts(posts) }
 
@@ -100,6 +102,26 @@ export class PostService {
 
     public async ratePost(postId: string, parentId: string, rate: string): Promise<Like> {
         const post = await this.getPostById(postId)
+
+        const existRating = await this.prismaService.postLikes.findUnique({
+            where: {
+                postId_parentId: {
+                    postId,
+                    parentId
+                }
+            }
+        })
+
+        if (existRating) {
+            await this.prismaService.postLikes.delete({
+                where: {
+                    postId_parentId: {
+                        postId,
+                        parentId
+                    }
+                }
+            })
+        }
 
         const rating = await this.prismaService.postLikes.create({
             data: {

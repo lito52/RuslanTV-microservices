@@ -74,7 +74,9 @@ const getPostByIdRequest: GetPostByIdRequest = {
 }
 
 const getAllPostsRequest: GetAllPostsRequest = {
-    channelId: uuidv4()
+    channelId: uuidv4(),
+    take: 10,
+    skip: 0
 }
 
 const ratePostRequest: LikePostRequest = {
