@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { lastValueFrom } from 'rxjs';
 import { RpcException } from '@nestjs/microservices';
-import { AuthServiceGrpcClientService } from 'src/grpc/grpc-services/auth-service-grpc-client.service';
-import { DatabaseService } from 'src/prisma/database.service';
+import { AuthServiceGrpcClientService } from '../grpc/grpc-services/auth-service-grpc-client.service';
+import { DatabaseService } from '../prisma/database.service';
 import { CreateChannelDto } from './dto/create-channel.dto';
 import { Channel, Subscription } from 'src/interfaces/channel_service';
 import { UpdateChannelDto } from './dto/update-channel.dto';
-import { SubscribeType } from 'prisma/generated';
-import { mapChannel, mapSubscription } from 'src/libs/common/mapper/channel.mapper';
+import { SubscribeType } from '../../prisma/generated';
+import { mapChannel, mapSubscription } from '../libs/common/mapper/channel.mapper';
 
 @Injectable()
 export class ChannelService {
@@ -174,7 +174,7 @@ export class ChannelService {
         return mapSubscription(newSubscribtion)
     }
 
-    public async subsrcribeWithNotif(channelId: string, userId: string): Promise<Subscription> {
+    public async subscribeWithNotif(channelId: string, userId: string): Promise<Subscription> {
         const existingChannel = await this.findChannelById(channelId)
         const existingUser = await lastValueFrom(this.authService.findUserById({ id: userId }))
 

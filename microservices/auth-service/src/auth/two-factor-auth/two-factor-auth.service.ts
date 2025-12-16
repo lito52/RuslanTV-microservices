@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { MailService } from '../../libs/mail/mail.service';
 import { RpcException } from '@nestjs/microservices';
-import { TokenType } from 'prisma/generated';
-import { DatabaseService } from 'src/prisma/database.service';
+import { TokenType } from '../../../prisma/generated';
+import { DatabaseService } from '../../prisma/database.service';
 
 @Injectable()
 export class TwoFactorAuthService {

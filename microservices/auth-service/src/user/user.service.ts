@@ -4,7 +4,7 @@ import { RpcException } from '@nestjs/microservices';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from 'prisma/generated';
-import { DatabaseService } from 'src/prisma/database.service';
+import { DatabaseService } from '../prisma/database.service';
 
 @Injectable()
 export class UserService {

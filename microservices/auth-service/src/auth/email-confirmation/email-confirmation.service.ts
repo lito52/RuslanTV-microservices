@@ -5,8 +5,8 @@ import { UserService } from '../../user/user.service';
 import { AuthService } from '../auth.service';
 import { RpcException } from '@nestjs/microservices';
 import { MailService } from '../../libs/mail/mail.service';
-import { TokenType } from 'prisma/generated';
-import { DatabaseService } from 'src/prisma/database.service';
+import { TokenType } from '../../../prisma/generated';
+import { DatabaseService } from '../../prisma/database.service';
 
 @Injectable()
 export class EmailConfirmationService {

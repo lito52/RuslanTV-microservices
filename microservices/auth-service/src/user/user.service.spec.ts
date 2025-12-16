@@ -1,10 +1,10 @@
 import { User } from '../auth/interface/auth_service'
 import { v4 as uuidv4 } from 'uuid'
 import { UserService } from './user.service'
-import { PrismaService } from '../prisma/prisma.service'
 import { Test, TestingModule } from '@nestjs/testing'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
+import { DatabaseService } from '../prisma/database.service'
 
 const userId = uuidv4()
 
@@ -56,17 +56,17 @@ const db = {
 
 describe('User Service', () => {
     let service: UserService
-    let prisma: PrismaService
+    let prisma: DatabaseService
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
             providers: [UserService, {
-                provide: PrismaService,
+                provide: DatabaseService,
                 useValue: db,
             }]
         }).compile()
         service = module.get<UserService>(UserService)
-        prisma = module.get<PrismaService>(PrismaService)
+        prisma = module.get<DatabaseService>(DatabaseService)
     })
 
     it('should be defined', () => {

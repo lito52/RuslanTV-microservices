@@ -6,8 +6,8 @@ import { ResetPasswordDto } from './dto/reset-password.dto';
 import { RpcException } from '@nestjs/microservices';
 import { NewPasswordDto } from './dto/new-password.dto';
 import { hash } from 'argon2';
-import { TokenType } from 'prisma/generated';
-import { DatabaseService } from 'src/prisma/database.service';
+import { TokenType } from '../../../prisma/generated';
+import { DatabaseService } from '../../prisma/database.service';
 
 @Injectable()
 export class PasswordRecoveryService {

@@ -9,8 +9,8 @@ import { PrismaService } from '../prisma/prisma.service';
 import { EmailConfirmationService } from './email-confirmation/email-confirmation.service';
 import { UpdateUserDto } from './dto/update-user-dto';
 import { TwoFactorAuthService } from './two-factor-auth/two-factor-auth.service';
-import { DatabaseService } from 'src/prisma/database.service';
-import { AuthMethod } from 'prisma/generated';
+import { DatabaseService } from '../prisma/database.service';
+import { AuthMethod } from '../../prisma/generated';
 
 @Injectable()
 export class AuthService {
