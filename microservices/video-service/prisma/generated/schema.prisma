@@ -15,7 +15,7 @@ model Video {
 
   channel_id String
 
-  status String
+  status VideoStatus
 
   preview_url String
   video_url   String
@@ -117,4 +117,9 @@ model PlaylistVideo {
 enum ReactionValue {
   LIKE
   DISLIKE
+}
+
+enum VideoStatus {
+  LIMITED
+  PUBLIC
 }

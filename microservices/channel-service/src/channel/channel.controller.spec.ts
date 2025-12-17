@@ -2,7 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { ChannelController } from "./channel.controller";
 import { ChannelService } from "./channel.service";
 import { v4 as uuidv4 } from 'uuid'
-import { Channel, CreateChannelRequest, FindChannelByUserIdRequest, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest } from "../interfaces/channel_service";
+import { Channel, CreateChannelRequest, FindChannelByIdRequest, FindChannelByUserIdRequest, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest } from "../interfaces/channel_service";
 import { User } from "../interfaces/auth_service";
 
 jest.mock('uuid', () => ({
@@ -59,6 +59,10 @@ const userId: FindChannelByUserIdRequest = {
     userId: uuidv4()
 }
 
+const channelId: FindChannelByIdRequest = {
+    channelId: uuidv4()
+}
+
 const subscribeRequest: SubscribeRequest = {
     userId: uuidv4(),
     channelId: uuidv4()
@@ -90,6 +94,7 @@ describe('ChannelController', () => {
                         createChannel: jest.fn().mockResolvedValue(channel),
                         updateChannel: jest.fn().mockResolvedValue(channel),
                         findChannelByUserId: jest.fn().mockResolvedValue(channel),
+                        findChannelById: jest.fn().mockResolvedValue(channel),
                         subscribe: jest.fn().mockResolvedValue(subscription),
                         subscribeWithNotif: jest.fn().mockResolvedValue(subscription),
                         unsubscribe: jest.fn().mockResolvedValue(Boolean),
@@ -118,6 +123,11 @@ describe('ChannelController', () => {
 
     it('should return channel', async () => {
         const result = await controller.findChannelByUserId(userId)
+        expect(result).toEqual(channel)
+    })
+
+    it('should return channel', async () => {
+        const result = await controller.findChannelById(channelId)
         expect(result).toEqual(channel)
     })
 

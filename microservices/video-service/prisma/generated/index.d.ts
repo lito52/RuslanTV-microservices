@@ -55,11 +55,23 @@ export namespace $Enums {
 
 export type ReactionValue = (typeof ReactionValue)[keyof typeof ReactionValue]
 
+
+export const VideoStatus: {
+  LIMITED: 'LIMITED',
+  PUBLIC: 'PUBLIC'
+};
+
+export type VideoStatus = (typeof VideoStatus)[keyof typeof VideoStatus]
+
 }
 
 export type ReactionValue = $Enums.ReactionValue
 
 export const ReactionValue: typeof $Enums.ReactionValue
+
+export type VideoStatus = $Enums.VideoStatus
+
+export const VideoStatus: typeof $Enums.VideoStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1437,7 +1449,7 @@ export namespace Prisma {
     title: string | null
     description: string | null
     channel_id: string | null
-    status: string | null
+    status: $Enums.VideoStatus | null
     preview_url: string | null
     video_url: string | null
     createdAt: Date | null
@@ -1449,7 +1461,7 @@ export namespace Prisma {
     title: string | null
     description: string | null
     channel_id: string | null
-    status: string | null
+    status: $Enums.VideoStatus | null
     preview_url: string | null
     video_url: string | null
     createdAt: Date | null
@@ -1584,7 +1596,7 @@ export namespace Prisma {
     title: string
     description: string
     channel_id: string
-    status: string
+    status: $Enums.VideoStatus
     preview_url: string
     video_url: string
     createdAt: Date
@@ -1685,7 +1697,7 @@ export namespace Prisma {
       title: string
       description: string
       channel_id: string
-      status: string
+      status: $Enums.VideoStatus
       preview_url: string
       video_url: string
       createdAt: Date
@@ -2121,7 +2133,7 @@ export namespace Prisma {
     readonly title: FieldRef<"Video", 'String'>
     readonly description: FieldRef<"Video", 'String'>
     readonly channel_id: FieldRef<"Video", 'String'>
-    readonly status: FieldRef<"Video", 'String'>
+    readonly status: FieldRef<"Video", 'VideoStatus'>
     readonly preview_url: FieldRef<"Video", 'String'>
     readonly video_url: FieldRef<"Video", 'String'>
     readonly createdAt: FieldRef<"Video", 'DateTime'>
@@ -8100,6 +8112,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'VideoStatus'
+   */
+  export type EnumVideoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VideoStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'VideoStatus[]'
+   */
+  export type ListEnumVideoStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VideoStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -8152,7 +8178,7 @@ export namespace Prisma {
     title?: StringFilter<"Video"> | string
     description?: StringFilter<"Video"> | string
     channel_id?: StringFilter<"Video"> | string
-    status?: StringFilter<"Video"> | string
+    status?: EnumVideoStatusFilter<"Video"> | $Enums.VideoStatus
     preview_url?: StringFilter<"Video"> | string
     video_url?: StringFilter<"Video"> | string
     createdAt?: DateTimeFilter<"Video"> | Date | string
@@ -8187,7 +8213,7 @@ export namespace Prisma {
     title?: StringFilter<"Video"> | string
     description?: StringFilter<"Video"> | string
     channel_id?: StringFilter<"Video"> | string
-    status?: StringFilter<"Video"> | string
+    status?: EnumVideoStatusFilter<"Video"> | $Enums.VideoStatus
     preview_url?: StringFilter<"Video"> | string
     video_url?: StringFilter<"Video"> | string
     createdAt?: DateTimeFilter<"Video"> | Date | string
@@ -8221,7 +8247,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Video"> | string
     description?: StringWithAggregatesFilter<"Video"> | string
     channel_id?: StringWithAggregatesFilter<"Video"> | string
-    status?: StringWithAggregatesFilter<"Video"> | string
+    status?: EnumVideoStatusWithAggregatesFilter<"Video"> | $Enums.VideoStatus
     preview_url?: StringWithAggregatesFilter<"Video"> | string
     video_url?: StringWithAggregatesFilter<"Video"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Video"> | Date | string
@@ -8528,7 +8554,7 @@ export namespace Prisma {
     title: string
     description: string
     channel_id: string
-    status: string
+    status: $Enums.VideoStatus
     preview_url: string
     video_url: string
     createdAt?: Date | string
@@ -8544,7 +8570,7 @@ export namespace Prisma {
     title: string
     description: string
     channel_id: string
-    status: string
+    status: $Enums.VideoStatus
     preview_url: string
     video_url: string
     createdAt?: Date | string
@@ -8560,7 +8586,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     channel_id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
     preview_url?: StringFieldUpdateOperationsInput | string
     video_url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8576,7 +8602,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     channel_id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
     preview_url?: StringFieldUpdateOperationsInput | string
     video_url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8592,7 +8618,7 @@ export namespace Prisma {
     title: string
     description: string
     channel_id: string
-    status: string
+    status: $Enums.VideoStatus
     preview_url: string
     video_url: string
     createdAt?: Date | string
@@ -8604,7 +8630,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     channel_id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
     preview_url?: StringFieldUpdateOperationsInput | string
     video_url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8616,7 +8642,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     channel_id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
     preview_url?: StringFieldUpdateOperationsInput | string
     video_url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8938,6 +8964,13 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type EnumVideoStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.VideoStatus | EnumVideoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.VideoStatus[] | ListEnumVideoStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.VideoStatus[] | ListEnumVideoStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumVideoStatusFilter<$PrismaModel> | $Enums.VideoStatus
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -9041,6 +9074,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type EnumVideoStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.VideoStatus | EnumVideoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.VideoStatus[] | ListEnumVideoStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.VideoStatus[] | ListEnumVideoStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumVideoStatusWithAggregatesFilter<$PrismaModel> | $Enums.VideoStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumVideoStatusFilter<$PrismaModel>
+    _max?: NestedEnumVideoStatusFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -9281,6 +9324,10 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type EnumVideoStatusFieldUpdateOperationsInput = {
+    set?: $Enums.VideoStatus
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -9529,6 +9576,13 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedEnumVideoStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.VideoStatus | EnumVideoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.VideoStatus[] | ListEnumVideoStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.VideoStatus[] | ListEnumVideoStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumVideoStatusFilter<$PrismaModel> | $Enums.VideoStatus
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -9566,6 +9620,16 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumVideoStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.VideoStatus | EnumVideoStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.VideoStatus[] | ListEnumVideoStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.VideoStatus[] | ListEnumVideoStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumVideoStatusWithAggregatesFilter<$PrismaModel> | $Enums.VideoStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumVideoStatusFilter<$PrismaModel>
+    _max?: NestedEnumVideoStatusFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -9817,7 +9881,7 @@ export namespace Prisma {
     title: string
     description: string
     channel_id: string
-    status: string
+    status: $Enums.VideoStatus
     preview_url: string
     video_url: string
     createdAt?: Date | string
@@ -9832,7 +9896,7 @@ export namespace Prisma {
     title: string
     description: string
     channel_id: string
-    status: string
+    status: $Enums.VideoStatus
     preview_url: string
     video_url: string
     createdAt?: Date | string
@@ -9863,7 +9927,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     channel_id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
     preview_url?: StringFieldUpdateOperationsInput | string
     video_url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9878,7 +9942,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     channel_id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
     preview_url?: StringFieldUpdateOperationsInput | string
     video_url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9893,7 +9957,7 @@ export namespace Prisma {
     title: string
     description: string
     channel_id: string
-    status: string
+    status: $Enums.VideoStatus
     preview_url: string
     video_url: string
     createdAt?: Date | string
@@ -9908,7 +9972,7 @@ export namespace Prisma {
     title: string
     description: string
     channel_id: string
-    status: string
+    status: $Enums.VideoStatus
     preview_url: string
     video_url: string
     createdAt?: Date | string
@@ -9939,7 +10003,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     channel_id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
     preview_url?: StringFieldUpdateOperationsInput | string
     video_url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9954,7 +10018,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     channel_id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
     preview_url?: StringFieldUpdateOperationsInput | string
     video_url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9969,7 +10033,7 @@ export namespace Prisma {
     title: string
     description: string
     channel_id: string
-    status: string
+    status: $Enums.VideoStatus
     preview_url: string
     video_url: string
     createdAt?: Date | string
@@ -9984,7 +10048,7 @@ export namespace Prisma {
     title: string
     description: string
     channel_id: string
-    status: string
+    status: $Enums.VideoStatus
     preview_url: string
     video_url: string
     createdAt?: Date | string
@@ -10015,7 +10079,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     channel_id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
     preview_url?: StringFieldUpdateOperationsInput | string
     video_url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10030,7 +10094,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     channel_id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
     preview_url?: StringFieldUpdateOperationsInput | string
     video_url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10108,7 +10172,7 @@ export namespace Prisma {
     title: string
     description: string
     channel_id: string
-    status: string
+    status: $Enums.VideoStatus
     preview_url: string
     video_url: string
     createdAt?: Date | string
@@ -10123,7 +10187,7 @@ export namespace Prisma {
     title: string
     description: string
     channel_id: string
-    status: string
+    status: $Enums.VideoStatus
     preview_url: string
     video_url: string
     createdAt?: Date | string
@@ -10181,7 +10245,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     channel_id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
     preview_url?: StringFieldUpdateOperationsInput | string
     video_url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10196,7 +10260,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     channel_id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
     preview_url?: StringFieldUpdateOperationsInput | string
     video_url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -184,6 +184,11 @@ exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
+exports.VideoStatus = exports.$Enums.VideoStatus = {
+  LIMITED: 'LIMITED',
+  PUBLIC: 'PUBLIC'
+};
+
 exports.ReactionValue = exports.$Enums.ReactionValue = {
   LIKE: 'LIKE',
   DISLIKE: 'DISLIKE'

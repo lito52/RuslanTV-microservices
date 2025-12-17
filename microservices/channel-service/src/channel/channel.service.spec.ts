@@ -1,6 +1,6 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { ChannelService } from "./channel.service";
-import { Boolean, Channel, CreateChannelRequest, FindChannelByUserIdRequest, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest } from "../interfaces/channel_service";
+import { Boolean, Channel, CreateChannelRequest, FindChannelByIdRequest, FindChannelByUserIdRequest, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest } from "../interfaces/channel_service";
 import { DatabaseService } from "../prisma/database.service";
 import { AuthServiceGrpcClientService } from "../grpc/grpc-services/auth-service-grpc-client.service";
 import { User } from "../interfaces/auth_service";
@@ -56,6 +56,10 @@ const updateChannelPicturesRequest: UpdateChannelPicturesRequest = {
 
 const findChannelByUserIdRequest: FindChannelByUserIdRequest = {
     userId: "0da529cb-3453-4766-aaf4-69eec10e1fb"
+}
+
+const findChannelByIdRequest: FindChannelByIdRequest = {
+    channelId: "0da529cb-3453-4766-aaf4-69eec10e1fb"
 }
 
 const subscribeRequest: SubscribeRequest = {
@@ -147,6 +151,11 @@ describe('Channel Service', () => {
 
     it('should return an channel', async () => {
         const res = await service.findChannelByUserId(findChannelByUserIdRequest.userId)
+        expect(res).toEqual(channel)
+    })
+
+    it('should return an channel', async () => {
+        const res = await service.findChannelById(findChannelByIdRequest.channelId)
         expect(res).toEqual(channel)
     })
 

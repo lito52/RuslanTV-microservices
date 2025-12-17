@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { ChannelService } from './channel.service';
 import { GrpcMethod, GrpcService } from '@nestjs/microservices';
-import { Boolean, Channel, ChannelServiceController, CreateChannelRequest, FindChannelByUserIdRequest, FindChannelByUserIdResponse, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest, } from '../interfaces/channel_service';
+import { Boolean, Channel, ChannelServiceController, CreateChannelRequest, FindChannelByIdRequest, FindChannelByUserIdRequest, FindChannelByUserIdResponse, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest, } from '../interfaces/channel_service';
 import { Observable } from 'rxjs';
 
 @GrpcService()
@@ -11,6 +11,11 @@ export class ChannelController implements ChannelServiceController {
   @GrpcMethod('ChannelService', 'FindChannelByUserId')
   findChannelByUserId(request: FindChannelByUserIdRequest): Promise<FindChannelByUserIdResponse> | Observable<FindChannelByUserIdResponse> | FindChannelByUserIdResponse {
     return this.channelService.findChannelByUserId(request.userId)
+  }
+
+  @GrpcMethod('ChannelService', 'FindChannelById')
+  findChannelById(request: FindChannelByIdRequest): Promise<Channel> | Observable<Channel> | Channel {
+    return this.channelService.findChannelById(request.channelId)
   }
 
   @GrpcMethod('ChannelService', 'CreateChannel')
