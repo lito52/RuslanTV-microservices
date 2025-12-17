@@ -1,0 +1,120 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Video {
+  id String @id @default(uuid())
+
+  title       String
+  description String
+
+  channel_id String
+
+  status String
+
+  preview_url String
+  video_url   String
+
+  likes          Like[]
+  comment        Comment[]
+  view           VideoView[]
+  playlist_video PlaylistVideo[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([channel_id])
+  @@map("videos")
+}
+
+model Comment {
+  id String @id @default(uuid())
+
+  text String
+
+  video_id String
+  video    Video  @relation(fields: [video_id], references: [id])
+
+  channel_id String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([video_id])
+  @@map("comments")
+}
+
+model Like {
+  id String @id @default(uuid())
+
+  video_id String
+  video    Video  @relation(fields: [video_id], references: [id])
+
+  channel_id String
+
+  reaction ReactionValue
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([video_id, channel_id])
+  @@index([video_id])
+  @@map("likes")
+}
+
+model VideoView {
+  id String @id @default(uuid())
+
+  video_id String
+  video    Video  @relation(fields: [video_id], references: [id])
+
+  channel_id String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([video_id, channel_id])
+  @@index([video_id])
+  @@map("video_views")
+}
+
+model Playlist {
+  id String @id @default(uuid())
+
+  text       String
+  channel_id String
+
+  playlist_video PlaylistVideo[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("playlists")
+}
+
+model PlaylistVideo {
+  id String @id @default(uuid())
+
+  playlist_id String
+  playlist    Playlist @relation(fields: [playlist_id], references: [id])
+
+  video_id String
+  video    Video  @relation(fields: [video_id], references: [id])
+
+  position String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("playlist_videos")
+}
+
+enum ReactionValue {
+  LIKE
+  DISLIKE
+}

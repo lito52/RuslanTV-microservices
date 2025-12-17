@@ -1,0 +1,13 @@
+import { Injectable } from '@nestjs/common';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { PrismaClient } from '../../generated/prisma/client';
+
+@Injectable()
+export class PrismaService extends PrismaClient {
+    constructor() {
+        const adapter = new PrismaPg({
+            connectionString: 'postgresql://root:123456a@localhost:5433/POSTGRES_VIDEOS?schema=public',
+        });
+        super({ adapter });
+    }
+}

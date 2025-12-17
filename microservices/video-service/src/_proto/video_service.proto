@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package video_service;
+
+service VideoService {
+    rpc CreatePost(CreatePostRequest) returns (Post);
+}
