@@ -3,7 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 import { IS_DEV_ENV } from './libs/utils/is-dev.util';
 import { PrismaModule } from './prisma/prisma.module';
 import { VideoModule } from './video/video.module';
-import { PlaylistModule } from './playlist/playlist.module';
 
 @Module({
   imports: [
@@ -13,7 +12,6 @@ import { PlaylistModule } from './playlist/playlist.module';
     }),
     PrismaModule,
     VideoModule,
-    PlaylistModule
   ],
   providers: [],
 })

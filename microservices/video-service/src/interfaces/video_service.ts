@@ -80,8 +80,6 @@ export interface CreateVideoRequest {
   status: string;
   previewUrl: string;
   videoUrl: string;
-  createdAt: string;
-  updatedAt: string;
 }
 
 export interface GetAllVideoRequest {
@@ -166,7 +164,7 @@ export interface VideoServiceClient {
 
   createPlaylist(request: CreatePlaylistRequest): Observable<Playlist>;
 
-  addVideoToPlaylist(request: AddVideoToPlaylistRequest): Observable<Boolean>;
+  addVideoToPlaylist(request: AddVideoToPlaylistRequest): Observable<PlaylistVideo>;
 
   findPlaylistById(request: FindPlaylistByIdRequest): Observable<Playlist>;
 }
@@ -194,7 +192,9 @@ export interface VideoServiceController {
 
   createPlaylist(request: CreatePlaylistRequest): Promise<Playlist> | Observable<Playlist> | Playlist;
 
-  addVideoToPlaylist(request: AddVideoToPlaylistRequest): Promise<Boolean> | Observable<Boolean> | Boolean;
+  addVideoToPlaylist(
+    request: AddVideoToPlaylistRequest,
+  ): Promise<PlaylistVideo> | Observable<PlaylistVideo> | PlaylistVideo;
 
   findPlaylistById(request: FindPlaylistByIdRequest): Promise<Playlist> | Observable<Playlist> | Playlist;
 }

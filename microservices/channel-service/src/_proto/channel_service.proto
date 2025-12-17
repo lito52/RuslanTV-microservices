@@ -54,7 +54,7 @@ message CreateChannelRequest {
 }
 
 message FindChannelByIdRequest {
-    string channel_id = 1;
+    string channelId = 1;
 }
 
 message DeleteChannelRequest {

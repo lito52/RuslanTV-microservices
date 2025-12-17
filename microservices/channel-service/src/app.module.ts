@@ -16,7 +16,7 @@ import { PrometheusModule } from '@willsoto/nestjs-prometheus';
     }),
     PrometheusModule.register({
       defaultLabels: {
-        service: 'auth-service',
+        service: 'channel-service',
         env: process.env.NODE_ENV
       },
       pushgateway: {

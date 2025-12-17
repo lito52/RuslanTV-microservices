@@ -14,7 +14,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
             host: configService.getOrThrow('REDIS_HOST'),
             port: configService.getOrThrow('REDIS_PORT'),
           },
-          ttl: 60 * 10 * 60,
+          ttl: 60 * 5 * 60,
         }),
       }),
       inject: [ConfigService],

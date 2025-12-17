@@ -98,10 +98,10 @@ export class ChannelService {
         return mapChannel(updatedChannel)
     }
 
-    public async findChannelById(id: string): Promise<Channel> {
+    public async findChannelById(channelId: string): Promise<Channel> {
         const channel = await this.prismaService.channel.findUnique({
             where: {
-                id
+                id: channelId
             }
         })
 

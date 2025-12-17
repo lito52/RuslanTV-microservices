@@ -12,7 +12,7 @@ service VideoService {
     rpc LikeVideo(LikeVideoRequest) returns (Like);
     rpc WatchVideo(WatchVideoRequest) returns (View);
     rpc CreatePlaylist(CreatePlaylistRequest) returns (Playlist);
-    rpc AddVideoToPlaylist(AddVideoToPlaylistRequest) returns (Boolean);
+    rpc AddVideoToPlaylist(AddVideoToPlaylistRequest) returns (PlaylistVideo);
     rpc FindPlaylistById(FindPlaylistByIdRequest) returns (Playlist);
 }
 
@@ -20,10 +20,10 @@ message Video {
     string id = 1;
     string title = 2;
     string description = 3;
-    string channel_id = 4;
+    string channelId = 4;
     string status = 5;
     string preview_url = 6;
-    string video_url = 7;
+    string videoUrl = 7;
     string createdAt = 8;
     string updatedAt = 9;
     repeated Comment comments = 10;
@@ -34,33 +34,33 @@ message Video {
 message Comment {
     string id = 1;
     string text = 2;
-    string video_id = 3;
-    string channel_id = 4;
+    string videoId = 3;
+    string channelId = 4;
     string createdAt = 5;
     string updatedAt = 6;
 }
 
 message Like {
     string id = 1;
-    string video_id = 3;
-    string channel_id = 4;
-    string reaction_type = 5;
+    string videoId = 3;
+    string channelId = 4;
+    string reactionType = 5;
     string createdAt = 6;
     string updatedAt = 7;
 }
 
 message View {
     string id = 1;
-    string video_id = 3;
-    string channel_id = 4;
+    string videoId = 3;
+    string channelId = 4;
     string createdAt = 6;
     string updatedAt = 7;
 }
 
 message PlaylistVideo {
     string id = 1;
-    string playlist_id = 2;
-    string video_id = 3;
+    string playlistId = 2;
+    string videoId = 3;
     string position = 4;
     string createdAt = 5;
     string updatedAt = 6;
@@ -69,7 +69,7 @@ message PlaylistVideo {
 message Playlist {
     string id = 1;
     string text = 3;
-    string channel_id = 4;
+    string channelId = 4;
     string createdAt = 6;
     string updatedAt = 7;
     repeated PlaylistVideo videos = 8;
@@ -82,12 +82,10 @@ message Boolean {
 message CreateVideoRequest {
     string title = 1;
     string description = 2;
-    string channel_id = 3;
+    string channelId = 3;
     string status = 4;
-    string preview_url = 5;
-    string video_url = 6;
-    string createdAt = 7;
-    string updatedAt = 8;
+    string previewUrl = 5;
+    string videoUrl = 6;
 }
 
 message GetAllVideoRequest {
@@ -100,7 +98,7 @@ message GetAllVideoResponse {
 }
 
 message GetAllChannelVideoRequest {
-    string channel_id = 1;
+    string channelId = 1;
     int32 take = 2;
     int32 skip = 3;
 }
@@ -110,41 +108,41 @@ message GetAllChannelVideoResponse {
 }
 
 message UpdateVideoStatusRequest {
-    string video_id = 1;
-    string channel_id = 2;
+    string videoId = 1;
+    string channelId = 2;
     string status = 3;
 }
 
 message CreateCommentRequest {
     string text = 1;
-    string video_id = 2;
-    string channel_id = 3;
+    string videoId = 2;
+    string channelId = 3;
 }
 
 message LikeVideoRequest {
-    string video_id = 1;
-    string channel_id = 2;
+    string videoId = 1;
+    string channelId = 2;
     string reaction = 3;
 }
 
 message WatchVideoRequest {
-    string video_id = 1;
-    string channel_id = 2;
+    string videoId = 1;
+    string channelId = 2;
 }
 
 message CreatePlaylistRequest {
     string text = 1;
-    string channel_id = 2;
+    string channelId = 2;
 }
 
 message AddVideoToPlaylistRequest {
-    string playlist_id = 1;
-    string video_id = 2;
+    string playlistId = 1;
+    string videoId = 2;
     string position = 3;
 }
 
 message FindVideoByIdRequest {
-    string video_id = 1;
+    string videoId = 1;
 }
 
 message FindPlaylistByIdRequest {

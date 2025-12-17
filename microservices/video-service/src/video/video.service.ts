@@ -3,7 +3,8 @@ import { RpcException } from '@nestjs/microservices';
 import { ReactionValue, VideoStatus } from 'prisma/generated';
 import { lastValueFrom } from 'rxjs';
 import { channelServiceGrpcClientService } from 'src/grpc/grpc-services/channel-service-grpc-client.service';
-import { AddVideoToPlaylistRequest, Comment, CreateCommentRequest, CreatePlaylistRequest, CreateVideoRequest, FindPlaylistByIdRequest, FindVideoByIdRequest, GetAllChannelVideoRequest, GetAllChannelVideoResponse, GetAllVideoRequest, Like, LikeVideoRequest, Playlist, PlaylistVideo, UpdateVideoStatusRequest, Video, View, WatchVideoRequest } from 'src/interfaces/video_service';
+import { AddVideoToPlaylistRequest, Comment, CreateCommentRequest, CreatePlaylistRequest, CreateVideoRequest, FindPlaylistByIdRequest, FindVideoByIdRequest, GetAllChannelVideoRequest, GetAllChannelVideoResponse, GetAllVideoRequest, GetAllVideoResponse, Like, LikeVideoRequest, Playlist, PlaylistVideo, UpdateVideoStatusRequest, Video, View, WatchVideoRequest } from 'src/interfaces/video_service';
+import { RedisCacheService } from 'src/libs/common/redisCache/redisCache.service';
 import { mapPlaylist, mapPlaylistVideo } from 'src/libs/mapper/playlist.mapper';
 import { mapComment, mapLike, mapManyVideos, mapVideo, mapView } from 'src/libs/mapper/video.mapper';
 import { DatabaseService } from 'src/prisma/database.service';
@@ -12,7 +13,8 @@ import { DatabaseService } from 'src/prisma/database.service';
 export class VideoService {
     constructor(
         private readonly prisma: DatabaseService,
-        private readonly channelService: channelServiceGrpcClientService
+        private readonly channelService: channelServiceGrpcClientService,
+        private readonly cacheService: RedisCacheService
     ) { }
 
     public async createVideo(request: CreateVideoRequest): Promise<Video> {
@@ -52,16 +54,38 @@ export class VideoService {
         return mapVideo(updatedVideo)
     }
 
-    public async getAllVideo(request: GetAllVideoRequest): Promise<Video[]> {
-        const videos = await this.prisma.video.findMany({
+    public async getAllVideo(request: GetAllVideoRequest): Promise<GetAllVideoResponse> {
+        const cachedVideos: Video[] | null = await this.cacheService.get('listFirstVideos')
+
+        if (cachedVideos) {
+            return { videos: cachedVideos }
+        }
+
+        const video = await this.prisma.video.findMany({
             take: request.take,
-            skip: request.skip
+            skip: request.skip,
+            include: {
+                comment: true,
+                likes: true,
+                view: true
+            }
         })
 
-        return mapManyVideos(videos)
+        const mappedVideos = mapManyVideos(video)
+
+        await this.cacheService.addListFirstVideos(JSON.stringify(mappedVideos))
+
+        return { videos: mappedVideos }
     }
 
-    public async getAllChannelVideo(request: GetAllChannelVideoRequest): Promise<Video[]> {
+    public async getAllChannelVideo(request: GetAllChannelVideoRequest): Promise<GetAllChannelVideoResponse> {
+
+        const cachedVideos: Video[] | null = await this.cacheService.get('listFirstVideos')
+
+        if (cachedVideos) {
+            return { videos: cachedVideos }
+        }
+
         const videos = await this.prisma.video.findMany({
             where: {
                 channel_id: request.channelId
@@ -70,7 +94,11 @@ export class VideoService {
             skip: request.skip
         })
 
-        return mapManyVideos(videos)
+        const mappedVideos = mapManyVideos(videos)
+
+        await this.cacheService.addListFirstVideos(JSON.stringify(mappedVideos))
+
+        return { videos: mappedVideos }
     }
 
     public async createComment(request: CreateCommentRequest): Promise<Comment> {
@@ -151,6 +179,12 @@ export class VideoService {
     }
 
     public async findVideoById(request: FindVideoByIdRequest): Promise<Video> {
+        const cachedVideo: Video | null = await this.cacheService.get(request.videoId)
+
+        if (cachedVideo) {
+            return cachedVideo
+        }
+
         const video = await this.prisma.video.findUnique({
             where: {
                 id: request.videoId
@@ -160,6 +194,8 @@ export class VideoService {
         if (!video) {
             throw new RpcException('Video not found')
         }
+
+        await this.cacheService.set(request.videoId, JSON.stringify(mapVideo(video)))
 
         return mapVideo(video)
     }
