@@ -106,11 +106,13 @@ model PlaylistVideo {
   video_id String
   video    Video  @relation(fields: [video_id], references: [id])
 
-  position String
+  position Int @default(0)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  @@unique([playlist_id, position])
+  @@index([playlist_id, position])
   @@map("playlist_videos")
 }
 

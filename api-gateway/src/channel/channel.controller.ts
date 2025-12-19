@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, FileTypeValidator, Get, MaxFileSizeValidator, Param, ParseFilePipe, Patch, Post, Put, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { ChannelService } from './channel.service';
 import { CreateChannelDto } from './dto/create-channel.dto';
 import { Authorized } from 'src/auth/decorators/authorized.decorator';
@@ -24,7 +24,14 @@ export class ChannelController {
 
   @Patch('updateChannelPictures')
   @UseInterceptors(FileFieldsInterceptor([{ name: 'profilePicture', maxCount: 1 }, { name: 'backgroundPicture', maxCount: 1 }]))
-  public async updateChannelPictures(@UploadedFiles() files: { profilePicture?: Express.Multer.File[], backgroundPicture?: Express.Multer.File[] }, @Authorized('id') userId: string) {
+  public async updateChannelPictures(@UploadedFiles(
+    new ParseFilePipe({
+      validators: [
+        new MaxFileSizeValidator({ maxSize: 1000 * 1024 }),
+        new FileTypeValidator({ fileType: /(jpg|jpeg|png)$/ })
+      ]
+    })
+  ) files: { profilePicture?: Express.Multer.File[], backgroundPicture?: Express.Multer.File[] }, @Authorized('id') userId: string) {
     return await this.channelService.updateChannelPictures(files, userId)
   }
 

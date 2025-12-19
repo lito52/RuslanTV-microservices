@@ -3,6 +3,9 @@ import { AppModule } from './app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import 'dotenv/config';
 import { join } from 'path';
+import { ValidationPipe } from '@nestjs/common';
+import { GrpcMetricsInterceptor } from './libs/metrics.interceptor';
+import { CustomLogger } from './libs/logging/logger.service';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule,
@@ -21,6 +24,13 @@ async function bootstrap() {
         }
       },
     });
+  app.useGlobalPipes(new ValidationPipe())
+
+  const metricsInterceptor = app.get(GrpcMetricsInterceptor)
+  app.useGlobalInterceptors(metricsInterceptor)
+
+  app.useLogger(new CustomLogger())
+
   await app.listen();
 }
 bootstrap();

@@ -7,6 +7,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggingInterceptor } from './libs/common/logging.interceptor';
 import { ChannelModule } from './channel/channel.module';
 import { PostModule } from './post/post.module';
+import { VideoModule } from './video/video.module';
 
 @Module({
 	imports: [
@@ -18,6 +19,7 @@ import { PostModule } from './post/post.module';
 		AuthModule,
 		ChannelModule,
 		PostModule,
+		VideoModule,
 	],
 	controllers: [],
 	providers: [

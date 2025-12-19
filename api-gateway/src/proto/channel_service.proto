@@ -7,6 +7,7 @@ service ChannelService {
     rpc UpdateChannel(UpdateChannelRequest) returns (Channel);
     rpc UpdateChannelPictures(UpdateChannelPicturesRequest) returns (Channel);
     rpc FindChannelByUserId(FindChannelByUserIdRequest) returns (FindChannelByUserIdResponse);
+    rpc FindChannelById(FindChannelByIdRequest) returns (Channel);
     rpc Subscribe(SubscribeRequest) returns (Subscription);
     rpc SubscribeWithNotif(SubscribeRequest) returns (Subscription);
     rpc UnSubscribe(SubscribeRequest) returns (Boolean);
@@ -52,6 +53,10 @@ message CreateChannelRequest {
     string backgroundPicture = 6;
 }
 
+message FindChannelByIdRequest {
+    string channelId = 1;
+}
+
 message DeleteChannelRequest {
     string userId = 1;
 }
@@ -77,4 +82,5 @@ message Channel {
     string bio = 5;
     string profilePicture = 6;
     string backgroundPicture = 7;
+    repeated Subscription subscriptions = 8;
 }

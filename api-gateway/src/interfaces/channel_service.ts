@@ -50,6 +50,10 @@ export interface CreateChannelRequest {
   backgroundPicture: string;
 }
 
+export interface FindChannelByIdRequest {
+  channelId: string;
+}
+
 export interface DeleteChannelRequest {
   userId: string;
 }
@@ -75,6 +79,7 @@ export interface Channel {
   bio: string;
   profilePicture: string;
   backgroundPicture: string;
+  subscriptions: Subscription[];
 }
 
 export const CHANNEL_SERVICE_PACKAGE_NAME = "channel_service";
@@ -87,6 +92,8 @@ export interface ChannelServiceClient {
   updateChannelPictures(request: UpdateChannelPicturesRequest): Observable<Channel>;
 
   findChannelByUserId(request: FindChannelByUserIdRequest): Observable<FindChannelByUserIdResponse>;
+
+  findChannelById(request: FindChannelByIdRequest): Observable<Channel>;
 
   subscribe(request: SubscribeRequest): Observable<Subscription>;
 
@@ -106,6 +113,8 @@ export interface ChannelServiceController {
     request: FindChannelByUserIdRequest,
   ): Promise<FindChannelByUserIdResponse> | Observable<FindChannelByUserIdResponse> | FindChannelByUserIdResponse;
 
+  findChannelById(request: FindChannelByIdRequest): Promise<Channel> | Observable<Channel> | Channel;
+
   subscribe(request: SubscribeRequest): Promise<Subscription> | Observable<Subscription> | Subscription;
 
   subscribeWithNotif(request: SubscribeRequest): Promise<Subscription> | Observable<Subscription> | Subscription;
@@ -120,6 +129,7 @@ export function ChannelServiceControllerMethods() {
       "updateChannel",
       "updateChannelPictures",
       "findChannelByUserId",
+      "findChannelById",
       "subscribe",
       "subscribeWithNotif",
       "unSubscribe",

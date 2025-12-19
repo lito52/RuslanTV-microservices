@@ -6916,15 +6916,25 @@ export namespace Prisma {
 
   export type AggregatePlaylistVideo = {
     _count: PlaylistVideoCountAggregateOutputType | null
+    _avg: PlaylistVideoAvgAggregateOutputType | null
+    _sum: PlaylistVideoSumAggregateOutputType | null
     _min: PlaylistVideoMinAggregateOutputType | null
     _max: PlaylistVideoMaxAggregateOutputType | null
+  }
+
+  export type PlaylistVideoAvgAggregateOutputType = {
+    position: number | null
+  }
+
+  export type PlaylistVideoSumAggregateOutputType = {
+    position: number | null
   }
 
   export type PlaylistVideoMinAggregateOutputType = {
     id: string | null
     playlist_id: string | null
     video_id: string | null
-    position: string | null
+    position: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6933,7 +6943,7 @@ export namespace Prisma {
     id: string | null
     playlist_id: string | null
     video_id: string | null
-    position: string | null
+    position: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6948,6 +6958,14 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type PlaylistVideoAvgAggregateInputType = {
+    position?: true
+  }
+
+  export type PlaylistVideoSumAggregateInputType = {
+    position?: true
+  }
 
   export type PlaylistVideoMinAggregateInputType = {
     id?: true
@@ -7015,6 +7033,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: PlaylistVideoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PlaylistVideoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: PlaylistVideoMinAggregateInputType
@@ -7045,6 +7075,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: PlaylistVideoCountAggregateInputType | true
+    _avg?: PlaylistVideoAvgAggregateInputType
+    _sum?: PlaylistVideoSumAggregateInputType
     _min?: PlaylistVideoMinAggregateInputType
     _max?: PlaylistVideoMaxAggregateInputType
   }
@@ -7053,10 +7085,12 @@ export namespace Prisma {
     id: string
     playlist_id: string
     video_id: string
-    position: string
+    position: number
     createdAt: Date
     updatedAt: Date
     _count: PlaylistVideoCountAggregateOutputType | null
+    _avg: PlaylistVideoAvgAggregateOutputType | null
+    _sum: PlaylistVideoSumAggregateOutputType | null
     _min: PlaylistVideoMinAggregateOutputType | null
     _max: PlaylistVideoMaxAggregateOutputType | null
   }
@@ -7141,7 +7175,7 @@ export namespace Prisma {
       id: string
       playlist_id: string
       video_id: string
-      position: string
+      position: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["playlistVideo"]>
@@ -7572,7 +7606,7 @@ export namespace Prisma {
     readonly id: FieldRef<"PlaylistVideo", 'String'>
     readonly playlist_id: FieldRef<"PlaylistVideo", 'String'>
     readonly video_id: FieldRef<"PlaylistVideo", 'String'>
-    readonly position: FieldRef<"PlaylistVideo", 'String'>
+    readonly position: FieldRef<"PlaylistVideo", 'Int'>
     readonly createdAt: FieldRef<"PlaylistVideo", 'DateTime'>
     readonly updatedAt: FieldRef<"PlaylistVideo", 'DateTime'>
   }
@@ -8165,6 +8199,20 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
   /**
    * Deep Input Types
    */
@@ -8493,7 +8541,7 @@ export namespace Prisma {
     id?: StringFilter<"PlaylistVideo"> | string
     playlist_id?: StringFilter<"PlaylistVideo"> | string
     video_id?: StringFilter<"PlaylistVideo"> | string
-    position?: StringFilter<"PlaylistVideo"> | string
+    position?: IntFilter<"PlaylistVideo"> | number
     createdAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
     updatedAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
     playlist?: XOR<PlaylistScalarRelationFilter, PlaylistWhereInput>
@@ -8513,17 +8561,18 @@ export namespace Prisma {
 
   export type PlaylistVideoWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    playlist_id_position?: PlaylistVideoPlaylist_idPositionCompoundUniqueInput
     AND?: PlaylistVideoWhereInput | PlaylistVideoWhereInput[]
     OR?: PlaylistVideoWhereInput[]
     NOT?: PlaylistVideoWhereInput | PlaylistVideoWhereInput[]
     playlist_id?: StringFilter<"PlaylistVideo"> | string
     video_id?: StringFilter<"PlaylistVideo"> | string
-    position?: StringFilter<"PlaylistVideo"> | string
+    position?: IntFilter<"PlaylistVideo"> | number
     createdAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
     updatedAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
     playlist?: XOR<PlaylistScalarRelationFilter, PlaylistWhereInput>
     video?: XOR<VideoScalarRelationFilter, VideoWhereInput>
-  }, "id">
+  }, "id" | "playlist_id_position">
 
   export type PlaylistVideoOrderByWithAggregationInput = {
     id?: SortOrder
@@ -8533,8 +8582,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: PlaylistVideoCountOrderByAggregateInput
+    _avg?: PlaylistVideoAvgOrderByAggregateInput
     _max?: PlaylistVideoMaxOrderByAggregateInput
     _min?: PlaylistVideoMinOrderByAggregateInput
+    _sum?: PlaylistVideoSumOrderByAggregateInput
   }
 
   export type PlaylistVideoScalarWhereWithAggregatesInput = {
@@ -8544,7 +8595,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"PlaylistVideo"> | string
     playlist_id?: StringWithAggregatesFilter<"PlaylistVideo"> | string
     video_id?: StringWithAggregatesFilter<"PlaylistVideo"> | string
-    position?: StringWithAggregatesFilter<"PlaylistVideo"> | string
+    position?: IntWithAggregatesFilter<"PlaylistVideo"> | number
     createdAt?: DateTimeWithAggregatesFilter<"PlaylistVideo"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PlaylistVideo"> | Date | string
   }
@@ -8890,7 +8941,7 @@ export namespace Prisma {
 
   export type PlaylistVideoCreateInput = {
     id?: string
-    position: string
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     playlist: PlaylistCreateNestedOneWithoutPlaylist_videoInput
@@ -8901,14 +8952,14 @@ export namespace Prisma {
     id?: string
     playlist_id: string
     video_id: string
-    position: string
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type PlaylistVideoUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    position?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     playlist?: PlaylistUpdateOneRequiredWithoutPlaylist_videoNestedInput
@@ -8919,7 +8970,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     playlist_id?: StringFieldUpdateOperationsInput | string
     video_id?: StringFieldUpdateOperationsInput | string
-    position?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8928,14 +8979,14 @@ export namespace Prisma {
     id?: string
     playlist_id: string
     video_id: string
-    position: string
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type PlaylistVideoUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    position?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8944,7 +8995,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     playlist_id?: StringFieldUpdateOperationsInput | string
     video_id?: StringFieldUpdateOperationsInput | string
-    position?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9234,9 +9285,25 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type PlaylistScalarRelationFilter = {
     is?: PlaylistWhereInput
     isNot?: PlaylistWhereInput
+  }
+
+  export type PlaylistVideoPlaylist_idPositionCompoundUniqueInput = {
+    playlist_id: string
+    position: number
   }
 
   export type PlaylistVideoCountOrderByAggregateInput = {
@@ -9246,6 +9313,10 @@ export namespace Prisma {
     position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type PlaylistVideoAvgOrderByAggregateInput = {
+    position?: SortOrder
   }
 
   export type PlaylistVideoMaxOrderByAggregateInput = {
@@ -9264,6 +9335,26 @@ export namespace Prisma {
     position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type PlaylistVideoSumOrderByAggregateInput = {
+    position?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type LikeCreateNestedManyWithoutVideoInput = {
@@ -9546,6 +9637,14 @@ export namespace Prisma {
     connect?: VideoWhereUniqueInput
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type PlaylistUpdateOneRequiredWithoutPlaylist_videoNestedInput = {
     create?: XOR<PlaylistCreateWithoutPlaylist_videoInput, PlaylistUncheckedCreateWithoutPlaylist_videoInput>
     connectOrCreate?: PlaylistCreateOrConnectWithoutPlaylist_videoInput
@@ -9663,6 +9762,33 @@ export namespace Prisma {
     _max?: NestedEnumReactionValueFilter<$PrismaModel>
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type LikeCreateWithoutVideoInput = {
     id?: string
     channel_id: string
@@ -9741,7 +9867,7 @@ export namespace Prisma {
 
   export type PlaylistVideoCreateWithoutVideoInput = {
     id?: string
-    position: string
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     playlist: PlaylistCreateNestedOneWithoutPlaylist_videoInput
@@ -9750,7 +9876,7 @@ export namespace Prisma {
   export type PlaylistVideoUncheckedCreateWithoutVideoInput = {
     id?: string
     playlist_id: string
-    position: string
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9871,7 +9997,7 @@ export namespace Prisma {
     id?: StringFilter<"PlaylistVideo"> | string
     playlist_id?: StringFilter<"PlaylistVideo"> | string
     video_id?: StringFilter<"PlaylistVideo"> | string
-    position?: StringFilter<"PlaylistVideo"> | string
+    position?: IntFilter<"PlaylistVideo"> | number
     createdAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
     updatedAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
   }
@@ -10106,7 +10232,7 @@ export namespace Prisma {
 
   export type PlaylistVideoCreateWithoutPlaylistInput = {
     id?: string
-    position: string
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     video: VideoCreateNestedOneWithoutPlaylist_videoInput
@@ -10115,7 +10241,7 @@ export namespace Prisma {
   export type PlaylistVideoUncheckedCreateWithoutPlaylistInput = {
     id?: string
     video_id: string
-    position: string
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10296,7 +10422,7 @@ export namespace Prisma {
   export type PlaylistVideoCreateManyVideoInput = {
     id?: string
     playlist_id: string
-    position: string
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10372,7 +10498,7 @@ export namespace Prisma {
 
   export type PlaylistVideoUpdateWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
-    position?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     playlist?: PlaylistUpdateOneRequiredWithoutPlaylist_videoNestedInput
@@ -10381,7 +10507,7 @@ export namespace Prisma {
   export type PlaylistVideoUncheckedUpdateWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
     playlist_id?: StringFieldUpdateOperationsInput | string
-    position?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10389,7 +10515,7 @@ export namespace Prisma {
   export type PlaylistVideoUncheckedUpdateManyWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
     playlist_id?: StringFieldUpdateOperationsInput | string
-    position?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10397,14 +10523,14 @@ export namespace Prisma {
   export type PlaylistVideoCreateManyPlaylistInput = {
     id?: string
     video_id: string
-    position: string
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type PlaylistVideoUpdateWithoutPlaylistInput = {
     id?: StringFieldUpdateOperationsInput | string
-    position?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     video?: VideoUpdateOneRequiredWithoutPlaylist_videoNestedInput
@@ -10413,7 +10539,7 @@ export namespace Prisma {
   export type PlaylistVideoUncheckedUpdateWithoutPlaylistInput = {
     id?: StringFieldUpdateOperationsInput | string
     video_id?: StringFieldUpdateOperationsInput | string
-    position?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10421,7 +10547,7 @@ export namespace Prisma {
   export type PlaylistVideoUncheckedUpdateManyWithoutPlaylistInput = {
     id?: StringFieldUpdateOperationsInput | string
     video_id?: StringFieldUpdateOperationsInput | string
-    position?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

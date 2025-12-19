@@ -29,4 +29,10 @@ export class RedisCacheService {
         await this.cacheManager.set(key, value, 1000 * 60)
         return 'list success added'
     }
+
+    async addListFirstChannelVideos(value: string): Promise<string> {
+        const key = 'listFirstChannelVideos'
+        await this.cacheManager.set(key, value, 1000 * 60)
+        return 'list for channel videos success added'
+    }
 }

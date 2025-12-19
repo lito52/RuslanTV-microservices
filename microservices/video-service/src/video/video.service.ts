@@ -17,6 +17,7 @@ export class VideoService {
         private readonly cacheService: RedisCacheService
     ) { }
 
+
     public async createVideo(request: CreateVideoRequest): Promise<Video> {
         const channel = await lastValueFrom(this.channelService.findChannelById({ channelId: request.channelId }))
 
@@ -31,11 +32,15 @@ export class VideoService {
             }
         })
 
+        await this.cacheService.del('listFirstVideos')
+        await this.cacheService.del('listFirstChannelVideos')
+
         return mapVideo(video)
     }
 
     public async updateVideoStatus(request: UpdateVideoStatusRequest): Promise<Video> {
         const video = await this.findVideoById({ videoId: request.videoId })
+        const channel = await lastValueFrom(this.channelService.findChannelById({ channelId: request.channelId }))
 
         if (video.channelId != request.channelId) {
             throw new RpcException('You cant edit this video')
@@ -51,10 +56,14 @@ export class VideoService {
             }
         })
 
+        await this.cacheService.del('listFirstVideos')
+        await this.cacheService.del('listFirstChannelVideos')
+
         return mapVideo(updatedVideo)
     }
 
     public async getAllVideo(request: GetAllVideoRequest): Promise<GetAllVideoResponse> {
+        console.log(request.page, request.pageSize)
         const cachedVideos: Video[] | null = await this.cacheService.get('listFirstVideos')
 
         if (cachedVideos) {
@@ -62,12 +71,16 @@ export class VideoService {
         }
 
         const video = await this.prisma.video.findMany({
-            take: request.take,
-            skip: request.skip,
+            take: request.pageSize,
+            skip: request.page * request.pageSize,
             include: {
-                comment: true,
-                likes: true,
-                view: true
+                _count: {
+                    select: {
+                        comment: true,
+                        likes: true,
+                        view: true
+                    }
+                }
             }
         })
 
@@ -80,23 +93,37 @@ export class VideoService {
 
     public async getAllChannelVideo(request: GetAllChannelVideoRequest): Promise<GetAllChannelVideoResponse> {
 
-        const cachedVideos: Video[] | null = await this.cacheService.get('listFirstVideos')
+        const cachedVideos: Video[] | null = await this.cacheService.get('listFirstChannelVideos')
 
         if (cachedVideos) {
             return { videos: cachedVideos }
         }
 
+
         const videos = await this.prisma.video.findMany({
             where: {
-                channel_id: request.channelId
+                channel_id: request.channelId,
+                status: VideoStatus.PUBLIC
             },
-            take: request.take,
-            skip: request.skip
+            take: request.pageSize,
+            skip: request.page * request.pageSize,
+            orderBy: {
+                createdAt: 'desc'
+            },
+            include: {
+                _count: {
+                    select: {
+                        comment: true,
+                        likes: true,
+                        view: true
+                    }
+                }
+            }
         })
 
         const mappedVideos = mapManyVideos(videos)
 
-        await this.cacheService.addListFirstVideos(JSON.stringify(mappedVideos))
+        await this.cacheService.addListFirstChannelVideos(JSON.stringify(mappedVideos))
 
         return { videos: mappedVideos }
     }
@@ -112,6 +139,8 @@ export class VideoService {
                 text: request.text
             }
         })
+
+        await this.cacheService.del(`${request.videoId}`)
 
         return mapComment(comment)
     }
@@ -148,6 +177,8 @@ export class VideoService {
             }
         })
 
+        await this.cacheService.del(`${request.videoId}`)
+
         return mapLike(like)
     }
 
@@ -174,6 +205,8 @@ export class VideoService {
                 video_id: request.videoId,
             }
         })
+
+        await this.cacheService.del(`${request.videoId}`)
 
         return mapView(view)
     }
@@ -237,15 +270,26 @@ export class VideoService {
         const playlist = await this.findPlaylistById({ id: request.playlistId })
         const video = await this.findVideoById({ videoId: request.videoId })
 
-        const playlistVideo = await this.prisma.playlistVideo.create({
+        const maxPosResult = await this.prisma.playlistVideo.aggregate({
+            where: {
+                playlist_id: request.playlistId,
+            },
+            _max: {
+                position: true
+            }
+        })
+
+        const newPosition = (maxPosResult._max.position ?? 0) + 1
+
+        const newPlaylistVideo = await this.prisma.playlistVideo.create({
             data: {
                 playlist_id: request.playlistId,
-                position: request.position,
+                position: newPosition,
                 video_id: request.videoId
             }
         })
 
-        return mapPlaylistVideo(playlistVideo)
+        return mapPlaylistVideo(newPlaylistVideo)
     }
 
 }
