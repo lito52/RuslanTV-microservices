@@ -77,7 +77,6 @@ export interface CreateVideoRequest {
   title: string;
   description: string;
   channelId: string;
-  status: string;
   previewUrl: string;
   videoUrl: string;
 }

@@ -1,20 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
-import { ReactionValue, VideoStatus } from 'prisma/generated';
+import { ReactionValue, VideoStatus } from '../../prisma/generated';
 import { lastValueFrom } from 'rxjs';
-import { channelServiceGrpcClientService } from 'src/grpc/grpc-services/channel-service-grpc-client.service';
-import { AddVideoToPlaylistRequest, Comment, CreateCommentRequest, CreatePlaylistRequest, CreateVideoRequest, FindPlaylistByIdRequest, FindVideoByIdRequest, GetAllChannelVideoRequest, GetAllChannelVideoResponse, GetAllVideoRequest, GetAllVideoResponse, Like, LikeVideoRequest, Playlist, PlaylistVideo, UpdateVideoStatusRequest, Video, View, WatchVideoRequest } from 'src/interfaces/video_service';
-import { RedisCacheService } from 'src/libs/common/redisCache/redisCache.service';
-import { mapPlaylist, mapPlaylistVideo } from 'src/libs/mapper/playlist.mapper';
-import { mapComment, mapLike, mapManyVideos, mapVideo, mapView } from 'src/libs/mapper/video.mapper';
-import { DatabaseService } from 'src/prisma/database.service';
+import { ChannelServiceGrpcClientService } from '../grpc/grpc-services/channel-service-grpc-client.service';
+import { SubscribeType } from '../interfaces/channel_service';
+import { AddVideoToPlaylistRequest, Comment, CreateCommentRequest, CreatePlaylistRequest, CreateVideoRequest, FindPlaylistByIdRequest, FindVideoByIdRequest, GetAllChannelVideoRequest, GetAllChannelVideoResponse, GetAllVideoRequest, GetAllVideoResponse, Like, LikeVideoRequest, Playlist, PlaylistVideo, PublishVideoRequest, Video, View, WatchVideoRequest } from '../interfaces/video_service';
+import { RedisCacheService } from '../libs/common/redisCache/redisCache.service';
+import { mapPlaylist, mapPlaylistVideo } from '../libs/mapper/playlist.mapper';
+import { mapComment, mapLike, mapManyVideos, mapVideo, mapView } from '../libs/mapper/video.mapper';
+import { RmqService } from '../libs/rmq/rmq.service';
+import { DatabaseService } from '../prisma/database.service';
 
 @Injectable()
 export class VideoService {
     constructor(
         private readonly prisma: DatabaseService,
-        private readonly channelService: channelServiceGrpcClientService,
-        private readonly cacheService: RedisCacheService
+        private readonly channelService: ChannelServiceGrpcClientService,
+        private readonly cacheService: RedisCacheService,
+        private readonly rmqService: RmqService
     ) { }
 
 
@@ -25,10 +28,10 @@ export class VideoService {
             data: {
                 title: request.title,
                 description: request.description,
-                status: request.status === 'public' ? VideoStatus.PUBLIC : VideoStatus.LIMITED,
-                channel_id: request.channelId,
-                preview_url: request.previewUrl,
-                video_url: request.videoUrl,
+                status: VideoStatus.LIMITED,
+                channelId: request.channelId,
+                previewUrl: request.previewUrl,
+                videoUrl: request.videoUrl,
             }
         })
 
@@ -38,7 +41,56 @@ export class VideoService {
         return mapVideo(video)
     }
 
-    public async updateVideoStatus(request: UpdateVideoStatusRequest): Promise<Video> {
+    // public async updateVideoStatus(request: UpdateVideoStatusRequest): Promise<Video> {
+    //     const video = await this.findVideoById({ videoId: request.videoId })
+    //     const channel = await lastValueFrom(this.channelService.findChannelById({ channelId: request.channelId }))
+
+    //     if (video.channelId != request.channelId) {
+    //         throw new RpcException('You cant edit this video')
+    //     }
+
+    //     if (video.status === request.status) {
+    //         throw new RpcException('Video already published')
+    //     }
+
+    //     const updatedVideo = await this.prisma.video.update({
+    //         data: {
+    //             status: request.status === 'public' ? VideoStatus.PUBLIC : VideoStatus.LIMITED
+    //         },
+    //         where: {
+    //             channelId: request.channelId,
+    //             id: request.videoId
+    //         }
+    //     })
+
+    //     if (request.status === 'public') {
+    //         const videoPublishedEvent = {
+    //             video: {
+    //                 id: video.id,
+    //                 title: video.title,
+    //                 url: video.videoUrl
+    //             },
+    //             channel: {
+    //                 id: channel.id,
+    //                 name: channel.name,
+    //                 avatarUrl: channel.profilePicture
+    //             },
+    //             // subscribers: channel.subscriptions
+    //             //     // .filter(sub => sub.subscribeType === 'NOTIFICATIONS')
+    //             //     .map(sub => ({
+    //             //         userId: sub.userId,
+    //             //     }))
+    //         }
+    //         await this.rmqService.emit('video-uploaded', videoPublishedEvent)
+    //     }
+
+    //     await this.cacheService.del('listFirstVideos')
+    //     await this.cacheService.del('listFirstChannelVideos')
+
+    //     return mapVideo(updatedVideo)
+    // }
+
+    public async publishVideo(request: PublishVideoRequest): Promise<Video> {
         const video = await this.findVideoById({ videoId: request.videoId })
         const channel = await lastValueFrom(this.channelService.findChannelById({ channelId: request.channelId }))
 
@@ -46,15 +98,37 @@ export class VideoService {
             throw new RpcException('You cant edit this video')
         }
 
+        if (video.status === 'PUBLIC') {
+            throw new RpcException('Video already published')
+        }
+
         const updatedVideo = await this.prisma.video.update({
             data: {
-                status: request.status === 'public' ? VideoStatus.PUBLIC : VideoStatus.LIMITED
+                status: VideoStatus.PUBLIC
             },
             where: {
-                channel_id: request.channelId,
+                channelId: request.channelId,
                 id: request.videoId
             }
         })
+        const videoPublishedEvent = {
+            video: {
+                id: video.id,
+                title: video.title,
+                url: video.videoUrl
+            },
+            channel: {
+                id: channel.id,
+                name: channel.name,
+                avatarUrl: channel.profilePicture
+            },
+            subscribers: channel.subscriptions
+                .filter(sub => sub.subscribeType === 'NOTIFICATIONS')
+                .map(sub => ({
+                    userId: sub.userId,
+                }))
+        }
+        await this.rmqService.emit('video-uploaded', videoPublishedEvent)
 
         await this.cacheService.del('listFirstVideos')
         await this.cacheService.del('listFirstChannelVideos')
@@ -64,7 +138,7 @@ export class VideoService {
 
     public async getAllVideo(request: GetAllVideoRequest): Promise<GetAllVideoResponse> {
         console.log(request.page, request.pageSize)
-        const cachedVideos: Video[] | null = await this.cacheService.get('listFirstVideos')
+        const cachedVideos: Video[] | undefined = await this.cacheService.get<Video[]>('listFirstVideos')
 
         if (cachedVideos) {
             return { videos: cachedVideos }
@@ -93,7 +167,7 @@ export class VideoService {
 
     public async getAllChannelVideo(request: GetAllChannelVideoRequest): Promise<GetAllChannelVideoResponse> {
 
-        const cachedVideos: Video[] | null = await this.cacheService.get('listFirstChannelVideos')
+        const cachedVideos: Video[] | undefined = await this.cacheService.get<Video[]>('listFirstChannelVideos')
 
         if (cachedVideos) {
             return { videos: cachedVideos }
@@ -102,7 +176,7 @@ export class VideoService {
 
         const videos = await this.prisma.video.findMany({
             where: {
-                channel_id: request.channelId,
+                channelId: request.channelId,
                 status: VideoStatus.PUBLIC
             },
             take: request.pageSize,
@@ -134,8 +208,8 @@ export class VideoService {
 
         const comment = await this.prisma.comment.create({
             data: {
-                channel_id: request.channelId,
-                video_id: request.videoId,
+                channelId: request.channelId,
+                videoId: request.videoId,
                 text: request.text
             }
         })
@@ -151,9 +225,9 @@ export class VideoService {
 
         const existLike = await this.prisma.like.findUnique({
             where: {
-                video_id_channel_id: {
-                    channel_id: request.channelId,
-                    video_id: request.videoId
+                videoId_channelId: {
+                    channelId: request.channelId,
+                    videoId: request.videoId
                 }
             }
         })
@@ -161,9 +235,9 @@ export class VideoService {
         if (existLike) {
             await this.prisma.like.delete({
                 where: {
-                    video_id_channel_id: {
-                        channel_id: request.channelId,
-                        video_id: request.videoId
+                    videoId_channelId: {
+                        channelId: request.channelId,
+                        videoId: request.videoId
                     }
                 }
             })
@@ -171,8 +245,8 @@ export class VideoService {
 
         const like = await this.prisma.like.create({
             data: {
-                channel_id: request.channelId,
-                video_id: request.videoId,
+                channelId: request.channelId,
+                videoId: request.videoId,
                 reaction: request.reaction === 'like' ? ReactionValue.LIKE : ReactionValue.DISLIKE
             }
         })
@@ -188,21 +262,28 @@ export class VideoService {
 
         const existView = await this.prisma.videoView.findUnique({
             where: {
-                video_id_channel_id: {
-                    channel_id: request.channelId,
-                    video_id: request.videoId
+                videoId_channelId: {
+                    channelId: request.channelId,
+                    videoId: request.videoId
                 }
             }
         })
 
         if (existView) {
-            throw new RpcException('Video already watched')
+            await this.prisma.videoView.delete({
+                where: {
+                    videoId_channelId: {
+                        channelId: request.channelId,
+                        videoId: request.videoId
+                    }
+                }
+            })
         }
 
         const view = await this.prisma.videoView.create({
             data: {
-                channel_id: request.channelId,
-                video_id: request.videoId,
+                channelId: request.channelId,
+                videoId: request.videoId,
             }
         })
 
@@ -212,7 +293,7 @@ export class VideoService {
     }
 
     public async findVideoById(request: FindVideoByIdRequest): Promise<Video> {
-        const cachedVideo: Video | null = await this.cacheService.get(request.videoId)
+        const cachedVideo: Video | undefined = await this.cacheService.get<Video>(request.videoId)
 
         if (cachedVideo) {
             return cachedVideo
@@ -239,10 +320,10 @@ export class VideoService {
         const playlist = await this.prisma.playlist.create({
             data: {
                 text: request.text,
-                channel_id: request.channelId,
+                channelId: request.channelId,
             },
             include: {
-                playlist_video: true
+                playlistVideo: true
             }
         })
 
@@ -255,7 +336,7 @@ export class VideoService {
                 id: request.id
             },
             include: {
-                playlist_video: true
+                playlistVideo: true
             }
         })
 
@@ -272,7 +353,7 @@ export class VideoService {
 
         const maxPosResult = await this.prisma.playlistVideo.aggregate({
             where: {
-                playlist_id: request.playlistId,
+                playlistId: request.playlistId,
             },
             _max: {
                 position: true
@@ -283,9 +364,9 @@ export class VideoService {
 
         const newPlaylistVideo = await this.prisma.playlistVideo.create({
             data: {
-                playlist_id: request.playlistId,
+                playlistId: request.playlistId,
                 position: newPosition,
-                video_id: request.videoId
+                videoId: request.videoId
             }
         })
 

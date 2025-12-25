@@ -6,13 +6,13 @@ export function toIso(date: Date | string): string {
 }
 
 export function mapPlaylist(playlist: Playlist & {
-    playlist_video: PlaylistVideo[]
+    playlist_video?: PlaylistVideo[]
 }): GrpcPlaylist {
     return {
         id: playlist.id,
-        channelId: playlist.channel_id,
+        channelId: playlist.channelId,
         text: playlist.text,
-        videos: playlist.playlist_video.map(mapPlaylistVideo) ?? [],
+        videos: playlist.playlist_video?.map(mapPlaylistVideo) ?? [],
         updatedAt: toIso(playlist.updatedAt),
         createdAt: toIso(playlist.createdAt),
     }
@@ -21,9 +21,9 @@ export function mapPlaylist(playlist: Playlist & {
 export function mapPlaylistVideo(playlistVideo: PlaylistVideo): GrpcPlaylistVideo {
     return {
         id: playlistVideo.id,
-        playlistId: playlistVideo.playlist_id,
+        playlistId: playlistVideo.playlistId,
         position: playlistVideo.position,
-        videoId: playlistVideo.video_id,
+        videoId: playlistVideo.videoId,
         updatedAt: toIso(playlistVideo.updatedAt),
         createdAt: toIso(playlistVideo.createdAt),
     }

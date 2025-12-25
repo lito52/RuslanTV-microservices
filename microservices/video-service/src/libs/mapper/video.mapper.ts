@@ -8,8 +8,8 @@ export function toIso(date: Date | string): string {
 export function mapLike(like: Like): GrpcLike {
     return {
         id: like.id,
-        channelId: like.channel_id ?? '',
-        videoId: like.video_id ?? '',
+        channelId: like.channelId ?? '',
+        videoId: like.videoId ?? '',
         reactionType: like.reaction ?? '',
         updatedAt: toIso(like.updatedAt),
         createdAt: toIso(like.createdAt),
@@ -19,8 +19,8 @@ export function mapLike(like: Like): GrpcLike {
 export function mapView(view: VideoView): GrpcView {
     return {
         id: view.id,
-        channelId: view.channel_id,
-        videoId: view.video_id,
+        channelId: view.channelId,
+        videoId: view.videoId,
         updatedAt: toIso(view.updatedAt),
         createdAt: toIso(view.createdAt),
     }
@@ -29,8 +29,8 @@ export function mapView(view: VideoView): GrpcView {
 export function mapComment(comment: Comment): GrpcComment {
     return {
         id: comment.id,
-        channelId: comment.channel_id ?? '',
-        videoId: comment.video_id ?? '',
+        channelId: comment.channelId ?? '',
+        videoId: comment.videoId ?? '',
         text: comment.text,
         updatedAt: toIso(comment.updatedAt),
         createdAt: toIso(comment.createdAt),
@@ -44,12 +44,12 @@ export function mapVideo(video: Video & {
 }): GrpcVideo {
     return {
         id: video.id,
-        channelId: video.channel_id,
+        channelId: video.channelId,
         title: video.title,
         status: video.status,
         description: video.description,
-        previewUrl: video.preview_url,
-        videoUrl: video.video_url,
+        previewUrl: video.previewUrl,
+        videoUrl: video.videoUrl,
         comments: video.comments?.map(mapComment) ?? [],
         likes: video.likes?.map(mapLike) ?? [],
         views: video.views?.map(mapView) ?? [],

@@ -13,12 +13,12 @@ model Video {
   title       String
   description String
 
-  channel_id String
+  channelId String
 
   status VideoStatus
 
-  preview_url String
-  video_url   String
+  previewUrl String
+  videoUrl   String
 
   likes          Like[]
   comment        Comment[]
@@ -28,7 +28,7 @@ model Video {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([channel_id])
+  @@index([channelId])
   @@map("videos")
 }
 
@@ -37,59 +37,59 @@ model Comment {
 
   text String
 
-  video_id String
-  video    Video  @relation(fields: [video_id], references: [id])
+  videoId String
+  video   Video  @relation(fields: [videoId], references: [id])
 
-  channel_id String
+  channelId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([video_id])
+  @@index([videoId])
   @@map("comments")
 }
 
 model Like {
   id String @id @default(uuid())
 
-  video_id String
-  video    Video  @relation(fields: [video_id], references: [id])
+  videoId String
+  video   Video  @relation(fields: [videoId], references: [id])
 
-  channel_id String
+  channelId String
 
   reaction ReactionValue
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([video_id, channel_id])
-  @@index([video_id])
+  @@unique([videoId, channelId])
+  @@index([videoId])
   @@map("likes")
 }
 
 model VideoView {
   id String @id @default(uuid())
 
-  video_id String
-  video    Video  @relation(fields: [video_id], references: [id])
+  videoId String
+  video   Video  @relation(fields: [videoId], references: [id])
 
-  channel_id String
+  channelId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([video_id, channel_id])
-  @@index([video_id])
+  @@unique([videoId, channelId])
+  @@index([videoId])
   @@map("video_views")
 }
 
 model Playlist {
   id String @id @default(uuid())
 
-  text       String
-  channel_id String
+  text      String
+  channelId String
 
-  playlist_video PlaylistVideo[]
+  playlistVideo PlaylistVideo[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -100,19 +100,19 @@ model Playlist {
 model PlaylistVideo {
   id String @id @default(uuid())
 
-  playlist_id String
-  playlist    Playlist @relation(fields: [playlist_id], references: [id])
+  playlistId String
+  playlist   Playlist @relation(fields: [playlistId], references: [id])
 
-  video_id String
-  video    Video  @relation(fields: [video_id], references: [id])
+  videoId String
+  video   Video  @relation(fields: [videoId], references: [id])
 
   position Int @default(0)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([playlist_id, position])
-  @@index([playlist_id, position])
+  @@unique([playlistId, position])
+  @@index([playlistId, position])
   @@map("playlist_videos")
 }
 

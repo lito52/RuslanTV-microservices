@@ -6,22 +6,16 @@ import { Cache } from 'cache-manager';
 export class RedisCacheService {
     constructor(@Inject(CACHE_MANAGER) private readonly cacheManager: Cache) { }
 
-    async get<T>(key: string): Promise<T | null> {
-        const data = await this.cacheManager.get<T>(`${key}`);
-        if (data) {
-            return JSON.parse(data as string);
-        }
-        return null;
+    async get<T>(key: string): Promise<T | undefined> {
+        return await this.cacheManager.get(key);
     }
 
-    async set<T>(key: string, value: T, ttl: number = 60 * 5): Promise<string> {
-        await this.cacheManager.set(key, value, 1000 * 60 * 5);
-        return `key ${key} added`
+    async set<T>(key: string, value: T, ttl: number = 60 * 5): Promise<T> {
+        return await this.cacheManager.set(key, value, 1000 * 60 * 5);
     }
 
-    async del(key: string): Promise<string> {
+    async del(key: string): Promise<void> {
         await this.cacheManager.del(key);
-        return `key ${key} deleted`
     }
 
     async addListFirstVideos(value: string): Promise<string> {

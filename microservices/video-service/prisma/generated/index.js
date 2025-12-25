@@ -97,10 +97,10 @@ exports.Prisma.VideoScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
-  channel_id: 'channel_id',
+  channelId: 'channelId',
   status: 'status',
-  preview_url: 'preview_url',
-  video_url: 'video_url',
+  previewUrl: 'previewUrl',
+  videoUrl: 'videoUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -108,16 +108,16 @@ exports.Prisma.VideoScalarFieldEnum = {
 exports.Prisma.CommentScalarFieldEnum = {
   id: 'id',
   text: 'text',
-  video_id: 'video_id',
-  channel_id: 'channel_id',
+  videoId: 'videoId',
+  channelId: 'channelId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.LikeScalarFieldEnum = {
   id: 'id',
-  video_id: 'video_id',
-  channel_id: 'channel_id',
+  videoId: 'videoId',
+  channelId: 'channelId',
   reaction: 'reaction',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -125,8 +125,8 @@ exports.Prisma.LikeScalarFieldEnum = {
 
 exports.Prisma.VideoViewScalarFieldEnum = {
   id: 'id',
-  video_id: 'video_id',
-  channel_id: 'channel_id',
+  videoId: 'videoId',
+  channelId: 'channelId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -134,15 +134,15 @@ exports.Prisma.VideoViewScalarFieldEnum = {
 exports.Prisma.PlaylistScalarFieldEnum = {
   id: 'id',
   text: 'text',
-  channel_id: 'channel_id',
+  channelId: 'channelId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.PlaylistVideoScalarFieldEnum = {
   id: 'id',
-  playlist_id: 'playlist_id',
-  video_id: 'video_id',
+  playlistId: 'playlistId',
+  videoId: 'videoId',
   position: 'position',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -183,10 +183,10 @@ const config = {
   "clientVersion": "7.1.0",
   "engineVersion": "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Video {\n  id String @id @default(uuid())\n\n  title       String\n  description String\n\n  channel_id String\n\n  status VideoStatus\n\n  preview_url String\n  video_url   String\n\n  likes          Like[]\n  comment        Comment[]\n  view           VideoView[]\n  playlist_video PlaylistVideo[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@index([channel_id])\n  @@map(\"videos\")\n}\n\nmodel Comment {\n  id String @id @default(uuid())\n\n  text String\n\n  video_id String\n  video    Video  @relation(fields: [video_id], references: [id])\n\n  channel_id String\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@index([video_id])\n  @@map(\"comments\")\n}\n\nmodel Like {\n  id String @id @default(uuid())\n\n  video_id String\n  video    Video  @relation(fields: [video_id], references: [id])\n\n  channel_id String\n\n  reaction ReactionValue\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([video_id, channel_id])\n  @@index([video_id])\n  @@map(\"likes\")\n}\n\nmodel VideoView {\n  id String @id @default(uuid())\n\n  video_id String\n  video    Video  @relation(fields: [video_id], references: [id])\n\n  channel_id String\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([video_id, channel_id])\n  @@index([video_id])\n  @@map(\"video_views\")\n}\n\nmodel Playlist {\n  id String @id @default(uuid())\n\n  text       String\n  channel_id String\n\n  playlist_video PlaylistVideo[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@map(\"playlists\")\n}\n\nmodel PlaylistVideo {\n  id String @id @default(uuid())\n\n  playlist_id String\n  playlist    Playlist @relation(fields: [playlist_id], references: [id])\n\n  video_id String\n  video    Video  @relation(fields: [video_id], references: [id])\n\n  position Int @default(0)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([playlist_id, position])\n  @@index([playlist_id, position])\n  @@map(\"playlist_videos\")\n}\n\nenum ReactionValue {\n  LIKE\n  DISLIKE\n}\n\nenum VideoStatus {\n  LIMITED\n  PUBLIC\n}\n"
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Video {\n  id String @id @default(uuid())\n\n  title       String\n  description String\n\n  channelId String\n\n  status VideoStatus\n\n  previewUrl String\n  videoUrl   String\n\n  likes          Like[]\n  comment        Comment[]\n  view           VideoView[]\n  playlist_video PlaylistVideo[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@index([channelId])\n  @@map(\"videos\")\n}\n\nmodel Comment {\n  id String @id @default(uuid())\n\n  text String\n\n  videoId String\n  video   Video  @relation(fields: [videoId], references: [id])\n\n  channelId String\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@index([videoId])\n  @@map(\"comments\")\n}\n\nmodel Like {\n  id String @id @default(uuid())\n\n  videoId String\n  video   Video  @relation(fields: [videoId], references: [id])\n\n  channelId String\n\n  reaction ReactionValue\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([videoId, channelId])\n  @@index([videoId])\n  @@map(\"likes\")\n}\n\nmodel VideoView {\n  id String @id @default(uuid())\n\n  videoId String\n  video   Video  @relation(fields: [videoId], references: [id])\n\n  channelId String\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([videoId, channelId])\n  @@index([videoId])\n  @@map(\"video_views\")\n}\n\nmodel Playlist {\n  id String @id @default(uuid())\n\n  text      String\n  channelId String\n\n  playlistVideo PlaylistVideo[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@map(\"playlists\")\n}\n\nmodel PlaylistVideo {\n  id String @id @default(uuid())\n\n  playlistId String\n  playlist   Playlist @relation(fields: [playlistId], references: [id])\n\n  videoId String\n  video   Video  @relation(fields: [videoId], references: [id])\n\n  position Int @default(0)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([playlistId, position])\n  @@index([playlistId, position])\n  @@map(\"playlist_videos\")\n}\n\nenum ReactionValue {\n  LIKE\n  DISLIKE\n}\n\nenum VideoStatus {\n  LIMITED\n  PUBLIC\n}\n"
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Video\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"channel_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"VideoStatus\"},{\"name\":\"preview_url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"video_url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"likes\",\"kind\":\"object\",\"type\":\"Like\",\"relationName\":\"LikeToVideo\"},{\"name\":\"comment\",\"kind\":\"object\",\"type\":\"Comment\",\"relationName\":\"CommentToVideo\"},{\"name\":\"view\",\"kind\":\"object\",\"type\":\"VideoView\",\"relationName\":\"VideoToVideoView\"},{\"name\":\"playlist_video\",\"kind\":\"object\",\"type\":\"PlaylistVideo\",\"relationName\":\"PlaylistVideoToVideo\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"videos\"},\"Comment\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"video_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"video\",\"kind\":\"object\",\"type\":\"Video\",\"relationName\":\"CommentToVideo\"},{\"name\":\"channel_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"comments\"},\"Like\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"video_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"video\",\"kind\":\"object\",\"type\":\"Video\",\"relationName\":\"LikeToVideo\"},{\"name\":\"channel_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"reaction\",\"kind\":\"enum\",\"type\":\"ReactionValue\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"likes\"},\"VideoView\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"video_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"video\",\"kind\":\"object\",\"type\":\"Video\",\"relationName\":\"VideoToVideoView\"},{\"name\":\"channel_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"video_views\"},\"Playlist\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"channel_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"playlist_video\",\"kind\":\"object\",\"type\":\"PlaylistVideo\",\"relationName\":\"PlaylistToPlaylistVideo\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"playlists\"},\"PlaylistVideo\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"playlist_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"playlist\",\"kind\":\"object\",\"type\":\"Playlist\",\"relationName\":\"PlaylistToPlaylistVideo\"},{\"name\":\"video_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"video\",\"kind\":\"object\",\"type\":\"Video\",\"relationName\":\"PlaylistVideoToVideo\"},{\"name\":\"position\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"playlist_videos\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Video\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"channelId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"VideoStatus\"},{\"name\":\"previewUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"videoUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"likes\",\"kind\":\"object\",\"type\":\"Like\",\"relationName\":\"LikeToVideo\"},{\"name\":\"comment\",\"kind\":\"object\",\"type\":\"Comment\",\"relationName\":\"CommentToVideo\"},{\"name\":\"view\",\"kind\":\"object\",\"type\":\"VideoView\",\"relationName\":\"VideoToVideoView\"},{\"name\":\"playlist_video\",\"kind\":\"object\",\"type\":\"PlaylistVideo\",\"relationName\":\"PlaylistVideoToVideo\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"videos\"},\"Comment\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"videoId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"video\",\"kind\":\"object\",\"type\":\"Video\",\"relationName\":\"CommentToVideo\"},{\"name\":\"channelId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"comments\"},\"Like\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"videoId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"video\",\"kind\":\"object\",\"type\":\"Video\",\"relationName\":\"LikeToVideo\"},{\"name\":\"channelId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"reaction\",\"kind\":\"enum\",\"type\":\"ReactionValue\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"likes\"},\"VideoView\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"videoId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"video\",\"kind\":\"object\",\"type\":\"Video\",\"relationName\":\"VideoToVideoView\"},{\"name\":\"channelId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"video_views\"},\"Playlist\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"channelId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"playlistVideo\",\"kind\":\"object\",\"type\":\"PlaylistVideo\",\"relationName\":\"PlaylistToPlaylistVideo\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"playlists\"},\"PlaylistVideo\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"playlistId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"playlist\",\"kind\":\"object\",\"type\":\"Playlist\",\"relationName\":\"PlaylistToPlaylistVideo\"},{\"name\":\"videoId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"video\",\"kind\":\"object\",\"type\":\"Video\",\"relationName\":\"PlaylistVideoToVideo\"},{\"name\":\"position\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"playlist_videos\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.compilerWasm = {
       getRuntime: async () => require('./query_compiler_bg.js'),

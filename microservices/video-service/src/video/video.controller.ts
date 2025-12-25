@@ -1,6 +1,6 @@
 import { Controller } from '@nestjs/common';
 import { VideoService } from './video.service';
-import { AddVideoToPlaylistRequest, Boolean, Comment, CreateCommentRequest, CreatePlaylistRequest, CreateVideoRequest, FindPlaylistByIdRequest, FindVideoByIdRequest, GetAllChannelVideoRequest, GetAllChannelVideoResponse, GetAllVideoRequest, GetAllVideoResponse, Like, LikeVideoRequest, Playlist, PlaylistVideo, UpdateVideoStatusRequest, Video, VideoServiceClient, VideoServiceController, View, WatchVideoRequest } from 'src/interfaces/video_service';
+import { AddVideoToPlaylistRequest, Boolean, Comment, CreateCommentRequest, CreatePlaylistRequest, CreateVideoRequest, FindPlaylistByIdRequest, FindVideoByIdRequest, GetAllChannelVideoRequest, GetAllChannelVideoResponse, GetAllVideoRequest, GetAllVideoResponse, Like, LikeVideoRequest, Playlist, PlaylistVideo, PublishVideoRequest, Video, VideoServiceClient, VideoServiceController, View, WatchVideoRequest } from 'src/interfaces/video_service';
 import { Observable } from 'rxjs';
 import { GrpcMethod, GrpcService } from '@nestjs/microservices';
 
@@ -13,9 +13,9 @@ export class VideoController implements VideoServiceController {
     return this.videoService.createVideo(request)
   }
 
-  @GrpcMethod('VideoService', 'UpdateVideoStatus')
-  updateVideoStatus(request: UpdateVideoStatusRequest): Promise<Video> | Observable<Video> | Video {
-    return this.videoService.updateVideoStatus(request)
+  @GrpcMethod('VideoService', 'PublishVideo')
+  publishVideo(request: PublishVideoRequest): Promise<Video> | Observable<Video> | Video {
+    return this.videoService.publishVideo(request)
   }
 
   @GrpcMethod('VideoService', 'FindVideoById')

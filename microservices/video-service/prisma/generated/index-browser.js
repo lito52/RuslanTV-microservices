@@ -124,10 +124,10 @@ exports.Prisma.VideoScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
-  channel_id: 'channel_id',
+  channelId: 'channelId',
   status: 'status',
-  preview_url: 'preview_url',
-  video_url: 'video_url',
+  previewUrl: 'previewUrl',
+  videoUrl: 'videoUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -135,16 +135,16 @@ exports.Prisma.VideoScalarFieldEnum = {
 exports.Prisma.CommentScalarFieldEnum = {
   id: 'id',
   text: 'text',
-  video_id: 'video_id',
-  channel_id: 'channel_id',
+  videoId: 'videoId',
+  channelId: 'channelId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.LikeScalarFieldEnum = {
   id: 'id',
-  video_id: 'video_id',
-  channel_id: 'channel_id',
+  videoId: 'videoId',
+  channelId: 'channelId',
   reaction: 'reaction',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -152,8 +152,8 @@ exports.Prisma.LikeScalarFieldEnum = {
 
 exports.Prisma.VideoViewScalarFieldEnum = {
   id: 'id',
-  video_id: 'video_id',
-  channel_id: 'channel_id',
+  videoId: 'videoId',
+  channelId: 'channelId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -161,15 +161,15 @@ exports.Prisma.VideoViewScalarFieldEnum = {
 exports.Prisma.PlaylistScalarFieldEnum = {
   id: 'id',
   text: 'text',
-  channel_id: 'channel_id',
+  channelId: 'channelId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.PlaylistVideoScalarFieldEnum = {
   id: 'id',
-  playlist_id: 'playlist_id',
-  video_id: 'video_id',
+  playlistId: 'playlistId',
+  videoId: 'videoId',
   position: 'position',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

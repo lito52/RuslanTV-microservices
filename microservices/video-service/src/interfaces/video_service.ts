@@ -77,7 +77,6 @@ export interface CreateVideoRequest {
   title: string;
   description: string;
   channelId: string;
-  status: string;
   previewUrl: string;
   videoUrl: string;
 }
@@ -101,10 +100,9 @@ export interface GetAllChannelVideoResponse {
   videos: Video[];
 }
 
-export interface UpdateVideoStatusRequest {
+export interface PublishVideoRequest {
   videoId: string;
   channelId: string;
-  status: string;
 }
 
 export interface CreateCommentRequest {
@@ -147,7 +145,7 @@ export const VIDEO_SERVICE_PACKAGE_NAME = "video_service";
 export interface VideoServiceClient {
   createVideo(request: CreateVideoRequest): Observable<Video>;
 
-  updateVideoStatus(request: UpdateVideoStatusRequest): Observable<Video>;
+  publishVideo(request: PublishVideoRequest): Observable<Video>;
 
   findVideoById(request: FindVideoByIdRequest): Observable<Video>;
 
@@ -171,7 +169,7 @@ export interface VideoServiceClient {
 export interface VideoServiceController {
   createVideo(request: CreateVideoRequest): Promise<Video> | Observable<Video> | Video;
 
-  updateVideoStatus(request: UpdateVideoStatusRequest): Promise<Video> | Observable<Video> | Video;
+  publishVideo(request: PublishVideoRequest): Promise<Video> | Observable<Video> | Video;
 
   findVideoById(request: FindVideoByIdRequest): Promise<Video> | Observable<Video> | Video;
 
@@ -202,7 +200,7 @@ export function VideoServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = [
       "createVideo",
-      "updateVideoStatus",
+      "publishVideo",
       "findVideoById",
       "getAllVideo",
       "getAllChannelVideo",

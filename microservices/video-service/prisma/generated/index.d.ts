@@ -1404,11 +1404,11 @@ export namespace Prisma {
    */
 
   export type PlaylistCountOutputType = {
-    playlist_video: number
+    playlistVideo: number
   }
 
   export type PlaylistCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    playlist_video?: boolean | PlaylistCountOutputTypeCountPlaylist_videoArgs
+    playlistVideo?: boolean | PlaylistCountOutputTypeCountPlaylistVideoArgs
   }
 
   // Custom InputTypes
@@ -1425,7 +1425,7 @@ export namespace Prisma {
   /**
    * PlaylistCountOutputType without action
    */
-  export type PlaylistCountOutputTypeCountPlaylist_videoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PlaylistCountOutputTypeCountPlaylistVideoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PlaylistVideoWhereInput
   }
 
@@ -1448,10 +1448,10 @@ export namespace Prisma {
     id: string | null
     title: string | null
     description: string | null
-    channel_id: string | null
+    channelId: string | null
     status: $Enums.VideoStatus | null
-    preview_url: string | null
-    video_url: string | null
+    previewUrl: string | null
+    videoUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1460,10 +1460,10 @@ export namespace Prisma {
     id: string | null
     title: string | null
     description: string | null
-    channel_id: string | null
+    channelId: string | null
     status: $Enums.VideoStatus | null
-    preview_url: string | null
-    video_url: string | null
+    previewUrl: string | null
+    videoUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1472,10 +1472,10 @@ export namespace Prisma {
     id: number
     title: number
     description: number
-    channel_id: number
+    channelId: number
     status: number
-    preview_url: number
-    video_url: number
+    previewUrl: number
+    videoUrl: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1486,10 +1486,10 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
-    channel_id?: true
+    channelId?: true
     status?: true
-    preview_url?: true
-    video_url?: true
+    previewUrl?: true
+    videoUrl?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1498,10 +1498,10 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
-    channel_id?: true
+    channelId?: true
     status?: true
-    preview_url?: true
-    video_url?: true
+    previewUrl?: true
+    videoUrl?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1510,10 +1510,10 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
-    channel_id?: true
+    channelId?: true
     status?: true
-    preview_url?: true
-    video_url?: true
+    previewUrl?: true
+    videoUrl?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1595,10 +1595,10 @@ export namespace Prisma {
     id: string
     title: string
     description: string
-    channel_id: string
+    channelId: string
     status: $Enums.VideoStatus
-    preview_url: string
-    video_url: string
+    previewUrl: string
+    videoUrl: string
     createdAt: Date
     updatedAt: Date
     _count: VideoCountAggregateOutputType | null
@@ -1624,10 +1624,10 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
-    channel_id?: boolean
+    channelId?: boolean
     status?: boolean
-    preview_url?: boolean
-    video_url?: boolean
+    previewUrl?: boolean
+    videoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     likes?: boolean | Video$likesArgs<ExtArgs>
@@ -1641,10 +1641,10 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
-    channel_id?: boolean
+    channelId?: boolean
     status?: boolean
-    preview_url?: boolean
-    video_url?: boolean
+    previewUrl?: boolean
+    videoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["video"]>
@@ -1653,10 +1653,10 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
-    channel_id?: boolean
+    channelId?: boolean
     status?: boolean
-    preview_url?: boolean
-    video_url?: boolean
+    previewUrl?: boolean
+    videoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["video"]>
@@ -1665,15 +1665,15 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
-    channel_id?: boolean
+    channelId?: boolean
     status?: boolean
-    preview_url?: boolean
-    video_url?: boolean
+    previewUrl?: boolean
+    videoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type VideoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "channel_id" | "status" | "preview_url" | "video_url" | "createdAt" | "updatedAt", ExtArgs["result"]["video"]>
+  export type VideoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "channelId" | "status" | "previewUrl" | "videoUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["video"]>
   export type VideoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     likes?: boolean | Video$likesArgs<ExtArgs>
     comment?: boolean | Video$commentArgs<ExtArgs>
@@ -1696,10 +1696,10 @@ export namespace Prisma {
       id: string
       title: string
       description: string
-      channel_id: string
+      channelId: string
       status: $Enums.VideoStatus
-      preview_url: string
-      video_url: string
+      previewUrl: string
+      videoUrl: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["video"]>
@@ -2132,10 +2132,10 @@ export namespace Prisma {
     readonly id: FieldRef<"Video", 'String'>
     readonly title: FieldRef<"Video", 'String'>
     readonly description: FieldRef<"Video", 'String'>
-    readonly channel_id: FieldRef<"Video", 'String'>
+    readonly channelId: FieldRef<"Video", 'String'>
     readonly status: FieldRef<"Video", 'VideoStatus'>
-    readonly preview_url: FieldRef<"Video", 'String'>
-    readonly video_url: FieldRef<"Video", 'String'>
+    readonly previewUrl: FieldRef<"Video", 'String'>
+    readonly videoUrl: FieldRef<"Video", 'String'>
     readonly createdAt: FieldRef<"Video", 'DateTime'>
     readonly updatedAt: FieldRef<"Video", 'DateTime'>
   }
@@ -2653,8 +2653,8 @@ export namespace Prisma {
   export type CommentMinAggregateOutputType = {
     id: string | null
     text: string | null
-    video_id: string | null
-    channel_id: string | null
+    videoId: string | null
+    channelId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2662,8 +2662,8 @@ export namespace Prisma {
   export type CommentMaxAggregateOutputType = {
     id: string | null
     text: string | null
-    video_id: string | null
-    channel_id: string | null
+    videoId: string | null
+    channelId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2671,8 +2671,8 @@ export namespace Prisma {
   export type CommentCountAggregateOutputType = {
     id: number
     text: number
-    video_id: number
-    channel_id: number
+    videoId: number
+    channelId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2682,8 +2682,8 @@ export namespace Prisma {
   export type CommentMinAggregateInputType = {
     id?: true
     text?: true
-    video_id?: true
-    channel_id?: true
+    videoId?: true
+    channelId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2691,8 +2691,8 @@ export namespace Prisma {
   export type CommentMaxAggregateInputType = {
     id?: true
     text?: true
-    video_id?: true
-    channel_id?: true
+    videoId?: true
+    channelId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2700,8 +2700,8 @@ export namespace Prisma {
   export type CommentCountAggregateInputType = {
     id?: true
     text?: true
-    video_id?: true
-    channel_id?: true
+    videoId?: true
+    channelId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2782,8 +2782,8 @@ export namespace Prisma {
   export type CommentGroupByOutputType = {
     id: string
     text: string
-    video_id: string
-    channel_id: string
+    videoId: string
+    channelId: string
     createdAt: Date
     updatedAt: Date
     _count: CommentCountAggregateOutputType | null
@@ -2808,8 +2808,8 @@ export namespace Prisma {
   export type CommentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     text?: boolean
-    video_id?: boolean
-    channel_id?: boolean
+    videoId?: boolean
+    channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     video?: boolean | VideoDefaultArgs<ExtArgs>
@@ -2818,8 +2818,8 @@ export namespace Prisma {
   export type CommentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     text?: boolean
-    video_id?: boolean
-    channel_id?: boolean
+    videoId?: boolean
+    channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     video?: boolean | VideoDefaultArgs<ExtArgs>
@@ -2828,8 +2828,8 @@ export namespace Prisma {
   export type CommentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     text?: boolean
-    video_id?: boolean
-    channel_id?: boolean
+    videoId?: boolean
+    channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     video?: boolean | VideoDefaultArgs<ExtArgs>
@@ -2838,13 +2838,13 @@ export namespace Prisma {
   export type CommentSelectScalar = {
     id?: boolean
     text?: boolean
-    video_id?: boolean
-    channel_id?: boolean
+    videoId?: boolean
+    channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "text" | "video_id" | "channel_id" | "createdAt" | "updatedAt", ExtArgs["result"]["comment"]>
+  export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "text" | "videoId" | "channelId" | "createdAt" | "updatedAt", ExtArgs["result"]["comment"]>
   export type CommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     video?: boolean | VideoDefaultArgs<ExtArgs>
   }
@@ -2863,8 +2863,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       text: string
-      video_id: string
-      channel_id: string
+      videoId: string
+      channelId: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["comment"]>
@@ -3293,8 +3293,8 @@ export namespace Prisma {
   interface CommentFieldRefs {
     readonly id: FieldRef<"Comment", 'String'>
     readonly text: FieldRef<"Comment", 'String'>
-    readonly video_id: FieldRef<"Comment", 'String'>
-    readonly channel_id: FieldRef<"Comment", 'String'>
+    readonly videoId: FieldRef<"Comment", 'String'>
+    readonly channelId: FieldRef<"Comment", 'String'>
     readonly createdAt: FieldRef<"Comment", 'DateTime'>
     readonly updatedAt: FieldRef<"Comment", 'DateTime'>
   }
@@ -3723,8 +3723,8 @@ export namespace Prisma {
 
   export type LikeMinAggregateOutputType = {
     id: string | null
-    video_id: string | null
-    channel_id: string | null
+    videoId: string | null
+    channelId: string | null
     reaction: $Enums.ReactionValue | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3732,8 +3732,8 @@ export namespace Prisma {
 
   export type LikeMaxAggregateOutputType = {
     id: string | null
-    video_id: string | null
-    channel_id: string | null
+    videoId: string | null
+    channelId: string | null
     reaction: $Enums.ReactionValue | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3741,8 +3741,8 @@ export namespace Prisma {
 
   export type LikeCountAggregateOutputType = {
     id: number
-    video_id: number
-    channel_id: number
+    videoId: number
+    channelId: number
     reaction: number
     createdAt: number
     updatedAt: number
@@ -3752,8 +3752,8 @@ export namespace Prisma {
 
   export type LikeMinAggregateInputType = {
     id?: true
-    video_id?: true
-    channel_id?: true
+    videoId?: true
+    channelId?: true
     reaction?: true
     createdAt?: true
     updatedAt?: true
@@ -3761,8 +3761,8 @@ export namespace Prisma {
 
   export type LikeMaxAggregateInputType = {
     id?: true
-    video_id?: true
-    channel_id?: true
+    videoId?: true
+    channelId?: true
     reaction?: true
     createdAt?: true
     updatedAt?: true
@@ -3770,8 +3770,8 @@ export namespace Prisma {
 
   export type LikeCountAggregateInputType = {
     id?: true
-    video_id?: true
-    channel_id?: true
+    videoId?: true
+    channelId?: true
     reaction?: true
     createdAt?: true
     updatedAt?: true
@@ -3852,8 +3852,8 @@ export namespace Prisma {
 
   export type LikeGroupByOutputType = {
     id: string
-    video_id: string
-    channel_id: string
+    videoId: string
+    channelId: string
     reaction: $Enums.ReactionValue
     createdAt: Date
     updatedAt: Date
@@ -3878,8 +3878,8 @@ export namespace Prisma {
 
   export type LikeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    video_id?: boolean
-    channel_id?: boolean
+    videoId?: boolean
+    channelId?: boolean
     reaction?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3888,8 +3888,8 @@ export namespace Prisma {
 
   export type LikeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    video_id?: boolean
-    channel_id?: boolean
+    videoId?: boolean
+    channelId?: boolean
     reaction?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3898,8 +3898,8 @@ export namespace Prisma {
 
   export type LikeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    video_id?: boolean
-    channel_id?: boolean
+    videoId?: boolean
+    channelId?: boolean
     reaction?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3908,14 +3908,14 @@ export namespace Prisma {
 
   export type LikeSelectScalar = {
     id?: boolean
-    video_id?: boolean
-    channel_id?: boolean
+    videoId?: boolean
+    channelId?: boolean
     reaction?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type LikeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "video_id" | "channel_id" | "reaction" | "createdAt" | "updatedAt", ExtArgs["result"]["like"]>
+  export type LikeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "videoId" | "channelId" | "reaction" | "createdAt" | "updatedAt", ExtArgs["result"]["like"]>
   export type LikeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     video?: boolean | VideoDefaultArgs<ExtArgs>
   }
@@ -3933,8 +3933,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      video_id: string
-      channel_id: string
+      videoId: string
+      channelId: string
       reaction: $Enums.ReactionValue
       createdAt: Date
       updatedAt: Date
@@ -4363,8 +4363,8 @@ export namespace Prisma {
    */
   interface LikeFieldRefs {
     readonly id: FieldRef<"Like", 'String'>
-    readonly video_id: FieldRef<"Like", 'String'>
-    readonly channel_id: FieldRef<"Like", 'String'>
+    readonly videoId: FieldRef<"Like", 'String'>
+    readonly channelId: FieldRef<"Like", 'String'>
     readonly reaction: FieldRef<"Like", 'ReactionValue'>
     readonly createdAt: FieldRef<"Like", 'DateTime'>
     readonly updatedAt: FieldRef<"Like", 'DateTime'>
@@ -4794,24 +4794,24 @@ export namespace Prisma {
 
   export type VideoViewMinAggregateOutputType = {
     id: string | null
-    video_id: string | null
-    channel_id: string | null
+    videoId: string | null
+    channelId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type VideoViewMaxAggregateOutputType = {
     id: string | null
-    video_id: string | null
-    channel_id: string | null
+    videoId: string | null
+    channelId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type VideoViewCountAggregateOutputType = {
     id: number
-    video_id: number
-    channel_id: number
+    videoId: number
+    channelId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -4820,24 +4820,24 @@ export namespace Prisma {
 
   export type VideoViewMinAggregateInputType = {
     id?: true
-    video_id?: true
-    channel_id?: true
+    videoId?: true
+    channelId?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type VideoViewMaxAggregateInputType = {
     id?: true
-    video_id?: true
-    channel_id?: true
+    videoId?: true
+    channelId?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type VideoViewCountAggregateInputType = {
     id?: true
-    video_id?: true
-    channel_id?: true
+    videoId?: true
+    channelId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4917,8 +4917,8 @@ export namespace Prisma {
 
   export type VideoViewGroupByOutputType = {
     id: string
-    video_id: string
-    channel_id: string
+    videoId: string
+    channelId: string
     createdAt: Date
     updatedAt: Date
     _count: VideoViewCountAggregateOutputType | null
@@ -4942,8 +4942,8 @@ export namespace Prisma {
 
   export type VideoViewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    video_id?: boolean
-    channel_id?: boolean
+    videoId?: boolean
+    channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     video?: boolean | VideoDefaultArgs<ExtArgs>
@@ -4951,8 +4951,8 @@ export namespace Prisma {
 
   export type VideoViewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    video_id?: boolean
-    channel_id?: boolean
+    videoId?: boolean
+    channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     video?: boolean | VideoDefaultArgs<ExtArgs>
@@ -4960,8 +4960,8 @@ export namespace Prisma {
 
   export type VideoViewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    video_id?: boolean
-    channel_id?: boolean
+    videoId?: boolean
+    channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     video?: boolean | VideoDefaultArgs<ExtArgs>
@@ -4969,13 +4969,13 @@ export namespace Prisma {
 
   export type VideoViewSelectScalar = {
     id?: boolean
-    video_id?: boolean
-    channel_id?: boolean
+    videoId?: boolean
+    channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type VideoViewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "video_id" | "channel_id" | "createdAt" | "updatedAt", ExtArgs["result"]["videoView"]>
+  export type VideoViewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "videoId" | "channelId" | "createdAt" | "updatedAt", ExtArgs["result"]["videoView"]>
   export type VideoViewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     video?: boolean | VideoDefaultArgs<ExtArgs>
   }
@@ -4993,8 +4993,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      video_id: string
-      channel_id: string
+      videoId: string
+      channelId: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["videoView"]>
@@ -5422,8 +5422,8 @@ export namespace Prisma {
    */
   interface VideoViewFieldRefs {
     readonly id: FieldRef<"VideoView", 'String'>
-    readonly video_id: FieldRef<"VideoView", 'String'>
-    readonly channel_id: FieldRef<"VideoView", 'String'>
+    readonly videoId: FieldRef<"VideoView", 'String'>
+    readonly channelId: FieldRef<"VideoView", 'String'>
     readonly createdAt: FieldRef<"VideoView", 'DateTime'>
     readonly updatedAt: FieldRef<"VideoView", 'DateTime'>
   }
@@ -5853,7 +5853,7 @@ export namespace Prisma {
   export type PlaylistMinAggregateOutputType = {
     id: string | null
     text: string | null
-    channel_id: string | null
+    channelId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5861,7 +5861,7 @@ export namespace Prisma {
   export type PlaylistMaxAggregateOutputType = {
     id: string | null
     text: string | null
-    channel_id: string | null
+    channelId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5869,7 +5869,7 @@ export namespace Prisma {
   export type PlaylistCountAggregateOutputType = {
     id: number
     text: number
-    channel_id: number
+    channelId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -5879,7 +5879,7 @@ export namespace Prisma {
   export type PlaylistMinAggregateInputType = {
     id?: true
     text?: true
-    channel_id?: true
+    channelId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5887,7 +5887,7 @@ export namespace Prisma {
   export type PlaylistMaxAggregateInputType = {
     id?: true
     text?: true
-    channel_id?: true
+    channelId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5895,7 +5895,7 @@ export namespace Prisma {
   export type PlaylistCountAggregateInputType = {
     id?: true
     text?: true
-    channel_id?: true
+    channelId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -5976,7 +5976,7 @@ export namespace Prisma {
   export type PlaylistGroupByOutputType = {
     id: string
     text: string
-    channel_id: string
+    channelId: string
     createdAt: Date
     updatedAt: Date
     _count: PlaylistCountAggregateOutputType | null
@@ -6001,17 +6001,17 @@ export namespace Prisma {
   export type PlaylistSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     text?: boolean
-    channel_id?: boolean
+    channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    playlist_video?: boolean | Playlist$playlist_videoArgs<ExtArgs>
+    playlistVideo?: boolean | Playlist$playlistVideoArgs<ExtArgs>
     _count?: boolean | PlaylistCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["playlist"]>
 
   export type PlaylistSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     text?: boolean
-    channel_id?: boolean
+    channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["playlist"]>
@@ -6019,7 +6019,7 @@ export namespace Prisma {
   export type PlaylistSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     text?: boolean
-    channel_id?: boolean
+    channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["playlist"]>
@@ -6027,14 +6027,14 @@ export namespace Prisma {
   export type PlaylistSelectScalar = {
     id?: boolean
     text?: boolean
-    channel_id?: boolean
+    channelId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PlaylistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "text" | "channel_id" | "createdAt" | "updatedAt", ExtArgs["result"]["playlist"]>
+  export type PlaylistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "text" | "channelId" | "createdAt" | "updatedAt", ExtArgs["result"]["playlist"]>
   export type PlaylistInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    playlist_video?: boolean | Playlist$playlist_videoArgs<ExtArgs>
+    playlistVideo?: boolean | Playlist$playlistVideoArgs<ExtArgs>
     _count?: boolean | PlaylistCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PlaylistIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -6043,12 +6043,12 @@ export namespace Prisma {
   export type $PlaylistPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Playlist"
     objects: {
-      playlist_video: Prisma.$PlaylistVideoPayload<ExtArgs>[]
+      playlistVideo: Prisma.$PlaylistVideoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       text: string
-      channel_id: string
+      channelId: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["playlist"]>
@@ -6445,7 +6445,7 @@ export namespace Prisma {
    */
   export interface Prisma__PlaylistClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    playlist_video<T extends Playlist$playlist_videoArgs<ExtArgs> = {}>(args?: Subset<T, Playlist$playlist_videoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    playlistVideo<T extends Playlist$playlistVideoArgs<ExtArgs> = {}>(args?: Subset<T, Playlist$playlistVideoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaylistVideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6477,7 +6477,7 @@ export namespace Prisma {
   interface PlaylistFieldRefs {
     readonly id: FieldRef<"Playlist", 'String'>
     readonly text: FieldRef<"Playlist", 'String'>
-    readonly channel_id: FieldRef<"Playlist", 'String'>
+    readonly channelId: FieldRef<"Playlist", 'String'>
     readonly createdAt: FieldRef<"Playlist", 'DateTime'>
     readonly updatedAt: FieldRef<"Playlist", 'DateTime'>
   }
@@ -6868,9 +6868,9 @@ export namespace Prisma {
   }
 
   /**
-   * Playlist.playlist_video
+   * Playlist.playlistVideo
    */
-  export type Playlist$playlist_videoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Playlist$playlistVideoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PlaylistVideo
      */
@@ -6932,8 +6932,8 @@ export namespace Prisma {
 
   export type PlaylistVideoMinAggregateOutputType = {
     id: string | null
-    playlist_id: string | null
-    video_id: string | null
+    playlistId: string | null
+    videoId: string | null
     position: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -6941,8 +6941,8 @@ export namespace Prisma {
 
   export type PlaylistVideoMaxAggregateOutputType = {
     id: string | null
-    playlist_id: string | null
-    video_id: string | null
+    playlistId: string | null
+    videoId: string | null
     position: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -6950,8 +6950,8 @@ export namespace Prisma {
 
   export type PlaylistVideoCountAggregateOutputType = {
     id: number
-    playlist_id: number
-    video_id: number
+    playlistId: number
+    videoId: number
     position: number
     createdAt: number
     updatedAt: number
@@ -6969,8 +6969,8 @@ export namespace Prisma {
 
   export type PlaylistVideoMinAggregateInputType = {
     id?: true
-    playlist_id?: true
-    video_id?: true
+    playlistId?: true
+    videoId?: true
     position?: true
     createdAt?: true
     updatedAt?: true
@@ -6978,8 +6978,8 @@ export namespace Prisma {
 
   export type PlaylistVideoMaxAggregateInputType = {
     id?: true
-    playlist_id?: true
-    video_id?: true
+    playlistId?: true
+    videoId?: true
     position?: true
     createdAt?: true
     updatedAt?: true
@@ -6987,8 +6987,8 @@ export namespace Prisma {
 
   export type PlaylistVideoCountAggregateInputType = {
     id?: true
-    playlist_id?: true
-    video_id?: true
+    playlistId?: true
+    videoId?: true
     position?: true
     createdAt?: true
     updatedAt?: true
@@ -7083,8 +7083,8 @@ export namespace Prisma {
 
   export type PlaylistVideoGroupByOutputType = {
     id: string
-    playlist_id: string
-    video_id: string
+    playlistId: string
+    videoId: string
     position: number
     createdAt: Date
     updatedAt: Date
@@ -7111,8 +7111,8 @@ export namespace Prisma {
 
   export type PlaylistVideoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    playlist_id?: boolean
-    video_id?: boolean
+    playlistId?: boolean
+    videoId?: boolean
     position?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7122,8 +7122,8 @@ export namespace Prisma {
 
   export type PlaylistVideoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    playlist_id?: boolean
-    video_id?: boolean
+    playlistId?: boolean
+    videoId?: boolean
     position?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7133,8 +7133,8 @@ export namespace Prisma {
 
   export type PlaylistVideoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    playlist_id?: boolean
-    video_id?: boolean
+    playlistId?: boolean
+    videoId?: boolean
     position?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7144,14 +7144,14 @@ export namespace Prisma {
 
   export type PlaylistVideoSelectScalar = {
     id?: boolean
-    playlist_id?: boolean
-    video_id?: boolean
+    playlistId?: boolean
+    videoId?: boolean
     position?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PlaylistVideoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "playlist_id" | "video_id" | "position" | "createdAt" | "updatedAt", ExtArgs["result"]["playlistVideo"]>
+  export type PlaylistVideoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "playlistId" | "videoId" | "position" | "createdAt" | "updatedAt", ExtArgs["result"]["playlistVideo"]>
   export type PlaylistVideoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
     video?: boolean | VideoDefaultArgs<ExtArgs>
@@ -7173,8 +7173,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      playlist_id: string
-      video_id: string
+      playlistId: string
+      videoId: string
       position: number
       createdAt: Date
       updatedAt: Date
@@ -7604,8 +7604,8 @@ export namespace Prisma {
    */
   interface PlaylistVideoFieldRefs {
     readonly id: FieldRef<"PlaylistVideo", 'String'>
-    readonly playlist_id: FieldRef<"PlaylistVideo", 'String'>
-    readonly video_id: FieldRef<"PlaylistVideo", 'String'>
+    readonly playlistId: FieldRef<"PlaylistVideo", 'String'>
+    readonly videoId: FieldRef<"PlaylistVideo", 'String'>
     readonly position: FieldRef<"PlaylistVideo", 'Int'>
     readonly createdAt: FieldRef<"PlaylistVideo", 'DateTime'>
     readonly updatedAt: FieldRef<"PlaylistVideo", 'DateTime'>
@@ -8041,10 +8041,10 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     description: 'description',
-    channel_id: 'channel_id',
+    channelId: 'channelId',
     status: 'status',
-    preview_url: 'preview_url',
-    video_url: 'video_url',
+    previewUrl: 'previewUrl',
+    videoUrl: 'videoUrl',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -8055,8 +8055,8 @@ export namespace Prisma {
   export const CommentScalarFieldEnum: {
     id: 'id',
     text: 'text',
-    video_id: 'video_id',
-    channel_id: 'channel_id',
+    videoId: 'videoId',
+    channelId: 'channelId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -8066,8 +8066,8 @@ export namespace Prisma {
 
   export const LikeScalarFieldEnum: {
     id: 'id',
-    video_id: 'video_id',
-    channel_id: 'channel_id',
+    videoId: 'videoId',
+    channelId: 'channelId',
     reaction: 'reaction',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -8078,8 +8078,8 @@ export namespace Prisma {
 
   export const VideoViewScalarFieldEnum: {
     id: 'id',
-    video_id: 'video_id',
-    channel_id: 'channel_id',
+    videoId: 'videoId',
+    channelId: 'channelId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -8090,7 +8090,7 @@ export namespace Prisma {
   export const PlaylistScalarFieldEnum: {
     id: 'id',
     text: 'text',
-    channel_id: 'channel_id',
+    channelId: 'channelId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -8100,8 +8100,8 @@ export namespace Prisma {
 
   export const PlaylistVideoScalarFieldEnum: {
     id: 'id',
-    playlist_id: 'playlist_id',
-    video_id: 'video_id',
+    playlistId: 'playlistId',
+    videoId: 'videoId',
     position: 'position',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -8225,10 +8225,10 @@ export namespace Prisma {
     id?: StringFilter<"Video"> | string
     title?: StringFilter<"Video"> | string
     description?: StringFilter<"Video"> | string
-    channel_id?: StringFilter<"Video"> | string
+    channelId?: StringFilter<"Video"> | string
     status?: EnumVideoStatusFilter<"Video"> | $Enums.VideoStatus
-    preview_url?: StringFilter<"Video"> | string
-    video_url?: StringFilter<"Video"> | string
+    previewUrl?: StringFilter<"Video"> | string
+    videoUrl?: StringFilter<"Video"> | string
     createdAt?: DateTimeFilter<"Video"> | Date | string
     updatedAt?: DateTimeFilter<"Video"> | Date | string
     likes?: LikeListRelationFilter
@@ -8241,10 +8241,10 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    channel_id?: SortOrder
+    channelId?: SortOrder
     status?: SortOrder
-    preview_url?: SortOrder
-    video_url?: SortOrder
+    previewUrl?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     likes?: LikeOrderByRelationAggregateInput
@@ -8260,10 +8260,10 @@ export namespace Prisma {
     NOT?: VideoWhereInput | VideoWhereInput[]
     title?: StringFilter<"Video"> | string
     description?: StringFilter<"Video"> | string
-    channel_id?: StringFilter<"Video"> | string
+    channelId?: StringFilter<"Video"> | string
     status?: EnumVideoStatusFilter<"Video"> | $Enums.VideoStatus
-    preview_url?: StringFilter<"Video"> | string
-    video_url?: StringFilter<"Video"> | string
+    previewUrl?: StringFilter<"Video"> | string
+    videoUrl?: StringFilter<"Video"> | string
     createdAt?: DateTimeFilter<"Video"> | Date | string
     updatedAt?: DateTimeFilter<"Video"> | Date | string
     likes?: LikeListRelationFilter
@@ -8276,10 +8276,10 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    channel_id?: SortOrder
+    channelId?: SortOrder
     status?: SortOrder
-    preview_url?: SortOrder
-    video_url?: SortOrder
+    previewUrl?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: VideoCountOrderByAggregateInput
@@ -8294,10 +8294,10 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Video"> | string
     title?: StringWithAggregatesFilter<"Video"> | string
     description?: StringWithAggregatesFilter<"Video"> | string
-    channel_id?: StringWithAggregatesFilter<"Video"> | string
+    channelId?: StringWithAggregatesFilter<"Video"> | string
     status?: EnumVideoStatusWithAggregatesFilter<"Video"> | $Enums.VideoStatus
-    preview_url?: StringWithAggregatesFilter<"Video"> | string
-    video_url?: StringWithAggregatesFilter<"Video"> | string
+    previewUrl?: StringWithAggregatesFilter<"Video"> | string
+    videoUrl?: StringWithAggregatesFilter<"Video"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Video"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Video"> | Date | string
   }
@@ -8308,8 +8308,8 @@ export namespace Prisma {
     NOT?: CommentWhereInput | CommentWhereInput[]
     id?: StringFilter<"Comment"> | string
     text?: StringFilter<"Comment"> | string
-    video_id?: StringFilter<"Comment"> | string
-    channel_id?: StringFilter<"Comment"> | string
+    videoId?: StringFilter<"Comment"> | string
+    channelId?: StringFilter<"Comment"> | string
     createdAt?: DateTimeFilter<"Comment"> | Date | string
     updatedAt?: DateTimeFilter<"Comment"> | Date | string
     video?: XOR<VideoScalarRelationFilter, VideoWhereInput>
@@ -8318,8 +8318,8 @@ export namespace Prisma {
   export type CommentOrderByWithRelationInput = {
     id?: SortOrder
     text?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     video?: VideoOrderByWithRelationInput
@@ -8331,8 +8331,8 @@ export namespace Prisma {
     OR?: CommentWhereInput[]
     NOT?: CommentWhereInput | CommentWhereInput[]
     text?: StringFilter<"Comment"> | string
-    video_id?: StringFilter<"Comment"> | string
-    channel_id?: StringFilter<"Comment"> | string
+    videoId?: StringFilter<"Comment"> | string
+    channelId?: StringFilter<"Comment"> | string
     createdAt?: DateTimeFilter<"Comment"> | Date | string
     updatedAt?: DateTimeFilter<"Comment"> | Date | string
     video?: XOR<VideoScalarRelationFilter, VideoWhereInput>
@@ -8341,8 +8341,8 @@ export namespace Prisma {
   export type CommentOrderByWithAggregationInput = {
     id?: SortOrder
     text?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CommentCountOrderByAggregateInput
@@ -8356,8 +8356,8 @@ export namespace Prisma {
     NOT?: CommentScalarWhereWithAggregatesInput | CommentScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Comment"> | string
     text?: StringWithAggregatesFilter<"Comment"> | string
-    video_id?: StringWithAggregatesFilter<"Comment"> | string
-    channel_id?: StringWithAggregatesFilter<"Comment"> | string
+    videoId?: StringWithAggregatesFilter<"Comment"> | string
+    channelId?: StringWithAggregatesFilter<"Comment"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Comment"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Comment"> | Date | string
   }
@@ -8367,8 +8367,8 @@ export namespace Prisma {
     OR?: LikeWhereInput[]
     NOT?: LikeWhereInput | LikeWhereInput[]
     id?: StringFilter<"Like"> | string
-    video_id?: StringFilter<"Like"> | string
-    channel_id?: StringFilter<"Like"> | string
+    videoId?: StringFilter<"Like"> | string
+    channelId?: StringFilter<"Like"> | string
     reaction?: EnumReactionValueFilter<"Like"> | $Enums.ReactionValue
     createdAt?: DateTimeFilter<"Like"> | Date | string
     updatedAt?: DateTimeFilter<"Like"> | Date | string
@@ -8377,8 +8377,8 @@ export namespace Prisma {
 
   export type LikeOrderByWithRelationInput = {
     id?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     reaction?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8387,22 +8387,22 @@ export namespace Prisma {
 
   export type LikeWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    video_id_channel_id?: LikeVideo_idChannel_idCompoundUniqueInput
+    videoId_channelId?: LikeVideoIdChannelIdCompoundUniqueInput
     AND?: LikeWhereInput | LikeWhereInput[]
     OR?: LikeWhereInput[]
     NOT?: LikeWhereInput | LikeWhereInput[]
-    video_id?: StringFilter<"Like"> | string
-    channel_id?: StringFilter<"Like"> | string
+    videoId?: StringFilter<"Like"> | string
+    channelId?: StringFilter<"Like"> | string
     reaction?: EnumReactionValueFilter<"Like"> | $Enums.ReactionValue
     createdAt?: DateTimeFilter<"Like"> | Date | string
     updatedAt?: DateTimeFilter<"Like"> | Date | string
     video?: XOR<VideoScalarRelationFilter, VideoWhereInput>
-  }, "id" | "video_id_channel_id">
+  }, "id" | "videoId_channelId">
 
   export type LikeOrderByWithAggregationInput = {
     id?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     reaction?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8416,8 +8416,8 @@ export namespace Prisma {
     OR?: LikeScalarWhereWithAggregatesInput[]
     NOT?: LikeScalarWhereWithAggregatesInput | LikeScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Like"> | string
-    video_id?: StringWithAggregatesFilter<"Like"> | string
-    channel_id?: StringWithAggregatesFilter<"Like"> | string
+    videoId?: StringWithAggregatesFilter<"Like"> | string
+    channelId?: StringWithAggregatesFilter<"Like"> | string
     reaction?: EnumReactionValueWithAggregatesFilter<"Like"> | $Enums.ReactionValue
     createdAt?: DateTimeWithAggregatesFilter<"Like"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Like"> | Date | string
@@ -8428,8 +8428,8 @@ export namespace Prisma {
     OR?: VideoViewWhereInput[]
     NOT?: VideoViewWhereInput | VideoViewWhereInput[]
     id?: StringFilter<"VideoView"> | string
-    video_id?: StringFilter<"VideoView"> | string
-    channel_id?: StringFilter<"VideoView"> | string
+    videoId?: StringFilter<"VideoView"> | string
+    channelId?: StringFilter<"VideoView"> | string
     createdAt?: DateTimeFilter<"VideoView"> | Date | string
     updatedAt?: DateTimeFilter<"VideoView"> | Date | string
     video?: XOR<VideoScalarRelationFilter, VideoWhereInput>
@@ -8437,8 +8437,8 @@ export namespace Prisma {
 
   export type VideoViewOrderByWithRelationInput = {
     id?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     video?: VideoOrderByWithRelationInput
@@ -8446,21 +8446,21 @@ export namespace Prisma {
 
   export type VideoViewWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    video_id_channel_id?: VideoViewVideo_idChannel_idCompoundUniqueInput
+    videoId_channelId?: VideoViewVideoIdChannelIdCompoundUniqueInput
     AND?: VideoViewWhereInput | VideoViewWhereInput[]
     OR?: VideoViewWhereInput[]
     NOT?: VideoViewWhereInput | VideoViewWhereInput[]
-    video_id?: StringFilter<"VideoView"> | string
-    channel_id?: StringFilter<"VideoView"> | string
+    videoId?: StringFilter<"VideoView"> | string
+    channelId?: StringFilter<"VideoView"> | string
     createdAt?: DateTimeFilter<"VideoView"> | Date | string
     updatedAt?: DateTimeFilter<"VideoView"> | Date | string
     video?: XOR<VideoScalarRelationFilter, VideoWhereInput>
-  }, "id" | "video_id_channel_id">
+  }, "id" | "videoId_channelId">
 
   export type VideoViewOrderByWithAggregationInput = {
     id?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: VideoViewCountOrderByAggregateInput
@@ -8473,8 +8473,8 @@ export namespace Prisma {
     OR?: VideoViewScalarWhereWithAggregatesInput[]
     NOT?: VideoViewScalarWhereWithAggregatesInput | VideoViewScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"VideoView"> | string
-    video_id?: StringWithAggregatesFilter<"VideoView"> | string
-    channel_id?: StringWithAggregatesFilter<"VideoView"> | string
+    videoId?: StringWithAggregatesFilter<"VideoView"> | string
+    channelId?: StringWithAggregatesFilter<"VideoView"> | string
     createdAt?: DateTimeWithAggregatesFilter<"VideoView"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"VideoView"> | Date | string
   }
@@ -8485,19 +8485,19 @@ export namespace Prisma {
     NOT?: PlaylistWhereInput | PlaylistWhereInput[]
     id?: StringFilter<"Playlist"> | string
     text?: StringFilter<"Playlist"> | string
-    channel_id?: StringFilter<"Playlist"> | string
+    channelId?: StringFilter<"Playlist"> | string
     createdAt?: DateTimeFilter<"Playlist"> | Date | string
     updatedAt?: DateTimeFilter<"Playlist"> | Date | string
-    playlist_video?: PlaylistVideoListRelationFilter
+    playlistVideo?: PlaylistVideoListRelationFilter
   }
 
   export type PlaylistOrderByWithRelationInput = {
     id?: SortOrder
     text?: SortOrder
-    channel_id?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    playlist_video?: PlaylistVideoOrderByRelationAggregateInput
+    playlistVideo?: PlaylistVideoOrderByRelationAggregateInput
   }
 
   export type PlaylistWhereUniqueInput = Prisma.AtLeast<{
@@ -8506,16 +8506,16 @@ export namespace Prisma {
     OR?: PlaylistWhereInput[]
     NOT?: PlaylistWhereInput | PlaylistWhereInput[]
     text?: StringFilter<"Playlist"> | string
-    channel_id?: StringFilter<"Playlist"> | string
+    channelId?: StringFilter<"Playlist"> | string
     createdAt?: DateTimeFilter<"Playlist"> | Date | string
     updatedAt?: DateTimeFilter<"Playlist"> | Date | string
-    playlist_video?: PlaylistVideoListRelationFilter
+    playlistVideo?: PlaylistVideoListRelationFilter
   }, "id">
 
   export type PlaylistOrderByWithAggregationInput = {
     id?: SortOrder
     text?: SortOrder
-    channel_id?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: PlaylistCountOrderByAggregateInput
@@ -8529,7 +8529,7 @@ export namespace Prisma {
     NOT?: PlaylistScalarWhereWithAggregatesInput | PlaylistScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Playlist"> | string
     text?: StringWithAggregatesFilter<"Playlist"> | string
-    channel_id?: StringWithAggregatesFilter<"Playlist"> | string
+    channelId?: StringWithAggregatesFilter<"Playlist"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Playlist"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Playlist"> | Date | string
   }
@@ -8539,8 +8539,8 @@ export namespace Prisma {
     OR?: PlaylistVideoWhereInput[]
     NOT?: PlaylistVideoWhereInput | PlaylistVideoWhereInput[]
     id?: StringFilter<"PlaylistVideo"> | string
-    playlist_id?: StringFilter<"PlaylistVideo"> | string
-    video_id?: StringFilter<"PlaylistVideo"> | string
+    playlistId?: StringFilter<"PlaylistVideo"> | string
+    videoId?: StringFilter<"PlaylistVideo"> | string
     position?: IntFilter<"PlaylistVideo"> | number
     createdAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
     updatedAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
@@ -8550,8 +8550,8 @@ export namespace Prisma {
 
   export type PlaylistVideoOrderByWithRelationInput = {
     id?: SortOrder
-    playlist_id?: SortOrder
-    video_id?: SortOrder
+    playlistId?: SortOrder
+    videoId?: SortOrder
     position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8561,23 +8561,23 @@ export namespace Prisma {
 
   export type PlaylistVideoWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    playlist_id_position?: PlaylistVideoPlaylist_idPositionCompoundUniqueInput
+    playlistId_position?: PlaylistVideoPlaylistIdPositionCompoundUniqueInput
     AND?: PlaylistVideoWhereInput | PlaylistVideoWhereInput[]
     OR?: PlaylistVideoWhereInput[]
     NOT?: PlaylistVideoWhereInput | PlaylistVideoWhereInput[]
-    playlist_id?: StringFilter<"PlaylistVideo"> | string
-    video_id?: StringFilter<"PlaylistVideo"> | string
+    playlistId?: StringFilter<"PlaylistVideo"> | string
+    videoId?: StringFilter<"PlaylistVideo"> | string
     position?: IntFilter<"PlaylistVideo"> | number
     createdAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
     updatedAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
     playlist?: XOR<PlaylistScalarRelationFilter, PlaylistWhereInput>
     video?: XOR<VideoScalarRelationFilter, VideoWhereInput>
-  }, "id" | "playlist_id_position">
+  }, "id" | "playlistId_position">
 
   export type PlaylistVideoOrderByWithAggregationInput = {
     id?: SortOrder
-    playlist_id?: SortOrder
-    video_id?: SortOrder
+    playlistId?: SortOrder
+    videoId?: SortOrder
     position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8593,8 +8593,8 @@ export namespace Prisma {
     OR?: PlaylistVideoScalarWhereWithAggregatesInput[]
     NOT?: PlaylistVideoScalarWhereWithAggregatesInput | PlaylistVideoScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"PlaylistVideo"> | string
-    playlist_id?: StringWithAggregatesFilter<"PlaylistVideo"> | string
-    video_id?: StringWithAggregatesFilter<"PlaylistVideo"> | string
+    playlistId?: StringWithAggregatesFilter<"PlaylistVideo"> | string
+    videoId?: StringWithAggregatesFilter<"PlaylistVideo"> | string
     position?: IntWithAggregatesFilter<"PlaylistVideo"> | number
     createdAt?: DateTimeWithAggregatesFilter<"PlaylistVideo"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PlaylistVideo"> | Date | string
@@ -8604,10 +8604,10 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    channel_id: string
+    channelId: string
     status: $Enums.VideoStatus
-    preview_url: string
-    video_url: string
+    previewUrl: string
+    videoUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
     likes?: LikeCreateNestedManyWithoutVideoInput
@@ -8620,10 +8620,10 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    channel_id: string
+    channelId: string
     status: $Enums.VideoStatus
-    preview_url: string
-    video_url: string
+    previewUrl: string
+    videoUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
     likes?: LikeUncheckedCreateNestedManyWithoutVideoInput
@@ -8636,10 +8636,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
-    preview_url?: StringFieldUpdateOperationsInput | string
-    video_url?: StringFieldUpdateOperationsInput | string
+    previewUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     likes?: LikeUpdateManyWithoutVideoNestedInput
@@ -8652,10 +8652,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
-    preview_url?: StringFieldUpdateOperationsInput | string
-    video_url?: StringFieldUpdateOperationsInput | string
+    previewUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     likes?: LikeUncheckedUpdateManyWithoutVideoNestedInput
@@ -8668,10 +8668,10 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    channel_id: string
+    channelId: string
     status: $Enums.VideoStatus
-    preview_url: string
-    video_url: string
+    previewUrl: string
+    videoUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -8680,10 +8680,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
-    preview_url?: StringFieldUpdateOperationsInput | string
-    video_url?: StringFieldUpdateOperationsInput | string
+    previewUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8692,10 +8692,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
-    preview_url?: StringFieldUpdateOperationsInput | string
-    video_url?: StringFieldUpdateOperationsInput | string
+    previewUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8703,7 +8703,7 @@ export namespace Prisma {
   export type CommentCreateInput = {
     id?: string
     text: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     video: VideoCreateNestedOneWithoutCommentInput
@@ -8712,8 +8712,8 @@ export namespace Prisma {
   export type CommentUncheckedCreateInput = {
     id?: string
     text: string
-    video_id: string
-    channel_id: string
+    videoId: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -8721,7 +8721,7 @@ export namespace Prisma {
   export type CommentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     video?: VideoUpdateOneRequiredWithoutCommentNestedInput
@@ -8730,8 +8730,8 @@ export namespace Prisma {
   export type CommentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    video_id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8739,8 +8739,8 @@ export namespace Prisma {
   export type CommentCreateManyInput = {
     id?: string
     text: string
-    video_id: string
-    channel_id: string
+    videoId: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -8748,7 +8748,7 @@ export namespace Prisma {
   export type CommentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8756,15 +8756,15 @@ export namespace Prisma {
   export type CommentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    video_id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LikeCreateInput = {
     id?: string
-    channel_id: string
+    channelId: string
     reaction: $Enums.ReactionValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8773,8 +8773,8 @@ export namespace Prisma {
 
   export type LikeUncheckedCreateInput = {
     id?: string
-    video_id: string
-    channel_id: string
+    videoId: string
+    channelId: string
     reaction: $Enums.ReactionValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8782,7 +8782,7 @@ export namespace Prisma {
 
   export type LikeUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8791,8 +8791,8 @@ export namespace Prisma {
 
   export type LikeUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    video_id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8800,8 +8800,8 @@ export namespace Prisma {
 
   export type LikeCreateManyInput = {
     id?: string
-    video_id: string
-    channel_id: string
+    videoId: string
+    channelId: string
     reaction: $Enums.ReactionValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8809,7 +8809,7 @@ export namespace Prisma {
 
   export type LikeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8817,8 +8817,8 @@ export namespace Prisma {
 
   export type LikeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    video_id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8826,7 +8826,7 @@ export namespace Prisma {
 
   export type VideoViewCreateInput = {
     id?: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     video: VideoCreateNestedOneWithoutViewInput
@@ -8834,15 +8834,15 @@ export namespace Prisma {
 
   export type VideoViewUncheckedCreateInput = {
     id?: string
-    video_id: string
-    channel_id: string
+    videoId: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type VideoViewUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     video?: VideoUpdateOneRequiredWithoutViewNestedInput
@@ -8850,31 +8850,31 @@ export namespace Prisma {
 
   export type VideoViewUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    video_id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VideoViewCreateManyInput = {
     id?: string
-    video_id: string
-    channel_id: string
+    videoId: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type VideoViewUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VideoViewUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    video_id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8882,43 +8882,43 @@ export namespace Prisma {
   export type PlaylistCreateInput = {
     id?: string
     text: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    playlist_video?: PlaylistVideoCreateNestedManyWithoutPlaylistInput
+    playlistVideo?: PlaylistVideoCreateNestedManyWithoutPlaylistInput
   }
 
   export type PlaylistUncheckedCreateInput = {
     id?: string
     text: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    playlist_video?: PlaylistVideoUncheckedCreateNestedManyWithoutPlaylistInput
+    playlistVideo?: PlaylistVideoUncheckedCreateNestedManyWithoutPlaylistInput
   }
 
   export type PlaylistUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    playlist_video?: PlaylistVideoUpdateManyWithoutPlaylistNestedInput
+    playlistVideo?: PlaylistVideoUpdateManyWithoutPlaylistNestedInput
   }
 
   export type PlaylistUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    playlist_video?: PlaylistVideoUncheckedUpdateManyWithoutPlaylistNestedInput
+    playlistVideo?: PlaylistVideoUncheckedUpdateManyWithoutPlaylistNestedInput
   }
 
   export type PlaylistCreateManyInput = {
     id?: string
     text: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -8926,7 +8926,7 @@ export namespace Prisma {
   export type PlaylistUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8934,7 +8934,7 @@ export namespace Prisma {
   export type PlaylistUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8944,14 +8944,14 @@ export namespace Prisma {
     position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    playlist: PlaylistCreateNestedOneWithoutPlaylist_videoInput
+    playlist: PlaylistCreateNestedOneWithoutPlaylistVideoInput
     video: VideoCreateNestedOneWithoutPlaylist_videoInput
   }
 
   export type PlaylistVideoUncheckedCreateInput = {
     id?: string
-    playlist_id: string
-    video_id: string
+    playlistId: string
+    videoId: string
     position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8962,14 +8962,14 @@ export namespace Prisma {
     position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    playlist?: PlaylistUpdateOneRequiredWithoutPlaylist_videoNestedInput
+    playlist?: PlaylistUpdateOneRequiredWithoutPlaylistVideoNestedInput
     video?: VideoUpdateOneRequiredWithoutPlaylist_videoNestedInput
   }
 
   export type PlaylistVideoUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    playlist_id?: StringFieldUpdateOperationsInput | string
-    video_id?: StringFieldUpdateOperationsInput | string
+    playlistId?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
     position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8977,8 +8977,8 @@ export namespace Prisma {
 
   export type PlaylistVideoCreateManyInput = {
     id?: string
-    playlist_id: string
-    video_id: string
+    playlistId: string
+    videoId: string
     position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8993,8 +8993,8 @@ export namespace Prisma {
 
   export type PlaylistVideoUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    playlist_id?: StringFieldUpdateOperationsInput | string
-    video_id?: StringFieldUpdateOperationsInput | string
+    playlistId?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
     position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9077,10 +9077,10 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    channel_id?: SortOrder
+    channelId?: SortOrder
     status?: SortOrder
-    preview_url?: SortOrder
-    video_url?: SortOrder
+    previewUrl?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9089,10 +9089,10 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    channel_id?: SortOrder
+    channelId?: SortOrder
     status?: SortOrder
-    preview_url?: SortOrder
-    video_url?: SortOrder
+    previewUrl?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9101,10 +9101,10 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    channel_id?: SortOrder
+    channelId?: SortOrder
     status?: SortOrder
-    preview_url?: SortOrder
-    video_url?: SortOrder
+    previewUrl?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9159,8 +9159,8 @@ export namespace Prisma {
   export type CommentCountOrderByAggregateInput = {
     id?: SortOrder
     text?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9168,8 +9168,8 @@ export namespace Prisma {
   export type CommentMaxOrderByAggregateInput = {
     id?: SortOrder
     text?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9177,8 +9177,8 @@ export namespace Prisma {
   export type CommentMinOrderByAggregateInput = {
     id?: SortOrder
     text?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9190,15 +9190,15 @@ export namespace Prisma {
     not?: NestedEnumReactionValueFilter<$PrismaModel> | $Enums.ReactionValue
   }
 
-  export type LikeVideo_idChannel_idCompoundUniqueInput = {
-    video_id: string
-    channel_id: string
+  export type LikeVideoIdChannelIdCompoundUniqueInput = {
+    videoId: string
+    channelId: string
   }
 
   export type LikeCountOrderByAggregateInput = {
     id?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     reaction?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9206,8 +9206,8 @@ export namespace Prisma {
 
   export type LikeMaxOrderByAggregateInput = {
     id?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     reaction?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9215,8 +9215,8 @@ export namespace Prisma {
 
   export type LikeMinOrderByAggregateInput = {
     id?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     reaction?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9232,31 +9232,31 @@ export namespace Prisma {
     _max?: NestedEnumReactionValueFilter<$PrismaModel>
   }
 
-  export type VideoViewVideo_idChannel_idCompoundUniqueInput = {
-    video_id: string
-    channel_id: string
+  export type VideoViewVideoIdChannelIdCompoundUniqueInput = {
+    videoId: string
+    channelId: string
   }
 
   export type VideoViewCountOrderByAggregateInput = {
     id?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type VideoViewMaxOrderByAggregateInput = {
     id?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type VideoViewMinOrderByAggregateInput = {
     id?: SortOrder
-    video_id?: SortOrder
-    channel_id?: SortOrder
+    videoId?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9264,7 +9264,7 @@ export namespace Prisma {
   export type PlaylistCountOrderByAggregateInput = {
     id?: SortOrder
     text?: SortOrder
-    channel_id?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9272,7 +9272,7 @@ export namespace Prisma {
   export type PlaylistMaxOrderByAggregateInput = {
     id?: SortOrder
     text?: SortOrder
-    channel_id?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9280,7 +9280,7 @@ export namespace Prisma {
   export type PlaylistMinOrderByAggregateInput = {
     id?: SortOrder
     text?: SortOrder
-    channel_id?: SortOrder
+    channelId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9301,15 +9301,15 @@ export namespace Prisma {
     isNot?: PlaylistWhereInput
   }
 
-  export type PlaylistVideoPlaylist_idPositionCompoundUniqueInput = {
-    playlist_id: string
+  export type PlaylistVideoPlaylistIdPositionCompoundUniqueInput = {
+    playlistId: string
     position: number
   }
 
   export type PlaylistVideoCountOrderByAggregateInput = {
     id?: SortOrder
-    playlist_id?: SortOrder
-    video_id?: SortOrder
+    playlistId?: SortOrder
+    videoId?: SortOrder
     position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9321,8 +9321,8 @@ export namespace Prisma {
 
   export type PlaylistVideoMaxOrderByAggregateInput = {
     id?: SortOrder
-    playlist_id?: SortOrder
-    video_id?: SortOrder
+    playlistId?: SortOrder
+    videoId?: SortOrder
     position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9330,8 +9330,8 @@ export namespace Prisma {
 
   export type PlaylistVideoMinOrderByAggregateInput = {
     id?: SortOrder
-    playlist_id?: SortOrder
-    video_id?: SortOrder
+    playlistId?: SortOrder
+    videoId?: SortOrder
     position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9625,9 +9625,9 @@ export namespace Prisma {
     deleteMany?: PlaylistVideoScalarWhereInput | PlaylistVideoScalarWhereInput[]
   }
 
-  export type PlaylistCreateNestedOneWithoutPlaylist_videoInput = {
-    create?: XOR<PlaylistCreateWithoutPlaylist_videoInput, PlaylistUncheckedCreateWithoutPlaylist_videoInput>
-    connectOrCreate?: PlaylistCreateOrConnectWithoutPlaylist_videoInput
+  export type PlaylistCreateNestedOneWithoutPlaylistVideoInput = {
+    create?: XOR<PlaylistCreateWithoutPlaylistVideoInput, PlaylistUncheckedCreateWithoutPlaylistVideoInput>
+    connectOrCreate?: PlaylistCreateOrConnectWithoutPlaylistVideoInput
     connect?: PlaylistWhereUniqueInput
   }
 
@@ -9645,12 +9645,12 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type PlaylistUpdateOneRequiredWithoutPlaylist_videoNestedInput = {
-    create?: XOR<PlaylistCreateWithoutPlaylist_videoInput, PlaylistUncheckedCreateWithoutPlaylist_videoInput>
-    connectOrCreate?: PlaylistCreateOrConnectWithoutPlaylist_videoInput
-    upsert?: PlaylistUpsertWithoutPlaylist_videoInput
+  export type PlaylistUpdateOneRequiredWithoutPlaylistVideoNestedInput = {
+    create?: XOR<PlaylistCreateWithoutPlaylistVideoInput, PlaylistUncheckedCreateWithoutPlaylistVideoInput>
+    connectOrCreate?: PlaylistCreateOrConnectWithoutPlaylistVideoInput
+    upsert?: PlaylistUpsertWithoutPlaylistVideoInput
     connect?: PlaylistWhereUniqueInput
-    update?: XOR<XOR<PlaylistUpdateToOneWithWhereWithoutPlaylist_videoInput, PlaylistUpdateWithoutPlaylist_videoInput>, PlaylistUncheckedUpdateWithoutPlaylist_videoInput>
+    update?: XOR<XOR<PlaylistUpdateToOneWithWhereWithoutPlaylistVideoInput, PlaylistUpdateWithoutPlaylistVideoInput>, PlaylistUncheckedUpdateWithoutPlaylistVideoInput>
   }
 
   export type VideoUpdateOneRequiredWithoutPlaylist_videoNestedInput = {
@@ -9791,7 +9791,7 @@ export namespace Prisma {
 
   export type LikeCreateWithoutVideoInput = {
     id?: string
-    channel_id: string
+    channelId: string
     reaction: $Enums.ReactionValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9799,7 +9799,7 @@ export namespace Prisma {
 
   export type LikeUncheckedCreateWithoutVideoInput = {
     id?: string
-    channel_id: string
+    channelId: string
     reaction: $Enums.ReactionValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9818,7 +9818,7 @@ export namespace Prisma {
   export type CommentCreateWithoutVideoInput = {
     id?: string
     text: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9826,7 +9826,7 @@ export namespace Prisma {
   export type CommentUncheckedCreateWithoutVideoInput = {
     id?: string
     text: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9843,14 +9843,14 @@ export namespace Prisma {
 
   export type VideoViewCreateWithoutVideoInput = {
     id?: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type VideoViewUncheckedCreateWithoutVideoInput = {
     id?: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9870,12 +9870,12 @@ export namespace Prisma {
     position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    playlist: PlaylistCreateNestedOneWithoutPlaylist_videoInput
+    playlist: PlaylistCreateNestedOneWithoutPlaylistVideoInput
   }
 
   export type PlaylistVideoUncheckedCreateWithoutVideoInput = {
     id?: string
-    playlist_id: string
+    playlistId: string
     position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9912,8 +9912,8 @@ export namespace Prisma {
     OR?: LikeScalarWhereInput[]
     NOT?: LikeScalarWhereInput | LikeScalarWhereInput[]
     id?: StringFilter<"Like"> | string
-    video_id?: StringFilter<"Like"> | string
-    channel_id?: StringFilter<"Like"> | string
+    videoId?: StringFilter<"Like"> | string
+    channelId?: StringFilter<"Like"> | string
     reaction?: EnumReactionValueFilter<"Like"> | $Enums.ReactionValue
     createdAt?: DateTimeFilter<"Like"> | Date | string
     updatedAt?: DateTimeFilter<"Like"> | Date | string
@@ -9941,8 +9941,8 @@ export namespace Prisma {
     NOT?: CommentScalarWhereInput | CommentScalarWhereInput[]
     id?: StringFilter<"Comment"> | string
     text?: StringFilter<"Comment"> | string
-    video_id?: StringFilter<"Comment"> | string
-    channel_id?: StringFilter<"Comment"> | string
+    videoId?: StringFilter<"Comment"> | string
+    channelId?: StringFilter<"Comment"> | string
     createdAt?: DateTimeFilter<"Comment"> | Date | string
     updatedAt?: DateTimeFilter<"Comment"> | Date | string
   }
@@ -9968,8 +9968,8 @@ export namespace Prisma {
     OR?: VideoViewScalarWhereInput[]
     NOT?: VideoViewScalarWhereInput | VideoViewScalarWhereInput[]
     id?: StringFilter<"VideoView"> | string
-    video_id?: StringFilter<"VideoView"> | string
-    channel_id?: StringFilter<"VideoView"> | string
+    videoId?: StringFilter<"VideoView"> | string
+    channelId?: StringFilter<"VideoView"> | string
     createdAt?: DateTimeFilter<"VideoView"> | Date | string
     updatedAt?: DateTimeFilter<"VideoView"> | Date | string
   }
@@ -9995,8 +9995,8 @@ export namespace Prisma {
     OR?: PlaylistVideoScalarWhereInput[]
     NOT?: PlaylistVideoScalarWhereInput | PlaylistVideoScalarWhereInput[]
     id?: StringFilter<"PlaylistVideo"> | string
-    playlist_id?: StringFilter<"PlaylistVideo"> | string
-    video_id?: StringFilter<"PlaylistVideo"> | string
+    playlistId?: StringFilter<"PlaylistVideo"> | string
+    videoId?: StringFilter<"PlaylistVideo"> | string
     position?: IntFilter<"PlaylistVideo"> | number
     createdAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
     updatedAt?: DateTimeFilter<"PlaylistVideo"> | Date | string
@@ -10006,10 +10006,10 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    channel_id: string
+    channelId: string
     status: $Enums.VideoStatus
-    preview_url: string
-    video_url: string
+    previewUrl: string
+    videoUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
     likes?: LikeCreateNestedManyWithoutVideoInput
@@ -10021,10 +10021,10 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    channel_id: string
+    channelId: string
     status: $Enums.VideoStatus
-    preview_url: string
-    video_url: string
+    previewUrl: string
+    videoUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
     likes?: LikeUncheckedCreateNestedManyWithoutVideoInput
@@ -10052,10 +10052,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
-    preview_url?: StringFieldUpdateOperationsInput | string
-    video_url?: StringFieldUpdateOperationsInput | string
+    previewUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     likes?: LikeUpdateManyWithoutVideoNestedInput
@@ -10067,10 +10067,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
-    preview_url?: StringFieldUpdateOperationsInput | string
-    video_url?: StringFieldUpdateOperationsInput | string
+    previewUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     likes?: LikeUncheckedUpdateManyWithoutVideoNestedInput
@@ -10082,10 +10082,10 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    channel_id: string
+    channelId: string
     status: $Enums.VideoStatus
-    preview_url: string
-    video_url: string
+    previewUrl: string
+    videoUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
     comment?: CommentCreateNestedManyWithoutVideoInput
@@ -10097,10 +10097,10 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    channel_id: string
+    channelId: string
     status: $Enums.VideoStatus
-    preview_url: string
-    video_url: string
+    previewUrl: string
+    videoUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
     comment?: CommentUncheckedCreateNestedManyWithoutVideoInput
@@ -10128,10 +10128,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
-    preview_url?: StringFieldUpdateOperationsInput | string
-    video_url?: StringFieldUpdateOperationsInput | string
+    previewUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     comment?: CommentUpdateManyWithoutVideoNestedInput
@@ -10143,10 +10143,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
-    preview_url?: StringFieldUpdateOperationsInput | string
-    video_url?: StringFieldUpdateOperationsInput | string
+    previewUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     comment?: CommentUncheckedUpdateManyWithoutVideoNestedInput
@@ -10158,10 +10158,10 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    channel_id: string
+    channelId: string
     status: $Enums.VideoStatus
-    preview_url: string
-    video_url: string
+    previewUrl: string
+    videoUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
     likes?: LikeCreateNestedManyWithoutVideoInput
@@ -10173,10 +10173,10 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    channel_id: string
+    channelId: string
     status: $Enums.VideoStatus
-    preview_url: string
-    video_url: string
+    previewUrl: string
+    videoUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
     likes?: LikeUncheckedCreateNestedManyWithoutVideoInput
@@ -10204,10 +10204,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
-    preview_url?: StringFieldUpdateOperationsInput | string
-    video_url?: StringFieldUpdateOperationsInput | string
+    previewUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     likes?: LikeUpdateManyWithoutVideoNestedInput
@@ -10219,10 +10219,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
-    preview_url?: StringFieldUpdateOperationsInput | string
-    video_url?: StringFieldUpdateOperationsInput | string
+    previewUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     likes?: LikeUncheckedUpdateManyWithoutVideoNestedInput
@@ -10240,7 +10240,7 @@ export namespace Prisma {
 
   export type PlaylistVideoUncheckedCreateWithoutPlaylistInput = {
     id?: string
-    video_id: string
+    videoId: string
     position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10272,35 +10272,35 @@ export namespace Prisma {
     data: XOR<PlaylistVideoUpdateManyMutationInput, PlaylistVideoUncheckedUpdateManyWithoutPlaylistInput>
   }
 
-  export type PlaylistCreateWithoutPlaylist_videoInput = {
+  export type PlaylistCreateWithoutPlaylistVideoInput = {
     id?: string
     text: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type PlaylistUncheckedCreateWithoutPlaylist_videoInput = {
+  export type PlaylistUncheckedCreateWithoutPlaylistVideoInput = {
     id?: string
     text: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type PlaylistCreateOrConnectWithoutPlaylist_videoInput = {
+  export type PlaylistCreateOrConnectWithoutPlaylistVideoInput = {
     where: PlaylistWhereUniqueInput
-    create: XOR<PlaylistCreateWithoutPlaylist_videoInput, PlaylistUncheckedCreateWithoutPlaylist_videoInput>
+    create: XOR<PlaylistCreateWithoutPlaylistVideoInput, PlaylistUncheckedCreateWithoutPlaylistVideoInput>
   }
 
   export type VideoCreateWithoutPlaylist_videoInput = {
     id?: string
     title: string
     description: string
-    channel_id: string
+    channelId: string
     status: $Enums.VideoStatus
-    preview_url: string
-    video_url: string
+    previewUrl: string
+    videoUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
     likes?: LikeCreateNestedManyWithoutVideoInput
@@ -10312,10 +10312,10 @@ export namespace Prisma {
     id?: string
     title: string
     description: string
-    channel_id: string
+    channelId: string
     status: $Enums.VideoStatus
-    preview_url: string
-    video_url: string
+    previewUrl: string
+    videoUrl: string
     createdAt?: Date | string
     updatedAt?: Date | string
     likes?: LikeUncheckedCreateNestedManyWithoutVideoInput
@@ -10328,29 +10328,29 @@ export namespace Prisma {
     create: XOR<VideoCreateWithoutPlaylist_videoInput, VideoUncheckedCreateWithoutPlaylist_videoInput>
   }
 
-  export type PlaylistUpsertWithoutPlaylist_videoInput = {
-    update: XOR<PlaylistUpdateWithoutPlaylist_videoInput, PlaylistUncheckedUpdateWithoutPlaylist_videoInput>
-    create: XOR<PlaylistCreateWithoutPlaylist_videoInput, PlaylistUncheckedCreateWithoutPlaylist_videoInput>
+  export type PlaylistUpsertWithoutPlaylistVideoInput = {
+    update: XOR<PlaylistUpdateWithoutPlaylistVideoInput, PlaylistUncheckedUpdateWithoutPlaylistVideoInput>
+    create: XOR<PlaylistCreateWithoutPlaylistVideoInput, PlaylistUncheckedCreateWithoutPlaylistVideoInput>
     where?: PlaylistWhereInput
   }
 
-  export type PlaylistUpdateToOneWithWhereWithoutPlaylist_videoInput = {
+  export type PlaylistUpdateToOneWithWhereWithoutPlaylistVideoInput = {
     where?: PlaylistWhereInput
-    data: XOR<PlaylistUpdateWithoutPlaylist_videoInput, PlaylistUncheckedUpdateWithoutPlaylist_videoInput>
+    data: XOR<PlaylistUpdateWithoutPlaylistVideoInput, PlaylistUncheckedUpdateWithoutPlaylistVideoInput>
   }
 
-  export type PlaylistUpdateWithoutPlaylist_videoInput = {
+  export type PlaylistUpdateWithoutPlaylistVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PlaylistUncheckedUpdateWithoutPlaylist_videoInput = {
+  export type PlaylistUncheckedUpdateWithoutPlaylistVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10370,10 +10370,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
-    preview_url?: StringFieldUpdateOperationsInput | string
-    video_url?: StringFieldUpdateOperationsInput | string
+    previewUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     likes?: LikeUpdateManyWithoutVideoNestedInput
@@ -10385,10 +10385,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     status?: EnumVideoStatusFieldUpdateOperationsInput | $Enums.VideoStatus
-    preview_url?: StringFieldUpdateOperationsInput | string
-    video_url?: StringFieldUpdateOperationsInput | string
+    previewUrl?: StringFieldUpdateOperationsInput | string
+    videoUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     likes?: LikeUncheckedUpdateManyWithoutVideoNestedInput
@@ -10398,7 +10398,7 @@ export namespace Prisma {
 
   export type LikeCreateManyVideoInput = {
     id?: string
-    channel_id: string
+    channelId: string
     reaction: $Enums.ReactionValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10407,21 +10407,21 @@ export namespace Prisma {
   export type CommentCreateManyVideoInput = {
     id?: string
     text: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type VideoViewCreateManyVideoInput = {
     id?: string
-    channel_id: string
+    channelId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type PlaylistVideoCreateManyVideoInput = {
     id?: string
-    playlist_id: string
+    playlistId: string
     position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10429,7 +10429,7 @@ export namespace Prisma {
 
   export type LikeUpdateWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10437,7 +10437,7 @@ export namespace Prisma {
 
   export type LikeUncheckedUpdateWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10445,7 +10445,7 @@ export namespace Prisma {
 
   export type LikeUncheckedUpdateManyWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     reaction?: EnumReactionValueFieldUpdateOperationsInput | $Enums.ReactionValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10454,7 +10454,7 @@ export namespace Prisma {
   export type CommentUpdateWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10462,7 +10462,7 @@ export namespace Prisma {
   export type CommentUncheckedUpdateWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10470,28 +10470,28 @@ export namespace Prisma {
   export type CommentUncheckedUpdateManyWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VideoViewUpdateWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VideoViewUncheckedUpdateWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type VideoViewUncheckedUpdateManyWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
-    channel_id?: StringFieldUpdateOperationsInput | string
+    channelId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10501,12 +10501,12 @@ export namespace Prisma {
     position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    playlist?: PlaylistUpdateOneRequiredWithoutPlaylist_videoNestedInput
+    playlist?: PlaylistUpdateOneRequiredWithoutPlaylistVideoNestedInput
   }
 
   export type PlaylistVideoUncheckedUpdateWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
-    playlist_id?: StringFieldUpdateOperationsInput | string
+    playlistId?: StringFieldUpdateOperationsInput | string
     position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10514,7 +10514,7 @@ export namespace Prisma {
 
   export type PlaylistVideoUncheckedUpdateManyWithoutVideoInput = {
     id?: StringFieldUpdateOperationsInput | string
-    playlist_id?: StringFieldUpdateOperationsInput | string
+    playlistId?: StringFieldUpdateOperationsInput | string
     position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10522,7 +10522,7 @@ export namespace Prisma {
 
   export type PlaylistVideoCreateManyPlaylistInput = {
     id?: string
-    video_id: string
+    videoId: string
     position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10538,7 +10538,7 @@ export namespace Prisma {
 
   export type PlaylistVideoUncheckedUpdateWithoutPlaylistInput = {
     id?: StringFieldUpdateOperationsInput | string
-    video_id?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
     position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10546,7 +10546,7 @@ export namespace Prisma {
 
   export type PlaylistVideoUncheckedUpdateManyWithoutPlaylistInput = {
     id?: StringFieldUpdateOperationsInput | string
-    video_id?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
     position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

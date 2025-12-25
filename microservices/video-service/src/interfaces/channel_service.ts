@@ -10,6 +10,12 @@ import { Observable } from "rxjs";
 
 export const protobufPackage = "channel_service";
 
+export enum SubscribeType {
+  NOTIFICATIONS = 0,
+  REGULAR = 1,
+  UNRECOGNIZED = -1,
+}
+
 export interface Boolean {
   bool: boolean;
 }

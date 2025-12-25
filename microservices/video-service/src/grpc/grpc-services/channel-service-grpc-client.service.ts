@@ -1,10 +1,10 @@
 import { Inject, Injectable, OnModuleInit } from "@nestjs/common";
 import { ClientGrpc } from "@nestjs/microservices";
 import { Observable } from "rxjs";
-import { Boolean, Channel, CHANNEL_SERVICE_NAME, ChannelServiceClient, CreateChannelRequest, FindChannelByIdRequest, FindChannelByUserIdRequest, FindChannelByUserIdResponse, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest } from "src/interfaces/channel_service";
+import { Boolean, Channel, CHANNEL_SERVICE_NAME, ChannelServiceClient, CreateChannelRequest, FindChannelByIdRequest, FindChannelByUserIdRequest, FindChannelByUserIdResponse, SubscribeRequest, Subscription, UpdateChannelPicturesRequest, UpdateChannelRequest } from "../../interfaces/channel_service";
 
 @Injectable()
-export class channelServiceGrpcClientService implements ChannelServiceClient, OnModuleInit {
+export class ChannelServiceGrpcClientService implements ChannelServiceClient, OnModuleInit {
     private channelServiceClient: ChannelServiceClient
 
     constructor(@Inject(CHANNEL_SERVICE_NAME) private readonly client: ClientGrpc) { }

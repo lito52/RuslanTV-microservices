@@ -40,7 +40,7 @@ export class VideoService {
             const previewUrl = await this.uploadFileIfExists(files.preview);
             const videoUrl = await this.uploadFileIfExists(files.videoFile);
 
-            const video = await lastValueFrom(this.videoService.createVideo({ title: request.title, description: request.description, channelId: request.channelId, status: 'limited', previewUrl: previewUrl, videoUrl: videoUrl }))
+            const video = await lastValueFrom(this.videoService.createVideo({ title: request.title, description: request.description, channelId: request.channelId, previewUrl: previewUrl, videoUrl: videoUrl }))
             return video
         } catch (error) {
             console.log(error.message)

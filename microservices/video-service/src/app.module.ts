@@ -6,7 +6,7 @@ import { VideoModule } from './video/video.module';
 import { MetricsService } from './libs/metrics.service';
 import { GrpcMetricsInterceptor } from './libs/metrics.interceptor';
 import { PrometheusModule } from '@willsoto/nestjs-prometheus';
-
+import { RmqModule } from './libs/rmq/rmq.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -24,6 +24,7 @@ import { PrometheusModule } from '@willsoto/nestjs-prometheus';
     }),
     PrismaModule,
     VideoModule,
+    RmqModule,
   ],
   providers: [
     MetricsService,
