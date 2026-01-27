@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { ChannelService } from '../channel/channel.service';
 import { DatabaseService } from '../prisma/database.service';
 import { RpcException } from '@nestjs/microservices';
-import { ReactionValue } from '@prisma/client';
 import { Comment, CreatePostRequest, GetAllPostsResponse, Like, Media, Post } from '../interfaces/post_service';
 import { mapComment, mapLike, mapManyPosts, mapMedia, mapPost } from '../libs/common/mapper/post.mapper';
+import { ReactionValue } from 'prisma/generated';
 
 @Injectable()
 export class PostService {
