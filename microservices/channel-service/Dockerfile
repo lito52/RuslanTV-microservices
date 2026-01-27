@@ -1,11 +1,4 @@
-FROM node:24.12-alpine
-
-RUN apk update && \
-    apk add --no-cache \
-    openssl \
-    python3 \
-    make \
-    g++
+FROM node:18-alpine
 
 WORKDIR /app
 

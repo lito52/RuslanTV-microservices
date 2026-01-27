@@ -1,0 +1,200 @@
+services:
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    restart: always
+    ports:
+      - "4001:4001"
+    environment:
+      NODE_ENV: dev
+      APPLICATION_PORT: 4001
+      APPLICATION_URL: http://api-gateway:4001
+      ALLOWED_ORIGIN: http://localhost:3000
+      AUTH_SERVICE_URL: auth-service:50051
+      CHANNEL_SERVICE_URL: channel-service:50052
+      VIDEO_SERVICE_URL: video-service:50053
+      COOKIES_SECRET: secret
+      SESSION_SECRET: secret
+      SESSION_NAME: session
+      SESSION_DOMAIN: localhost
+      SESSION_MAX_AGE: 30d
+      SESSION_HTTP_ONLY: "true"
+      SESSION_SECURE: "false"
+      REDIS_USER: default
+      REDIS_PASSWORD: pass1234
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      REDIS_URI: redis://default:pass1234@redis:6379
+      S3_ENDPOINT: s3.eu-central-003.backblazeb2.com
+      S3_REGION: eu-central-003
+      S3_ACCESS_KEY_ID: 4765990208b2
+      S3_SECRET_ACCESS_KEY: K003ClBvz/yDLCU2JpsdnZWaj2U5XYc
+      S3_BUCKET_NAME: RuslanTV
+    depends_on:
+      - redis
+    networks:
+      - monitoring
+      - backend
+
+  auth-service:
+    build: ./microservices/auth-service
+    container_name: auth-service
+    ports:
+      - "50051:50051"
+    restart: always
+    environment:
+      NODE_ENV: dev
+      AUTH_SERVICE_PORT: "50051"
+      AUTH_SERVICE_URL: auth-service:50051
+      APPLICATION_PORT: "4001"
+      APPLICATION_URL: http://api-gateway:4001  
+      ALLOWED_ORIGIN: http://localhost:3000
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5433"
+      POSTGRES_DB: RuslanTV_USERS
+      POSTGRES_URI: postgresql://root:1234@postgres:5432/RuslanTV_USERS
+      MAIL_HOST: mailhog
+      MAIL_PORT: "1025"
+      MAIL_LOGIN: "null"
+      MAIL_PASSWORD: "null"
+      GOOGLE_RECAPTCHA_SECRET_KEY:
+      GOOGLE_CLIENT_ID:
+      GOOGLE_CLIENT_SECRET:
+      YANDEX_CLIENT_ID: 
+      YANDEX_CLIENT_SECRET:
+    depends_on:
+      - postgres
+      - mailhog
+      - pushgateway
+    networks:
+      - backend
+      - monitoring
+
+  channel-service:
+    build: ./microservices/channel-service
+    container_name: channel-service
+    restart: always
+    ports:
+      - "50052:50052"
+    environment:
+      NODE_ENV: 'false'
+      VIDEO_SERVICE_PORT: "50053"
+      VIDEO_SERVICE_URL: video-service
+      POSTGRES_URI: postgresql://root:1234@postgres:5432/RuslanTV_CHANNELS
+      S3_ENDPOINT: s3.eu-central-003.backblazeb2.com
+      S3_REGION: eu-central-003
+      S3_ACCESS_KEY_ID: 4765990208b2
+      S3_SECRET_ACCESS_KEY: K003ClBvz/yDLCU2JpsdnZWaj2U5XYc
+      S3_BUCKET_NAME: RuslanTV
+    depends_on:
+      - postgres
+      - pushgateway
+    networks:
+      - backend
+      - monitoring
+
+
+  video-service:
+    build: ./microservices/video-service
+    container_name: video-service
+    restart: always
+    ports:
+      - "50053:50053"
+    environment:
+      NODE_ENV: dev
+      CHANNEL_SERVICE_URL: channel-service
+      CHANNEL_SERVICE_PORT: "50052"
+      DATABASE_URL: postgresql://root:1234@postgres:5432/RuslanTV_VIDEOS
+      S3_ENDPOINT: s3.eu-central-003.backblazeb2.com
+      S3_REGION: eu-central-003
+      S3_ACCESS_KEY_ID: 4765990208b2
+      S3_SECRET_ACCESS_KEY: K003ClBvz/yDLCU2JpsdnZWaj2U5XYc
+      S3_BUCKET_NAME: RuslanTV
+    depends_on:
+      - postgres
+    networks:
+      - backend
+
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=RuslanTV_USERS
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  redis:
+    image: redis:alpine
+    container_name: redisService
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - monitoring
+      - backend
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - backend
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - backend
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring
+
+  pushgateway:
+      image: prom/pushgateway
+      ports:
+        - "9091:9091"
+      networks:
+        - monitoring
+
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    networks:
+      - monitoring
+
+volumes:
+  grafana-data:
+  redis_data:
+  postgres_data:
+
+networks:
+  monitoring:
+    driver: bridge
+  backend:
+    driver: bridge

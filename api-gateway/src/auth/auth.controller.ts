@@ -1,10 +1,8 @@
 import { BadRequestException, Body, Controller, Get, HttpCode, HttpStatus, Param, Patch, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
-import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
 import { Request, Response } from 'express';
 import { LoginDto } from './dto/login.dto';
 import { Authorized } from './decorators/authorized.decorator';
-import { Authorization } from './decorators/auth.decorator';
 import { ConfigService } from '@nestjs/config';
 import { Recaptcha } from '@nestlab/google-recaptcha';
 import { ConfirmationDto } from './dto/email-confirmation.dto';
@@ -13,6 +11,8 @@ import { NewPasswordDto } from './dto/new-password.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserResponse, UserRole } from './types/types';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { AuthService } from './auth.service';
+import { Authorization } from './decorators/auth.decorator';
 
 @ApiTags('Auth')
 @Controller('auth')
