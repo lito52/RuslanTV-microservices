@@ -85,5 +85,5 @@ Directored by lito52
 [Pushgateway.io]: https://img.shields.io/badge/Pushgateway-000000?style=for-the-badge
 [Pushgateway-url]: https://prometheus.io/docs/practices/pushing/
 
-[mailhog.com]: https://github.com/mailhog/MailHog
-[mailhog-url]: https://img.shields.io/badge/MailHog-FF6F61?style=for-the-badge
+[mailhog.com]: https://img.shields.io/badge/MailHog-FF6F61?style=for-the-badge
+[mailhog-url]: https://github.com/mailhog/MailHog
