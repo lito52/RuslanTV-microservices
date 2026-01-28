@@ -55,8 +55,8 @@ Directored by lito52
 [Microservices.io]: https://img.shields.io/badge/Microservices-000000?style=for-the-badge
 [Microservices-url]: https://microservices.io/
 
-[gRPC.io]: https://grpc.io/
-[gRPC-url]: https://img.shields.io/badge/gRPC-2DA6E3?style=for-the-badge&logo=grpc&logoColor=white
+[gRPC.io]: https://img.shields.io/badge/gRPC-2DA6E3?style=for-the-badge&logo=grpc&logoColor=white
+[gRPC-url]: https://grpc.io/ 
 
 [PostgreSQL.org]: https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white
 [PostgreSQL-url]: https://www.postgresql.org/
