@@ -7,7 +7,8 @@ import { of } from "rxjs";
 import { DatabaseService } from "../prisma/database.service";
 import { ChannelServiceGrpcClientService } from "../grpc/grpc-services/channel-service-grpc-client.service";
 import { RedisCacheService } from "../libs/common/redisCache/redisCache.service";
-import { RmqService } from "../libs/rmq/rmq.service";
+import { AmqpConnection } from "@golevelup/nestjs-rabbitmq";
+
 
 const video: Video = {
     id: '43e268d9-ce96-4b77-98bd-cef2390af72e',
@@ -238,7 +239,7 @@ describe('Video Service', () => {
     let prismaService: DatabaseService
     let channelServiceGrpcClientService: ChannelServiceGrpcClientService
     let redisCacheService: RedisCacheService
-    let rabbitMqService: RmqService
+    let rabbitMqService: AmqpConnection
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
@@ -257,7 +258,7 @@ describe('Video Service', () => {
                     useValue: cacheService,
                 },
                 {
-                    provide: RmqService,
+                    provide: AmqpConnection,
                     useValue: rmqService,
                 }
             ]

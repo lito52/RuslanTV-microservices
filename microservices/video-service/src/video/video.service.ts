@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
 import { ReactionValue, VideoStatus } from '../../prisma/generated';
 import { lastValueFrom } from 'rxjs';
-import { ChannelServiceGrpcClientService } from '../grpc/grpc-services/channel-service-grpc-client.service';
-import { SubscribeType } from '../interfaces/channel_service';
 import { AddVideoToPlaylistRequest, Comment, CreateCommentRequest, CreatePlaylistRequest, CreateVideoRequest, FindPlaylistByIdRequest, FindVideoByIdRequest, GetAllChannelVideoRequest, GetAllChannelVideoResponse, GetAllVideoRequest, GetAllVideoResponse, Like, LikeVideoRequest, Playlist, PlaylistVideo, PublishVideoRequest, Video, View, WatchVideoRequest } from '../interfaces/video_service';
 import { RedisCacheService } from '../libs/common/redisCache/redisCache.service';
 import { mapPlaylist, mapPlaylistVideo } from '../libs/mapper/playlist.mapper';
 import { mapComment, mapLike, mapManyVideos, mapVideo, mapView } from '../libs/mapper/video.mapper';
-import { RmqService } from '../libs/rmq/rmq.service';
+// import { RmqService } from '../libs/rmq/rmq.service';
 import { DatabaseService } from '../prisma/database.service';
+import { AmqpConnection } from '@golevelup/nestjs-rabbitmq';
+import { ChannelServiceGrpcClientService } from '../grpc/grpc-services/channel-service-grpc-client.service';
 
 @Injectable()
 export class VideoService {
@@ -17,7 +17,8 @@ export class VideoService {
         private readonly prisma: DatabaseService,
         private readonly channelService: ChannelServiceGrpcClientService,
         private readonly cacheService: RedisCacheService,
-        private readonly rmqService: RmqService
+        private readonly amqpConnection: AmqpConnection
+        // private readonly rmqService: RmqService
     ) { }
 
 
@@ -111,24 +112,7 @@ export class VideoService {
                 id: request.videoId
             }
         })
-        const videoPublishedEvent = {
-            video: {
-                id: video.id,
-                title: video.title,
-                url: video.videoUrl
-            },
-            channel: {
-                id: channel.id,
-                name: channel.name,
-                avatarUrl: channel.profilePicture
-            },
-            subscribers: channel.subscriptions
-                .filter(sub => sub.subscribeType === 'NOTIFICATIONS')
-                .map(sub => ({
-                    userId: sub.userId,
-                }))
-        }
-        await this.rmqService.emit('video-uploaded', videoPublishedEvent)
+        await this.amqpConnection.publish('exchange1', 'video-published', 'new video notif')
 
         await this.cacheService.del('listFirstVideos')
         await this.cacheService.del('listFirstChannelVideos')

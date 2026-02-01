@@ -1,10 +1,7 @@
-import { Global, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { RabbitMQModule } from '@golevelup/nestjs-rabbitmq'
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { VideoService } from 'src/video/video.service';
-import { ChannelServiceGrpcClientService } from 'src/grpc/grpc-services/channel-service-grpc-client.service';
-import { GrpcClientModule } from 'src/grpc/grpc-modules/grpc-client.module';
-import { RedisCacheModule } from '../common/redisCache/redisCache.module';
+import { RmqService } from './rmq.service';
 
 @Module({
     imports: [
@@ -28,10 +25,10 @@ import { RedisCacheModule } from '../common/redisCache/redisCache.module';
                 },
             }),
         }),
-        RmqModule
     ],
-    providers: [],
+    providers: [RmqService],
     exports: []
+
 })
 
 export class RmqModule { }

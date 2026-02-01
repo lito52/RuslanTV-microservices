@@ -11,150 +11,150 @@ import { Observable } from "rxjs";
 export const protobufPackage = "post_service";
 
 export interface Post {
-  id: string;
-  text: string;
-  channelId: string;
-  createdAt: string;
-  updatedAt: string;
-  postMedias: Media[];
-  postComments: Comment[];
-  postLikes: Like[];
+    id: string;
+    text: string;
+    channelId: string;
+    createdAt: string;
+    updatedAt: string;
+    postMedias: Media[];
+    postComments: Comment[];
+    postLikes: Like[];
 }
 
 export interface Media {
-  id: string;
-  url: string;
-  postId: string;
-  createdAt: string;
-  updatedAt: string;
+    id: string;
+    url: string;
+    postId: string;
+    createdAt: string;
+    updatedAt: string;
 }
 
 export interface Like {
-  id: string;
-  postId: string;
-  parentId: string;
-  reaction: string;
-  createdAt: string;
-  updatedAt: string;
+    id: string;
+    postId: string;
+    parentId: string;
+    reaction: string;
+    createdAt: string;
+    updatedAt: string;
 }
 
 export interface Comment {
-  id: string;
-  postId: string;
-  parentId: string;
-  text: string;
-  createdAt: string;
-  updatedAt: string;
+    id: string;
+    postId: string;
+    parentId: string;
+    text: string;
+    createdAt: string;
+    updatedAt: string;
 }
 
 export interface Boolean {
-  bool: boolean;
+    bool: boolean;
 }
 
 export interface CreatePostRequest {
-  text: string;
-  channelId: string;
+    text: string;
+    channelId: string;
 }
 
 export interface AddPostMediaRequest {
-  url: string;
-  postId: string;
+    url: string;
+    postId: string;
 }
 
 export interface DeletePostRequest {
-  id: string;
-  channelId: string;
+    id: string;
+    channelId: string;
 }
 
 export interface GetPostByIdRequest {
-  id: string;
+    id: string;
 }
 
 export interface GetPostByIdResponse {
-  id: string;
-  text: string;
-  channelId: string;
-  postComments: Comment[];
-  postLikes: Like[];
-  postMedias: Media[];
+    id: string;
+    text: string;
+    channelId: string;
+    postComments: Comment[];
+    postLikes: Like[];
+    postMedias: Media[];
 }
 
 export interface GetAllPostsRequest {
-  channelId: string;
-  take: number;
-  skip: number;
+    channelId: string;
+    take: number;
+    skip: number;
 }
 
 export interface GetAllPostsResponse {
-  posts: Post[];
+    posts: Post[];
 }
 
 export interface LikePostRequest {
-  postId: string;
-  parentId: string;
-  rate: string;
+    postId: string;
+    parentId: string;
+    rate: string;
 }
 
 export interface CommentPostRequest {
-  postId: string;
-  parentId: string;
-  text: string;
+    postId: string;
+    parentId: string;
+    text: string;
 }
 
 export const POST_SERVICE_PACKAGE_NAME = "post_service";
 
 export interface PostServiceClient {
-  createPost(request: CreatePostRequest): Observable<Post>;
+    createPost(request: CreatePostRequest): Observable<Post>;
 
-  addPostMedia(request: AddPostMediaRequest): Observable<Media>;
+    addPostMedia(request: AddPostMediaRequest): Observable<Media>;
 
-  getPostById(request: GetPostByIdRequest): Observable<GetPostByIdResponse>;
+    getPostById(request: GetPostByIdRequest): Observable<GetPostByIdResponse>;
 
-  getAllPosts(request: GetAllPostsRequest): Observable<GetAllPostsResponse>;
+    getAllPosts(request: GetAllPostsRequest): Observable<GetAllPostsResponse>;
 
-  ratePost(request: LikePostRequest): Observable<Like>;
+    ratePost(request: LikePostRequest): Observable<Like>;
 
-  commentPost(request: CommentPostRequest): Observable<Comment>;
+    commentPost(request: CommentPostRequest): Observable<Comment>;
 }
 
 export interface PostServiceController {
-  createPost(request: CreatePostRequest): Promise<Post> | Observable<Post> | Post;
+    createPost(request: CreatePostRequest): Promise<Post> | Observable<Post> | Post;
 
-  addPostMedia(request: AddPostMediaRequest): Promise<Media> | Observable<Media> | Media;
+    addPostMedia(request: AddPostMediaRequest): Promise<Media> | Observable<Media> | Media;
 
-  getPostById(
-    request: GetPostByIdRequest,
-  ): Promise<GetPostByIdResponse> | Observable<GetPostByIdResponse> | GetPostByIdResponse;
+    getPostById(
+        request: GetPostByIdRequest,
+    ): Promise<GetPostByIdResponse> | Observable<GetPostByIdResponse> | GetPostByIdResponse;
 
-  getAllPosts(
-    request: GetAllPostsRequest,
-  ): Promise<GetAllPostsResponse> | Observable<GetAllPostsResponse> | GetAllPostsResponse;
+    getAllPosts(
+        request: GetAllPostsRequest,
+    ): Promise<GetAllPostsResponse> | Observable<GetAllPostsResponse> | GetAllPostsResponse;
 
-  ratePost(request: LikePostRequest): Promise<Like> | Observable<Like> | Like;
+    ratePost(request: LikePostRequest): Promise<Like> | Observable<Like> | Like;
 
-  commentPost(request: CommentPostRequest): Promise<Comment> | Observable<Comment> | Comment;
+    commentPost(request: CommentPostRequest): Promise<Comment> | Observable<Comment> | Comment;
 }
 
 export function PostServiceControllerMethods() {
-  return function (constructor: Function) {
-    const grpcMethods: string[] = [
-      "createPost",
-      "addPostMedia",
-      "getPostById",
-      "getAllPosts",
-      "ratePost",
-      "commentPost",
-    ];
-    for (const method of grpcMethods) {
-      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcMethod("PostService", method)(constructor.prototype[method], method, descriptor);
-    }
-    const grpcStreamMethods: string[] = [];
-    for (const method of grpcStreamMethods) {
-      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcStreamMethod("PostService", method)(constructor.prototype[method], method, descriptor);
-    }
-  };
+    return function (constructor: Function) {
+        const grpcMethods: string[] = [
+            "createPost",
+            "addPostMedia",
+            "getPostById",
+            "getAllPosts",
+            "ratePost",
+            "commentPost",
+        ];
+        for (const method of grpcMethods) {
+            const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
+            GrpcMethod("PostService", method)(constructor.prototype[method], method, descriptor);
+        }
+        const grpcStreamMethods: string[] = [];
+        for (const method of grpcStreamMethods) {
+            const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
+            GrpcStreamMethod("PostService", method)(constructor.prototype[method], method, descriptor);
+        }
+    };
 }
 
 export const POST_SERVICE_NAME = "PostService";
