@@ -8,8 +8,5 @@
   "keywords": [],
   "author": "pyc7an",
   "license": "ISC",
-  "description": "made in tatarstan",
-  "dependencies": {
-    "@nestjs/config": "^4.0.2"
-  }
+  "description": "made in tatarstan"
 }
