@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: CI/CD pipleline
 run-name: ${{ github.actor }} is learning GitHub Actions
 
 on:
@@ -11,15 +11,20 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  build_nodejs:
+    name: Build and Test node.js service
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
+        service:
+          - path: ./api-gateway
+          - path: ./microservices/auth-service
+          - path: ./microservices/channel-service
+          - path: ./microservices/notif-service/Dockerfile
+          - path: ./microservices/video-service
         node-version: [24.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+        
     steps:
     - name: Copy repository
       uses: actions/checkout@v6
@@ -29,6 +34,69 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        
-    - run: npm ci
-    - run: npm run build --if-present
+        cache-dependency-path: ${{ matrix.service.path }}/package-lock.json
+
+    - name: Install dependencies for ${{ matrix.service.path }}
+      working-directory: ${{ matrix.service.path }}
+      run: npm ci
+      
+    - name: Build ${{ matrix.service.path }}
+      working-directory: ${{ matrix.service.path }}
+      run: npm run build --if-present
+      
+    - name: Run tests for ${{ matrix.service.path }}
+      working-directory: ${{ matrix.service.path }}
+      run: npm test --if-present
+
+
+  build_docker:
+    name: Build and Push docker image
+    runs-on: ubuntu-latest
+    needs: build_nodejs
+    if: github.event_name != 'pull_request'
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - dockerfile: ./api-gateway/Dockerfile
+            image: ruslantv-microservices-api-gateway
+          - dockerfile: ./microservices/auth-service/Dockerfile
+            image: ruslantv-microservices-auth-service
+          - dockerfile: ./microservices/channel-service/Dockerfile
+            image: ruslantv-microservices-channel-service
+          - dockerfile: ./microservices/notif-service/Dockerfile
+            image: ruslantv-microservices-notif-service
+          - dockerfile: ./microservices/video-service/Dockerfile
+            image: ruslantv-microservices-video-service
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker hub
+        uses: docker/login-action@v3
+        with: 
+          username: ${{ vars.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Extract Docker image metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ vars.DOCKER_USERNAME }}/${{ matrix.image }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          push: ${{ github.event_name != 'pull_request '}}
+          tags: ${{ steps.meta.outputs.tags }}
+          annotations: ${{ steps.meta.outputs.annotations }}
+          provenance: true
+          sbom: true
+          
