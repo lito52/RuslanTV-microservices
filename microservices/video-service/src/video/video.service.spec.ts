@@ -231,7 +231,7 @@ const cacheService = {
 }
 
 const rmqService = {
-    emit: jest.fn()
+    publish: jest.fn()
 }
 
 describe('Video Service', () => {
