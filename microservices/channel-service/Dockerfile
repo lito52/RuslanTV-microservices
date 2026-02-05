@@ -14,10 +14,6 @@ RUN npx prisma generate --schema ./prisma/schema.prisma
 
 RUN npm run build
 
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
-COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-
 EXPOSE 50052
 
 CMD ["npm", "run", "start:dev"]
