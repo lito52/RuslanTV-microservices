@@ -4,7 +4,7 @@ import { DatabaseService } from '../prisma/database.service';
 import { RpcException } from '@nestjs/microservices';
 import { Comment, CreatePostRequest, GetAllPostsResponse, Like, Media, Post } from '../interfaces/post_service';
 import { mapComment, mapLike, mapManyPosts, mapMedia, mapPost } from '../libs/common/mapper/post.mapper';
-import { ReactionValue } from 'prisma/generated';
+import { ReactionValue } from '../../prisma/generated';
 
 @Injectable()
 export class PostService {

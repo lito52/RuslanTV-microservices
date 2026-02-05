@@ -7,7 +7,7 @@ import { AuthServiceGrpcClientService } from "../grpc/grpc-services/auth-service
 import { User } from "../interfaces/auth_service";
 import { of } from "rxjs";
 import { ChannelService } from "../channel/channel.service";
-import { Channel } from "../interfaces/channel_service";
+import { Boolean, Channel } from "../interfaces/channel_service";
 
 jest.mock('uuid', () => ({
     v4: jest.fn(() => 'test-uuid-1234'),
@@ -190,6 +190,10 @@ const comments: Comment[] = [
     }
 ]
 
+const bool: Boolean = {
+    bool: true
+}
+
 const db = {
     post: {
         findMany: jest.fn().mockResolvedValue(mockPosts),
@@ -213,7 +217,8 @@ const db = {
         findMany: jest.fn().mockResolvedValue(likes),
         findUnique: jest.fn().mockResolvedValue(like),
         create: jest.fn().mockResolvedValue(like),
-        update: jest.fn().mockResolvedValue(like)
+        update: jest.fn().mockResolvedValue(like),
+        delete: jest.fn().mockResolvedValue(bool)
     }
 }
 
