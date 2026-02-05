@@ -1,9 +1,24 @@
 {
-  "moduleFileExtensions": ["js", "json", "ts"],
-  "rootDir": ".",
-  "testEnvironment": "node",
-  "testRegex": ".e2e-spec.ts$",
-  "transform": {
-    "^.+\\.(t|j)s$": "ts-jest"
-  }
+    "moduleFileExtensions": [
+        "js",
+        "json",
+        "ts"
+    ],
+    "rootDir": ".",
+    "testEnvironment": "node",
+    "testRegex": ".e2e-spec.ts$",
+    "testPathIgnorePatterns": [
+        "<rootDir>/node_modules/",
+        "<rootDir>/dist/",
+        "<rootDir>/.stryker-tmp/"
+    ],
+    "coveragePathIgnorePatterns": [
+        ".*\\.(interface|module|schema|entity|dto|enum|d).ts",
+        ".*\\.e2e-spec.ts",
+        "index.ts",
+        "main.ts"
+    ],
+    "transform": {
+        "^.+\\.(t|j)s$": "ts-jest"
+    }
 }
