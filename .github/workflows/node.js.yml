@@ -21,7 +21,7 @@ jobs:
           - path: ./api-gateway
           - path: ./microservices/auth-service
           - path: ./microservices/channel-service
-          - path: ./microservices/notif-service/Dockerfile
+          - path: ./microservices/notif-service
           - path: ./microservices/video-service
         node-version: [24.x]
         
