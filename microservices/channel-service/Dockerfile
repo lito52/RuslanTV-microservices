@@ -1,4 +1,5 @@
 FROM node:24-alpine
+RUN apk add --no-cache libc6-compat g++ python3 openjdk11
 
 WORKDIR /app
 
