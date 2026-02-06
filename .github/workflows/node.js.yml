@@ -64,16 +64,16 @@ jobs:
             image: ruslantv-microservices-api-gateway
           - dockerfile: ./microservices/auth-service/Dockerfile
             image: ruslantv-microservices-auth-service
-            context: ./microservices//auth-service
+            context: ./microservices/auth-service
           - dockerfile: ./microservices/channel-service/Dockerfile
             image: ruslantv-microservices-channel-service
-            context: ./microservices//channel-service
+            context: ./microservices/channel-service
           - dockerfile: ./microservices/notif-service/Dockerfile
             image: ruslantv-microservices-notif-service
-            context: ./microservices//notif-service
+            context: ./microservices/notif-service
           - dockerfile: ./microservices/video-service/Dockerfile
             image: ruslantv-microservices-video-service
-            context: ./microservices//video-service
+            context: ./microservices/video-service
 
     steps:
       - name: Checkout

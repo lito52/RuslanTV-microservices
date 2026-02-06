@@ -5,7 +5,7 @@ RUN apk add --no-cache libc6-compat g++ python3 openjdk11
 WORKDIR /app
 
 COPY package*.json ./
-COPY prisma ./prisma
+COPY prisma ./prisma/
 
 RUN npm install
     
