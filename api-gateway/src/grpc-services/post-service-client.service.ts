@@ -1,7 +1,7 @@
 import { Inject, Injectable, OnModuleInit } from "@nestjs/common";
 import { ClientGrpc } from "@nestjs/microservices";
 import { Observable } from "rxjs";
-import { AddPostMediaRequest, Boolean, Comment, CommentPostRequest, CreatePostRequest, GetAllPostsRequest, GetAllPostsResponse, GetPostByIdRequest, GetPostByIdResponse, Like, LikePostRequest, Media, Post, POST_SERVICE_NAME, PostServiceClient, } from "src/interfaces/post_service";
+import { AddPostMediaRequest, Comment, CommentPostRequest, CreatePostRequest, GetAllPostsRequest, GetAllPostsResponse, GetPostByIdRequest, GetPostByIdResponse, Like, LikePostRequest, Media, Post, POST_SERVICE_NAME, PostServiceClient, } from "src/interfaces/post_service";
 
 @Injectable()
 export class PostServiceGrpcClient implements PostServiceClient, OnModuleInit {

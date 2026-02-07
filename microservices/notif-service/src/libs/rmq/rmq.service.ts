@@ -8,7 +8,7 @@ export class RmqService {
         routingKey: 'video-published',
         queue: 'video-queue',
     })
-    public async videoPublishedNotif(msg: {}) {
+    public async videoPublishedNotif(msg: object) {
         return msg
     }
 }

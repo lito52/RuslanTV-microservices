@@ -1,5 +1,5 @@
 import { ClientProviderOptions, Transport } from "@nestjs/microservices";
-import { dirname, join } from "path";
+import { join } from "path";
 import * as dotenv from 'dotenv'
 import { AUTH_SERVICE_NAME, USER_SERVICE_PACKAGE_NAME } from "../../interfaces/auth_service";
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, FileTypeValidator, Get, MaxFileSizeValidator, Param, ParseFilePipe, Patch, Post, Put, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, FileTypeValidator, Get, MaxFileSizeValidator, Param, ParseFilePipe, Patch, Post, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { ChannelService } from './channel.service';
 import { CreateChannelDto } from './dto/create-channel.dto';
 import { Authorized } from 'src/auth/decorators/authorized.decorator';
@@ -9,60 +9,60 @@ import { UserRole } from 'src/auth/types/types';
 
 @Controller('channel')
 export class ChannelController {
-  constructor(private readonly channelService: ChannelService) { }
+    constructor(private readonly channelService: ChannelService) { }
 
-  @Post('createChannel')
-  @UseInterceptors(FileFieldsInterceptor([{ name: 'profilePicture', maxCount: 1 }, { name: 'backgroundPicture', maxCount: 1 }]))
-  public async createChannel(@UploadedFiles() files: { profilePicture?: Express.Multer.File[], backgroundPicture?: Express.Multer.File[] }, @Authorized('id') userId: string, @Body() dto: CreateChannelDto) {
-    return await this.channelService.createChannel(files, userId, dto)
-  }
+    @Post('createChannel')
+    @UseInterceptors(FileFieldsInterceptor([{ name: 'profilePicture', maxCount: 1 }, { name: 'backgroundPicture', maxCount: 1 }]))
+    public async createChannel(@UploadedFiles() files: { profilePicture?: Express.Multer.File[], backgroundPicture?: Express.Multer.File[] }, @Authorized('id') userId: string, @Body() dto: CreateChannelDto) {
+        return await this.channelService.createChannel(files, userId, dto)
+    }
 
-  @Patch('updateChannel')
-  public async updateChannel(@Authorized('id') userId: string, @Body() dto: UpdateChannelDto) {
-    return await this.channelService.updateChannel(userId, dto)
-  }
+    @Patch('updateChannel')
+    public async updateChannel(@Authorized('id') userId: string, @Body() dto: UpdateChannelDto) {
+        return await this.channelService.updateChannel(userId, dto)
+    }
 
-  @Patch('updateChannelPictures')
-  @UseInterceptors(FileFieldsInterceptor([{ name: 'profilePicture', maxCount: 1 }, { name: 'backgroundPicture', maxCount: 1 }]))
-  public async updateChannelPictures(@UploadedFiles(
-    new ParseFilePipe({
-      validators: [
-        new MaxFileSizeValidator({ maxSize: 1000 * 1024 }),
-        new FileTypeValidator({ fileType: /(jpg|jpeg|png)$/ })
-      ]
-    })
-  ) files: { profilePicture?: Express.Multer.File[], backgroundPicture?: Express.Multer.File[] }, @Authorized('id') userId: string) {
-    return await this.channelService.updateChannelPictures(files, userId)
-  }
+    @Patch('updateChannelPictures')
+    @UseInterceptors(FileFieldsInterceptor([{ name: 'profilePicture', maxCount: 1 }, { name: 'backgroundPicture', maxCount: 1 }]))
+    public async updateChannelPictures(@UploadedFiles(
+        new ParseFilePipe({
+            validators: [
+                new MaxFileSizeValidator({ maxSize: 1000 * 1024 }),
+                new FileTypeValidator({ fileType: /(jpg|jpeg|png)$/ })
+            ]
+        })
+    ) files: { profilePicture?: Express.Multer.File[], backgroundPicture?: Express.Multer.File[] }, @Authorized('id') userId: string) {
+        return await this.channelService.updateChannelPictures(files, userId)
+    }
 
-  @Get('findChannelByUserId/:id')
-  @Authorization(UserRole.ADMIN)
-  public async findChannelByUserId(@Param('id') userId: string) {
-    return await this.channelService.findChannelByUserId(userId)
-  }
+    @Get('findChannelByUserId/:id')
+    @Authorization(UserRole.ADMIN)
+    public async findChannelByUserId(@Param('id') userId: string) {
+        return await this.channelService.findChannelByUserId(userId)
+    }
 
-  @Get('findChannel')
-  @Authorization()
-  public async findChannel(@Authorized('id') userId: string) {
-    return await this.channelService.findChannel(userId)
-  }
+    @Get('findChannel')
+    @Authorization()
+    public async findChannel(@Authorized('id') userId: string) {
+        return await this.channelService.findChannel(userId)
+    }
 
-  @Post('subscribe/:id')
-  @Authorization()
-  public async subscribe(@Authorized('id') userId: string, @Param('id') id: string) {
-    return await this.channelService.subscribe(userId, id)
-  }
+    @Post('subscribe/:id')
+    @Authorization()
+    public async subscribe(@Authorized('id') userId: string, @Param('id') id: string) {
+        return await this.channelService.subscribe(userId, id)
+    }
 
-  @Delete('unsubscribe/:id')
-  @Authorization()
-  public async unsubscribe(@Authorized('id') userId: string, @Param('id') id: string) {
-    return await this.channelService.unsubscribe(userId, id)
-  }
+    @Delete('unsubscribe/:id')
+    @Authorization()
+    public async unsubscribe(@Authorized('id') userId: string, @Param('id') id: string) {
+        return await this.channelService.unsubscribe(userId, id)
+    }
 
-  @Post('subscribeWithNotif/:id')
-  @Authorization()
-  public async subscribeWithNotif(@Authorized('id') userId: string, @Param('id') id: string) {
-    return await this.channelService.subscribeWithNotif(userId, id)
-  }
+    @Post('subscribeWithNotif/:id')
+    @Authorization()
+    public async subscribeWithNotif(@Authorized('id') userId: string, @Param('id') id: string) {
+        return await this.channelService.subscribeWithNotif(userId, id)
+    }
 
 }

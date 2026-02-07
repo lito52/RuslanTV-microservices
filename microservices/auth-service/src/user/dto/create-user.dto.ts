@@ -1,4 +1,4 @@
-import { IsBoolean, IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, IsUrl, Length } from "class-validator"
+import { IsBoolean, IsEmail, IsEnum, IsNotEmpty, IsString, Length } from "class-validator"
 import { AuthMethod } from "prisma/generated"
 
 export class CreateUserDto {

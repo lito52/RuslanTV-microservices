@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { lastValueFrom } from 'rxjs';
 import { VideoServiceGrpcClient } from 'src/grpc-services/video-service-client.service';
-import { CreateVideoRequest, FindVideoByIdRequest, GetAllVideoRequest, LikeVideoRequest, UpdateVideoStatusRequest } from 'src/interfaces/video_service';
 import { FilesService } from 'src/libs/common/services/files.service';
 import { CreateVideoDto } from './dto/create-video.dto';
 import { UpdateVideoStatusDto } from './dto/update-video-status.dto';

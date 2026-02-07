@@ -2,7 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { AuthController } from "./auth.controller"
 import { AuthService } from "./auth.service";
 import { v4 as uuidv4 } from 'uuid'
-import { FindProfileRequest, FindUserByIdRequest, LoginDto, NewPasswordDto, NewVerificationRequest, OAuthCallBackRequest, OAuthConnectRequest, RegisterDto, ResetPasswordDto, UpdateUserDto, User } from "./interface/auth_service";
+import { FindProfileRequest, FindUserByIdRequest, LoginDto, NewPasswordDto, NewVerificationRequest, OAuthCallBackRequest, OAuthConnectRequest, RegisterDto, ResetPasswordDto, UpdateUserDto } from "./interface/auth_service";
 import { RpcException } from "@nestjs/microservices";
 import { UserService } from "../user/user.service";
 import { ConfigService } from "@nestjs/config";
@@ -11,10 +11,6 @@ import { ProviderService } from "./provider/provider.service";
 import { TwoFactorAuthService } from "./two-factor-auth/two-factor-auth.service";
 import { EmailConfirmationService } from "./email-confirmation/email-confirmation.service";
 import { PasswordRecoveryService } from "./password-recovery/password-recovery.service";
-
-const userId = {
-    id: uuidv4()
-}
 
 const newPasswordDto: NewPasswordDto = {
     password: '12345678',
@@ -80,11 +76,6 @@ const user = {
 
 const oAuthConnectResponse = {
     url: ''
-}
-
-const extractProfileFromCodeDto = {
-    provider: '',
-    code: ''
 }
 
 describe('AuthController', () => {

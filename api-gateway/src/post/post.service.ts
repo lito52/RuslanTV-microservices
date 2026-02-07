@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { PostServiceGrpcClient } from 'src/grpc-services/post-service-client.service';
 import { FilesService } from 'src/libs/common/services/files.service';
 import { CreatePostDto } from './dto/create-post.dto';
-import { Multer } from 'multer';
 import { lastValueFrom } from 'rxjs';
 import { Rates } from './types/post-types';
 

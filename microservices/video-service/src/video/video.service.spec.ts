@@ -1,6 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { AddVideoToPlaylistRequest, Comment, CreateCommentRequest, CreatePlaylistRequest, CreateVideoRequest, FindPlaylistByIdRequest, FindVideoByIdRequest, GetAllChannelVideoRequest, GetAllChannelVideoResponse, GetAllVideoRequest, GetAllVideoResponse, Like, LikeVideoRequest, Playlist, PlaylistVideo, PublishVideoRequest, Video, View, WatchVideoRequest } from "../interfaces/video_service";
-import { VideoController } from "./video.controller";
 import { VideoService } from "./video.service";
 import { Channel } from "../interfaces/channel_service";
 import { of } from "rxjs";

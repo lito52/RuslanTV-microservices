@@ -48,12 +48,6 @@ const updateChannelRequest: UpdateChannelRequest = {
     bio: ""
 }
 
-const updateChannelPicturesRequest: UpdateChannelPicturesRequest = {
-    userId: "0da529cb-3456-4766-aaf4-69eec10e1fb",
-    profilePicture: "",
-    backgroundPicture: ""
-}
-
 const findChannelByUserIdRequest: FindChannelByUserIdRequest = {
     userId: "0da529cb-3453-4766-aaf4-69eec10e1fb"
 }

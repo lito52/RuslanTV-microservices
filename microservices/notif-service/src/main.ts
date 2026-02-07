@@ -2,7 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import 'dotenv/config';
-import { join } from 'path';
 
 async function bootstrap() {
 

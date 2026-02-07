@@ -1,11 +1,10 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
 import { UserService } from '../user/user.service';
 import { RegisterDto } from './dto/register.dto';
 import { verify } from 'argon2';
 import { LoginDto } from './dto/login.dto';
 import { ProviderService } from './provider/provider.service';
-import { PrismaService } from '../prisma/prisma.service';
 import { EmailConfirmationService } from './email-confirmation/email-confirmation.service';
 import { UpdateUserDto } from './dto/update-user-dto';
 import { TwoFactorAuthService } from './two-factor-auth/two-factor-auth.service';

@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { last, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { ChannelServiceGrpcClient } from 'src/grpc-services/channel-service-client.service';
 import { CreateChannelDto } from './dto/create-channel.dto';
 import { FilesService } from 'src/libs/common/services/files.service';
-import { UpdateChannelRequest } from 'src/interfaces/channel_service';
 import { UpdateChannelDto } from './dto/update-channel.dto';
 
 @Injectable()

@@ -64,11 +64,6 @@ const createPostRequest: CreatePostRequest = {
     channelId: uuidv4()
 }
 
-const addPostMediaRequest: AddPostMediaRequest = {
-    url: "",
-    postId: uuidv4()
-}
-
 const getPostByIdRequest: GetPostByIdRequest = {
     id: uuidv4()
 }

@@ -49,12 +49,6 @@ const updateChannelRequest: UpdateChannelRequest = {
     bio: ""
 }
 
-const updateChannelPicturesRequest: UpdateChannelPicturesRequest = {
-    userId: uuidv4(),
-    profilePicture: "",
-    backgroundPicture: ""
-}
-
 const userId: FindChannelByUserIdRequest = {
     userId: uuidv4()
 }
@@ -66,18 +60,6 @@ const channelId: FindChannelByIdRequest = {
 const subscribeRequest: SubscribeRequest = {
     userId: uuidv4(),
     channelId: uuidv4()
-}
-
-const user: User = {
-    id: uuidv4(),
-    username: "",
-    picture: "",
-    email: "",
-    password: "",
-    role: "",
-    isVerified: false,
-    isTwoFactorEnabled: false,
-    method: ""
 }
 
 describe('ChannelController', () => {
