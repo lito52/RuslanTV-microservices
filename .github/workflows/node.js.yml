@@ -11,7 +11,7 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_PREFIX: pyc7an/ruslantv-microservices-ruslantv-microservices
+  IMAGE_PREFIX: ${{ github.repository }}
 
 jobs:
   build_nodejs:
@@ -73,20 +73,20 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - dockerfile: ./api-gateway/Dockerfile
+          - service: api-gateway
+            dockerfile: ./api-gateway/Dockerfile
             context: ./api-gateway
-            image: ruslantv-microservices-api-gateway
-          - dockerfile: ./microservices/auth-service/Dockerfile
-            image: ruslantv-microservices-auth-service
+          - service: auth-service
+            dockerfile: ./microservices/auth-service/Dockerfile
             context: ./microservices/auth-service
-          - dockerfile: ./microservices/channel-service/Dockerfile
-            image: ruslantv-microservices-channel-service
+          - service: channel-service
+            dockerfile: ./microservices/channel-service/Dockerfile
             context: ./microservices/channel-service
-          - dockerfile: ./microservices/notif-service/Dockerfile
-            image: ruslantv-microservices-notif-service
+          - service: notif-service
+            dockerfile: ./microservices/notif-service/Dockerfile
             context: ./microservices/notif-service
-          - dockerfile: ./microservices/video-service/Dockerfile
-            image: ruslantv-microservices-video-service
+          - service: video-service
+            dockerfile: ./microservices/video-service/Dockerfile
             context: ./microservices/video-service
 
     steps:
@@ -126,6 +126,6 @@ jobs:
         if: success() && github.event.name != 'pull_request'
         uses: actions/attest-build-provenance@v3
         with:
-          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}-${{ matrix.service }}
+          subject-name: ${{ env.REGISTRY }}/${{ vars.DOCKER_USERNAME }}/${{ env.IMAGE_PREFIX }}-${{ matrix.service }}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true 
