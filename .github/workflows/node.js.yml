@@ -129,6 +129,6 @@ jobs:
         if: success() && github.event.name != 'pull_request'
         uses: actions/attest-build-provenance@v3
         with:
-          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}-${{ matrix.service }}
+          subject-name: ${{ env.REGISTRY }}/${{ matrix.service }}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true 
