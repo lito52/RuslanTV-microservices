@@ -66,6 +66,11 @@ jobs:
     needs: build_nodejs
     if: github.event_name != 'pull_request'
 
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
     strategy:
       fail-fast: false
       matrix:
@@ -125,3 +130,15 @@ jobs:
           subject-name: ${{ env.REGISTRY }}/${{ vars.DOCKER_USERNAME }}/${{ env.IMAGE_PREFIX }}-${{ matrix.service }}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true 
+
+  deploy_staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      
+
+  deploy_production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
