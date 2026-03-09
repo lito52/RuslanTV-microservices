@@ -12,7 +12,7 @@ This project was built primarily for learning and experimenting with modern back
 
 ## System Desigh
 
-![system-design](https://imgur.com/a/KPuC9MW)
+![Uploading Безымянный-2026-03-09-1701.png…]()
 
 ## 🚀 Features
 
