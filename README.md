@@ -10,9 +10,9 @@ RuslanTV demonstrates real-world backend patterns such as service decomposition,
 
 This project was built primarily for learning and experimenting with modern backend technologies and infrastructure.
 
-## System Desigh
+## System Design
 
-![Uploading Безымянный-2026-03-09-1701.png…]()
+<img width="7302" height="2832" alt="excali" src="https://github.com/user-attachments/assets/abe52063-349f-4d08-a461-64733e910b4e" />
 
 ## 🚀 Features
 
